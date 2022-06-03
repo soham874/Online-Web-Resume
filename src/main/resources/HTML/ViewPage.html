@@ -5,8 +5,10 @@
 
     <title>Soham's Web Resume</title>
 
-    <link rel="icon" href="/favicon.ico">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <link rel="icon" href="/favicon.ico"> //
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="../CSS/ViewPage.css">
     <script src="../JS/ViewPage.js"></script>
 
@@ -16,6 +18,7 @@
 
     <!-- your content here... -->
     <div class="header-section">
+        <div class="material-icons navbar-icon" onclick="showmenu()" id="">menu</div>
         <div class="header-links">
             <a href="#Summary_heading">Summary
             </a>
@@ -24,14 +27,22 @@
             <a href="#Snp_heading">Skills and Projects
             </a>
         </div>
-        <div class="header-links"><a href="#we_heading">Work Experience
-        </a></div>
-        <div class="header-links"><a href="#ap_heading">Acedemic Profile
-        </a></div>
-        <div class="header-links"><a href="#cas_heading">Lets get a bit casual?
-        </a></div>
-        <div class="header-links"><a href="#abp_heading">About the page
-        </a></div>
+        <div class="header-links">
+            <a href="#we_heading">Work Experience
+            </a>
+        </div>
+        <div class="header-links">
+            <a href="#ap_heading">Academic Profile
+            </a>
+        </div>
+        <div class="header-links">
+            <a href="#cas_heading">Lets get a bit casual?
+            </a>
+        </div>
+        <div class="header-links">
+            <a href="#abp_heading">About the page
+            </a>
+        </div>
     </div>
     <div style="height: 150px;"></div>
     <div class="header-common-left" id="Summary_heading">
@@ -62,7 +73,7 @@
     </div>
 
     <div class="header-common-right" id="ap_heading">
-        Acedemic Profile
+        Academic Profile
     </div>
     <div class="body-common">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
