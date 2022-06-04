@@ -98,6 +98,7 @@ a {
 .navbar-icon {
     padding: 30px;
     display: none;
+    transform: scale(2.0);
 }
 
 

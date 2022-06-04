@@ -19,11 +19,19 @@ showmenu = () => {
         var elems = document.getElementsByClassName("header-links")
         for (var i = 0; i < elems.length; i += 1)
             elems[i].style.display = 'block';
-
-    } else {
-        var elems = document.getElementsByClassName("header-links")
+        var elems = document.getElementsByClassName("header-common-left")
         for (var i = 0; i < elems.length; i += 1)
             elems[i].style.display = 'none';
+        var elems = document.getElementsByClassName("header-common-right")
+        for (var i = 0; i < elems.length; i += 1)
+            elems[i].style.display = 'none';
+        var elems = document.getElementsByClassName("body-common")
+        for (var i = 0; i < elems.length; i += 1)
+            elems[i].style.display = 'none';
+
+        document.getElementsByClassName("header-section")[0].style.position = "relative";
+    } else {
+        hidedivs()
     }
     isclicked = !isclicked;
 }
@@ -34,6 +42,16 @@ hidedivs = () => {
     var elems = document.getElementsByClassName("header-links")
     for (var i = 0; i < elems.length; i += 1)
         elems[i].style.display = 'none';
+    var elems = document.getElementsByClassName("header-common-left")
+    for (var i = 0; i < elems.length; i += 1)
+        elems[i].style.display = 'block';
+    var elems = document.getElementsByClassName("header-common-right")
+    for (var i = 0; i < elems.length; i += 1)
+        elems[i].style.display = 'block';
+    var elems = document.getElementsByClassName("body-common")
+    for (var i = 0; i < elems.length; i += 1)
+        elems[i].style.display = 'block';
+    document.getElementsByClassName("header-section")[0].style.position = "fixed";
 }
 
 // function which returns the current theme (light/dark) along with full asset path
