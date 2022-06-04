@@ -14,7 +14,6 @@ $(document).ready(function() {
 
 // function to show drop down menu for mobile devices
 showmenu = () => {
-    console.log("menu show");
 
     if (!isclicked) {
         var elems = document.getElementsByClassName("header-links")
@@ -27,6 +26,14 @@ showmenu = () => {
             elems[i].style.display = 'none';
     }
     isclicked = !isclicked;
+}
+
+hidedivs = () => {
+    if (!isclicked)
+        return
+    var elems = document.getElementsByClassName("header-links")
+    for (var i = 0; i < elems.length; i += 1)
+        elems[i].style.display = 'none';
 }
 
 // function which returns the current theme (light/dark) along with full asset path

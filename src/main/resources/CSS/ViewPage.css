@@ -1,17 +1,13 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Common CSS ~~~~~~~~~~~~~~~~~~~~~~~*/
 
 .theme-light {
-    --color-primary: #0060df;
     --color-secondary: #fbfbfe;
-    --color-accent: #fd6f53;
     --font-color: #000000;
     transition: 500ms;
 }
 
 .theme-dark {
-    --color-primary: #17ed90;
     --color-secondary: #16191a;
-    --color-accent: #12cdea;
     --font-color: #ffffff;
     transition: 500ms;
 }
