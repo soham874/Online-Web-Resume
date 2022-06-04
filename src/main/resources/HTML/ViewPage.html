@@ -24,28 +24,28 @@
     <div class="header-section">
         <div class="material-icons navbar-icon" onclick="showmenu()">menu</div>
         <div class="header-links">
-            <a href="#Summary_heading" onclick="hidedivs()">Summary
-            </a>
+            <div onclick="hidedivs();smoothScrolltoSection('#Summary_heading')">Summary
+            </div>
         </div>
         <div class="header-links">
-            <a href="#Snp_heading" onclick="hidedivs()">Skills and Projects
-            </a>
+            <div onclick="hidedivs();smoothScrolltoSection('#Snp_heading')">Skills and Projects
+            </div>
         </div>
         <div class="header-links">
-            <a href="#we_heading" onclick="hidedivs()">Work Experience
-            </a>
+            <div onclick="hidedivs();smoothScrolltoSection('#we_heading')">Work Experience
+            </div>
         </div>
         <div class="header-links">
-            <a href="#ap_heading" onclick="hidedivs()">Academic Profile
-            </a>
+            <div onclick="hidedivs();smoothScrolltoSection('#ap_heading')">Academic Profile
+            </div>
         </div>
         <div class="header-links">
-            <a href="#cas_heading" onclick="hidedivs()">Lets get a bit casual?
-            </a>
+            <div onclick="hidedivs();smoothScrolltoSection('#cas_heading')">Lets get a bit casual?
+            </div>
         </div>
         <div class="header-links">
-            <a href="#abp_heading" onclick="hidedivs()">About the page
-            </a>
+            <div onclick="hidedivs();smoothScrolltoSection('#abp_heading')">About the page
+            </div>
         </div>
     </div>
     <div style="height: 150px;"></div>
@@ -107,11 +107,12 @@
             Made with ❤️ by Soham
         </div>
         <div style="width: 100px">
-            <img alt="" src="../assets/sunny.png" style="height: 45px; width: 45px;transition: 500ms;padding:5px" id="imgClickAndChange" onclick="changeImage()" />
+            <img href=""><img alt="" src="../assets/sunny.png" style="height: 45px; width: 45px;transition: 500ms;padding:5px" id="imgClickAndChange" onclick="changeImage()" /></img>
         </div>
-        <div>
+        <div class="header-links">
             Leave a thought?🥺
         </div>
+        </a>
 </body>
 
 </html>

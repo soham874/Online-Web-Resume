@@ -36,6 +36,13 @@ showmenu = () => {
     isclicked = !isclicked;
 }
 
+smoothScrolltoSection = (id) => {
+    document.querySelector(id).scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+
+// hide the options in navbar when a certain option has been chosen/the navabar is closed in mobile view
 hidedivs = () => {
     if (!isclicked)
         return

@@ -3,13 +3,11 @@
 .theme-light {
     --color-secondary: #fbfbfe;
     --font-color: #000000;
-    transition: 500ms;
 }
 
 .theme-dark {
     --color-secondary: #16191a;
     --font-color: #ffffff;
-    transition: 500ms;
 }
 
 html {
@@ -19,10 +17,7 @@ html {
     color: var(--font-color);
 }
 
-a {
-    color: var(--font-color);
-    text-decoration: none;
-}
+a {}
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Topic Headers ~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -85,10 +80,12 @@ a {
 }
 
 .header-links {
+    color: var(--font-color);
+    text-decoration: none;
     display: block;
-    color: black;
     padding: 20px;
     transition: 500ms;
+    cursor: pointer;
 }
 
 .header-links:hover {
@@ -116,7 +113,6 @@ a {
     backdrop-filter: saturate(180%) blur(20px);
     /*Flex details*/
     display: flex;
-    transition: 500ms;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
