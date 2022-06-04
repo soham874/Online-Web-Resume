@@ -1,12 +1,30 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Common CSS ~~~~~~~~~~~~~~~~~~~~~~~*/
 
+.theme-light {
+    --color-primary: #0060df;
+    --color-secondary: #fbfbfe;
+    --color-accent: #fd6f53;
+    --font-color: #000000;
+    transition: 500ms;
+}
+
+.theme-dark {
+    --color-primary: #17ed90;
+    --color-secondary: #16191a;
+    --color-accent: #12cdea;
+    --font-color: #ffffff;
+    transition: 500ms;
+}
+
 html {
     scroll-behavior: smooth;
     font-family: 'Cagliostro', sans-serif;
+    background-color: var(--color-secondary);
+    color: var(--font-color);
 }
 
 a {
-    color: black;
+    color: var(--font-color);
     text-decoration: none;
 }
 
@@ -39,7 +57,7 @@ a {
 
 .body-common {
     padding-top: 10px;
-    padding-bottom: 500px;
+    padding-bottom: 400px;
     padding-left: 50px;
     padding-right: 50px;
     font-size: 20px;
@@ -52,7 +70,7 @@ a {
 
 .header-section {
     overflow: auto;
-    border-bottom: solid black 1px;
+    border-bottom: solid var(--font-color) 1px;
     position: fixed;
     padding: 10px;
     width: 100%;
@@ -90,9 +108,9 @@ a {
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Footer Section ~~~~~~~~~~~~~~~~~~~~~~~*/
 
 .footer-section {
-    border-top: solid black 1px;
+    border-top: solid var(--font-color) 1px;
     position: fixed;
-    padding: 10px;
+    padding: 5px;
     font-size: 25px;
     left: 0;
     bottom: 0;
@@ -105,7 +123,7 @@ a {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: flex-end;
+    align-items: center;
 }
 
 @media only screen and (max-width:1250px) {

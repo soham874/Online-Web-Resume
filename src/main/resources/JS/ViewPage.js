@@ -4,21 +4,15 @@ $(document).ready(function() {
 
     console.log("Javascript file connected successfully");
 
-    $(".header-links").on(
-        'click',
-        function(event) {
-
-            if (window.innerWidth > 1250)
-                return
-
-            var elems = document.getElementsByClassName("header-links")
-            for (var i = 0; i < elems.length; i += 1)
-                elems[i].style.display = 'none';
-
-        }
-    )
+    //set the theme from local storage if present
+    if (localStorage.getItem('theme') === 'theme-dark') {
+        setTheme('theme-dark');
+    } else {
+        setTheme('theme-light');
+    }
 });
 
+// function to show drop down menu for mobile devices
 showmenu = () => {
     console.log("menu show");
 
@@ -33,4 +27,49 @@ showmenu = () => {
             elems[i].style.display = 'none';
     }
     isclicked = !isclicked;
+}
+
+// function which returns the current theme (light/dark) along with full asset path
+gettheme = () => {
+
+    var path = document.getElementById("imgClickAndChange").src
+    let respath = ""
+
+    let pointer = path.length - 1
+    while (path[pointer] !== '/') {
+        respath = path[pointer] + respath
+        path.slice(0, -1)
+        pointer--;
+    }
+
+    path = path.substring(0, pointer)
+
+    var theme = {
+        source_path: path,
+        image: respath
+    }
+    return theme
+}
+
+// wrapper to toggle the theme of page
+changeImage = () => {
+
+    var current_state = gettheme()
+    if (current_state.image === "sunny.png")
+        setTheme('theme-dark');
+    else
+        setTheme('theme-light');
+
+}
+
+// wrapper to toggle the theme and image of page
+setTheme = (themeName) => {
+    console.log("Setting theme to " + themeName)
+    localStorage.setItem('theme', themeName);
+    document.documentElement.className = themeName;
+    var current_state = gettheme()
+    if (themeName === "theme-light")
+        document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "sunny.png"
+    else
+        document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "full-moon.png"
 }
