@@ -1,5 +1,6 @@
 let isclicked = false
 let thoughtboxdisplayed = true
+var $limitNum = 250;
 
 $(document).ready(function() {
     thoughtboxdisplayed = false
@@ -18,6 +19,14 @@ $(document).ready(function() {
             thoughtboxdisplayed = false
         }
 
+    });
+
+    $('textarea[name="lname"]').keydown(function() {
+        var $this = $(this);
+
+        if ($this.val().length > $limitNum) {
+            $this.val($this.val().substring(0, $limitNum));
+        }
     });
 
 });
