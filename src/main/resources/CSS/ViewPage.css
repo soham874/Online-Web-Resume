@@ -117,24 +117,46 @@ html {
     position: fixed;
     bottom: 50px;
     right: 30px;
-    display: none;
     width: 300px;
-    margin: 50px auto;
+    display: none;
+    margin: 50px;
     background: var(--thought-box-theme);
     padding: 20px;
-    text-align: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    font-size: 20px;
 }
 
 .sb4:before {
     content: "";
     position: absolute;
-    border-left: 10px solid var(--thought-box-theme);
-    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid var(--thought-box-theme);
     border-top: 10px solid var(--thought-box-theme);
     border-bottom: 10px solid transparent;
-    left: 50px;
+    left: auto;
+    right: 100px;
     bottom: -20px;
     transition: visibility 0s, opacity 0.5s linear;
+}
+
+#lname {
+    height: 150px;
+    margin-top: 10px;
+}
+
+#post_button {
+    font-family: 'Cagliostro', sans-serif;
+    font-size: 20px;
+    width: auto;
+    color: var(--font-color);
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    background-color: var(--color-secondary);
+    border: none;
+    cursor: pointer;
 }
 
 
@@ -182,5 +204,9 @@ html {
         left: auto;
         right: 30px;
         bottom: -20px;
+    }
+    .thought-box {
+        font-size: 50px;
+        width: auto;
     }
 }

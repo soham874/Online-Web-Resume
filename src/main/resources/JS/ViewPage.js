@@ -13,14 +13,13 @@ $(document).ready(function() {
     }
 
     $(document).on('click', function(e) {
-        if (!thoughtboxdisplayed || $("#thought-link").is(e.target) || $("#thought-box").is(e.target))
-            return
-
-        if (thoughtboxdisplayed || $("#thought-box").is(e.target)) {
+        if ($("#post_button").is(e.target) || (!$("#thought-link").is(e.target) && $(e.target).closest("#thought-box").length === 0)) {
             $("#thought-box").hide();
+            thoughtboxdisplayed = false
         }
-        thoughtboxdisplayed = !thoughtboxdisplayed
+
     });
+
 });
 
 // function to show drop down menu for mobile devices
@@ -57,10 +56,10 @@ smoothScrolltoSection = (id) => {
 //function to display thought box
 showThoughtBox = () => {
     if (!thoughtboxdisplayed)
-        document.getElementsByClassName("thought-box")[0].style.display = "block"
+        document.getElementsByClassName("thought-box")[0].style.display = "flex"
     else
         $("#thought-box").hide();
-    thoughtboxdisplayed = !thoughtboxdisplayed
+    thoughtboxdisplayed = true
 }
 
 // hide the options in navbar when a certain option has been chosen/the navabar is closed in mobile view
