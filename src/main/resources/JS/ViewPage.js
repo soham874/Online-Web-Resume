@@ -1,7 +1,8 @@
 let isclicked = false
+let thoughtboxdisplayed = true
 
 $(document).ready(function() {
-
+    thoughtboxdisplayed = false
     console.log("Javascript file connected successfully");
 
     //set the theme from local storage if present
@@ -10,6 +11,16 @@ $(document).ready(function() {
     } else {
         setTheme('theme-light');
     }
+
+    $(document).on('click', function(e) {
+        if (!thoughtboxdisplayed || $("#thought-link").is(e.target))
+            return
+
+        if (thoughtboxdisplayed || $("#thought-box").is(e.target)) {
+            $("#thought-box").hide();
+        }
+        thoughtboxdisplayed = !thoughtboxdisplayed
+    });
 });
 
 // function to show drop down menu for mobile devices
@@ -36,10 +47,20 @@ showmenu = () => {
     isclicked = !isclicked;
 }
 
+//function to scroll to a page section without modifying heyperlink
 smoothScrolltoSection = (id) => {
     document.querySelector(id).scrollIntoView({
         behavior: 'smooth'
     });
+}
+
+//function to display thought box
+showThoughtBox = () => {
+    if (!thoughtboxdisplayed)
+        document.getElementsByClassName("thought-box")[0].style.display = "block"
+    else
+        $("#thought-box").hide();
+    thoughtboxdisplayed = !thoughtboxdisplayed
 }
 
 // hide the options in navbar when a certain option has been chosen/the navabar is closed in mobile view

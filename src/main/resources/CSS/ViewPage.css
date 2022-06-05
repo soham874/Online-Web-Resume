@@ -3,11 +3,13 @@
 .theme-light {
     --color-secondary: #fbfbfe;
     --font-color: #000000;
+    --thought-box-theme: #d0edeb;
 }
 
 .theme-dark {
     --color-secondary: #16191a;
     --font-color: #ffffff;
+    --thought-box-theme: #253534;
 }
 
 html {
@@ -16,8 +18,6 @@ html {
     background-color: var(--color-secondary);
     color: var(--font-color);
 }
-
-a {}
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Topic Headers ~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -99,6 +99,45 @@ a {}
 }
 
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~ Thought Box ~~~~~~~~~~~~~~~~~~~~~~~*/
+
+#thought-link {
+    color: var(--font-color);
+    text-decoration: none;
+    display: block;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+#thought-link:hover {
+    transform: scale(1.1);
+}
+
+.thought-box {
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    display: none;
+    width: 300px;
+    margin: 50px auto;
+    background: var(--thought-box-theme);
+    padding: 20px;
+    text-align: center;
+}
+
+.sb4:before {
+    content: "";
+    position: absolute;
+    border-left: 10px solid var(--thought-box-theme);
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--thought-box-theme);
+    border-bottom: 10px solid transparent;
+    left: 50px;
+    bottom: -20px;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Footer Section ~~~~~~~~~~~~~~~~~~~~~~~*/
 
 .footer-section {
@@ -134,5 +173,14 @@ a {}
     }
     .body-common {
         padding-bottom: 300px;
+    }
+    .sb4:before {
+        border-left: 10px solid transparent;
+        border-right: 10px solid var(--thought-box-theme);
+        border-top: 10px solid var(--thought-box-theme);
+        border-bottom: 10px solid transparent;
+        left: auto;
+        right: 30px;
+        bottom: -20px;
     }
 }
