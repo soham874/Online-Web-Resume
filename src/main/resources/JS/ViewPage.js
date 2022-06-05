@@ -13,7 +13,7 @@ $(document).ready(function() {
     }
 
     $(document).on('click', function(e) {
-        if (!thoughtboxdisplayed || $("#thought-link").is(e.target))
+        if (!thoughtboxdisplayed || $("#thought-link").is(e.target) || $("#thought-box").is(e.target))
             return
 
         if (thoughtboxdisplayed || $("#thought-box").is(e.target)) {
