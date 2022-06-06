@@ -62,10 +62,6 @@ a {
     text-align: justify;
 }
 
-.Summary_heading {
-    transform: scale();
-}
-
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Summary CSS ~~~~~~~~~~~~~~~~~~~~~~~*/
 
@@ -74,6 +70,13 @@ a {
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
+    padding-top: 10px;
+    padding-bottom: 250px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+    z-index: 1;
+    text-align: justify;
 }
 
 .hex-background {
@@ -82,7 +85,34 @@ a {
     /* equal to border thickness */
     left: 2px;
     /* container height - (border thickness * 2) */
-    clip-path: polygon(25% 10%, 75% 10%, 100% 50%, 75% 90%, 25% 90%, 0% 50%);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+
+/*~~~~~~~~~~~~~ Skills and Projects CSS ~~~~~~~~~~~~~~~~~*/
+
+.snp {
+    padding-top: 30px;
+    padding-bottom: 250px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+    z-index: 1;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill_item {
+    padding: 20px;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+.skill_item:hover {
+    transform: scale(1.2);
 }
 
 
@@ -247,7 +277,6 @@ a {
         font-size: 50px;
     }
     .summary {
-        display: flex;
         justify-content: space-between;
         flex-direction: column;
         align-items: center;

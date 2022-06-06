@@ -13,7 +13,7 @@ $(document).ready(function() {
         setTheme('theme-light');
     }
 
-    // controls closing of the post box depending on click location
+    // controls closing of the post box depending
     $(document).on('click', function(e) {
         if ($("#post_button").is(e.target) || (!$("#thought-link").is(e.target) && $(e.target).closest("#thought-box").length === 0)) {
             $("#thought-box").hide();
@@ -40,6 +40,8 @@ showmenu = () => {
         for (var i = 0; i < elems.length; i += 1)
             elems[i].style.display = 'none';
 
+        document.getElementsByClassName("summary")[0].style.display = "none";
+        document.getElementsByClassName("snp")[0].style.display = "none";
         document.getElementsByClassName("header-section")[0].style.position = "relative";
     } else {
         hidedivs()
@@ -79,6 +81,9 @@ hidedivs = () => {
     var elems = document.getElementsByClassName("body-common")
     for (var i = 0; i < elems.length; i += 1)
         elems[i].style.display = 'block';
+
+    document.getElementsByClassName("summary")[0].style.display = "flex";
+    document.getElementsByClassName("snp")[0].style.display = "flex";
     document.getElementsByClassName("header-section")[0].style.position = "fixed";
 }
 

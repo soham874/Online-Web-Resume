@@ -41,6 +41,7 @@ showmenu = () => {
             elems[i].style.display = 'none';
 
         document.getElementsByClassName("summary")[0].style.display = "none";
+        document.getElementsByClassName("snp")[0].style.display = "none";
         document.getElementsByClassName("header-section")[0].style.position = "relative";
     } else {
         hidedivs()
@@ -82,6 +83,7 @@ hidedivs = () => {
         elems[i].style.display = 'block';
 
     document.getElementsByClassName("summary")[0].style.display = "flex";
+    document.getElementsByClassName("snp")[0].style.display = "flex";
     document.getElementsByClassName("header-section")[0].style.position = "fixed";
 }
 
