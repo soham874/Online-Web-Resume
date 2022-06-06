@@ -63,6 +63,32 @@ a {
 }
 
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~ Summary CSS ~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 250px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+    z-index: 1;
+    text-align: justify;
+}
+
+.hex-background {
+    /*color of the main-background*/
+    top: 2px;
+    /* equal to border thickness */
+    left: 2px;
+    /* container height - (border thickness * 2) */
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Navbar ~~~~~~~~~~~~~~~~~~~~~~~*/
 
 .header-section {
@@ -222,5 +248,10 @@ a {
     }
     #lname {
         font-size: 50px;
+    }
+    .summary {
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
     }
 }
