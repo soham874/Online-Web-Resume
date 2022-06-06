@@ -4,12 +4,14 @@
     --color-secondary: #fbfbfe;
     --font-color: #000000;
     --thought-box-theme: #d0edeb;
+    --link-color: #1e5df0;
 }
 
 .theme-dark {
     --color-secondary: #16191a;
     --font-color: #ffffff;
     --thought-box-theme: #253534;
+    --link-color: #f8f8af;
 }
 
 html {
@@ -17,6 +19,10 @@ html {
     font-family: 'Cagliostro', sans-serif;
     background-color: var(--color-secondary);
     color: var(--font-color);
+}
+
+a {
+    color: var(--link-color);
 }
 
 
@@ -48,7 +54,7 @@ html {
 
 .body-common {
     padding-top: 10px;
-    padding-bottom: 400px;
+    padding-bottom: 250px;
     padding-left: 50px;
     padding-right: 50px;
     font-size: 20px;

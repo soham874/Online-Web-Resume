@@ -13,6 +13,7 @@ $(document).ready(function() {
         setTheme('theme-light');
     }
 
+    // controls closing of the post box depending on click location
     $(document).on('click', function(e) {
         if ($("#post_button").is(e.target) || (!$("#thought-link").is(e.target) && $(e.target).closest("#thought-box").length === 0)) {
             $("#thought-box").hide();
@@ -20,15 +21,6 @@ $(document).ready(function() {
         }
 
     });
-    /*
-        $('textarea[name="lname"]').keydown(function() {
-            var $this = $(this);
-
-            if ($this.val().length > $limitNum) {
-                $this.val($this.val().substring(0, $limitNum));
-            }
-        });
-    */
 });
 
 // function to show drop down menu for mobile devices
