@@ -2,8 +2,8 @@ let isclicked = false
 let thoughtboxdisplayed = true
 var $limitNum = 250;
 let temp_click = 0;
-let skill_headings = ["Programming languages", "Scripting languages", "Full Stack Technologies", "Database", "IDEs"]
-let tech_counts = [4, 3, 8, 3, 3]
+let skill_headings = ["Programming languages", "Scripting languages", "Full Stack Technologies", "Databases", "IDEs"]
+let tech_counts = [4, 3, 6, 3, 3]
 
 $(document).ready(function() {
     thoughtboxdisplayed = false
@@ -156,8 +156,8 @@ loadSkills = () => {
 
         output += `
         <div class="skill_item_group">
-            <div class="skill_item" onmouseover="displayeffects(${number})">
-                ${skill_headings[number]}
+            <div class="skill_item" onmouseover="displayeffects(${number})"> >>
+                ${skill_headings[number]} <<
         </div>
         
         <div class="skill_icon_group" onmouseleave="hideeffects(${number})">`
@@ -166,5 +166,5 @@ loadSkills = () => {
             output += `<img class="skill_icons" src="./assets/Skill_items/s${number+1}/si${number+1}${j+1}.png" />`
         output += `</div></div>`
     }
-    document.getElementById("snp_section").innerHTML = output
+    document.getElementById("snp_section").innerHTML += output
 }
