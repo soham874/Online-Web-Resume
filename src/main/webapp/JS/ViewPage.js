@@ -1,6 +1,7 @@
 let isclicked = false
 let thoughtboxdisplayed = true
 var $limitNum = 250;
+let temp_click = 0;
 
 $(document).ready(function() {
     thoughtboxdisplayed = false
@@ -19,8 +20,20 @@ $(document).ready(function() {
             $("#thought-box").hide();
             thoughtboxdisplayed = false
         }
-
     });
+    /*
+        $(".skill_item").on(
+            'mouseleave mouseenter click',
+            function(event) {
+                if (event.type == "mouseenter" || (event.type == "click" && temp_click == 0)) {
+                    displayeffects(0)
+                    temp_click = 1
+                } else if (event.type == "mouseleave" || (event.type == "click" && temp_click == 1)) {
+                    hideeffects(0)
+                    temp_click = 0
+                }
+            }
+        )*/
 });
 
 // function to show drop down menu for mobile devices
@@ -130,4 +143,16 @@ setTheme = (themeName) => {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "sunny.png"
     else
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "full-moon.png"
+}
+
+displayeffects = (skill_item_number) => {
+    document.getElementsByClassName("skill_item")[skill_item_number].style.transform = "scale(1.2)";
+    document.getElementsByClassName("skill_icon_group")[skill_item_number].style.display = "flex";
+    document.getElementsByClassName("skill_item")[skill_item_number].style.display = "none";
+}
+
+hideeffects = (skill_item_number) => {
+    document.getElementsByClassName("skill_item")[skill_item_number].style.transform = "scale(1)";
+    document.getElementsByClassName("skill_icon_group")[skill_item_number].style.display = "none";
+    document.getElementsByClassName("skill_item")[skill_item_number].style.display = "flex";
 }

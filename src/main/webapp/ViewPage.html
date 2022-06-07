@@ -65,7 +65,17 @@
         Skills and Projects
     </div>
     <div class="snp">
-        <div class="skill_item">Programming languages</div>
+        <div class="skill_item_group">
+            <div class="skill_item" onmouseover="displayeffects(0)">
+                Programming languages
+            </div>
+            <div class="skill_icon_group" onmouseleave="hideeffects(0)">
+                <img class="skill_icons" src="./assets/Skill_items/s1/si11.png" />
+                <img class="skill_icons" src="./assets/Skill_items/s1/si12.png" />
+                <img class="skill_icons" src="./assets/Skill_items/s1/si13.png" />
+                <img class="skill_icons" src="./assets/Skill_items/s1/si14.png" />
+            </div>
+        </div>
         <div class="skill_item">Scripting languages</div>
         <div class="skill_item">Full Stack Technologies</div>
         <div class="skill_item">Database</div>
@@ -126,7 +136,7 @@
             Made with ❤️ by Soham
         </div>
         <div style="width: 100px">
-            <img href=""><img alt="" src="./assets/sunny.png" style="height: 45px; width: 45px;transition: 500ms;padding:5px" id="imgClickAndChange" onclick="changeImage()" /></img>
+            <img alt="" src="./assets/sunny.png" style="height: 45px; width: 45px;transition: 500ms;padding:5px" id="imgClickAndChange" onclick="changeImage()" />
         </div>
         <div id="thought-link" onclick="showThoughtBox()">
             Share a thought?

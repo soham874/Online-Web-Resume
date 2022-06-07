@@ -109,10 +109,33 @@ a {
     padding: 20px;
     transition: 500ms;
     cursor: pointer;
+    display: flex;
+    font-size: 20px;
 }
 
-.skill_item:hover {
+.skill_icons {
+    height: 90px;
+    width: 90px;
+    transition: 500ms;
+    padding: 5px;
+}
+
+.skill_icons:hover {
     transform: scale(1.2);
+}
+
+.skill_item_group {
+    display: flex;
+    height: 50px;
+    padding: 10px;
+}
+
+.skill_icon_group {
+    display: none;
+    z-index: 99 !important;
+    backdrop-filter: saturate(180%) blur(20px);
+    align-items: center;
+    justify-content: space-between;
 }
 
 
