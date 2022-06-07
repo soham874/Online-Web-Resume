@@ -111,13 +111,18 @@ a {
     cursor: pointer;
     display: flex;
     font-size: 20px;
+    top: 0;
+    left: 0;
+    width: auto;
+    align-items: center;
+    justify-items: center;
 }
 
 .skill_icons {
     height: 90px;
     width: 90px;
     transition: 500ms;
-    padding: 5px;
+    padding: 10px;
 }
 
 .skill_icons:hover {
@@ -126,16 +131,23 @@ a {
 
 .skill_item_group {
     display: flex;
-    height: 50px;
+    height: 75px;
     padding: 10px;
+    position: relative;
+    width: auto;
+    align-items: center;
+    justify-items: center;
 }
 
 .skill_icon_group {
     display: none;
     z-index: 99 !important;
-    backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(2px);
     align-items: center;
-    justify-content: space-between;
+    justify-items: center;
+    position: absolute;
+    top: 0;
+    left: -50px;
 }
 
 

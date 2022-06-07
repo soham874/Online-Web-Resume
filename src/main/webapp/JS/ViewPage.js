@@ -146,13 +146,11 @@ setTheme = (themeName) => {
 }
 
 displayeffects = (skill_item_number) => {
-    document.getElementsByClassName("skill_item")[skill_item_number].style.transform = "scale(1.2)";
+    document.getElementsByClassName("skill_item")[skill_item_number].style.transform = "scale(1.5)";
     document.getElementsByClassName("skill_icon_group")[skill_item_number].style.display = "flex";
-    document.getElementsByClassName("skill_item")[skill_item_number].style.display = "none";
 }
 
 hideeffects = (skill_item_number) => {
     document.getElementsByClassName("skill_item")[skill_item_number].style.transform = "scale(1)";
     document.getElementsByClassName("skill_icon_group")[skill_item_number].style.display = "none";
-    document.getElementsByClassName("skill_item")[skill_item_number].style.display = "flex";
 }
