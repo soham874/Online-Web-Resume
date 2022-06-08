@@ -14,7 +14,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     <!-- Resolves Views Selected For Rendering by @Controllers to *.jsp Resources in the /WEB-INF/ Folder -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/" />
-        <property name="suffix" value=".html" />
+        <property name="suffix" value=".jsp" />
     </bean>
     
                   

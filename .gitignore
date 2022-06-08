@@ -1,2 +1,3 @@
 .\target
 *.class
+src/main/webapp/assets/response_leetcode_api_jun2_2_2022_sample.json
