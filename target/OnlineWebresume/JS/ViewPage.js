@@ -1,6 +1,9 @@
 let isclicked = false
 let thoughtboxdisplayed = true
 var $limitNum = 250;
+let temp_click = 0;
+let skill_headings = ["Programming languages", "Scripting languages", "Full Stack Technologies", "Databases", "IDEs"]
+let tech_counts = [4, 3, 6, 3, 3]
 
 $(document).ready(function() {
     thoughtboxdisplayed = false
@@ -19,8 +22,9 @@ $(document).ready(function() {
             $("#thought-box").hide();
             thoughtboxdisplayed = false
         }
-
     });
+
+    loadSkills()
 });
 
 // function to show drop down menu for mobile devices
@@ -130,4 +134,37 @@ setTheme = (themeName) => {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "sunny.png"
     else
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "full-moon.png"
+}
+
+// show the texh icons
+displayeffects = (skill_item_number) => {
+    document.getElementsByClassName("skill_item")[skill_item_number].style.transform = "scale(1.5)";
+    document.getElementsByClassName("skill_icon_group")[skill_item_number].style.display = "flex";
+}
+
+// hide the texh icons
+hideeffects = (skill_item_number) => {
+    document.getElementsByClassName("skill_item")[skill_item_number].style.transform = "scale(1)";
+    document.getElementsByClassName("skill_icon_group")[skill_item_number].style.display = "none";
+}
+
+//automatically add the HTML for skills
+loadSkills = () => {
+    let output = "";
+    for (let i = 0; i < 5; i++) {
+        var number = i;
+
+        output += `
+        <div class="skill_item_group">
+            <div class="skill_item" onmouseover="displayeffects(${number})"> >>
+                ${skill_headings[number]} <<
+        </div>
+        
+        <div class="skill_icon_group" onmouseleave="hideeffects(${number})">`
+
+        for (let j = 0; j < tech_counts[number]; j++)
+            output += `<img class="skill_icons" src="./assets/Skill_items/s${number+1}/si${number+1}${j+1}.png" />`
+        output += `</div></div>`
+    }
+    document.getElementById("snp_section").innerHTML += output
 }

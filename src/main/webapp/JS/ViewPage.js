@@ -144,8 +144,10 @@ displayeffects = (skill_item_number) => {
 
 // hide the texh icons
 hideeffects = (skill_item_number) => {
-    document.getElementsByClassName("skill_item")[skill_item_number].style.transform = "scale(1)";
-    document.getElementsByClassName("skill_icon_group")[skill_item_number].style.display = "none";
+    for (let i = 0; i < 5; i++) {
+        document.getElementsByClassName("skill_item")[i].style.transform = "scale(1)";
+        document.getElementsByClassName("skill_icon_group")[i].style.display = "none";
+    }
 }
 
 //automatically add the HTML for skills
@@ -155,8 +157,8 @@ loadSkills = () => {
         var number = i;
 
         output += `
-        <div class="skill_item_group">
-            <div class="skill_item" onmouseover="displayeffects(${number})"> >>
+        <div class="skill_item_group" onmouseleave="hideeffects(${number})">
+            <div class="skill_item" onmouseover="displayeffects(${number})" > >>
                 ${skill_headings[number]} <<
         </div>
         
