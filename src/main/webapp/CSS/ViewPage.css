@@ -107,6 +107,7 @@ a {
 
 .skill_icons {
     height: 90px;
+    width: 90px;
     transition: 500ms;
     padding: 20px;
 }
@@ -141,8 +142,6 @@ a {
     align-items: center;
     justify-items: center;
     position: absolute;
-    transform: translateX(-25%);
-    -webkit-transform: translateX(-25%);
 }
 
 

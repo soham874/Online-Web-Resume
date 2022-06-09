@@ -118,7 +118,7 @@
             <button id="post_button">Post</button>
         </div>
         <div>
-            Made by Soham
+            Made with &hearts; by Soham
         </div>
         <div style="width: 100px">
             <img alt="" src="./assets/sunny.png" style="height: 45px; width: 45px;transition: 500ms;padding:5px" id="imgClickAndChange" onclick="changeImage()" />
