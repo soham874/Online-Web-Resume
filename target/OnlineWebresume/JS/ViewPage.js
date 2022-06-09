@@ -4,6 +4,7 @@ var $limitNum = 250;
 let temp_click = 0;
 let skill_headings = ["Programming languages", "Scripting languages", "Full Stack Technologies", "Databases", "IDEs"]
 let tech_counts = [4, 3, 6, 3, 3]
+var data = {}
 
 $(document).ready(function() {
     thoughtboxdisplayed = false
@@ -24,10 +25,21 @@ $(document).ready(function() {
         }
     });
 
-
+    $.ajax({
+        type: 'POST',
+        url: "/OnlineWebresume/receiveLeetCodeData",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        dataType: 'json',
+        success: (data) => {
+            console.log(data)
+        },
+        error: (err) => {
+            console.log(err)
+        }
+    })
 
     loadSkills()
-    loadLeetcodeJSON()
 });
 
 // function to show drop down menu for mobile devices
@@ -176,9 +188,4 @@ loadSkills = () => {
         output += `</div></div>`
     }
     document.getElementById("snp_section").innerHTML += output
-}
-
-loadLeetcodeJSON = () => {
-    var myClass = Java.type("com.onlinewebresume.controller.WebpageController")
-    console.log(myClass.GetLeetCodeData())
 }

@@ -25,14 +25,14 @@ public class WebpageController {
         return "ViewPage";
     }
         
-    
-    public JSONObject GetLeetCodeData() throws org.json.simple.parser.ParseException {
+    @RequestMapping(value = "/receiveLeetCodeData")
+    public String GetLeetCodeData() throws org.json.simple.parser.ParseException {
     	JSONParser jsonParser = new JSONParser();
     	try {
             //Parsing the contents of the JSON file
             JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("E:\\Software Savefiles\\SpringMVC\\OnlineWebresume\\src\\main\\webapp\\assets\\response_leetcode_api_jun2_2_2022_sample.json"));
             //System.out.println(jsonObject);
-            return jsonObject;
+            return jsonObject.toString();
          } catch (FileNotFoundException e) {
            e.printStackTrace();
            System.out.println("File not found");
