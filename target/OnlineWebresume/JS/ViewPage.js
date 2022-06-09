@@ -24,7 +24,10 @@ $(document).ready(function() {
         }
     });
 
+
+
     loadSkills()
+    loadLeetcodeJSON()
 });
 
 // function to show drop down menu for mobile devices
@@ -143,28 +146,39 @@ displayeffects = (skill_item_number) => {
 }
 
 // hide the texh icons
-hideeffects = (skill_item_number) => {
-    document.getElementsByClassName("skill_item")[skill_item_number].style.transform = "scale(1)";
-    document.getElementsByClassName("skill_icon_group")[skill_item_number].style.display = "none";
+hideeffects = () => {
+    for (let i = 0; i < 5; i++) {
+        document.getElementsByClassName("skill_item")[i].style.transform = "scale(1)";
+        document.getElementsByClassName("skill_icon_group")[i].style.display = "none";
+    }
 }
 
 //automatically add the HTML for skills
 loadSkills = () => {
+    var screen_width = window.innerWidth
     let output = "";
-    for (let i = 0; i < 5; i++) {
-        var number = i;
+    for (let i = 0; i < skill_headings.length; i++) {
+
+        // 130 = 90 (skill_icons width) + 2 * 20 (skill_icons padding)
+        var div_with = 130 * tech_counts[i];
+        var div_start_pos = (screen_width / 2) - (div_with / 2);
 
         output += `
-        <div class="skill_item_group">
-            <div class="skill_item" onmouseover="displayeffects(${number})"> >>
-                ${skill_headings[number]} <<
+        <div class="skill_item_group" onmouseleave="hideeffects(${i})">
+            <div class="skill_item" onmouseover="displayeffects(${i})" > >>
+                ${skill_headings[i]} <<
         </div>
         
-        <div class="skill_icon_group" onmouseleave="hideeffects(${number})">`
+        <div class="skill_icon_group" onmouseleave="hideeffects(${i})" style="left:${div_start_pos}px">`
 
-        for (let j = 0; j < tech_counts[number]; j++)
-            output += `<img class="skill_icons" src="./assets/Skill_items/s${number+1}/si${number+1}${j+1}.png" />`
+        for (let j = 0; j < tech_counts[i]; j++)
+            output += `<img class="skill_icons" src="./assets/Skill_items/s${i+1}/si${i+1}${j+1}.png" />`
         output += `</div></div>`
     }
     document.getElementById("snp_section").innerHTML += output
+}
+
+loadLeetcodeJSON = () => {
+    var myClass = Java.type("com.onlinewebresume.controller.WebpageController")
+    console.log(myClass.GetLeetCodeData())
 }

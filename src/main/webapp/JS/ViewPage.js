@@ -24,7 +24,10 @@ $(document).ready(function() {
         }
     });
 
+
+
     loadSkills()
+    loadLeetcodeJSON()
 });
 
 // function to show drop down menu for mobile devices
@@ -173,4 +176,9 @@ loadSkills = () => {
         output += `</div></div>`
     }
     document.getElementById("snp_section").innerHTML += output
+}
+
+loadLeetcodeJSON = () => {
+    var myClass = Java.type("com.onlinewebresume.controller.WebpageController")
+    console.log(myClass.GetLeetCodeData())
 }
