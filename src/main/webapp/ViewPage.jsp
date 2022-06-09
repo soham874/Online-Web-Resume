@@ -14,8 +14,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cagliostro&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./CSS/ViewPage.css">
-    <script src="./JS/ViewPage.js"></script>
+    <link rel="stylesheet" href="./CSS/ViewPage.css" type="text/css">
+    <script src="./JS/ViewPage.js" type="text/JavaScript"></script>
 </head>
 <body>
 <div class="header-section">

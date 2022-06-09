@@ -17,10 +17,11 @@
     <mvc:annotation-driven/>
          
     <!-- Resolves Views Selected For Rendering by @Controllers to *.jsp Resources in the /WEB-INF/ Folder -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean id = "viewProvider" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/" />
         <property name="suffix" value=".jsp" />
     </bean>
     
-                  
+    <mvc:resources mapping="/**" location="/" />
+                
 </beans>
