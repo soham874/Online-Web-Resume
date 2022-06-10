@@ -3,6 +3,7 @@ let thoughtboxdisplayed = true
 let skill_headings = ["Programming languages", "Scripting languages", "Full Stack Technologies", "Databases", "IDEs"]
 let tech_counts = [4, 3, 6, 3, 3]
 var data = {}
+let counter = 0
 
 // temporary data, to be deleted [updated on 10th June]
 var LeetcodeJSON = {
@@ -76,6 +77,7 @@ var LeetcodeJSON = {
 
 $(document).ready(function() {
     thoughtboxdisplayed = false
+    counter = 0;
     console.log("Javascript file connected successfully");
 
     //set the theme from local storage if present
@@ -288,13 +290,26 @@ loadLeetCodeView = (leetcodedata = LeetcodeJSON) => {
     console.log(SubmissionInformation)
     console.log(SubmissionMap)
 
-    let counter = 0;
-    setInterval(() => {
-        if (counter == 100) {
-            clearInterval();
-        } else {
-            counter += 1;
-            document.getElementsByClassName("number")[0].innerHTML = counter + " %"
-        }
-    }, 80);
+    progressBar(75, 0);
+    progressBar(67.56, 1);
+
+}
+
+progressBar = (progressVal, class_number) => {
+    var strokeVal = (4.64 * 100) / 100;
+    var x = document.getElementsByClassName('progress-circle-prog')[class_number];
+    x.style.strokeDasharray = progressVal * (strokeVal) + ' 999';
+    var el = document.getElementsByClassName('progress-text')[class_number];
+    var from = $('.progress-text').data('progress');
+    $('.progress-text').data('progress', progressVal);
+    var start = new Date().getTime();
+
+    setTimeout(() => {
+        var now = (new Date().getTime()) - start;
+        var progress = now / 700;
+        el.innerHTML = progressVal / 100 * 100 + '%';
+        if (progress < 1)
+            setTimeout(arguments.callee, 10);
+    }, 10);
+
 }

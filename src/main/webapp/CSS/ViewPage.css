@@ -5,6 +5,7 @@
     --font-color: #000000;
     --thought-box-theme: #d0edeb;
     --link-color: #1e5df0;
+    --progress-bar-color: #1a40cb;
 }
 
 .theme-dark {
@@ -12,6 +13,7 @@
     --font-color: #ffffff;
     --thought-box-theme: #253534;
     --link-color: #f8f8af;
+    --progress-bar-color: #1bb35d;
 }
 
 html {
@@ -80,11 +82,8 @@ a {
 }
 
 .hex-background {
-    /*color of the main-background*/
     top: 2px;
-    /* equal to border thickness */
     left: 2px;
-    /* container height - (border thickness * 2) */
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
@@ -144,78 +143,46 @@ a {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Leetcode data ~~~~~~~~~~~~~~~~~~~~~~~*/
 
-.circular {
-    height: 100px;
-    width: 100px;
+.progress_bar_container {
     position: relative;
-    transform: scale(1);
+    padding: 50px;
 }
 
-.circular .inner {
+.progress {
     position: absolute;
-    z-index: 6;
+    height: 160px;
+    width: 160px;
+    cursor: pointer;
     top: 50%;
     left: 50%;
-    height: 80px;
-    width: 80px;
-    margin: -40px 0 0 -40px;
-    background: var(--color-secondary);
-    border-radius: 100%;
+    margin: -80px 0 0 -80px;
 }
 
-.circular .number {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    font-size: 18px;
-    font-weight: 500;
-    color: #4158d0;
+.progress-circle {
+    transform: rotate(-90deg);
+    margin-top: -40px;
 }
 
-.circular .bar {
-    position: absolute;
-    height: 100%;
+.progress-circle-back {
+    fill: none;
+    stroke-width: 10px;
+}
+
+.progress-circle-prog {
+    fill: none;
+    stroke: var( --progress-bar-color);
+    stroke-width: 10px;
+    stroke-dasharray: 0 999;
+    stroke-dashoffset: 0px;
+    transition: stroke-dasharray 0.7s linear 0s;
+}
+
+.progress-text {
     width: 100%;
-    border-radius: 100%;
-    clip: rect(0px, 100px, 100px, 50px);
-}
-
-.circle .bar .progress {
     position: absolute;
-    height: 100%;
-    width: 100%;
-    border-radius: 100%;
-    clip: rect(0px, 50px, 100px, 0px);
-    background: #4158d0;
-}
-
-.circle .left .progress {
-    z-index: 1;
-    animation: left 4s linear both;
-}
-
-@keyframes left {
-    100% {
-        transform: rotate(180deg);
-    }
-}
-
-.circle .right {
-    transform: rotate(180deg);
-    z-index: 3;
-}
-
-.circle .right .progress {
-    animation: right 4s linear both;
-    animation-delay: 4s;
-}
-
-@keyframes right {
-    100% {
-        transform: rotate(180deg);
-    }
+    top: 60px;
+    text-align: center;
+    font-size: 2em;
 }
 
 
