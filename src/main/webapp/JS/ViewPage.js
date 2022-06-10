@@ -113,8 +113,7 @@ $(document).ready(function() {
     */
 
     loadLeetCodeView()
-
-    // function to load the skills section with CSS and JS
+        // function to load the skills section with CSS and JS
     loadSkills()
 });
 
@@ -288,4 +287,14 @@ loadLeetCodeView = (leetcodedata = LeetcodeJSON) => {
 
     console.log(SubmissionInformation)
     console.log(SubmissionMap)
+
+    let counter = 0;
+    setInterval(() => {
+        if (counter == 100) {
+            clearInterval();
+        } else {
+            counter += 1;
+            document.getElementsByClassName("number")[0].innerHTML = counter + " %"
+        }
+    }, 80);
 }
