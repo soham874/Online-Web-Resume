@@ -2,8 +2,11 @@ let isclicked = false
 let thoughtboxdisplayed = true
 let skill_headings = ["Programming languages", "Scripting languages", "Full Stack Technologies", "Databases", "IDEs"]
 let tech_counts = [4, 3, 6, 3, 3]
+let stat_type = ["Completed ", "Accuracy "]
+let cat_type = ["all", "easy", "medium", "hard"]
 var data = {}
 let counter = 0
+let SubmissionInformation = []
 
 // temporary data, to be deleted [updated on 10th June]
 var LeetcodeJSON = {
@@ -115,7 +118,36 @@ $(document).ready(function() {
     */
 
     loadLeetCodeView()
-        // function to load the skills section with CSS and JS
+
+    $("#c1").on(
+        'mouseenter click',
+        function() {
+            loadParticularCategoryData(1)
+        }
+    )
+
+    $("#c2").on(
+        'mouseenter click',
+        function() {
+            loadParticularCategoryData(2)
+        }
+    )
+
+    $("#c3").on(
+        'mouseenter click',
+        function() {
+            loadParticularCategoryData(3)
+        }
+    )
+
+    $(".category_class").on(
+        'mouseleave',
+        function() {
+            loadParticularCategoryData(0)
+        }
+    )
+
+    // function to load the skills section with CSS and JS
     loadSkills()
 });
 
@@ -271,7 +303,6 @@ loadSkills = () => {
 loadLeetCodeView = (leetcodedata = LeetcodeJSON) => {
 
     // 0 - All, 1 - Easy, 2 - Medium, 3 - Hard
-    let SubmissionInformation = []
     for (var i = 0; i < 4; i++)
         SubmissionInformation[i] = {
             // Total questions in ith category
@@ -290,26 +321,31 @@ loadLeetCodeView = (leetcodedata = LeetcodeJSON) => {
     console.log(SubmissionInformation)
     console.log(SubmissionMap)
 
-    progressBar(75, 0);
-    progressBar(67.56, 1);
-
+    loadParticularCategoryData(0)
 }
 
+// modify the stats for a particular category
+loadParticularCategoryData = (category) => {
+
+    progressBar(SubmissionInformation[category].Completed_percent, 0);
+    progressBar(SubmissionInformation[category].Accuracy_percent, 1);
+
+    document.getElementById('progress_bar_container').innerHTML =
+        `<div style="padding:10px;">Total questions : ${SubmissionInformation[category].Questions}</div>
+        <div style="padding:10px;">Solved questions : ${SubmissionInformation[category].Solved}</div>
+        <div style="padding:10px;">Accepted Solutions : ${SubmissionInformation[category].Accepted}</div>`
+
+    document.getElementsByClassName("progress-circle-prog")[0].style.stroke = `var(--color-${cat_type[category]})`;
+    document.getElementsByClassName("progress-circle-prog")[1].style.stroke = `var(--color-${cat_type[category]})`;
+}
+
+// function to dynamically modify the displayed percent
 progressBar = (progressVal, class_number) => {
     var strokeVal = (4.64 * 100) / 100;
     var x = document.getElementsByClassName('progress-circle-prog')[class_number];
     x.style.strokeDasharray = progressVal * (strokeVal) + ' 999';
-    var el = document.getElementsByClassName('progress-text')[class_number];
-    var from = $('.progress-text').data('progress');
+    document.getElementsByClassName('progress-text')[class_number].innerHTML = stat_type[class_number] + progressVal + '%';
     $('.progress-text').data('progress', progressVal);
-    var start = new Date().getTime();
 
-    setTimeout(() => {
-        var now = (new Date().getTime()) - start;
-        var progress = now / 700;
-        el.innerHTML = progressVal / 100 * 100 + '%';
-        if (progress < 1)
-            setTimeout(arguments.callee, 10);
-    }, 10);
 
 }

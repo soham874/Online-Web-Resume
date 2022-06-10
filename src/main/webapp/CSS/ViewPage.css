@@ -5,7 +5,6 @@
     --font-color: #000000;
     --thought-box-theme: #d0edeb;
     --link-color: #1e5df0;
-    --progress-bar-color: #1a40cb;
 }
 
 .theme-dark {
@@ -13,7 +12,6 @@
     --font-color: #ffffff;
     --thought-box-theme: #253534;
     --link-color: #f8f8af;
-    --progress-bar-color: #1bb35d;
 }
 
 html {
@@ -21,6 +19,10 @@ html {
     font-family: 'Cagliostro', sans-serif;
     background-color: var(--color-secondary);
     color: var(--font-color);
+    --color-easy: #0fd50c;
+    --color-medium: #ff9500;
+    --color-hard: #ff4040;
+    --color-all: #1f3dec;
 }
 
 a {
@@ -143,9 +145,13 @@ a {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Leetcode data ~~~~~~~~~~~~~~~~~~~~~~~*/
 
-.progress_bar_container {
-    position: relative;
+#progress_bar_container {
     padding: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 20px;
 }
 
 .progress {
@@ -170,7 +176,7 @@ a {
 
 .progress-circle-prog {
     fill: none;
-    stroke: var( --progress-bar-color);
+    stroke: var(--color-all);
     stroke-width: 10px;
     stroke-dasharray: 0 999;
     stroke-dashoffset: 0px;
@@ -182,7 +188,23 @@ a {
     position: absolute;
     top: 60px;
     text-align: center;
-    font-size: 2em;
+}
+
+.category_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.category_class {
+    font-size: 20px;
+    padding: 30px;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+.category_class:hover {
+    transform: scale(1.5);
 }
 
 
@@ -353,5 +375,8 @@ a {
     }
     .skill_item {
         font-size: 30px;
+    }
+    #progress_bar_container {
+        flex-direction: column
     }
 }
