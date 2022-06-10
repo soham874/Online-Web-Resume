@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html class="theme-light">
 <head>
-	<meta charset="ISO-8859-1">
-	<title>Soham's Web Resume</title>
+	<meta charset="utf-8" name="viewport">
+
+    <title>Soham's Web Resume</title>
 
     <link rel="icon" href="./assets/resume.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -14,11 +15,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cagliostro&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./CSS/ViewPage.css" type="text/css">
-    <script src="./JS/ViewPage.js" type="text/JavaScript"></script>
+    <link rel="stylesheet" href="./CSS/ViewPage.css">
+    <script src="./JS/ViewPage.js"></script>
+
 </head>
 <body>
-<div class="header-section">
+<!-- your content here... -->
+    <div class="header-section">
         <div class="material-icons navbar-icon" onclick="showmenu()">menu</div>
         <div class="header-links">
             <div onclick="hidedivs();smoothScrolltoSection('#Summary_heading')">Summary
@@ -61,9 +64,44 @@
     <div class="header-common-right" id="Snp_heading">
         Skills and Projects
     </div>
-    <div class="snp" id="snp_section">
-        <div style="padding-bottom:10px">
+    <div>
+        <div style="padding-left: 50px;font-size: 20px;">
             Tap or hover over the technologies to know about the different tech-stacks I have worked with in a professional and personnal capacity.
+        </div>
+        <div class="snp" id="snp_section">
+
+        </div>
+    </div>
+    <div>
+        <div style="padding-left: 50px;padding-bottom: 50px;font-size: 20px;">Here's a quick look into my coding portfolio from
+            <a href="https://leetcode.com/Soham874/" target="_blank">Leetcode</a> [stored data displayed in beta phase]
+        </div>
+        <div style="position: relative;padding: 100px;">
+            <div class="progress" style="left: 33.34%">
+                <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="progress-circle-back"
+                            cx="80" cy="80" r="74"></circle>
+                    <circle class="progress-circle-prog"
+                            cx="80" cy="80" r="74"></circle>
+                </svg>
+                <div class="progress-text" data-progress="0">0%</div>
+            </div>
+            <div class="progress" style="left: 66.68%">
+                <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="progress-circle-back"
+                            cx="80" cy="80" r="74"></circle>
+                    <circle class="progress-circle-prog"
+                            cx="80" cy="80" r="74"></circle>
+                </svg>
+                <div class="progress-text" data-progress="0">0%</div>
+            </div>
+        </div>
+        <div id="progress_bar_container">
+        </div>
+        <div class="category_buttons">
+            <div class="category_class" id="c1" style="color: var(--color-easy);">Easy</div>
+            <div class="category_class" id="c2" style="color: var(--color-medium);">Medium</div>
+            <div class="category_class" id="c3" style="color: var(--color-hard);">Hard</div>
         </div>
     </div>
 
@@ -118,7 +156,7 @@
             <button id="post_button">Post</button>
         </div>
         <div>
-            Made with &hearts; by Soham
+            Made with ❤️ by Soham
         </div>
         <div style="width: 100px">
             <img alt="" src="./assets/sunny.png" style="height: 45px; width: 45px;transition: 500ms;padding:5px" id="imgClickAndChange" onclick="changeImage()" />

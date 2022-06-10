@@ -19,6 +19,10 @@ html {
     font-family: 'Cagliostro', sans-serif;
     background-color: var(--color-secondary);
     color: var(--font-color);
+    --color-easy: #0fd50c;
+    --color-medium: #ff9500;
+    --color-hard: #ff4040;
+    --color-all: #1f3dec;
 }
 
 a {
@@ -80,22 +84,16 @@ a {
 }
 
 .hex-background {
-    /*color of the main-background*/
     top: 2px;
-    /* equal to border thickness */
     left: 2px;
-    /* container height - (border thickness * 2) */
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
 
-/*~~~~~~~~~~~~~ Skills and Projects CSS ~~~~~~~~~~~~~~~~~*/
+/*~~~~~~~~~~~~~ Skills CSS ~~~~~~~~~~~~~~~~~*/
 
 .snp {
-    padding-top: 30px;
-    padding-bottom: 250px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding: 50px;
     font-size: 20px;
     z-index: 1;
     text-align: justify;
@@ -142,6 +140,71 @@ a {
     align-items: center;
     justify-items: center;
     position: absolute;
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~ Leetcode data ~~~~~~~~~~~~~~~~~~~~~~~*/
+
+#progress_bar_container {
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 20px;
+}
+
+.progress {
+    position: absolute;
+    height: 160px;
+    width: 160px;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    margin: -80px 0 0 -80px;
+}
+
+.progress-circle {
+    transform: rotate(-90deg);
+    margin-top: -40px;
+}
+
+.progress-circle-back {
+    fill: none;
+    stroke-width: 10px;
+}
+
+.progress-circle-prog {
+    fill: none;
+    stroke: var(--color-all);
+    stroke-width: 10px;
+    stroke-dasharray: 0 999;
+    stroke-dashoffset: 0px;
+    transition: stroke-dasharray 0.7s linear 0s;
+}
+
+.progress-text {
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    text-align: center;
+}
+
+.category_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.category_class {
+    font-size: 20px;
+    padding: 30px;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+.category_class:hover {
+    transform: scale(1.5);
 }
 
 
@@ -312,5 +375,8 @@ a {
     }
     .skill_item {
         font-size: 30px;
+    }
+    #progress_bar_container {
+        flex-direction: column
     }
 }
