@@ -78,6 +78,38 @@ var LeetcodeJSON = {
     }
 }
 
+// temporary github data to be deleted [updated on 11th June]
+var GithubJSON = {
+    "data": {
+        "user": {
+            "pinnedItems": {
+                "nodes": [{
+                        "name": "Fundoo",
+                        "description": "A project on fullstack development and database.",
+                        "url": "https://github.com/soham874/Fundoo"
+                    },
+                    {
+                        "name": "TItanic-Predictions",
+                        "description": "An algorithm used to determine if a titanic passanger survived or died based on information about ticket, gender, etc",
+                        "url": "https://github.com/soham874/TItanic-Predictions"
+                    },
+                    {
+                        "name": "Converter",
+                        "description": "A UI implementing a simple converter for converting temperature, length and volume units",
+                        "url": "https://github.com/soham874/Converter"
+                    },
+                    {
+                        "name": "Digit-Classification-MNIST",
+                        "description": "An algorithm trained on the MNIST Dataset used to detect handwritten digits",
+                        "url": "https://github.com/soham874/Digit-Classification-MNIST"
+                    }
+                ]
+            }
+        }
+    }
+}
+
+// functions to be performed when webpage loads
 $(document).ready(function() {
     thoughtboxdisplayed = false
     counter = 0;
@@ -116,30 +148,28 @@ $(document).ready(function() {
         }
     })
     */
-
+    // temporary function to load Leetcode data from the stored JSON. Original call will be through Ajax
     loadLeetCodeView()
 
+    // Logic for handling leetcode question category stats
     $("#c1").on(
         'mouseenter click',
         function() {
             loadParticularCategoryData(1)
         }
     )
-
     $("#c2").on(
         'mouseenter click',
         function() {
             loadParticularCategoryData(2)
         }
     )
-
     $("#c3").on(
         'mouseenter click',
         function() {
             loadParticularCategoryData(3)
         }
     )
-
     $(".category_class").on(
         'mouseleave',
         function() {
@@ -149,6 +179,28 @@ $(document).ready(function() {
 
     // function to load the skills section with CSS and JS
     loadSkills()
+
+    /*
+    // function to receieve Github object datatype from controller
+    $.ajax({
+        type: 'POST',
+        url: "/OnlineWebresume/receiveGithubData",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        dataType: 'json',
+        success: (data) => {
+            console.log(data)
+            loadGithubView(data)
+        },
+        error: (err) => {
+            console.log(err)
+            showLeetcodeError()
+        }
+    })
+    */
+
+    // temporary function to load Github data from the stored JSON. Original call will be through Ajax
+    loadGithubView()
 });
 
 // function to show drop down menu for mobile devices
@@ -299,10 +351,6 @@ loadLeetCodeView = (leetcodedata = LeetcodeJSON) => {
             // Percent of questions solved in ith category
             Completed_percent: Math.round(leetcodedata.data.matchedUser.submitStats.acSubmissionNum[i].count / leetcodedata.data.allQuestionsCount[i].count * 100 * 100) / 100,
         }
-    let SubmissionMap = JSON.parse(leetcodedata.data.matchedUser.submissionCalendar)
-
-    console.log(SubmissionInformation)
-    console.log(SubmissionMap)
 
     loadParticularCategoryData(0)
 }
@@ -314,9 +362,9 @@ loadParticularCategoryData = (category) => {
     progressBar(SubmissionInformation[category].Accuracy_percent, 1);
 
     document.getElementById('progress_bar_container').innerHTML =
-        `<div style="padding:10px;">Total questions : ${SubmissionInformation[category].Questions}</div>
-        <div style="padding:10px;">Solved questions : ${SubmissionInformation[category].Solved}</div>
-        <div style="padding:10px;">Accepted Solutions : ${SubmissionInformation[category].Accepted}</div>`
+        `<div style="padding:0 10px 0 10px;">Total questions : ${SubmissionInformation[category].Questions}</div>
+        <div style="padding:0 10px 0 10px;">Solved questions : ${SubmissionInformation[category].Solved}</div>
+        <div style="padding:0 10px 0 10px;">Accepted Solutions : ${SubmissionInformation[category].Accepted}</div>`
 
     document.getElementsByClassName("progress-circle-prog")[0].style.stroke = `var(--color-${cat_type[category]})`;
     document.getElementsByClassName("progress-circle-prog")[1].style.stroke = `var(--color-${cat_type[category]})`;
@@ -331,4 +379,25 @@ progressBar = (progressVal, class_number) => {
     $('.progress-text').data('progress', progressVal);
 
 
+}
+
+// Load the Github statistics section
+loadGithubView = (Githubdata = GithubJSON) => {
+
+    console.log(Githubdata)
+    let tabledata = `<table id="customers">
+    <tr>
+      <th>Project Name</th>
+      <th>Short Description</th>
+    </tr>`
+
+    Githubdata.data.user.pinnedItems.nodes.forEach(project => {
+        tabledata += `<tr>
+            <td><a href="${project.url}" target="_blank">${project.name}</a></td>
+            <td>${project.description}</td>
+            </tr>`
+    })
+    tabledata += `</table>`
+
+    document.getElementById('github_projects').innerHTML = tabledata
 }
