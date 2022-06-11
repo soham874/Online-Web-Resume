@@ -141,6 +141,8 @@ $(document).ready(function() {
         dataType: 'json',
         success: (data) => {
             console.log(data)
+            document.getElementById("leetcode_error").style.display = 'none'
+            document.getElementById("coding_container").style.display = 'block'
             loadLeetCodeView(data)
         },
         error: (err) => {
@@ -192,6 +194,8 @@ $(document).ready(function() {
         dataType: 'json',
         success: (data) => {
             console.log(data)
+            document.getElementById("github_error").style.display = 'none'
+            document.getElementById("github_container").style.display = 'block'
             loadGithubView(data)
         },
         error: (err) => {
