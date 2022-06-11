@@ -130,8 +130,9 @@ $(document).ready(function() {
         }
     });
 
-    /*
+
     // function to receieve LeetCode object datatype from controller
+    /*
     $.ajax({
         type: 'POST',
         url: "/OnlineWebresume/receiveLeetCodeData",
@@ -144,10 +145,11 @@ $(document).ready(function() {
         },
         error: (err) => {
             console.log(err)
-            showLeetcodeError()
+            document.getElementById("coding_container").style.display = 'none'
+            document.getElementById("leetcode_error").style.display = 'flex'
         }
     })
-    */
+*/
     // temporary function to load Leetcode data from the stored JSON. Original call will be through Ajax
     loadLeetCodeView()
 
@@ -194,7 +196,8 @@ $(document).ready(function() {
         },
         error: (err) => {
             console.log(err)
-            showLeetcodeError()
+            document.getElementById("github_container").style.display = 'none'
+            document.getElementById("github_error").style.display = 'flex'
         }
     })
     */
@@ -320,12 +323,12 @@ loadSkills = () => {
         var div_start_pos = (screen_width / 2) - (div_with / 2);
 
         output += `
-        <div class="skill_item_group" onmouseleave="hideeffects(${i})">
-            <div class="skill_item" onmouseover="displayeffects(${i})" > >>
-                ${skill_headings[i]} <<
-        </div>
-        
-        <div class="skill_icon_group" onmouseleave="hideeffects(${i})" style="left:${div_start_pos}px">`
+                    <div class="skill_item_group" onmouseleave="hideeffects(${i})">
+                        <div class="skill_item" onmouseover="displayeffects(${i})" > >>
+                            ${skill_headings[i]} <<
+                    </div>
+                    
+                    <div class="skill_icon_group" onmouseleave="hideeffects(${i})" style="left:${div_start_pos}px">`
 
         for (let j = 0; j < tech_counts[i]; j++)
             output += `<img class="skill_icons" src="./assets/Skill_items/s${i+1}/si${i+1}${j+1}.png" />`
@@ -363,8 +366,8 @@ loadParticularCategoryData = (category) => {
 
     document.getElementById('progress_bar_container').innerHTML =
         `<div style="padding:0 10px 0 10px;">Total questions : ${SubmissionInformation[category].Questions}</div>
-        <div style="padding:0 10px 0 10px;">Solved questions : ${SubmissionInformation[category].Solved}</div>
-        <div style="padding:0 10px 0 10px;">Accepted Solutions : ${SubmissionInformation[category].Accepted}</div>`
+                    <div style="padding:0 10px 0 10px;">Solved questions : ${SubmissionInformation[category].Solved}</div>
+                    <div style="padding:0 10px 0 10px;">Accepted Solutions : ${SubmissionInformation[category].Accepted}</div>`
 
     document.getElementsByClassName("progress-circle-prog")[0].style.stroke = `var(--color-${cat_type[category]})`;
     document.getElementsByClassName("progress-circle-prog")[1].style.stroke = `var(--color-${cat_type[category]})`;
@@ -386,16 +389,16 @@ loadGithubView = (Githubdata = GithubJSON) => {
 
     console.log(Githubdata)
     let tabledata = `<table id="customers">
-    <tr>
-      <th>Project Name</th>
-      <th>Short Description</th>
-    </tr>`
+                <tr>
+                  <th>Project Name</th>
+                  <th>Short Description</th>
+                </tr>`
 
     Githubdata.data.user.pinnedItems.nodes.forEach(project => {
         tabledata += `<tr>
-            <td><a href="${project.url}" target="_blank">${project.name}</a></td>
-            <td>${project.description}</td>
-            </tr>`
+                        <td><a href="${project.url}" target="_blank">${project.name}</a></td>
+                        <td>${project.description}</td>
+                        </tr>`
     })
     tabledata += `</table>`
 

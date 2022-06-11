@@ -5,6 +5,7 @@
     --font-color: #000000;
     --thought-box-theme: #d0edeb;
     --link-color: #1e5df0;
+    --error-backgrounds: rgba(255, 255, 255, 0.8)
 }
 
 .theme-dark {
@@ -12,6 +13,7 @@
     --font-color: #ffffff;
     --thought-box-theme: #253534;
     --link-color: #f8f8af;
+    --error-backgrounds: rgba(255, 255, 255, 0)
 }
 
 html {
@@ -31,6 +33,7 @@ a {
 
 .generic_div {
     display: block;
+    padding-bottom: 250px;
 }
 
 
@@ -43,7 +46,7 @@ a {
     padding-bottom: 20px;
     font-weight: bold;
     font-size: 50px;
-    z-index: 2;
+    z-index: 1 !important;
 }
 
 .header-common-right {
@@ -144,6 +147,34 @@ a {
     align-items: center;
     justify-items: center;
     position: absolute;
+}
+
+.error_api {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 40px;
+    height: 360px;
+    margin: 50px;
+}
+
+#leetcode_error {
+    background: linear-gradient(var(--error-backgrounds), var(--error-backgrounds)), url('../assets/leetcode.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#github_error {
+    background: linear-gradient(var(--error-backgrounds), var(--error-backgrounds)), url('../assets/Github.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
 
 
