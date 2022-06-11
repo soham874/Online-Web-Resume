@@ -70,17 +70,19 @@
         <div class="header-common-right" id="Snp_heading">
             Skills and Projects
         </div>
+        <!-- Skills... -->
         <div>
             <div style="padding-left: 50px;font-size: 20px;">
                 Tap or hover over the technologies to know about the different tech-stacks I have worked with in a professional and personnal capacity.
             </div>
             <div class="snp" id="snp_section">
-
             </div>
         </div>
-        <div>
+        <!-- Coding profile... -->
+        <div id="coding_container">
             <div style="padding: 50px;font-size: 20px;text-align: justify;">Here's a quick look into my coding portfolio from
-                <a href="https://leetcode.com/Soham874/" target="_blank">Leetcode</a> [stored data displayed in beta phase]. Hover or tap on each question category type to know my stats in that particular level. Default displayed are my overall stats.
+                <a href="https://leetcode.com/Soham874/" target="_blank">Leetcode</a> [stored data displayed in beta phase]. Hover or tap on each question category type to know my stats in that particular level. Tap anywhere outside to see my overall
+                stats.
             </div>
             <div class="category_buttons">
                 <div class="category_class" id="c1" style="color: var(--color-easy);">Easy</div>
@@ -109,7 +111,26 @@
             </div>
             <div id="progress_bar_container">
             </div>
-
+        </div>
+        <!-- Coding error... -->
+        <div class="error_api" id="leetcode_error">
+            <div>
+                LeetCode servers are not responding currently, I apologize for the inconvinience. Please feel free to visit my Leetcode profile <a href="https://leetcode.com/Soham874/" target="_blank">here</a>.
+            </div>
+        </div>
+        <!-- Github profile... -->
+        <div id="github_container">
+            <div style="padding: 50px;font-size: 20px;text-align: justify;">Here's some projects from my
+                <a href="https://github.com/soham874" target="_blank">Github</a> profile [stored data displayed in beta phase].
+            </div>
+            <div id="github_projects">
+            </div>
+        </div>
+        <!-- Github error... -->
+        <div class="error_api" id="github_error">
+            <div>
+                Github servers are not responding currently, I apologize for the inconvinience. Please feel free to visit my Github profile <a href="https://github.com/soham874" target="_blank">here</a>.
+            </div>
         </div>
     </div>
 
@@ -118,8 +139,10 @@
         <div class="header-common-left" id="we_heading">
             Work Experience
         </div>
-        <div class="body-common">
-
+        <div>
+            <!-- Timeline -->
+            <div class="timeline" id="work-exp">
+            </div>
         </div>
     </div>
 
@@ -144,7 +167,7 @@
     </div>
 
     <!-- About the page... -->
-    <div class="generic_div">
+    <div class="generic_div ">
         <div class="header-common-right" id="abp_heading">
             About the page
         </div>
@@ -165,24 +188,24 @@
                     <a href="https://www.mongodb.com/atlas/database" target="_blank">MongoDB Atlas</a>
                 </li>
             </ul>
-            The project source code can be viewd <a href="https://github.com/soham874/Online-Web-Resume" target="_blank">here</a>.
+            Interested in what is hapenning under the hood? Have a look at the source code <a href="https://github.com/soham874/Online-Web-Resume" target="_blank">here</a>.
         </div>
     </div>
 
     <!-- Footer section... -->
-    <div class="footer-section">
-        <div class="thought-box sb4" id="thought-box">
+    <div class="footer-section ">
+        <div class="thought-box sb4 " id="thought-box ">
             <div>Thank you for considering to share your valuable opinions with me</div><br>
-            <textarea name="lname" id="lname" rows="15" maxlength="10"></textarea><br>
-            <button id="post_button">Post</button>
+            <textarea name="lname " id="lname " rows="15 " maxlength="10 "></textarea><br>
+            <button id="post_button ">Post</button>
         </div>
         <div>
             Made with ❤️ by Soham
         </div>
-        <div style="width: 100px">
-            <img alt="" src="./assets/sunny.png" style="height: 45px; width: 45px;transition: 500ms;padding:5px" id="imgClickAndChange" onclick="changeImage()" />
+        <div style="width: 100px ">
+            <img alt=" " src="./assets/sunny.png " style="height: 45px; width: 45px;transition: 500ms;padding:5px " id="imgClickAndChange" onclick="changeImage() " />
         </div>
-        <div id="thought-link" onclick="showThoughtBox()">
+        <div id="thought-link " onclick="showThoughtBox() ">
             Share a thought?
         </div>
     </div>
