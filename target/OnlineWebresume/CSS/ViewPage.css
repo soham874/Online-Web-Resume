@@ -10,7 +10,7 @@
 }
 
 .theme-dark {
-    --color-secondary: #3d484c;
+    --color-secondary: #242c2c;
     --font-color: #ffffff;
     --thought-box-theme: #253534;
     --link-color: #f8f8af;
@@ -492,6 +492,71 @@ a {
 }
 
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~ Casual section ~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.game_group {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+.game_img {
+    height: 200px;
+    width: 400px;
+    margin: 30px;
+    transition: 500ms;
+    border-radius: 30px;
+    border: 3px solid var(--font-color)
+}
+
+.game_img:hover {
+    transform: scale(1.2);
+}
+
+#cs {
+    background: url('../assets/casual/csgo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#ksp {
+    background: url('../assets/casual/ksp.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#rl {
+    background: url('../assets/casual/rl.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#subnautica {
+    background: url('../assets/casual/subnautica.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.meme_div {
+    height: auto;
+    width: 50%;
+    padding: 10px 25%;
+}
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Thought Box ~~~~~~~~~~~~~~~~~~~~~~~*/
 
 #thought-link {
@@ -644,5 +709,12 @@ a {
     }
     .left {
         text-align: left;
+    }
+    .game_group {
+        flex-direction: column;
+    }
+    .meme_div {
+        width: 75%;
+        padding: 10px 12.5%;
     }
 }

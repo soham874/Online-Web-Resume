@@ -151,7 +151,7 @@ var academic_data = [{
     "Education": "Class 12",
     "Score": "87 %"
 }, {
-    "Institute": "St. Xavier’s School, Barddhaman",
+    "Institute": "St. Xaviers School, Barddhaman",
     "Duration": "February 2003 - March 2014",
     "Board": "Council of Indian School Certificate Examination",
     "Education": "Class 10",
