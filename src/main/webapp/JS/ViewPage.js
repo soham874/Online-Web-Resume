@@ -266,6 +266,20 @@ $(document).ready(function() {
 
 
     loadAcedemicInfo()
+
+    /*
+    var folder = "../assets/Skill_items/s3"
+    $.ajax({
+        url: folder,
+        success: function(data) {
+            $(data).find("a").attr("href", function(i, val) {
+                if (val.match(/\.(jpe?g|png|gif)$/)) {
+                    console.log(val)
+                }
+            });
+        }
+    })
+*/
 });
 
 // function to show drop down menu for mobile devices
