@@ -8,6 +8,8 @@ var data = {}
 let counter = 0
 let SubmissionInformation = []
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
 // temporary data, to be deleted [updated on 10th June]
 var LeetcodeJSON = {
     "data": {
@@ -108,6 +110,7 @@ var GithubJSON = {
     }
 }
 
+// experience data
 var experience_data = [{
     "Role": "Software Engineer",
     "Name": "hcl",
@@ -133,6 +136,29 @@ var experience_data = [{
     ],
     "Duration": "8th Feb 2021 - Present"
 }]
+
+// academic profile
+var academic_data = [{
+    "Institute": "Kalyani Government Engineering College",
+    "Duration": "August 2016 - June 2020",
+    "Board": "Maulana Abul Kalam Azad University of Technology",
+    "Education": "Bachelor of Technology, Mechanical Engineering",
+    "Score": "8.75 GPA (80 %)"
+}, {
+    "Institute": "CMS High School, Bardhaman",
+    "Duration": "August 2014 - May 2016",
+    "Board": "West Bengal Council of Higher Secondary Education",
+    "Education": "Class 12",
+    "Score": "87 %"
+}, {
+    "Institute": "St. Xavier’s School, Barddhaman",
+    "Duration": "February 2003 - March 2014",
+    "Board": "Council of Indian School Certificate Examination",
+    "Education": "Class 10",
+    "Score": "90 %"
+}]
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 // functions to be performed when webpage loads
 $(document).ready(function() {
@@ -178,6 +204,7 @@ $(document).ready(function() {
         }
     })
 */
+
     // temporary function to load Leetcode data from the stored JSON. Original call will be through Ajax
     loadLeetCodeView()
 
@@ -236,6 +263,9 @@ $(document).ready(function() {
     loadGithubView()
 
     loadExperience()
+
+
+    loadAcedemicInfo()
 });
 
 // function to show drop down menu for mobile devices
@@ -437,12 +467,13 @@ loadGithubView = (Githubdata = GithubJSON) => {
     document.getElementById('github_projects').innerHTML = tabledata
 }
 
-loadExperience = () => {
+// load experience section
+loadExperience = (exp_data = experience_data) => {
 
     let exp = ''
     var isLeft = "left"
 
-    experience_data.forEach(element => {
+    exp_data.forEach(element => {
         exp = `
             <div class="containerTimeline ${isLeft}">
                 <div class="content">
@@ -474,4 +505,24 @@ loadExperience = () => {
     })
 
     document.getElementById('work-exp').innerHTML = exp
+}
+
+// load experience section
+loadAcedemicInfo = (experience = academic_data) => {
+
+    let exp = ''
+
+    experience.forEach(element => {
+        exp += `
+        <div class="academic_info">
+            <h1>${element.Duration}</h1>
+            <div><u><b>Institute</b></u>: ${element.Institute}</div>
+            <div><u><b>Board</b></u>: ${element.Board}</div>
+            <div><u><b>Education</b></u>: ${element.Education}</div>
+            <div><u><b>Score</b></u>: ${element.Score}</div>
+        </div>
+        `
+    })
+
+    document.getElementById('ac_info').innerHTML = exp
 }

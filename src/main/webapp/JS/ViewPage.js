@@ -263,6 +263,9 @@ $(document).ready(function() {
     loadGithubView()
 
     loadExperience()
+
+
+    loadAcedemicInfo()
 });
 
 // function to show drop down menu for mobile devices
@@ -465,12 +468,12 @@ loadGithubView = (Githubdata = GithubJSON) => {
 }
 
 // load experience section
-loadExperience = () => {
+loadExperience = (exp_data = experience_data) => {
 
     let exp = ''
     var isLeft = "left"
 
-    experience_data.forEach(element => {
+    exp_data.forEach(element => {
         exp = `
             <div class="containerTimeline ${isLeft}">
                 <div class="content">
@@ -502,4 +505,24 @@ loadExperience = () => {
     })
 
     document.getElementById('work-exp').innerHTML = exp
+}
+
+// load experience section
+loadAcedemicInfo = (experience = academic_data) => {
+
+    let exp = ''
+
+    experience.forEach(element => {
+        exp += `
+        <div class="academic_info">
+            <h1>${element.Duration}</h1>
+            <div><u><b>Institute</b></u>: ${element.Institute}</div>
+            <div><u><b>Board</b></u>: ${element.Board}</div>
+            <div><u><b>Education</b></u>: ${element.Education}</div>
+            <div><u><b>Score</b></u>: ${element.Score}</div>
+        </div>
+        `
+    })
+
+    document.getElementById('ac_info').innerHTML = exp
 }
