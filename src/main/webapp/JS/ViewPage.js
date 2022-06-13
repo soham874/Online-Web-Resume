@@ -174,6 +174,16 @@ $(document).ready(function() {
         setTheme('theme-light');
     }
 
+    //show the help section for first time visitors
+    if (localStorage.getItem('isfirsttime') !== 'no' || localStorage.getItem('isfirsttime') === null) {
+        document.getElementsByClassName("help_div")[0].style.display = 'block'
+        setTimeout(() => {
+            document.getElementsByClassName("help_div")[0].style.display = 'none'
+        }, 3000)
+
+        localStorage.setItem('isfirsttime', 'no');
+    }
+
     // controls closing of the post box depending
     $(document).on('click', function(e) {
         if ($("#post_button").is(e.target) || (!$("#thought-link").is(e.target) && $(e.target).closest("#thought-box").length === 0)) {
