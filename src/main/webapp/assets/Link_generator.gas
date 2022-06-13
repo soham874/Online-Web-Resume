@@ -1,0 +1,29 @@
+function getAllLinks(id){
+
+  var fldr=DriveApp.getFolderById(id);
+  var files=fldr.getFiles();
+  var f,str;
+  
+  var res = '[{"';
+  
+  while (files.hasNext()) {
+    f=files.next();
+    str=f.getUrl();
+    res += (str+'","');
+  }
+  
+  res = res.slice(0,res.length-2);
+  res += ']';
+  
+  return res;
+}
+
+function PublishSharableLinks() {
+
+  var doc = DocumentApp.getActiveDocument();
+  var body = doc.getBody();
+
+  body.clear()
+  body.appendParagraph(getAllLinks("1giuC7vcItTrbM6aylLT8hIGlFKtFbt0D"));
+  
+}
