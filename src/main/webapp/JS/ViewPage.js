@@ -113,7 +113,7 @@ var GithubJSON = {
 // experience data
 var experience_data = [{
     "Role": "Software Engineer",
-    "Name": "hcl",
+    "Logo_Url": "https://drive.google.com/file/d/1kyKrk10j-Yd4Cxyk4aNBtMVt7jJj-n9I/view?usp=sharing",
     "Organization": "HCL Technologies Limited",
     "Location": "Nagpur, India",
     "Department": "Project Lifecycle Management, Engineering R&D Services",
@@ -189,9 +189,9 @@ $(document).ready(function() {
             setTimeout(() => {
                 document.getElementsByClassName("help_div")[0].style.display = 'none'
             }, 2500)
-        }, 2500)
+        }, 4000)
 
-        //localStorage.setItem('isfirsttime', 'no');
+        localStorage.setItem('isfirsttime', 'no');
     }
 
     // controls closing of the post box depending
@@ -301,6 +301,13 @@ $(document).ready(function() {
     })
 */
 });
+
+// function to change drive shared link to embeddable google photos
+googleEmbedImage = (url) => {
+    var res = "https://drive.google.com/uc?export=view&id="
+    res += url.split('/')[5]
+    return res
+}
 
 // function to show drop down menu for mobile devices
 showmenu = () => {
@@ -517,7 +524,7 @@ loadExperience = (exp_data = experience_data) => {
             <div class="containerTimeline ${isLeft}">
                 <div class="content">
                     <h1>${element.Duration}</h1>
-                    <img alt="" src=" ./assets/Experience/${element.Name}.png " class="work_exp_logo " />
+                    <img alt="" src="${googleEmbedImage(element.Logo_Url)}" class="work_exp_logo " />
                     <div class="work_exp_info ">
                         <div><u><b>Organization</b></u>: ${element.Organization}</div>
                         <div><u><b>Location</b></u>: ${element.Location}</div>
