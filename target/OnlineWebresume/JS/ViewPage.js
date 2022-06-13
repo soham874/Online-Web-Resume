@@ -174,6 +174,26 @@ $(document).ready(function() {
         setTheme('theme-light');
     }
 
+    //show the help section for first time visitors
+    if (localStorage.getItem('isfirsttime') !== 'no' || localStorage.getItem('isfirsttime') === null) {
+        var elems = document.getElementsByClassName("generic_div")
+        for (var i = 0; i < elems.length; i += 1)
+            elems[i].style.display = 'none';
+        document.getElementsByClassName("help_div")[0].style.display = 'block'
+
+        setTimeout(() => {
+            document.getElementsByClassName("help_div")[0].style.opacity = 0
+            var elems = document.getElementsByClassName("generic_div")
+            for (var i = 0; i < elems.length; i += 1)
+                elems[i].style.display = 'block';
+            setTimeout(() => {
+                document.getElementsByClassName("help_div")[0].style.display = 'none'
+            }, 2500)
+        }, 2500)
+
+        //localStorage.setItem('isfirsttime', 'no');
+    }
+
     // controls closing of the post box depending
     $(document).on('click', function(e) {
         if ($("#post_button").is(e.target) || (!$("#thought-link").is(e.target) && $(e.target).closest("#thought-box").length === 0)) {
@@ -368,10 +388,15 @@ setTheme = (themeName) => {
     localStorage.setItem('theme', themeName);
     document.documentElement.className = themeName;
     var current_state = gettheme()
-    if (themeName === "theme-light")
+    if (themeName === "theme-light") {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "sunny.png"
-    else
+        document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_light.png"
+        document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_light.png"
+    } else {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "full-moon.png"
+        document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_dark.png"
+        document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_dark.png"
+    }
 }
 
 // show the tech icons

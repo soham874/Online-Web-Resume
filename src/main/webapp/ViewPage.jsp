@@ -21,7 +21,20 @@
 
     </head>
 
-    <body>
+   <body>
+
+    <!-- Help section -->
+    <div class="help_div">
+        <div id="top_help">
+            <img id="arr_up" src="assets/Uparray_light.png" />
+            <p style="margin:0px;">Quick scrool to different sections here</p>
+        </div>
+        <div id="bottom_help">
+            <p style="margin:0px;">Change the theme here</p>
+            <img id="arr_down" src="assets/Downarray_light.png" />
+        </div>
+
+    </div>
 
     <!-- navbar... -->
     <div class="header-section">
@@ -54,7 +67,6 @@
 
     <!-- summary... -->
     <div class="generic_div">
-        <div style="height: 150px;"></div>
         <div class="header-common-left" id="Summary_heading">
             Summary
         </div>
@@ -164,8 +176,8 @@
         </div>
         <div class="body-common">
             <p>
-                Gaming is easily one of my most crucial passtimes. A part of my day is always dedicated to it. Simulation games are my most favourite. I equally love sliding into virtual worlds to play online. Here are some of my most favourite titles; if you are into
-                either of them, lets have a cup of tea over it sometimes :)
+                Gaming is easily one of my most crucial pastimes. A part of my day is always dedicated to it. Simulation games are my most favourite. I equally love sliding into virtual worlds to play online. Here are some of my most favourite titles; if you are into
+                either of them, lets have a cup of tea over it sometime :)
                 <div class="game_group">
                     <div class="game_img" id="ksp" onclick="window.open('https://store.steampowered.com/bundle/9245/Kerbal_Space_Program_Complete_Edition/','mywindow');" style="cursor: pointer;"></div>
                     <div class="game_img" id="subnautica" onclick="window.open('https://store.epicgames.com/en-US/p/subnautica','mywindow');" style="cursor: pointer;"></div>
@@ -229,6 +241,6 @@
         </div>
     </div>
 
-</body>
+</body> 
 
 </html>

@@ -186,7 +186,9 @@ $(document).ready(function() {
             var elems = document.getElementsByClassName("generic_div")
             for (var i = 0; i < elems.length; i += 1)
                 elems[i].style.display = 'block';
-            //document.getElementsByClassName("help_div")[0].style.display = 'none'
+            setTimeout(() => {
+                document.getElementsByClassName("help_div")[0].style.display = 'none'
+            }, 2500)
         }, 2500)
 
         //localStorage.setItem('isfirsttime', 'no');
