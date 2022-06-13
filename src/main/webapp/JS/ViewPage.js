@@ -368,10 +368,15 @@ setTheme = (themeName) => {
     localStorage.setItem('theme', themeName);
     document.documentElement.className = themeName;
     var current_state = gettheme()
-    if (themeName === "theme-light")
+    if (themeName === "theme-light") {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "sunny.png"
-    else
+        document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_light.png"
+        document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_light.png"
+    } else {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "full-moon.png"
+        document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_dark.png"
+        document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_dark.png"
+    }
 }
 
 // show the tech icons
