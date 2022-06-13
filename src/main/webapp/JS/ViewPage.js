@@ -176,12 +176,20 @@ $(document).ready(function() {
 
     //show the help section for first time visitors
     if (localStorage.getItem('isfirsttime') !== 'no' || localStorage.getItem('isfirsttime') === null) {
+        var elems = document.getElementsByClassName("generic_div")
+        for (var i = 0; i < elems.length; i += 1)
+            elems[i].style.display = 'none';
         document.getElementsByClassName("help_div")[0].style.display = 'block'
-        setTimeout(() => {
-            document.getElementsByClassName("help_div")[0].style.display = 'none'
-        }, 3000)
 
-        localStorage.setItem('isfirsttime', 'no');
+        setTimeout(() => {
+            document.getElementsByClassName("help_div")[0].style.opacity = 0
+            var elems = document.getElementsByClassName("generic_div")
+            for (var i = 0; i < elems.length; i += 1)
+                elems[i].style.display = 'block';
+            //document.getElementsByClassName("help_div")[0].style.display = 'none'
+        }, 2500)
+
+        //localStorage.setItem('isfirsttime', 'no');
     }
 
     // controls closing of the post box depending
