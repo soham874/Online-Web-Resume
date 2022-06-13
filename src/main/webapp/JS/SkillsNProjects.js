@@ -1,5 +1,3 @@
-let isclicked = false
-let thoughtboxdisplayed = true
 let skill_headings = ["Programming languages", "Scripting languages", "Full Stack Technologies", "Databases", "IDEs"]
 let tech_counts = [4, 3, 6, 3, 3]
 let stat_type = ["Completed ", "Accuracy "]
@@ -110,98 +108,14 @@ var GithubJSON = {
     }
 }
 
-// experience data
-var experience_data = [{
-    "Role": "Software Engineer",
-    "Logo_Url": "https://drive.google.com/file/d/1kyKrk10j-Yd4Cxyk4aNBtMVt7jJj-n9I/view?usp=sharing",
-    "Organization": "HCL Technologies Limited",
-    "Location": "Nagpur, India",
-    "Department": "Project Lifecycle Management, Engineering R&D Services",
-    "Project": "Digital Work Place",
-    "Client": "A leading European civilian and military Aircraft manufacturer",
-    "Description": "Project aim is establishing a modernised digital workplace to enhance the user experience and service quality for the majority of client employees in the EU region. Project activities include deployment and maintenance of crucial CAD applications on client user machines, non-user worker machines and blade servers, and handling all related incidents and service requests.",
-    "Responsibilities": [
-        "Developing tools via scripting in Powershell, Bash, CMD and C# to facilitate and automate project activities",
-        "Coordinating with business to plan timelines and deploy new versions of CATIA on VMs, Laptops, Desktops and Servers via SCCM",
-        "Carrying out pre-deployment activities, testing and sanity checks to ensure health of delivered package.",
-        "Regularly monitoring target machines parameters for anomalies to ensure maximum success of deployment.",
-        "Participating in post deployment monitoring activities to provide resolutions to possible incidents",
-        "Using SQL and WQL to ensure overall health of all EU PLM park machines, and taking action wherever necessary.",
-        "Coordinating with teams and end users to resolve incidents and complete service requests as and when raised by client users"
-    ],
-    "IDE/Compilers/Tools": [
-        "Microsoft Configuration Management Console to manage and monitor deployments in several formats",
-        "ServiceNow to handle incident and requests from client",
-        "SQL and WQL for performing activities on SCCM Database with an information pool of more than 100,000 machines"
-    ],
-    "Duration": "8th Feb 2021 - Present"
-}]
-
-// academic profile
-var academic_data = [{
-    "Institute": "Kalyani Government Engineering College",
-    "Duration": "August 2016 - June 2020",
-    "Board": "Maulana Abul Kalam Azad University of Technology",
-    "Education": "Bachelor of Technology, Mechanical Engineering",
-    "Score": "8.75 GPA (80 %)"
-}, {
-    "Institute": "CMS High School, Bardhaman",
-    "Duration": "August 2014 - May 2016",
-    "Board": "West Bengal Council of Higher Secondary Education",
-    "Education": "Class 12",
-    "Score": "87 %"
-}, {
-    "Institute": "St. Xaviers School, Barddhaman",
-    "Duration": "February 2003 - March 2014",
-    "Board": "Council of Indian School Certificate Examination",
-    "Education": "Class 10",
-    "Score": "90 %"
-}]
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 // functions to be performed when webpage loads
 $(document).ready(function() {
+
     thoughtboxdisplayed = false
-    counter = 0;
-    console.log("Javascript file connected successfully");
-    console.log(experience_data)
 
-    //set the theme from local storage if present
-    if (localStorage.getItem('theme') === 'theme-dark') {
-        setTheme('theme-dark');
-    } else {
-        setTheme('theme-light');
-    }
-
-    //show the help section for first time visitors
-    if (localStorage.getItem('isfirsttime') !== 'no' || localStorage.getItem('isfirsttime') === null) {
-        var elems = document.getElementsByClassName("generic_div")
-        for (var i = 0; i < elems.length; i += 1)
-            elems[i].style.display = 'none';
-        document.getElementsByClassName("help_div")[0].style.display = 'block'
-
-        setTimeout(() => {
-            document.getElementsByClassName("help_div")[0].style.opacity = 0
-            var elems = document.getElementsByClassName("generic_div")
-            for (var i = 0; i < elems.length; i += 1)
-                elems[i].style.display = 'block';
-            setTimeout(() => {
-                document.getElementsByClassName("help_div")[0].style.display = 'none'
-            }, 2500)
-        }, 4000)
-
-        localStorage.setItem('isfirsttime', 'no');
-    }
-
-    // controls closing of the post box depending
-    $(document).on('click', function(e) {
-        if ($("#post_button").is(e.target) || (!$("#thought-link").is(e.target) && $(e.target).closest("#thought-box").length === 0)) {
-            $("#thought-box").hide();
-            thoughtboxdisplayed = false
-        }
-    });
-
+    console.log("Skills and Projects JS file connected successfully");
 
     // function to receieve LeetCode object datatype from controller
     /*
@@ -281,130 +195,7 @@ $(document).ready(function() {
 
     // temporary function to load Github data from the stored JSON. Original call will be through Ajax
     loadGithubView()
-
-    loadExperience()
-
-
-    loadAcedemicInfo()
-
-    /*
-    var folder = "../assets/Skill_items/s3"
-    $.ajax({
-        url: folder,
-        success: function(data) {
-            $(data).find("a").attr("href", function(i, val) {
-                if (val.match(/\.(jpe?g|png|gif)$/)) {
-                    console.log(val)
-                }
-            });
-        }
-    })
-*/
 });
-
-// function to change drive shared link to embeddable google photos
-googleEmbedImage = (url) => {
-    var res = "https://drive.google.com/uc?export=view&id="
-    res += url.split('/')[5]
-    return res
-}
-
-// function to show drop down menu for mobile devices
-showmenu = () => {
-
-    if (!isclicked) {
-        var elems = document.getElementsByClassName("header-links")
-        for (var i = 0; i < elems.length; i += 1)
-            elems[i].style.display = 'block';
-        var elems = document.getElementsByClassName("generic_div")
-        for (var i = 0; i < elems.length; i += 1)
-            elems[i].style.display = 'none';
-
-        document.getElementsByClassName("header-section")[0].style.position = "relative";
-    } else {
-        hidedivs()
-    }
-    isclicked = !isclicked;
-}
-
-//function to scroll to a page section without modifying heyperlink
-smoothScrolltoSection = (id) => {
-    document.querySelector(id).scrollIntoView({
-        behavior: 'smooth'
-    });
-}
-
-//function to display thought box
-showThoughtBox = () => {
-    if (!thoughtboxdisplayed)
-        document.getElementsByClassName("thought-box")[0].style.display = "flex"
-    else
-        $("#thought-box").hide();
-    thoughtboxdisplayed = true
-}
-
-// hide the options in navbar when a certain option has been chosen/the navabar is closed in mobile view
-hidedivs = () => {
-    if (!isclicked)
-        return
-    var elems = document.getElementsByClassName("header-links")
-    for (var i = 0; i < elems.length; i += 1)
-        elems[i].style.display = 'none';
-    var elems = document.getElementsByClassName("generic_div")
-    for (var i = 0; i < elems.length; i += 1)
-        elems[i].style.display = 'block';
-    document.getElementsByClassName("header-section")[0].style.position = "fixed";
-}
-
-// function which returns the current theme (light/dark) along with full asset path
-gettheme = () => {
-
-    var path = document.getElementById("imgClickAndChange").src
-    let respath = ""
-
-    let pointer = path.length - 1
-    while (path[pointer] !== '/') {
-        respath = path[pointer] + respath
-        path.slice(0, -1)
-        pointer--;
-    }
-
-    path = path.substring(0, pointer)
-
-    var theme = {
-        source_path: path,
-        image: respath
-    }
-    return theme
-}
-
-// wrapper to toggle the theme of page
-changeImage = () => {
-
-    var current_state = gettheme()
-    if (current_state.image === "sunny.png")
-        setTheme('theme-dark');
-    else
-        setTheme('theme-light');
-
-}
-
-// wrapper to toggle the theme and image of page
-setTheme = (themeName) => {
-    console.log("Setting theme to " + themeName)
-    localStorage.setItem('theme', themeName);
-    document.documentElement.className = themeName;
-    var current_state = gettheme()
-    if (themeName === "theme-light") {
-        document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "sunny.png"
-        document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_light.png"
-        document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_light.png"
-    } else {
-        document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "full-moon.png"
-        document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_dark.png"
-        document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_dark.png"
-    }
-}
 
 // show the tech icons
 displayeffects = (skill_item_number) => {
@@ -511,64 +302,4 @@ loadGithubView = (Githubdata = GithubJSON) => {
     tabledata += `</table>`
 
     document.getElementById('github_projects').innerHTML = tabledata
-}
-
-// load experience section
-loadExperience = (exp_data = experience_data) => {
-
-    let exp = ''
-    var isLeft = "left"
-
-    exp_data.forEach(element => {
-        exp = `
-            <div class="containerTimeline ${isLeft}">
-                <div class="content">
-                    <h1>${element.Duration}</h1>
-                    <img alt="" src="${googleEmbedImage(element.Logo_Url)}" class="work_exp_logo " />
-                    <div class="work_exp_info ">
-                        <div><u><b>Organization</b></u>: ${element.Organization}</div>
-                        <div><u><b>Location</b></u>: ${element.Location}</div>
-                        <div><u><b>Role</b></u>: ${element.Role}</div>
-                        <div><u><b>Department</b></u>: ${element.Department}</div>
-                        <div><u><b>Project</b></u>: ${element.Project}</div>
-                        <div><u><b>Client</b></u>: ${element.Client}</div>
-                        <div><u><b>Description</b></u>: ${element.Description}</div>
-                        <div><u><b>Responsibilities</b></u>:
-                            <ul>`
-
-        element.Responsibilities.forEach(resp => {
-            exp += `<li>${resp}</li>`
-        })
-
-        exp += `</ul></div><div><u><b>IDE/Compilers/Tools</b></u>:<ul>`
-
-        element["IDE/Compilers/Tools"].forEach(resp => {
-            exp += `<li>${resp}</li>`
-        })
-
-        exp += `</ul></div></div></div></div>`
-        isLeft = "right"
-    })
-
-    document.getElementById('work-exp').innerHTML = exp
-}
-
-// load experience section
-loadAcedemicInfo = (experience = academic_data) => {
-
-    let exp = ''
-
-    experience.forEach(element => {
-        exp += `
-        <div class="academic_info">
-            <h1>${element.Duration}</h1>
-            <div><u><b>Institute</b></u>: ${element.Institute}</div>
-            <div><u><b>Board</b></u>: ${element.Board}</div>
-            <div><u><b>Education</b></u>: ${element.Education}</div>
-            <div><u><b>Score</b></u>: ${element.Score}</div>
-        </div>
-        `
-    })
-
-    document.getElementById('ac_info').innerHTML = exp
 }
