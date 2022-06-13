@@ -108,6 +108,39 @@ var GithubJSON = {
     }
 }
 
+// temporary skills icon to be deleted [updated on 11th June]
+var skill_icons = {
+    "s3": [
+        "https://drive.google.com/file/d/1qvL8IYOTc7YYwRAcDBo6GcOfrbk75xyV/view?usp=drivesdk",
+        "https://drive.google.com/file/d/1kL0joyAUdjGGdAP_sv3mmO6ZA146zi3z/view?usp=drivesdk",
+        "https://drive.google.com/file/d/1_06bZej2WlXwQ8zJ7Nr7EMr5_5NRYdDj/view?usp=drivesdk",
+        "https://drive.google.com/file/d/1H4cTNIO-jA2fwclZMSCnfkNDQBAYDyry/view?usp=drivesdk",
+        "https://drive.google.com/file/d/145AxfZ8_6HvkRPSupNQWZu_uDx4aQ-9x/view?usp=drivesdk",
+        "https://drive.google.com/file/d/1242fkMvgRc_S3KuZyWd7Jr-hM9D1ME9K/view?usp=drivesdk"
+    ],
+    "s1": [
+        "https://drive.google.com/file/d/1e7KixMZjjHiQiYzKGXGjpDKd9-H99zDo/view?usp=drivesdk",
+        "https://drive.google.com/file/d/1sXx7Z2-cr_XDla-Ajd248AFOi8Az6F9K/view?usp=drivesdk",
+        "https://drive.google.com/file/d/10s6jx_6gm-siXAHViGHkj7c0GSG7CBFI/view?usp=drivesdk",
+        "https://drive.google.com/file/d/1rP8MdIDRsEk1T_iZ5vNdo2Lss3fHWCCT/view?usp=drivesdk"
+    ],
+    "s4": [
+        "https://drive.google.com/file/d/1qTqw_aI0V1YaOPtN25FRA_9FmmrkEuCM/view?usp=drivesdk",
+        "https://drive.google.com/file/d/1yMQCtY5XXb9wQ9sDtQw4KbmYardJBH7T/view?usp=drivesdk",
+        "https://drive.google.com/file/d/1_-NFWIrvhBW4MParkPf7rZtOLs34nvj1/view?usp=drivesdk"
+    ],
+    "s5": [
+        "https://drive.google.com/file/d/1uRSH0jYN5nPtFbY4PDwPaJyolBZjaxiA/view?usp=drivesdk",
+        "https://drive.google.com/file/d/1NXpSCLYuniKDu8APwoLYyAMlluentq0x/view?usp=drivesdk",
+        "https://drive.google.com/file/d/1vPKZC2BtWZTdutmQrkQH7Gr97LI_Zmd2/view?usp=drivesdk"
+    ],
+    "s2": [
+        "https://drive.google.com/file/d/1OSOqI1cwg4RAwuVTRPi_N5-iBebqGEZF/view?usp=drivesdk",
+        "https://drive.google.com/file/d/1ASs1rv2jmbp0K3yi3KnfXiqWj1GUA1cA/view?usp=drivesdk",
+        "https://drive.google.com/file/d/1zAES0iBKX6VQ-_HgHxQfXus9hYabHbvM/view?usp=drivesdk"
+    ]
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 // functions to be performed when webpage loads
@@ -116,6 +149,7 @@ $(document).ready(function() {
     thoughtboxdisplayed = false
 
     console.log("Skills and Projects JS file connected successfully");
+    console.log(skill_icons)
 
     // function to receieve LeetCode object datatype from controller
     /*
@@ -213,15 +247,15 @@ hideeffects = () => {
 
 //automatically add the HTML for skills
 loadSkills = () => {
-    var screen_width = window.innerWidth
-    let output = "";
-    for (let i = 0; i < skill_headings.length; i++) {
+        var screen_width = window.innerWidth
+        let output = "";
+        for (let i = 0; i < skill_headings.length; i++) {
 
-        // 130 = 90 (skill_icons width) + 2 * 20 (skill_icons padding)
-        var div_with = 130 * tech_counts[i];
-        var div_start_pos = (screen_width / 2) - (div_with / 2);
+            // 130 = 90 (skill_icons width) + 2 * 20 (skill_icons padding)
+            var div_with = 130 * tech_counts[i];
+            var div_start_pos = (screen_width / 2) - (div_with / 2);
 
-        output += `
+            output += `
                     <div class="skill_item_group" onmouseleave="hideeffects(${i})">
                         <div class="skill_item" onmouseover="displayeffects(${i})" > >>
                             ${skill_headings[i]} <<
@@ -229,8 +263,8 @@ loadSkills = () => {
                     
                     <div class="skill_icon_group" onmouseleave="hideeffects(${i})" style="left:${div_start_pos}px">`
 
-        for (let j = 0; j < tech_counts[i]; j++)
-            output += `<img class="skill_icons" src="./assets/Skill_items/s${i+1}/si${i+1}${j+1}.png" />`
+            for (let j = 0; j < skill_icons[`s${i+1}`].length; j++)
+                output += `<img class="skill_icons" src="${googleEmbedImage(skill_icons[`s${i+1}`][j])}" />`
         output += `</div></div>`
     }
     document.getElementById("snp_section").innerHTML += output

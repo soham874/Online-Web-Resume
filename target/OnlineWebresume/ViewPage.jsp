@@ -1,27 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <!DOCTYPE html>
-    <html class="theme-light">
+pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html class="theme-light">
 
-    <head>
-        <meta charset="ISO-8859-1" name="viewport">
+<head>
+    <meta charset="ISO-8859-1" name="viewport">
 
-        <title>Soham's Web Resume</title>
+    <title>Soham's Web Resume</title>
 
-        <link rel="icon" href="./assets/resume.png">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="icon" href="./assets/resume.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Cagliostro&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cagliostro&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="./CSS/ViewPage.css">
-        <script src="./JS/ViewPage.js"></script>
+    <link rel="stylesheet" href="./CSS/ViewPage.css">
 
-    </head>
 
-   <body>
+    <script src="./JS/Academeics.js"></script>
+    <script src="./JS/SkillsNProjects.js"></script>
+    <script src="./JS/Experience.js"></script>
+    <script src="./JS/CommonUtil.js"></script>
+
+
+</head>
+
+<body>
 
     <!-- Help section -->
     <div class="help_div">
@@ -241,6 +247,6 @@
         </div>
     </div>
 
-</body> 
+</body>
 
 </html>
