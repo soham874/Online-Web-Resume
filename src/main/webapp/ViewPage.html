@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./CSS/WorkEmp.css">
     <link rel="stylesheet" href="./CSS/Academics.css">
     <link rel="stylesheet" href="./CSS/Casual.css">
-
+    <link rel="stylesheet" href="./CSS/Contact.css">
 
     <script src="./JS/Academeics.js"></script>
     <script src="./JS/SkillsNProjects.js"></script>
@@ -236,20 +236,45 @@
         <div class="header-common-left" id="contact_heading">
             Contact me
         </div>
-        <div class="body-common">
-            <div>Thank you for considering to share your valuable opinions with me</div><br>
-            <textarea name="lname" id="lname" rows="15" maxlength="250"></textarea><br>
-            <button id="post_button">Post</button>
-        </div>
+        <section id="contact">
+            <div class="contact-box">
+                <div class="contact-links">
+                    <h2>Thank you for choosing to share your opinions</h2>
+                    <div class="links">
+                        <div class="link">
+                            <a><img class="image" src="https://i.postimg.cc/m2mg2Hjm/linkedin.png" alt="linkedin"></a>
+                        </div>
+                        <div class="link">
+                            <a><img class="image" src="https://i.postimg.cc/YCV2QBJg/github.png" alt="github"></a>
+                        </div>
+                        <div class="link">
+                            <a><img class="image" src="https://i.postimg.cc/NjLfyjPB/email.png" alt="email"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form>
+                        <div class="form-item">
+                            <input type="text" name="sender" required>
+                            <label>Name:</label>
+                        </div>
+                        <div class="form-item">
+                            <input type="text" name="email" required>
+                            <label>Email:</label>
+                        </div>
+                        <div class="form-item">
+                            <textarea class="" name="message" required></textarea>
+                            <label>Message:</label>
+                        </div>
+                        <button class="submit-btn">Send</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Footer section... -->
     <div class="footer-section ">
-        <div class="thought-box sb4" id="thought-box">
-            <div>Thank you for considering to share your valuable opinions with me</div><br>
-            <textarea name="lname" id="lname" rows="15" cols="500" maxlength="250"></textarea><br>
-            <button id="post_button">Post</button>
-        </div>
         <div>Made with &lt;3 by Soham</div>
         <div style="width: 100px ">
             <img alt=" " src="./assets/sunny.png " style="height: 45px; width: 45px;transition: 500ms;padding:5px " id="imgClickAndChange" onclick="changeImage() " />
