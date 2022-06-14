@@ -1,9 +1,8 @@
 let skill_headings = ["Programming languages", "Scripting languages", "Full Stack Technologies", "Databases", "IDEs"]
-let tech_counts = [4, 3, 6, 3, 3]
 let stat_type = ["Completed ", "Accuracy "]
 let cat_type = ["all", "easy", "medium", "hard"]
 var data = {}
-let counter = 0
+
 let SubmissionInformation = []
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -229,6 +228,8 @@ $(document).ready(function() {
 
     // temporary function to load Github data from the stored JSON. Original call will be through Ajax
     loadGithubView()
+
+    window.addEventListener('resize', () => { loadSkills() })
 });
 
 // show the tech icons
@@ -252,7 +253,7 @@ loadSkills = () => {
         for (let i = 0; i < skill_headings.length; i++) {
 
             // 130 = 90 (skill_icons width) + 2 * 20 (skill_icons padding)
-            var div_with = 130 * tech_counts[i];
+            var div_with = 130 * skill_icons[`s${i+1}`].length;
             var div_start_pos = (screen_width / 2) - (div_with / 2);
 
             output += `
@@ -267,7 +268,7 @@ loadSkills = () => {
                 output += `<img class="skill_icons" src="${googleEmbedImage(skill_icons[`s${i+1}`][j])}" />`
         output += `</div></div>`
     }
-    document.getElementById("snp_section").innerHTML += output
+    document.getElementById("snp_section").innerHTML = output
 }
 
 // Load the Leetcode statistics section

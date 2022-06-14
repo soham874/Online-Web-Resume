@@ -44,6 +44,15 @@ $(document).ready(function() {
         }
     });
 
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1250) {
+            var elems = document.getElementsByClassName("header-links")
+            for (var i = 0; i < elems.length; i += 1)
+                elems[i].style.display = 'block';
+        }
+
+    })
+
     /*
     var folder = "../assets/Skill_items/s3"
     $.ajax({
