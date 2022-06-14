@@ -36,13 +36,14 @@ $(document).ready(function() {
         localStorage.setItem('isfirsttime', 'no');
     }
 
-    // controls closing of the post box depending
-    $(document).on('click', function(e) {
-        if ($("#post_button").is(e.target) || (!$("#thought-link").is(e.target) && $(e.target).closest("#thought-box").length === 0)) {
-            $("#thought-box").hide();
-            thoughtboxdisplayed = false
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1250) {
+            var elems = document.getElementsByClassName("header-links")
+            for (var i = 0; i < elems.length; i += 1)
+                elems[i].style.display = 'block';
         }
-    });
+
+    })
 
     /*
     var folder = "../assets/Skill_items/s3"
@@ -89,15 +90,6 @@ smoothScrolltoSection = (id) => {
     document.querySelector(id).scrollIntoView({
         behavior: 'smooth'
     });
-}
-
-//function to display thought box
-showThoughtBox = () => {
-    if (!thoughtboxdisplayed)
-        document.getElementsByClassName("thought-box")[0].style.display = "flex"
-    else
-        $("#thought-box").hide();
-    thoughtboxdisplayed = true
 }
 
 // hide the options in navbar when a certain option has been chosen/the navabar is closed in mobile view
