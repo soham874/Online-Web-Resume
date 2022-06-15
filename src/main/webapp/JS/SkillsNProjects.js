@@ -151,18 +151,17 @@ $(document).ready(function() {
     console.log(skill_icons)
 
     // function to receieve LeetCode object datatype from controller
-    /*
+
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         url: "/OnlineWebresume/receiveLeetCodeData",
         contentType: "application/json",
-        data: JSON.stringify(data),
         dataType: 'json',
         success: (data) => {
             console.log(data)
             document.getElementById("leetcode_error").style.display = 'none'
             document.getElementById("github_container").style.display = 'block'
-            loadLeetCodeView(data)
+                //loadLeetCodeView(data)
         },
         error: (err) => {
             console.log(err)
@@ -170,7 +169,7 @@ $(document).ready(function() {
             document.getElementById("leetcode_error").style.display = 'flex'
         }
     })
-*/
+
 
     // temporary function to load Leetcode data from the stored JSON. Original call will be through Ajax
     loadLeetCodeView()

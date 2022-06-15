@@ -143,6 +143,7 @@ setTheme = (themeName) => {
     console.log("Setting theme to " + themeName)
     localStorage.setItem('theme', themeName);
     document.documentElement.className = themeName;
+    console.log(document.getElementById("layout").src)
     var current_state = gettheme()
     if (themeName === "theme-light") {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "sunny.png"

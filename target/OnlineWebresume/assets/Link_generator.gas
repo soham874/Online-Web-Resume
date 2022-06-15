@@ -1,0 +1,36 @@
+function getAllLinks(id){
+
+  var fldr = DriveApp.getFolderById(id);
+  var folders = fldr.getFolders();
+  
+  var folder;
+  var res = '{';
+  
+  while ( folders.hasNext() ) {
+    folder = folders.next();
+    res += '"' + folder.getName() + '":[' + getAllLinks(folder.getId()) + '],';
+  }
+  
+  res = res.slice(0,res.length-1);
+  
+  var files = fldr.getFiles();
+  var f,str;
+    
+  while (files.hasNext()) {
+    f = files.next();
+    str = f.getUrl();
+    res += ('"'+str+'",');
+  }
+  
+  res = res.slice(0,res.length-1);  
+  return res;
+}
+
+function PublishSharableLinks() {
+
+  var doc = DocumentApp.getActiveDocument();
+  var body = doc.getBody();
+  body.clear()
+  
+  body.appendParagraph(getAllLinks("13eDUJdkh_HnMaal8XBYkAeISR-9GbI6e")+"]}");
+ }

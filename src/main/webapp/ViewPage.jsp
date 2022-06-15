@@ -118,20 +118,20 @@ pageEncoding="ISO-8859-1"%>
                 <div style="position: relative;padding: 100px;">
                     <div class="progress" style="left: 33.34%">
                         <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="progress-circle-back"
-                                cx="80" cy="80" r="74"></circle>
-                        <circle class="progress-circle-prog"
-                                cx="80" cy="80" r="74"></circle>
-                    </svg>
+                            <circle class="progress-circle-back"
+                                    cx="80" cy="80" r="74"></circle>
+                            <circle class="progress-circle-prog"
+                                    cx="80" cy="80" r="74"></circle>
+                        </svg>
                         <div class="progress-text" data-progress="0">0%</div>
                     </div>
                     <div class="progress" style="left: 66.68%">
                         <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="progress-circle-back"
-                                cx="80" cy="80" r="74"></circle>
-                        <circle class="progress-circle-prog"
-                                cx="80" cy="80" r="74"></circle>
-                    </svg>
+                            <circle class="progress-circle-back"
+                                    cx="80" cy="80" r="74"></circle>
+                            <circle class="progress-circle-prog"
+                                    cx="80" cy="80" r="74"></circle>
+                        </svg>
                         <div class="progress-text" data-progress="0">0%</div>
                     </div>
                 </div>
@@ -231,6 +231,10 @@ pageEncoding="ISO-8859-1"%>
                         <a href="https://www.mongodb.com/atlas/database " target="_blank ">MongoDB Atlas</a>
                     </li>
                 </ul>
+                <div>
+                    <div>A rough schematic of the project infrastructure is as follows</div>
+                    <img alt=" " id="layout" src="./assets/Project_Layout_Light.png" style="width: 90%;padding:0 5%" />
+                </div>
                 Interested in what is hapenning under the hood? Have a look at the source code <a href="https://github.com/soham874/Online-Web-Resume " target="_blank ">here</a>.
             </div>
         </div>
