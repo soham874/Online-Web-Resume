@@ -148,9 +148,11 @@ setTheme = (themeName) => {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "sunny.png"
         document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_light.png"
         document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_light.png"
+        document.getElementById("layout").src = current_state.source_path + '/' + "Project_Layout_Light.png"
     } else {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "full-moon.png"
         document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_dark.png"
         document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_dark.png"
+        document.getElementById("layout").src = current_state.source_path + '/' + "Project_Layout_Dark.png"
     }
 }
