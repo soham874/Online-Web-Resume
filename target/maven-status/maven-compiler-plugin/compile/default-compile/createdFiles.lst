@@ -1,2 +1,3 @@
-com\controller\WebpageController.class
+com\controller\LeetCodeController.class
+com\model\StateResponse.class
 com\services\LeetcodeService.class

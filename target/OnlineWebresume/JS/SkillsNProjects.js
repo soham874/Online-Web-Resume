@@ -89,13 +89,13 @@ $(document).ready(function() {
         contentType: "application/json",
         dataType: 'json',
         success: (data) => {
-            console.log(data)
+            console.log("Success Response - " + data)
             document.getElementById("leetcode_error").style.display = 'none'
             document.getElementById("github_container").style.display = 'block'
-            loadLeetCodeView(data)
+            loadLeetCodeView(data.body)
         },
         error: (err) => {
-            console.log(err)
+            console.log("Error Response - " + err)
             document.getElementById("coding_container").style.display = 'none'
             document.getElementById("leetcode_error").style.display = 'flex'
         }

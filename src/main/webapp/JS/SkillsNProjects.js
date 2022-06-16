@@ -191,7 +191,7 @@ loadSkills = () => {
                     <div class="skill_icon_group" onmouseleave="hideeffects(${i})" style="left:${div_start_pos}px">`
 
             for (let j = 0; j < skill_icons[`s${i+1}`].length; j++)
-                output += `<img class="skill_icons" src="${googleEmbedImage(skill_icons[`s${i+1}`][j])}" />`
+                output += `<img class="skill_icons" src="${googleEmbedImage(skill_icons[`s${i+1}`][j])}" referrerpolicy="no-referrer"></img>`
         output += `</div></div>`
     }
     document.getElementById("snp_section").innerHTML = output
