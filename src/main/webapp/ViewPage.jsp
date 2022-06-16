@@ -107,8 +107,7 @@ pageEncoding="ISO-8859-1"%>
             <!-- Coding profile... -->
             <div id="coding_container">
                 <div style="padding: 50px;font-size: 20px;text-align: justify;">Here's a quick look into my coding portfolio from
-                    <a href="https://leetcode.com/Soham874/" target="_blank">Leetcode</a> [stored data displayed in beta phase]. Hover or tap on each question category type to know my stats in that particular level. Tap anywhere outside to see my overall
-                    stats.
+                    <a href="https://leetcode.com/Soham874/" target="_blank">Leetcode</a>. Hover or tap on each question category type to know my stats in that particular level. Tap anywhere outside to see my overall stats.
                 </div>
                 <div class="category_buttons">
                     <div class="category_class" id="c1" style="color: var(--color-easy);">Easy</div>
@@ -147,7 +146,7 @@ pageEncoding="ISO-8859-1"%>
             <!-- Github profile... -->
             <div id="github_container">
                 <div style="padding: 50px;font-size: 20px;text-align: justify;">Here's some projects from my
-                    <a href="https://github.com/soham874" target="_blank">Github</a> profile [stored data displayed in beta phase].
+                    <a href="https://github.com/soham874" target="_blank">Github</a> profile.
                 </div>
                 <div id="github_projects">
                 </div>

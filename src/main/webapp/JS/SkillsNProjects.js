@@ -1,42 +1,12 @@
 let skill_headings = ["Programming languages", "Scripting languages", "Full Stack Technologies", "Databases", "IDEs"]
 let stat_type = ["Completed ", "Accuracy "]
 let cat_type = ["all", "easy", "medium", "hard"]
-var data = {}
+var data_leetcode = {}
+var data_github = {}
 
 let SubmissionInformation = []
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-// temporary github data to be deleted [updated on 11th June]
-var GithubJSON = {
-    "data": {
-        "user": {
-            "pinnedItems": {
-                "nodes": [{
-                        "name": "Fundoo",
-                        "description": "A project on fullstack development and database.",
-                        "url": "https://github.com/soham874/Fundoo"
-                    },
-                    {
-                        "name": "TItanic-Predictions",
-                        "description": "An algorithm used to determine if a titanic passanger survived or died based on information about ticket, gender, etc",
-                        "url": "https://github.com/soham874/TItanic-Predictions"
-                    },
-                    {
-                        "name": "Converter",
-                        "description": "A UI implementing a simple converter for converting temperature, length and volume units",
-                        "url": "https://github.com/soham874/Converter"
-                    },
-                    {
-                        "name": "Digit-Classification-MNIST",
-                        "description": "An algorithm trained on the MNIST Dataset used to detect handwritten digits",
-                        "url": "https://github.com/soham874/Digit-Classification-MNIST"
-                    }
-                ]
-            }
-        }
-    }
-}
 
 // temporary skills icon to be deleted [updated on 11th June]
 var skill_icons = {
@@ -88,14 +58,20 @@ $(document).ready(function() {
         url: formAjaxUrl("receiveLeetCodeData"),
         contentType: "application/json",
         dataType: 'json',
-        success: (data) => {
-            console.log("Success Response - " + data)
-            document.getElementById("leetcode_error").style.display = 'none'
-            document.getElementById("github_container").style.display = 'block'
-            loadLeetCodeView(data.body)
+        success: (data_leetcode) => {
+            if (data_leetcode.status >= 200 && data_leetcode.status < 400) {
+                console.log("Success Leetcode")
+                document.getElementById("leetcode_error").style.display = 'none'
+                document.getElementById("github_container").style.display = 'block'
+                loadLeetCodeView(data_leetcode.body)
+            } else {
+                console.log("Error Leetcode")
+                document.getElementById("coding_container").style.display = 'none'
+                document.getElementById("leetcode_error").style.display = 'flex'
+            }
         },
         error: (err) => {
-            console.log("Error Response - " + err)
+            console.log("Error Leetcode")
             document.getElementById("coding_container").style.display = 'none'
             document.getElementById("leetcode_error").style.display = 'flex'
         }
@@ -130,30 +106,30 @@ $(document).ready(function() {
     // function to load the skills section with CSS and JS
     loadSkills()
 
-    /*
     // function to receieve Github object datatype from controller
     $.ajax({
-        type: 'POST',
-        url: "/OnlineWebresume/receiveGithubData",
+        type: 'GET',
+        url: formAjaxUrl("receiveGithubData"),
         contentType: "application/json",
-        data: JSON.stringify(data),
         dataType: 'json',
-        success: (data) => {
-            console.log(data)
-            document.getElementById("github_error").style.display = 'none'
-            document.getElementById("github_container").style.display = 'block'
-            loadGithubView(data)
+        success: (data_github) => {
+            if (data_github.status >= 200 && data_github.status < 400) {
+                console.log("Github Success")
+                document.getElementById("github_error").style.display = 'none'
+                document.getElementById("github_container").style.display = 'block'
+                loadGithubView(data_github.body)
+            } else {
+                console.log("Github Error")
+                document.getElementById("github_container").style.display = 'none'
+                document.getElementById("github_error").style.display = 'flex'
+            }
         },
         error: (err) => {
-            console.log(err)
+            console.log("Github Error")
             document.getElementById("github_container").style.display = 'none'
             document.getElementById("github_error").style.display = 'flex'
         }
     })
-    */
-
-    // temporary function to load Github data from the stored JSON. Original call will be through Ajax
-    loadGithubView()
 
     window.addEventListener('resize', () => { loadSkills() })
 });

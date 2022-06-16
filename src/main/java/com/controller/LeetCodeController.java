@@ -24,9 +24,7 @@ public class LeetCodeController {
     	StateResponse ControllerLayerResponse;
     	
     	try {	// try to get response from service layer 
-    		
-    		GithubService.getProfileData("soham874");
-    		
+    		    		
     		StateResponse ServicelerLayerResponse = LeetcodeService.getProfileData("soham874");
     		
     		ControllerLayerResponse = new StateResponse(
