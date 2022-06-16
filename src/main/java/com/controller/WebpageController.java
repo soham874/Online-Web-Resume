@@ -32,15 +32,18 @@ public class WebpageController {
 
     @RequestMapping(value = "/receiveLeetCodeData", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody String GetLeetCodeData() throws org.json.simple.parser.ParseException, IOException {
-    	JSONParser jsonParser = new JSONParser();
     	
-    	LeetcodeService.getProfileData("soham874");
+    	return LeetcodeService.getProfileData("soham874");
+    	/*
+    	//JSONParser jsonParser = new JSONParser();
+    	
+    	//LeetcodeService.getProfileData("soham874");
     	
     	try {
             //Parsing the contents of the JSON file
-            JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("E:\\Software Savefiles\\SpringMVC\\OnlineWebresume\\src\\main\\webapp\\assets\\response_leetcode_api_jun2_2_2022_sample.json"));
+            //JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("E:\\Software Savefiles\\SpringMVC\\OnlineWebresume\\src\\main\\webapp\\assets\\response_leetcode_api_jun2_2_2022_sample.json"));
             //System.out.println(jsonObject);
-            return jsonObject.toJSONString();
+            return LeetcodeService.getProfileData("soham874");
          } catch (FileNotFoundException e) {
            //e.printStackTrace();
            System.out.println("File not found exception");
@@ -49,6 +52,6 @@ public class WebpageController {
         	System.out.println("IO exception");
          }
  
-    	return null;
+    	return null;*/
     }
 }

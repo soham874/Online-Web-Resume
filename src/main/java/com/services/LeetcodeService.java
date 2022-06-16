@@ -21,7 +21,7 @@ public class LeetcodeService {
 		return String.format("{\"query\":\"query getUserProfile($username: String!) { allQuestionsCount { difficulty count } matchedUser(username: $username) { contributions { points } profile { reputation ranking } submitStats { acSubmissionNum { difficulty count submissions } totalSubmissionNum { difficulty count submissions } } } } \",\"variables\":{\"username\":\"%s\"}}", UserName);
 	}
 	
-	public static JSONObject getProfileData(String username) throws IOException {
+	public static String getProfileData(String username) throws IOException {
 				
 		OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
@@ -36,7 +36,7 @@ public class LeetcodeService {
         
         Response response = client.newCall(request).execute();
 
-        System.out.println(response.body().string());
-		return null;
+        //System.out.println(response.body().string());
+		return response.body().string();
 	}
 }

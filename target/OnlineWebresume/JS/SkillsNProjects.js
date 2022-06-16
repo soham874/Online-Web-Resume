@@ -151,12 +151,11 @@ $(document).ready(function() {
     console.log(skill_icons)
 
     // function to receieve LeetCode object datatype from controller
-    /*
+
     $.ajax({
-        type: 'POST',
-        url: "/OnlineWebresume/receiveLeetCodeData",
+        type: 'GET',
+        url: formAjaxUrl("receiveLeetCodeData"),
         contentType: "application/json",
-        data: JSON.stringify(data),
         dataType: 'json',
         success: (data) => {
             console.log(data)
@@ -170,10 +169,10 @@ $(document).ready(function() {
             document.getElementById("leetcode_error").style.display = 'flex'
         }
     })
-*/
+
 
     // temporary function to load Leetcode data from the stored JSON. Original call will be through Ajax
-    loadLeetCodeView()
+    //loadLeetCodeView()
 
     // Logic for handling leetcode question category stats
     $("#c1").on(
@@ -321,7 +320,6 @@ progressBar = (progressVal, class_number) => {
 // Load the Github statistics section
 loadGithubView = (Githubdata = GithubJSON) => {
 
-    console.log(Githubdata)
     let tabledata = `<table id="customers">
                 <tr>
                   <th>Project Name</th>

@@ -7,75 +7,6 @@ let SubmissionInformation = []
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-// temporary data, to be deleted [updated on 10th June]
-var LeetcodeJSON = {
-    "data": {
-        "allQuestionsCount": [{
-                "difficulty": "All",
-                "count": 2297
-            },
-            {
-                "difficulty": "Easy",
-                "count": 576
-            },
-            {
-                "difficulty": "Medium",
-                "count": 1221
-            },
-            {
-                "difficulty": "Hard",
-                "count": 500
-            }
-        ],
-        "matchedUser": {
-            "submitStats": {
-                "acSubmissionNum": [{
-                        "difficulty": "All",
-                        "count": 523,
-                        "submissions": 687
-                    },
-                    {
-                        "difficulty": "Easy",
-                        "count": 208,
-                        "submissions": 284
-                    },
-                    {
-                        "difficulty": "Medium",
-                        "count": 281,
-                        "submissions": 364
-                    },
-                    {
-                        "difficulty": "Hard",
-                        "count": 34,
-                        "submissions": 39
-                    }
-                ],
-                "totalSubmissionNum": [{
-                        "difficulty": "All",
-                        "count": 539,
-                        "submissions": 1020
-                    },
-                    {
-                        "difficulty": "Easy",
-                        "count": 208,
-                        "submissions": 354
-                    },
-                    {
-                        "difficulty": "Medium",
-                        "count": 291,
-                        "submissions": 598
-                    },
-                    {
-                        "difficulty": "Hard",
-                        "count": 40,
-                        "submissions": 68
-                    }
-                ]
-            }
-        }
-    }
-}
-
 // temporary github data to be deleted [updated on 11th June]
 var GithubJSON = {
     "data": {
@@ -154,14 +85,14 @@ $(document).ready(function() {
 
     $.ajax({
         type: 'GET',
-        url: "/OnlineWebresume/receiveLeetCodeData",
+        url: formAjaxUrl("receiveLeetCodeData"),
         contentType: "application/json",
         dataType: 'json',
         success: (data) => {
             console.log(data)
             document.getElementById("leetcode_error").style.display = 'none'
             document.getElementById("github_container").style.display = 'block'
-                //loadLeetCodeView(data)
+            loadLeetCodeView(data)
         },
         error: (err) => {
             console.log(err)
@@ -169,10 +100,6 @@ $(document).ready(function() {
             document.getElementById("leetcode_error").style.display = 'flex'
         }
     })
-
-
-    // temporary function to load Leetcode data from the stored JSON. Original call will be through Ajax
-    loadLeetCodeView()
 
     // Logic for handling leetcode question category stats
     $("#c1").on(
@@ -271,7 +198,7 @@ loadSkills = () => {
 }
 
 // Load the Leetcode statistics section
-loadLeetCodeView = (leetcodedata = LeetcodeJSON) => {
+loadLeetCodeView = (leetcodedata) => {
 
     // 0 - All, 1 - Easy, 2 - Medium, 3 - Hard
     for (var i = 0; i < 4; i++)
@@ -320,7 +247,6 @@ progressBar = (progressVal, class_number) => {
 // Load the Github statistics section
 loadGithubView = (Githubdata = GithubJSON) => {
 
-    console.log(Githubdata)
     let tabledata = `<table id="customers">
                 <tr>
                   <th>Project Name</th>

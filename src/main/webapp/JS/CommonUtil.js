@@ -60,6 +60,16 @@ $(document).ready(function() {
 */
 });
 
+// function to automatically form the url when requesting via localhost/heroku
+formAjaxUrl = (url) => {
+    console.log(window.location.host)
+
+    if (window.location.host === "localhost:8080")
+        return "/OnlineWebresume/" + url
+
+    return "/" + url
+}
+
 // function to change drive shared link to embeddable google photos
 googleEmbedImage = (url) => {
     var res = "https://drive.google.com/uc?export=view&id="

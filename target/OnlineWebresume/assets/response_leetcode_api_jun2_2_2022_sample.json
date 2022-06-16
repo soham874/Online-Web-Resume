@@ -1,0 +1,67 @@
+{
+    "data": {
+        "allQuestionsCount": [{
+                "difficulty": "All",
+                "count": 2306
+            },
+            {
+                "difficulty": "Easy",
+                "count": 578
+            },
+            {
+                "difficulty": "Medium",
+                "count": 1225
+            },
+            {
+                "difficulty": "Hard",
+                "count": 503
+            }
+        ],
+        "matchedUser": {
+            "submitStats": {
+                "acSubmissionNum": [{
+                        "difficulty": "All",
+                        "count": 528,
+                        "submissions": 694
+                    },
+                    {
+                        "difficulty": "Easy",
+                        "count": 209,
+                        "submissions": 285
+                    },
+                    {
+                        "difficulty": "Medium",
+                        "count": 285,
+                        "submissions": 370
+                    },
+                    {
+                        "difficulty": "Hard",
+                        "count": 34,
+                        "submissions": 39
+                    }
+                ],
+                "totalSubmissionNum": [{
+                        "difficulty": "All",
+                        "count": 544,
+                        "submissions": 1030
+                    },
+                    {
+                        "difficulty": "Easy",
+                        "count": 209,
+                        "submissions": 356
+                    },
+                    {
+                        "difficulty": "Medium",
+                        "count": 295,
+                        "submissions": 606
+                    },
+                    {
+                        "difficulty": "Hard",
+                        "count": 40,
+                        "submissions": 68
+                    }
+                ]
+            }
+        }
+    }
+}
