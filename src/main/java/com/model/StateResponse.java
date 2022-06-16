@@ -24,11 +24,20 @@ public class StateResponse {
 		return this.message;
 	}
 	
+	public boolean isSuccess() {
+		
+		if(  status >= 200 && status < 400 )
+			return true;
+		
+		return false;
+		
+	}	
+	
 	public String toString() {
 		return "{"
-				+ "\nstatus : "+this.status
-				+ "\nmessage: "+this.message
-				+ "\nbody   : "+this.body
+				+ "\n\"status\" : \""+this.status+"\","
+				+ "\n\"message\": \""+this.message+"\","
+				+ "\n\"body\"   : "+this.body
 				+"\n}\n";
 	}
 }
