@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.services.*;
+
 @Controller
 @ComponentScan
 @Component
@@ -29,8 +31,11 @@ public class WebpageController {
     }
 
     @RequestMapping(value = "/receiveLeetCodeData", method = RequestMethod.GET, produces = "application/json")
-    public @ResponseBody String GetLeetCodeData() throws org.json.simple.parser.ParseException {
+    public @ResponseBody String GetLeetCodeData() throws org.json.simple.parser.ParseException, IOException {
     	JSONParser jsonParser = new JSONParser();
+    	
+    	LeetcodeService.getProfileData("soham874");
+    	
     	try {
             //Parsing the contents of the JSON file
             JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("E:\\Software Savefiles\\SpringMVC\\OnlineWebresume\\src\\main\\webapp\\assets\\response_leetcode_api_jun2_2_2022_sample.json"));
@@ -43,7 +48,7 @@ public class WebpageController {
             //e.printStackTrace();
         	System.out.println("IO exception");
          }
-    	
+ 
     	return null;
     }
 }
