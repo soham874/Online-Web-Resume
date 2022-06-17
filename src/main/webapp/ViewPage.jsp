@@ -186,6 +186,12 @@ pageEncoding="ISO-8859-1"%>
                 </div>
                 <div class="academic_section" id="ac_info">
                 </div>
+                <!-- Acedemic error... -->
+                <div class="error_api" id="academic_error">
+                    <div>
+                        MongoDB servers are not responding currently, I apologize for the inconvinience.
+                    </div>
+                </div>
             </div>
 
             <!-- Lets get a bit casual... -->

@@ -11,8 +11,10 @@ public class Webapp_key_params {
 	private static final String Github_API_URL = "https://api.github.com/graphql";
 	
 	private static final int[] MongoDB_Api_Key = {30, 3, -13, 34, 12, -17, 0, 31, 52, -2, 51, 3, 33, 31, 28, 21, 28, -4, -19, 49, 17, 0, 17, -1, -3, 16, 48, 14, -3, -16, 12, 35, 31, 3, 53, 15, 5, 28, -13, 1, -17, 33, -16, -15, -17, 6, 33, -3, 20, 5, -20, 13, -13, 21, 51, 47, 35, 21, 42, 29, 41, -4, 28, 48};
-	private static final String MongoDB_URL_Endpoint = "https://data.mongodb-api.com/app/data-okjli/endpoint/data/v1";
-		
+	private static final String MongoDB_URL_Endpoint = "https://data.mongodb-api.com/app/data-okjli/endpoint/data/v1/action";
+	private static final String MongoDB_dataSource = "SohamsWebPortal";
+	private static final String MongoDB_database = "Web_Portal_Database";
+	
 	public static int getEncrypt_power() {
 		return encrypt_power;
 	}
@@ -35,6 +37,14 @@ public class Webapp_key_params {
 	
 	public static String getMongoDB_URL_Endpoint() {
 		return MongoDB_URL_Endpoint;
+	}
+	
+	public static String getMongoDB_dataSource() {
+		return MongoDB_dataSource;
+	}
+	
+	public static String getMongoDB_database() {
+		return MongoDB_database;
 	}
 	
 	public static String getMongoDB_Api_Key() {

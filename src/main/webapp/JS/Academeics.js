@@ -1,53 +1,43 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-// academic profile
-var academic_data = [{
-    "Institute": "Kalyani Government Engineering College",
-    "Duration": "August 2016 - June 2020",
-    "Board": "Maulana Abul Kalam Azad University of Technology",
-    "Education": "Bachelor of Technology, Mechanical Engineering",
-    "Score": "8.75 GPA (80 %)"
-}, {
-    "Institute": "CMS High School, Bardhaman",
-    "Duration": "August 2014 - May 2016",
-    "Board": "West Bengal Council of Higher Secondary Education",
-    "Education": "Class 12",
-    "Score": "87 %"
-}, {
-    "Institute": "St. Xaviers School, Barddhaman",
-    "Duration": "February 2003 - March 2014",
-    "Board": "Council of Indian School Certificate Examination",
-    "Education": "Class 10",
-    "Score": "90 %"
-}]
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 // functions to be performed when webpage loads
 $(document).ready(function() {
-    thoughtboxdisplayed = false
-    counter = 0;
+
     console.log("Academic JS connected successfully");
 
-    loadAcedemicInfo()
-
-    /*
-    var folder = "../assets/Skill_items/s3"
+    //loadAcedemicInfo(academicData.documents)
     $.ajax({
-        url: folder,
-        success: function(data) {
-            $(data).find("a").attr("href", function(i, val) {
-                if (val.match(/\.(jpe?g|png|gif)$/)) {
-                    console.log(val)
-                }
-            });
+        type: 'GET',
+        url: formAjaxUrl("receiveAcademicData"),
+        contentType: "application/json",
+        dataType: 'json',
+        success: (data_academic_mongo) => {
+            if (data_academic_mongo.status >= 200 && data_academic_mongo.status < 400) {
+                console.log("Success Academic")
+                document.getElementById("academic_error").style.display = 'none'
+                document.getElementById("ac_info").style.display = 'block'
+                console.log(data_academic_mongo.body)
+                loadAcedemicInfo(data_academic_mongo.body.documents)
+            } else {
+                console.log("Error Academic")
+                document.getElementById("ac_info").style.display = 'none'
+                document.getElementById("academic_error").style.display = 'flex'
+            }
+        },
+        error: (err) => {
+            console.log("Error Academic")
+            document.getElementById("ac_info").style.display = 'none'
+            document.getElementById("academic_error").style.display = 'flex'
         }
     })
-*/
+
 });
 
 // load experience section
-loadAcedemicInfo = (experience = academic_data) => {
+loadAcedemicInfo = (experience) => {
 
     let exp = ''
 

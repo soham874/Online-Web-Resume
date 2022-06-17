@@ -93,8 +93,8 @@ public class LeetcodeService {
         }
         
         // return the response
-        System.out.println("Response from LeetCode Service layer");
-        System.out.println(LeetCodeFetchProfileResponse.toString());
+        // System.out.println("Response from LeetCode Service layer");
+        // System.out.println(LeetCodeFetchProfileResponse.toString());
         
 		return LeetCodeFetchProfileResponse;
 	}

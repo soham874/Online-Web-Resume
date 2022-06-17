@@ -1,5 +1,15 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Academic section ~~~~~~~~~~~~~~~~~~~~~~~*/
 
+#academic_error {
+    background: linear-gradient(var(--error-backgrounds), var(--error-backgrounds)), url('../assets/mongo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
 .academic_section {
     width: 90%;
     margin: auto;

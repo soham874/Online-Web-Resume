@@ -40,7 +40,7 @@ public class MongoServices {
         	Response response = client.newCall(request).execute();
         	
         	String responseBody = response.body().string();
-    		
+        	
     		JSONParser jsonParser = new JSONParser();
     		JSONObject jsonResponseBody = (JSONObject) jsonParser.parse(responseBody);
     		        	
@@ -85,8 +85,8 @@ public class MongoServices {
         }
         
         // return the response
-        System.out.println("Response from MongoDB Service layer");
-        System.out.println(MongoDBAPIResponse.toString());
+        // System.out.println("Response from MongoDB Service layer");
+        // System.out.println(MongoDBAPIResponse.toString());
         
 		return MongoDBAPIResponse;
 	}

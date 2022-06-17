@@ -94,8 +94,8 @@ public class GithubService {
         }
         
         // return the response
-        System.out.println("Response from Github Service layer");
-        System.out.println(GithubFetchProfileResponse.toString());
+        // System.out.println("Response from Github Service layer");
+        // System.out.println(GithubFetchProfileResponse.toString());
         
 		return GithubFetchProfileResponse;
 	}
