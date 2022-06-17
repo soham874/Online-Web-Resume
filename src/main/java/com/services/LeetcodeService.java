@@ -77,6 +77,7 @@ public class LeetcodeService {
         				jsonResponseBody.toJSONString(), 
         				"Query not formed well, please verify");
         	}
+        	response.close();
         	
         }catch(Exception e){ //Unable to reach LeetCode servers
         	

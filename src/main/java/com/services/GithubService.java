@@ -78,6 +78,8 @@ public class GithubService {
         				"Query not formed well, please verify");
         	}
         	
+        	response.close();
+        	
         }catch(Exception e){ //Unable to reach Github servers
         	
         	StringWriter sw = new StringWriter();
