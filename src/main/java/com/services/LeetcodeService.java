@@ -13,13 +13,11 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import com.middleware.Webapp_key_params;
 import com.model.*;
 
 public class LeetcodeService {
-	
-	private static final String URL = "https://leetcode.com/graphql/";
-	private static final String RefererURL = "https://leetcode.com/%s/";
-	
+		
 	private static final MediaType JSON = MediaType.parse("application/json");
 	
 	private static String graphQl(String UserName) {
@@ -33,9 +31,9 @@ public class LeetcodeService {
 
         RequestBody body = RequestBody.create(graphQl(username),JSON);
         Request request = new Request.Builder()
-                .url(URL)
+                .url(Webapp_key_params.getLeetCode_GraphQL_URL())
                 .method("POST", body)
-                .addHeader("referer", String.format(RefererURL, username))
+                .addHeader("referer", String.format(Webapp_key_params.getLeetCode_RefererURL(), username))
                 .addHeader("Content-Type", "application/json")
                 .build();
         

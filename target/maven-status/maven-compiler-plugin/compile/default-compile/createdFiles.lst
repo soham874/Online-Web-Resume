@@ -1,3 +1,8 @@
 com\controller\LeetCodeController.class
 com\model\StateResponse.class
+com\middleware\Encrypter.class
+com\services\GithubService.class
+com\controller\GithubController.class
 com\services\LeetcodeService.class
+com\middleware\Decrypter.class
+com\middleware\Webapp_key_params.class

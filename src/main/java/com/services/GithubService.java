@@ -13,12 +13,10 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import com.middleware.Webapp_key_params;
 import com.model.*;
 
 public class GithubService {
-	
-	private static final String URL = "https://api.github.com/graphql";
-	private static final String Token = "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";
 	
 	private static final MediaType JSON = MediaType.parse("application/json");
 	
@@ -33,9 +31,9 @@ public class GithubService {
 
         RequestBody body = RequestBody.create(graphQl(username),JSON);
         Request request = new Request.Builder()
-                .url(URL)
+                .url(Webapp_key_params.getGithub_API_URL())
                 .method("POST", body)
-                .addHeader("Authorization", " bearer "+Token)
+                .addHeader("Authorization", " bearer "+Webapp_key_params.getGithubKey())
                 .addHeader("Content-Type", "application/json")
                 .build();
         
