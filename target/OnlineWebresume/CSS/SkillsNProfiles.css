@@ -80,6 +80,8 @@
 .progress-circle-back {
     fill: none;
     stroke-width: 10px;
+    stroke: var(--color-all-back);
+    border-radius: 10px;
 }
 
 .progress-circle-prog {

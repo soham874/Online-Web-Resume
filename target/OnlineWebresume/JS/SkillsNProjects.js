@@ -41,6 +41,74 @@ var skill_icons = {
     ]
 }
 
+var leetcodeData = {
+    "data": {
+        "allQuestionsCount": [{
+                "difficulty": "All",
+                "count": 2308
+            },
+            {
+                "difficulty": "Easy",
+                "count": 578
+            },
+            {
+                "difficulty": "Medium",
+                "count": 1226
+            },
+            {
+                "difficulty": "Hard",
+                "count": 504
+            }
+        ],
+        "matchedUser": {
+            "submitStats": {
+                "acSubmissionNum": [{
+                        "difficulty": "All",
+                        "count": 530,
+                        "submissions": 697
+                    },
+                    {
+                        "difficulty": "Easy",
+                        "count": 211,
+                        "submissions": 287
+                    },
+                    {
+                        "difficulty": "Medium",
+                        "count": 285,
+                        "submissions": 371
+                    },
+                    {
+                        "difficulty": "Hard",
+                        "count": 34,
+                        "submissions": 39
+                    }
+                ],
+                "totalSubmissionNum": [{
+                        "difficulty": "All",
+                        "count": 546,
+                        "submissions": 1033
+                    },
+                    {
+                        "difficulty": "Easy",
+                        "count": 211,
+                        "submissions": 358
+                    },
+                    {
+                        "difficulty": "Medium",
+                        "count": 295,
+                        "submissions": 607
+                    },
+                    {
+                        "difficulty": "Hard",
+                        "count": 40,
+                        "submissions": 68
+                    }
+                ]
+            }
+        }
+    }
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 // functions to be performed when webpage loads
@@ -77,6 +145,7 @@ $(document).ready(function() {
         }
     })
 
+    //loadLeetCodeView(leetcodeData)
     // Logic for handling leetcode question category stats
     $("#c1").on(
         'mouseenter click',
@@ -207,6 +276,8 @@ loadParticularCategoryData = (category) => {
 
     document.getElementsByClassName("progress-circle-prog")[0].style.stroke = `var(--color-${cat_type[category]})`;
     document.getElementsByClassName("progress-circle-prog")[1].style.stroke = `var(--color-${cat_type[category]})`;
+    document.getElementsByClassName("progress-circle-back")[0].style.stroke = `var(--color-${cat_type[category]}-back)`;
+    document.getElementsByClassName("progress-circle-back")[1].style.stroke = `var(--color-${cat_type[category]}-back)`;
 }
 
 // function to dynamically modify the displayed percent

@@ -23,10 +23,14 @@ html {
     font-family: 'Cagliostro', sans-serif;
     background-color: var(--color-secondary);
     color: var(--font-color);
-    --color-easy: #0fd50c;
+    --color-easy: #17d214;
+    --color-easy-back: #ceffcd;
     --color-medium: #ff9500;
+    --color-medium-back: #f2d2a4;
     --color-hard: #ff4040;
-    --color-all: #9592b9;
+    --color-hard-back: #f1b2b2;
+    --color-all: #413a96;
+    --color-all-back: #a6a3cc;
 }
 
 a {
