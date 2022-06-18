@@ -56,4 +56,42 @@ public class MongodDBController {
     	
     	return ControllerLayerResponse.toString();
 	}
+
+	@RequestMapping(value = "/sendUserResponse", method = RequestMethod.POST, produces = "application/json")
+    public @ResponseBody String SendResponseData(){
+    	
+		String Complete_URL = Webapp_key_params.getMongoDB_URL_Endpoint()+"/find";
+    	StateResponse ControllerLayerResponse;
+    	
+    	try {	// try to get response from service layer 
+    		    		
+    		StateResponse ServicelerLayerResponse = MongoServices.Post(Complete_URL,MongoJSONFormer.formAcademicsJSON());
+    		
+    		ControllerLayerResponse = new StateResponse(
+					ServicelerLayerResponse.getStatus(), 
+					ServicelerLayerResponse.getBody(), 
+					ServicelerLayerResponse.getMessage()
+        	);
+    		
+    	}catch( Exception e ) { // Service layer refuses to respond 
+    		
+    		StringWriter sw = new StringWriter();
+        	PrintWriter pw = new PrintWriter(sw);
+        	
+        	e.printStackTrace(pw);
+        	
+        	ControllerLayerResponse = new StateResponse(
+        			500, 
+        			sw.toString(), 
+        			"Backend error, unable to reach Service Layer"
+        	);
+    	}
+    	
+    	// return the response
+        System.out.println("Response from MongoDB Controller layer for fetching Academic details");
+        System.out.println(ControllerLayerResponse.toString());
+    	
+    	return ControllerLayerResponse.toString();
+	}
+
 }

@@ -1,5 +1,4 @@
 let isclicked = false
-let thoughtboxdisplayed = true
 
 var data = {}
 
@@ -41,6 +40,10 @@ $(document).ready(function() {
                 document.querySelector("#loader").style.display = "none";
             }, 1000)
         }
+
+        $("#suggestion_box").submit(function(e) {
+            e.preventDefault();
+        });
     };
 
 
@@ -183,4 +186,30 @@ setTheme = (themeName) => {
         document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_dark.png"
         document.getElementById("layout").src = current_state.source_path + '/' + "Project_Layout_Dark.png"
     }
+}
+
+// function to send review
+sendReview = () => {
+
+    var user_response = {
+        "Name": document.getElementById("user_name").value,
+        "Response": document.getElementById("user_message").value,
+        "TimeStamp": Date().toLocaleString()
+    }
+
+    console.log(user_response)
+
+    $.ajax({
+        type: 'POST',
+        url: formAjaxUrl("sendUserResponse"),
+        data: JSON.stringify(user_response),
+        contentType: "application/json",
+        dataType: 'json',
+        success: () => {
+
+        },
+        error: () => {
+
+        }
+    })
 }

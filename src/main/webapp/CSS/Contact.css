@@ -151,6 +151,11 @@ textarea:valid+label {
     filter: sepia(0.5);
 }
 
+.message_box {
+    resize: none;
+    height: 75%;
+}
+
 @media only screen and (max-width: 800px) {
     h2 {
         font-size: clamp(40px, 10vw, 60px);
