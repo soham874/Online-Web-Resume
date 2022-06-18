@@ -192,9 +192,9 @@ setTheme = (themeName) => {
 sendReview = () => {
 
     var user_response = {
-        "Name": document.getElementById("user_name").value,
-        "Response": document.getElementById("user_message").value,
-        "TimeStamp": Date().toLocaleString()
+        "name": document.getElementById("user_name").value,
+        "message": document.getElementById("user_message").value,
+        "timestamp": Date().toLocaleString()
     }
 
     console.log(user_response)

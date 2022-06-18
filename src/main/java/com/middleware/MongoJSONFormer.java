@@ -1,5 +1,7 @@
 package com.middleware;
 
+import com.model.UserResponse;
+
 public class MongoJSONFormer {
 
 	public static String formExperienceJSON() {
@@ -15,6 +17,15 @@ public class MongoJSONFormer {
 				+ "\"dataSource\" : \""+Webapp_key_params.getMongoDB_dataSource()+"\",\n"
 				+ "\"database\" : \""+Webapp_key_params.getMongoDB_database()+"\",\n"
 				+ "\"collection\" : \"Academics\""
+			+ "\n}";
+	}
+	
+	public static String formUserResponseJSON(UserResponse response) {
+		return "{\n"
+				+ "\"dataSource\" : \""+Webapp_key_params.getMongoDB_dataSource()+"\",\n"
+				+ "\"database\" : \""+Webapp_key_params.getMongoDB_database()+"\",\n"
+				+ "\"collection\" : \"User_Responses\","
+				+ "\"document\" : "+response.toString()
 			+ "\n}";
 	}
 }

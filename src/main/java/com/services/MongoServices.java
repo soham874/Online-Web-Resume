@@ -19,6 +19,8 @@ public class MongoServices {
 	public static StateResponse Post(String Complete_URL, String JSON_Query) throws IOException {
 		
 		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		System.out.println(JSON_Query);
+		
 		RequestBody body = RequestBody.create(JSON_Query,JSON);
         Request request = new Request.Builder()
             .url(Complete_URL)
@@ -40,11 +42,12 @@ public class MongoServices {
         	Response response = client.newCall(request).execute();
         	
         	String responseBody = response.body().string();
+        	System.out.println(responseBody);
         	
     		JSONParser jsonParser = new JSONParser();
     		JSONObject jsonResponseBody = (JSONObject) jsonParser.parse(responseBody);
     		        	
-        	if( response.isSuccessful() ) {	//when MongoDB resturns Status 200
+        	if( response.isSuccessful() ) {	//when MongoDB returns Status 200
         		
         		if( jsonResponseBody.containsKey("errors") ) { //If profile not found
         			
