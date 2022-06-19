@@ -114,7 +114,7 @@ displayeffects = (skill_item_number) => {
     var target_id = "s" + skill_item_number
     setTimeout(() => {
         document.getElementById(target_id).classList.remove("disabled");
-    }, 700)
+    }, 200)
 }
 
 // hide the tech icons
