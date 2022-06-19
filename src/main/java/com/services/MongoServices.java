@@ -14,25 +14,24 @@ import okhttp3.*;
 
 public class MongoServices {
     
-	private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+	private static final MediaType JSON = MediaType.parse("application/json");
 	
 	public static StateResponse Post(String Complete_URL, String JSON_Query) throws IOException {
 		
 		OkHttpClient client = new OkHttpClient().newBuilder().build();
-		System.out.println(JSON_Query);
+		//System.out.println(JSON_Query);
 		
 		RequestBody body = RequestBody.create(JSON_Query,JSON);
         Request request = new Request.Builder()
             .url(Complete_URL)
-            .post(body)
-            .addHeader("Content-Type", "application/json")
-            .addHeader("Access-Control-Request-Headers", "*")
-            .addHeader("api-key", Webapp_key_params.getMongoDB_Api_Key())
+            .header("content-type", "application/ejson")
             .addHeader("Accept", "application/json")
+            .addHeader("api-key", Webapp_key_params.getMongoDB_Api_Key() )
+            .addHeader("Access-Control-Request-Headers", "*")
+            .post(body)
             .build();
         
         StateResponse MongoDBAPIResponse;
-        
         System.out.println("Attempting to reach MongoDB servers...");
         
         // attempts to reach MongoDB servers
@@ -42,7 +41,6 @@ public class MongoServices {
         	Response response = client.newCall(request).execute();
         	
         	String responseBody = response.body().string();
-        	System.out.println(responseBody);
         	
     		JSONParser jsonParser = new JSONParser();
     		JSONObject jsonResponseBody = (JSONObject) jsonParser.parse(responseBody);

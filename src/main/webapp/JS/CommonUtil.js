@@ -188,6 +188,7 @@ setTheme = (themeName) => {
     }
 }
 
+/*
 // function to send review
 sendReview = () => {
 
@@ -199,17 +200,37 @@ sendReview = () => {
 
     console.log(user_response)
 
+
     $.ajax({
         type: 'POST',
         url: formAjaxUrl("sendUserResponse"),
         data: JSON.stringify(user_response),
         contentType: "application/json",
         dataType: 'json',
-        success: () => {
-
+        success: (success) => {
+            console.log(success)
         },
-        error: () => {
-
+        error: (err) => {
+            console.log(err)
         }
     })
+
+
+    fetch('https://data.mongodb-api.com/app/data-okjli/endpoint/data/v1/action/insertOne', {
+            method: "POST",
+            body: JSON.stringify(user_response),
+            headers: {
+                "mode": "no-cors",
+                "Access-Control-Request-Headers": "*",
+                "Access-Control-Allow-Origin": "*",
+                "Content-type": "application/json",
+                "api-key": "cH8gQ4EdyCxHfdaZaA2vVEVDBUuSB5QhdHzTJa8F4f564KfBYJ1R8ZxthZobnAau",
+                "Accept": "application/json"
+            }
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .catch(err => console.log(err));
 }
+
+*/

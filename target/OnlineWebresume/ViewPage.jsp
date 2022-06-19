@@ -261,6 +261,10 @@ pageEncoding="ISO-8859-1"%>
                     <div class="contact-box">
                         <div class="contact-links">
                             <h2>Thank you for choosing to share your opinions</h2>
+                            <div style="text-align: justify;color:white">
+                                <br> The project is far from perfect, but it is an honest attempt to reach as close to professionalism as possible. Every suggestion provided, every opinion shared, and every bug reported will help me take a step closer
+                                to that level. I thank you profusely for choosing to connect with me.</br>
+                            </div>
                             <div class="links">
                                 <div class="link">
                                     <a href="https://www.linkedin.com/in/soham-choudhury-342289190/" target="_blank "><img class="image" src="https://i.postimg.cc/m2mg2Hjm/linkedin.png" alt="linkedin"></a>
@@ -269,26 +273,9 @@ pageEncoding="ISO-8859-1"%>
                                     <a href="https://github.com/soham874" target="_blank "><img class="image" src="https://i.postimg.cc/YCV2QBJg/github.png" alt="github"></a>
                                 </div>
                                 <div class="link">
-                                    <a href="mailto:soham874@gmail.com" target="_blank "><img class="image" src="https://i.postimg.cc/NjLfyjPB/email.png" alt="email"></a>
+                                    <a href="mailto:soham.choudhury.bwn@gmail.com?subject=Feedback for your Web Portal" target="_blank "><img class="image" src="https://i.postimg.cc/NjLfyjPB/email.png" alt="email"></a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="contact-form-wrapper">
-                            <form>
-                                <div class="form-item">
-                                    <input type="text" name="sender" required>
-                                    <label>Name:</label>
-                                </div>
-                                <div class="form-item">
-                                    <input type="text" name="email" required>
-                                    <label>Email:</label>
-                                </div>
-                                <div class="form-item">
-                                    <textarea class="" name="message" required></textarea>
-                                    <label>Message:</label>
-                                </div>
-                                <button class="submit-btn">Send</button>
-                            </form>
                         </div>
                     </div>
                 </section>

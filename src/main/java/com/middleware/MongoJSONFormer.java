@@ -21,11 +21,11 @@ public class MongoJSONFormer {
 	}
 	
 	public static String formUserResponseJSON(UserResponse response) {
-		return "{\n"
-				+ "\"dataSource\" : \""+Webapp_key_params.getMongoDB_dataSource()+"\",\n"
-				+ "\"database\" : \""+Webapp_key_params.getMongoDB_database()+"\",\n"
-				+ "\"collection\" : \"User_Responses\","
+		return "{\r\n"
+				+ "\"dataSource\" : \""+Webapp_key_params.getMongoDB_dataSource()+"\",\r\n"
+				+ "\"database\" : \""+Webapp_key_params.getMongoDB_database()+"\",\r\n"
+				+ "\"collection\" : \"User_Responses\",\r\n"
 				+ "\"document\" : "+response.toString()
-			+ "\n}";
+			+ "\r\n}";
 	}
 }

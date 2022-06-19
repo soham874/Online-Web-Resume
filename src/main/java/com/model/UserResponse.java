@@ -29,6 +29,6 @@ public class UserResponse {
 				+ "\n\"Name\"     : \""+this.name+"\","
 				+ "\n\"TimeStamp\": \""+this.timestamp+"\","
 				+ "\n\"Message\"  : \""+this.message+"\""
-				+"\n}\n";
+				+"\n}";
 	}
 }
