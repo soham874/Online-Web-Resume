@@ -1,32 +1,5 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-// experience data
-var experience_data = [{
-    "Role": "Software Engineer",
-    "Logo_Url": "https://drive.google.com/file/d/1kyKrk10j-Yd4Cxyk4aNBtMVt7jJj-n9I/view?usp=sharing",
-    "Organization": "HCL Technologies Limited",
-    "Location": "Nagpur, India",
-    "Department": "Project Lifecycle Management, Engineering R&D Services",
-    "Project": "Digital Work Place",
-    "Client": "A leading European civilian and military Aircraft manufacturer",
-    "Description": "Project aim is establishing a modernised digital workplace to enhance the user experience and service quality for the majority of client employees in the EU region. Project activities include deployment and maintenance of crucial CAD applications on client user machines, non-user worker machines and blade servers, and handling all related incidents and service requests.",
-    "Responsibilities": [
-        "Developing tools via scripting in Powershell, Bash, CMD and C# to facilitate and automate project activities",
-        "Coordinating with business to plan timelines and deploy new versions of CATIA on VMs, Laptops, Desktops and Servers via SCCM",
-        "Carrying out pre-deployment activities, testing and sanity checks to ensure health of delivered package.",
-        "Regularly monitoring target machines parameters for anomalies to ensure maximum success of deployment.",
-        "Participating in post deployment monitoring activities to provide resolutions to possible incidents",
-        "Using SQL and WQL to ensure overall health of all EU PLM park machines, and taking action wherever necessary.",
-        "Coordinating with teams and end users to resolve incidents and complete service requests as and when raised by client users"
-    ],
-    "IDE/Compilers/Tools": [
-        "Microsoft Configuration Management Console to manage and monitor deployments in several formats",
-        "ServiceNow to handle incident and requests from client",
-        "SQL and WQL for performing activities on SCCM Database with an information pool of more than 100,000 machines"
-    ],
-    "Duration": "8th Feb 2021 - Present"
-}]
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 // functions to be performed when webpage loads
@@ -34,8 +7,30 @@ $(document).ready(function() {
 
     console.log("Experience JS file connected successfully");
 
-    loadExperience()
-
+    $.ajax({
+        type: 'GET',
+        url: formAjaxUrl("receiveExpereienceData"),
+        contentType: "application/json",
+        dataType: 'json',
+        success: (data_expereince_mongo) => {
+            if (data_expereince_mongo.status >= 200 && data_expereince_mongo.status < 400) {
+                console.log("Success Expereicne")
+                document.getElementById("work_error").style.display = 'none'
+                document.getElementById("work-exp").style.display = 'block'
+                console.log(data_expereince_mongo.body)
+                loadExperience(data_expereince_mongo.body.documents)
+            } else {
+                console.log("Error Expereicne")
+                document.getElementById("work-exp").style.display = 'none'
+                document.getElementById("work_error").style.display = 'flex'
+            }
+        },
+        error: (err) => {
+            console.log("Error Expereicne")
+            document.getElementById("work-exp").style.display = 'none'
+            document.getElementById("work_error").style.display = 'flex'
+        }
+    })
 });
 
 // load experience section

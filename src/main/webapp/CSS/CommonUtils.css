@@ -41,6 +41,10 @@ a {
     color: var(--link-color);
 }
 
+img {
+    text-align: center;
+}
+
 .generic_div {
     display: block;
     padding-bottom: 250px;

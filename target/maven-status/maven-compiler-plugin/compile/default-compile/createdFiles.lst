@@ -8,5 +8,6 @@ com\services\LeetcodeService.class
 com\middleware\Decrypter.class
 com\middleware\Webapp_key_params.class
 com\services\MongoServices.class
+com\services\TestService.class
 com\middleware\MongoJSONFormer.class
 com\model\UserResponse.class

@@ -4,22 +4,27 @@ function getAllLinks(id){
   var folders = fldr.getFolders();
   
   var folder;
-  var res = '{';
+  var res = '';
   
   while ( folders.hasNext() ) {
     folder = folders.next();
-    res += '"' + folder.getName() + '":[' + getAllLinks(folder.getId()) + '],';
+    res += '{"tech_name":"' + folder.getName() + '",';
+    res += '"techs":[' + getAllLinks(folder.getId()) + ']},';
   }
   
   res = res.slice(0,res.length-1);
   
   var files = fldr.getFiles();
-  var f,str;
+  var f,sharable_url,tech_name,docu_link;
     
   while (files.hasNext()) {
     f = files.next();
-    str = f.getUrl();
-    res += ('"'+str+'",');
+    sharable_url = f.getUrl();
+    tech_name = f.getName().split(" ")[0];
+    docu_link = f.getName().split(" ")[1];
+    res += ('{"Name":"'+tech_name+'",');
+    res += ('"URL":"'+sharable_url+'",');
+    res += ('"DocuLink":"'+docu_link+'"},');
   }
   
   res = res.slice(0,res.length-1);  
@@ -30,7 +35,10 @@ function PublishSharableLinks() {
 
   var doc = DocumentApp.getActiveDocument();
   var body = doc.getBody();
-  body.clear()
+  body.clear();
   
-  body.appendParagraph(getAllLinks("13eDUJdkh_HnMaal8XBYkAeISR-9GbI6e")+"]}");
+  body.appendParagraph("Updated on : "+Date()+"\n");
+  var res = '['+getAllLinks("13eDUJdkh_HnMaal8XBYkAeISR-9GbI6e")+'}]';
+  //console.log(res)
+  body.appendParagraph(res);
  }

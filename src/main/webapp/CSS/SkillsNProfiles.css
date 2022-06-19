@@ -39,6 +39,7 @@
     align-items: center;
     justify-items: center;
     position: relative;
+    z-index: 50 !important;
 }
 
 .skill_icon_group {
@@ -48,6 +49,10 @@
     align-items: center;
     justify-items: center;
     position: absolute;
+}
+
+.disabled {
+    pointer-events: none;
 }
 
 
