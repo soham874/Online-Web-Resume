@@ -44,6 +44,8 @@ $(document).ready(function() {
         $("#suggestion_box").submit(function(e) {
             e.preventDefault();
         });
+
+        document.getElementById("display_pic").src = googleEmbedImage("https://drive.google.com/file/d/1Nm42BeZ5qOjldIeAiN96RMjAWhLZ5b5E/view?usp=sharing")
     };
 
 

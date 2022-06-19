@@ -41,6 +41,10 @@ a {
     color: var(--link-color);
 }
 
+img {
+    text-align: center;
+}
+
 .generic_div {
     display: block;
     padding-bottom: 250px;
@@ -182,8 +186,8 @@ span:before {
     left: 0;
     top: 0;
     z-index: 99 !important;
-    backdrop-filter: saturate(180%) blur(20px);
     font-size: 20px;
+    background-color: var(--color-secondary);
     /*Flex details*/
     display: flex;
     transition: 500ms;
@@ -324,7 +328,7 @@ span:before {
     bottom: 0;
     width: 100%;
     z-index: 99 !important;
-    backdrop-filter: saturate(180%) blur(20px);
+    background-color: var(--color-secondary);
     /*Flex details*/
     display: flex;
     flex-direction: row;

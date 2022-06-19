@@ -155,9 +155,10 @@ loadParticularCategoryData = (category) => {
     progressBar(SubmissionInformation[category].Accuracy_percent, 1);
 
     document.getElementById('progress_bar_container').innerHTML =
-        ` < div style = "padding:0 10px 0 10px;" > Total questions: $ { SubmissionInformation[category].Questions } < /div> <
-                    div style = "padding:0 10px 0 10px;" > Solved questions: $ { SubmissionInformation[category].Solved } < /div> <
-                    div style = "padding:0 10px 0 10px;" > Accepted Solutions: $ { SubmissionInformation[category].Accepted } < /div>`
+        ` 
+        <div style="padding:0 10px 0 10px;"> Total questions: ${SubmissionInformation[category].Questions} </div> 
+        <div style = "padding:0 10px 0 10px;"> Solved questions: ${SubmissionInformation[category].Solved} </div> 
+        <div style = "padding:0 10px 0 10px;"> Accepted Solutions: ${SubmissionInformation[category].Accepted} </div>`
 
     document.getElementsByClassName("progress-circle-prog")[0].style.stroke = `var(--color-${cat_type[category]})`;
     document.getElementsByClassName("progress-circle-prog")[1].style.stroke = `var(--color-${cat_type[category]})`;

@@ -4,9 +4,9 @@ pageEncoding="ISO-8859-1"%>
     <html class="theme-light">
 
     <head>
-        <meta charset="ISO-8859-1" name="viewport">
+        <meta charset="utf-8" name="viewport">
 
-        <title>Soham's Web Resume</title>
+        <title>Soham's Online Portal</title>
 
         <link rel="icon" href="./assets/resume.png">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -15,7 +15,6 @@ pageEncoding="ISO-8859-1"%>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cagliostro&display=swap" rel="stylesheet">
-
 
         <link rel="stylesheet" href="./CSS/CommonUtils.css">
         <link rel="stylesheet" href="./CSS/Summary.css">
@@ -95,7 +94,7 @@ pageEncoding="ISO-8859-1"%>
                         I am a junior level tech enthusiast with an inquisitive mind, always on the lookout to learn new technologies and have at least a fundamental level of understanding about how things work. This webpage has been designed to give a quick insight into my
                         academic and professional journey so far.
                     </div>
-                    <img class="hex-background" src="./assets/displaypic.jpeg">
+                    <img id="display_pic" class="hex-background">
                 </div>
             </div>
 
@@ -125,20 +124,20 @@ pageEncoding="ISO-8859-1"%>
                     <div style="position: relative;padding: 100px;">
                         <div class="progress" style="left: 33.34%">
                             <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
-                            <circle class="progress-circle-back"
-                                    cx="80" cy="80" r="74"></circle>
-                            <circle class="progress-circle-prog"
-                                    cx="80" cy="80" r="74"></circle>
-                        </svg>
+                                <circle class="progress-circle-back"
+                                        cx="80" cy="80" r="74"></circle>
+                                <circle class="progress-circle-prog"
+                                        cx="80" cy="80" r="74"></circle>
+                            </svg>
                             <div class="progress-text" data-progress="0">0%</div>
                         </div>
                         <div class="progress" style="left: 66.68%">
                             <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
-                            <circle class="progress-circle-back"
-                                    cx="80" cy="80" r="74"></circle>
-                            <circle class="progress-circle-prog"
-                                    cx="80" cy="80" r="74"></circle>
-                        </svg>
+                                <circle class="progress-circle-back"
+                                        cx="80" cy="80" r="74"></circle>
+                                <circle class="progress-circle-prog"
+                                        cx="80" cy="80" r="74"></circle>
+                            </svg>
                             <div class="progress-text" data-progress="0">0%</div>
                         </div>
                     </div>
@@ -290,7 +289,7 @@ pageEncoding="ISO-8859-1"%>
             <!-- Footer section... -->
             <div class="footer-section ">
                 <div>Made with &lt;3 by Soham</div>
-                <div style="width: 100px ">
+                <div style="width:10% ">
                     <img alt=" " src="./assets/sunny.png " style="height: 45px; width: 45px;transition: 500ms;padding:5px " id="imgClickAndChange" onclick="changeImage() " />
                 </div>
                 <div id="thought-link" onclick="smoothScrolltoSection( '#contact_heading') ">
