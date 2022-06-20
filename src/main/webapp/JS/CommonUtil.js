@@ -94,6 +94,11 @@ formAjaxUrl = (url) => {
 
 // function to change drive shared link to embeddable google photos
 googleEmbedImage = (url) => {
+    var expression = "https?";
+    var regex = new RegExp(expression);
+    if (!url.match(regex))
+        return url
+
     var res = "https://drive.google.com/uc?export=view&id="
     res += url.split('/')[5]
     return res

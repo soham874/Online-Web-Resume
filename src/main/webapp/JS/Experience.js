@@ -65,7 +65,7 @@ $(document).ready(function() {
 });
 
 // load experience section
-loadExperience = (exp_data = experience_data) => {
+loadExperience = (exp_data) => {
 
     let exp = ''
     var isLeft = "left"

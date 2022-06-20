@@ -28,6 +28,7 @@ pageEncoding="ISO-8859-1"%>
         <script src="./JS/SkillsNProjects.js"></script>
         <script src="./JS/Experience.js"></script>
         <script src="./JS/CommonUtil.js"></script>
+        <script src="./JS/LargeData.js"></script>
 
 
     </head>
@@ -90,11 +91,9 @@ pageEncoding="ISO-8859-1"%>
                     Summary
                 </div>
                 <div class="summary" style="display: flex;">
-                    <div style="padding: 30px;">
-                        I am a tech enthusiast with an inquisitive mind, always on the lookout to learn new technologies and have at least a fundamental level of understanding about how things work. This webpage has been designed to give a quick insight into my
-                        academic and professional journey so far.
+                    <div style="padding: 30px;" id="summary_section">
                     </div>
-                    <img id="display_pic" class="hex-background">
+                    <img id="display_pic" class="hex-background" onerror="this.style.display='none'">
                 </div>
             </div>
 
