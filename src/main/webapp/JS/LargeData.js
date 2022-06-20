@@ -121,27 +121,27 @@ $(document).ready(function() {
                 console.log("Error General Information, loading fallback data")
                     //document.getElementById("work-exp").style.display = 'none'
                     //document.getElementById("work_error").style.display = 'flex'
-                loadSkills(general_information_fallback.skill_icons)
-                loadSummary(general_information_fallback.summary)
+                loadSkills()
+                loadSummary()
             }
         },
         error: (err) => {
             console.log("Error General Information, loading fallback data")
                 //document.getElementById("work-exp").style.display = 'none'
                 //document.getElementById("work_error").style.display = 'flex'
-            loadSkills(general_information_fallback.skill_icons)
-            loadSummary(general_information_fallback.summary)
+            loadSkills()
+            loadSummary()
         }
     })
 });
 
 // load summary section
-loadSummary = (data) => {
+loadSummary = (data = general_information_fallback.summary) => {
     document.getElementById("summary_section").innerHTML = data
 }
 
 //automatically add the HTML for skills
-loadSkills = (data) => {
+loadSkills = (data = general_information_fallback.skill_icons) => {
     //console.log(data)
     var screen_width = window.innerWidth
     let output = "";

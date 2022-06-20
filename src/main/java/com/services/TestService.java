@@ -10,7 +10,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 public class TestService {
-	private static final MediaType JSON = MediaType.parse("application/json");
+	private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 	public static void main(String[] args) throws IOException {
 		
 		String request_json = ""
@@ -30,8 +30,8 @@ public class TestService {
 		
 		RequestBody body = RequestBody.create(request_json,JSON);
         Request request = new Request.Builder()
-            .url("https://hookb.in/JKdXbjy6O0sg1WBgVnxa")
-            /*.url("https://data.mongodb-api.com/app/data-okjli/endpoint/data/v1/action/insertOne")*/
+        		/*.url("https://hookb.in/JKdXbjy6O0sg1WBgVnxa")*/
+            .url("https://data.mongodb-api.com/app/data-okjli/endpoint/data/v1/action/insertOne")
             .header("content-type", "application/ejson")
             .addHeader("Accept", "application/json")
             .addHeader("api-key", Webapp_key_params.getMongoDB_Api_Key() )
