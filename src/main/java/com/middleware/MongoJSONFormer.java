@@ -28,4 +28,12 @@ public class MongoJSONFormer {
 				+ "\"document\" : "+response.toString()
 			+ "\r\n}";
 	}
+	
+	public static String formGeneralInformationJSON() {
+		return "{\r\n"
+				+ "\"dataSource\" : \""+Webapp_key_params.getMongoDB_dataSource()+"\",\r\n"
+				+ "\"database\" : \""+Webapp_key_params.getMongoDB_database()+"\",\r\n"
+				+ "\"collection\" : \"General_Information\"\r\n"
+			+ "\r\n}";
+	}
 }

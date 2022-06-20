@@ -91,7 +91,7 @@ pageEncoding="ISO-8859-1"%>
                 </div>
                 <div class="summary" style="display: flex;">
                     <div style="padding: 30px;">
-                        I am a junior level tech enthusiast with an inquisitive mind, always on the lookout to learn new technologies and have at least a fundamental level of understanding about how things work. This webpage has been designed to give a quick insight into my
+                        I am a tech enthusiast with an inquisitive mind, always on the lookout to learn new technologies and have at least a fundamental level of understanding about how things work. This webpage has been designed to give a quick insight into my
                         academic and professional journey so far.
                     </div>
                     <img id="display_pic" class="hex-background">
