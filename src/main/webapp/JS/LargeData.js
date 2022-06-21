@@ -98,41 +98,65 @@ var general_information_fallback = {
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-// functions to be performed when webpage loads
-$(document).ready(function() {
-
-    console.log("Experience JS file connected successfully");
-    //console.log(general_information_fallback)
-
-    $.ajax({
-        type: 'GET',
-        url: formAjaxUrl("receiveGeneralData"),
-        contentType: "application/json",
-        dataType: 'json',
-        success: (general_data) => {
-            if (general_data.status >= 200 && general_data.status < 400) {
-                console.log("Success General Information, loading live data")
-                    //document.getElementById("work_error").style.display = 'none'
-                    //document.getElementById("work-exp").style.display = 'block'
-                console.log(general_data.body)
-                loadSkills(general_data.body.documents[0].skill_icons)
-                loadSummary(general_data.body.documents[0].Summary)
-            } else {
-                console.log("Error General Information, loading fallback data")
-                    //document.getElementById("work-exp").style.display = 'none'
-                    //document.getElementById("work_error").style.display = 'flex'
-                loadSkills()
-                loadSummary()
-            }
-        },
-        error: (err) => {
-            console.log("Error General Information, loading fallback data")
+$.ajax({
+    type: 'GET',
+    url: formAjaxUrl("receiveGeneralData"),
+    contentType: "application/json",
+    dataType: 'json',
+    success: (general_data) => {
+        if (general_data.status >= 200 && general_data.status < 400) {
+            console.log("AJAX RESPONSE >> Success General Information, loading live data")
+                //document.getElementById("work_error").style.display = 'none'
+                //document.getElementById("work-exp").style.display = 'block'
+                //console.log(general_data.body)
+            loadSkills(general_data.body.documents[0].skill_icons)
+            loadSummary(general_data.body.documents[0].Summary)
+        } else {
+            console.log("AJAX RESPONSE >> Error General Information, loading fallback data")
                 //document.getElementById("work-exp").style.display = 'none'
                 //document.getElementById("work_error").style.display = 'flex'
             loadSkills()
             loadSummary()
         }
-    })
+    },
+    error: (err) => {
+        console.log("AJAX RESPONSE >> Error General Information, loading fallback data")
+            //document.getElementById("work-exp").style.display = 'none'
+            //document.getElementById("work_error").style.display = 'flex'
+        loadSkills()
+        loadSummary()
+    }
+})
+
+// functions to be performed when webpage loads
+$(document).ready(function() {
+
+    console.log("General Data JS file connected successfully");
+    //console.log(general_information_fallback)
+
+    /*
+        $.ajax({
+                type: 'POST',
+                url: "https://data.mongodb-api.com/app/data-okjli/endpoint/data/v1/action/find",
+                contentType: "application/json",
+                dataType: 'json',
+                body: {
+                    "dataSource": "SohamsWebPortal",
+                    "database": "Web_Portal_Database",
+                    "collection": "Academics"
+                },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Request-Headers": "*",
+                    "api-key": "cH8gQ4EdyCxHfdaZaA2vVEVDBUuSB5QhdHzTJa8F4f564KfBYJ1R8ZxthZobnAau"
+                },
+                success: (general_data) => {
+                    console.log(general_data)
+                },
+                error: (err) => {
+                    console.log(err)
+                }
+            }) */
 });
 
 // load summary section
@@ -155,12 +179,12 @@ loadSkills = (data = general_information_fallback.skill_icons) => {
         var div_start_pos = (screen_width / 2) - (div_with / 2);
 
         output += `
-        <div class="skill_item_group" onmouseleave="hideeffects()">
-            <div class="skill_item" onmouseover="displayeffects(${i})" > 
-                >> ${techName} <<
-            </div>
-        
-        <div class="skill_icon_group disabled" id="s${i}" onmouseleave="hideeffects()" style="left:${div_start_pos}px">`
+                        <div class="skill_item_group" onmouseleave="hideeffects()">
+                            <div class="skill_item" onmouseover="displayeffects(${i})" > 
+                                >> ${techName} <<
+                            </div>
+                        
+                        <div class="skill_icon_group disabled" id="s${i}" onmouseleave="hideeffects()" style="left:${div_start_pos}px">`
 
         tech.techs.forEach(tech_icon => {
             output += `<img alt="${tech_icon.Name}" class="skill_icons" src="${googleEmbedImage(tech_icon.URL)}" referrerpolicy="no-referrer" onclick="window.open('${tech_icon.DocuLink}','mywindow')"></img>`

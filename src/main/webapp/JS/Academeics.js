@@ -37,8 +37,6 @@ var academic_fallback = [{
 // functions to be performed when webpage loads
 $(document).ready(function() {
 
-    console.log("Academic JS connected successfully");
-
     //loadAcedemicInfo(academicData.documents)
     $.ajax({
         type: 'GET',
@@ -47,25 +45,27 @@ $(document).ready(function() {
         dataType: 'json',
         success: (data_academic_mongo) => {
             if (data_academic_mongo.status >= 200 && data_academic_mongo.status < 400) {
-                console.log("Success Academic, loading live data")
+                console.log("AJAX RESPONSE >> Success Academic, loading live data")
                 document.getElementById("academic_error").style.display = 'none'
                 document.getElementById("ac_info").style.display = 'block'
-                console.log(data_academic_mongo.body)
+                    //console.log(data_academic_mongo.body)
                 loadAcedemicInfo(data_academic_mongo.body.documents)
             } else {
-                console.log("Error Academic, loading fallback data")
+                console.log("AJAX RESPONSE >> Error Academic, loading fallback data")
                     //document.getElementById("ac_info").style.display = 'none'
                     //document.getElementById("academic_error").style.display = 'flex'
                 loadAcedemicInfo(academic_fallback)
             }
         },
         error: (err) => {
-            console.log("Error Academic, loading fallback data")
+            console.log("AJAX RESPONSE >> Error Academic, loading fallback data")
                 //document.getElementById("ac_info").style.display = 'none'
                 //document.getElementById("academic_error").style.display = 'flex'
             loadAcedemicInfo(academic_fallback)
         }
     })
+
+    console.log("Academic JS connected successfully");
 
 });
 

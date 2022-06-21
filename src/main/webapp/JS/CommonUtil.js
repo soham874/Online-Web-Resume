@@ -2,11 +2,34 @@ let isclicked = false
 
 var data = {}
 
+deviceInfo = () => {
+    let browser_data = {
+        "timeStamp": Date().toString(),
+        "browser": "Not Available",
+        "height": window.screen.height,
+        "width": window.screen.width
+    }
+
+    if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
+        browser_data.browser = 'Opera'
+    } else if (navigator.userAgent.indexOf("Edg") != -1) {
+        browser_data.browser = 'Edge'
+    } else if (navigator.userAgent.indexOf("Chrome") != -1) {
+        browser_data.browser = 'Chrome'
+    } else if (navigator.userAgent.indexOf("Safari") != -1) {
+        browser_data.browser = 'Safari'
+    } else if (navigator.userAgent.indexOf("Firefox") != -1) {
+        browser_data.browser = 'Firefox'
+    } else if ((navigator.userAgent.indexOf("MSIE") != -1) || (!!document.documentMode == true)) {
+        browser_data.browser = 'IE'
+    }
+
+    alert(JSON.stringify(browser_data))
+}
+
 // functions to be performed when webpage loads
 $(document).ready(function() {
     thoughtboxdisplayed = false
-
-    console.log("Main file connected successfully");
 
     document.onreadystatechange = function() {
         if (document.readyState !== "complete") {
@@ -56,7 +79,8 @@ $(document).ready(function() {
         setTheme('theme-light');
     }
 
-
+    deviceInfo()
+    console.log("Main file connected successfully");
 
     window.addEventListener('resize', () => {
         if (window.innerWidth > 1250) {
@@ -84,7 +108,7 @@ $(document).ready(function() {
 
 // function to automatically form the url when requesting via localhost/heroku
 formAjaxUrl = (url) => {
-    console.log(window.location.host)
+    //console.log(window.location.host)
 
     if (window.location.host === "localhost:8080")
         return "/OnlineWebresume/" + url
@@ -177,10 +201,10 @@ changeImage = () => {
 
 // wrapper to toggle the theme and image of page
 setTheme = (themeName) => {
-    console.log("Setting theme to " + themeName)
+    //console.log("Setting theme to " + themeName)
     localStorage.setItem('theme', themeName);
     document.documentElement.className = themeName;
-    console.log(document.getElementById("layout").src)
+    //console.log(document.getElementById("layout").src)
     var current_state = gettheme()
     if (themeName === "theme-light") {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "sunny.png"
