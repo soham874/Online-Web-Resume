@@ -32,8 +32,9 @@ public class GoogleController {
 		VisitorInformation visitorInformation = new VisitorInformation(
 				jsonRequestBody.get("browser").toString(), 
 				Integer.parseInt(jsonRequestBody.get("height").toString()), 
-				Integer.parseInt(jsonRequestBody.get("width").toString()), 
-				jsonRequestBody.get("timeStamp").toString());
+				Integer.parseInt(jsonRequestBody.get("width").toString()));
+		
+		System.out.println(visitorInformation.toString());
 		
     	StateResponse ControllerLayerResponse;
     	
@@ -67,4 +68,5 @@ public class GoogleController {
     	
     	return ControllerLayerResponse.toString();
 	}
+
 }

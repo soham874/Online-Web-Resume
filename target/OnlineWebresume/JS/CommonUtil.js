@@ -2,10 +2,12 @@ let isclicked = false
 
 var data = {}
 
+// store browser information
 deviceInfo = () => {
 
+    console.log("Screen height, screen width and Browser Client is being collected for analysis")
+
     let browser_data = {
-        timeStamp: Date().toString(),
         browser: "Not Available",
         height: window.screen.height,
         width: window.screen.width
@@ -14,15 +16,15 @@ deviceInfo = () => {
     if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
         browser_data.browser = 'Opera'
     } else if (navigator.userAgent.indexOf("Edg") != -1) {
-        browser_data.browser = 'Edge'
+        browser_data.browser = 'Microsoft Edge'
     } else if (navigator.userAgent.indexOf("Chrome") != -1) {
-        browser_data.browser = 'Chrome'
+        browser_data.browser = 'Google Chrome'
     } else if (navigator.userAgent.indexOf("Safari") != -1) {
         browser_data.browser = 'Safari'
     } else if (navigator.userAgent.indexOf("Firefox") != -1) {
-        browser_data.browser = 'Firefox'
+        browser_data.browser = 'Mozilla Firefox'
     } else if ((navigator.userAgent.indexOf("MSIE") != -1) || (!!document.documentMode == true)) {
-        browser_data.browser = 'IE'
+        browser_data.browser = 'Internet Explorer'
     }
 
     //console.log(JSON.stringify(browser_data))
@@ -33,10 +35,10 @@ deviceInfo = () => {
         contentType: "application/json",
         dataType: 'json',
         success: (success) => {
-            console.log("AJAX RESPONSE >> Browser data sent successfully")
+            console.log("AJAX RESPONSE >> Browser data stored successfully")
         },
         error: (err) => {
-            console.log("AJAX RESPONSE >> Failed to send browser data")
+            console.log("AJAX RESPONSE >> Failed to store browser data")
         }
     })
 }
