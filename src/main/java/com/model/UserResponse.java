@@ -24,6 +24,7 @@ public class UserResponse {
 		return timestamp;
 	}
 	
+	@Override
 	public String toString() {
 		return "{"
 				+ "\n\"Name\"     : \""+this.name+"\","

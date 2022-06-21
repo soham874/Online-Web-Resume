@@ -14,8 +14,6 @@ $(document).ready(function() {
 
     thoughtboxdisplayed = false
 
-    console.log("Skills and Projects JS file connected successfully");
-
     // function to receieve LeetCode object datatype from controller
 
     $.ajax({
@@ -25,18 +23,18 @@ $(document).ready(function() {
         dataType: 'json',
         success: (data_leetcode) => {
             if (data_leetcode.status >= 200 && data_leetcode.status < 400) {
-                console.log("Success Leetcode")
+                console.log("AJAX RESPONSE >> Success Leetcode")
                 document.getElementById("leetcode_error").style.display = 'none'
                 document.getElementById("github_container").style.display = 'block'
                 loadLeetCodeView(data_leetcode.body)
             } else {
-                console.log("Error Leetcode")
+                console.log("AJAX RESPONSE >> Error Leetcode")
                 document.getElementById("coding_container").style.display = 'none'
                 document.getElementById("leetcode_error").style.display = 'flex'
             }
         },
         error: (err) => {
-            console.log("Error Leetcode")
+            console.log("AJAX RESPONSE >> Error Leetcode")
             document.getElementById("coding_container").style.display = 'none'
             document.getElementById("leetcode_error").style.display = 'flex'
         }
@@ -77,23 +75,24 @@ $(document).ready(function() {
         dataType: 'json',
         success: (data_github) => {
             if (data_github.status >= 200 && data_github.status < 400) {
-                console.log("Github Success")
+                console.log("AJAX RESPONSE >> Github Success")
                 document.getElementById("github_error").style.display = 'none'
                 document.getElementById("github_container").style.display = 'block'
                 loadGithubView(data_github.body)
             } else {
-                console.log("Github Error")
+                console.log("AJAX RESPONSE >> Github Error")
                 document.getElementById("github_container").style.display = 'none'
                 document.getElementById("github_error").style.display = 'flex'
             }
         },
         error: (err) => {
-            console.log("Github Error")
+            console.log("AJAX RESPONSE >> Github Error")
             document.getElementById("github_container").style.display = 'none'
             document.getElementById("github_error").style.display = 'flex'
         }
     })
 
+    console.log("Skills and Projects JS file connected successfully");
     window.addEventListener('resize', () => { loadSkills() })
 });
 

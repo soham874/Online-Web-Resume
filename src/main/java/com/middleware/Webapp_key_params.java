@@ -15,6 +15,8 @@ public class Webapp_key_params {
 	private static final String MongoDB_dataSource = "SohamsWebPortal";
 	private static final String MongoDB_database = "Web_Portal_Database";
 	
+	private static final String Google_visitor_information_api = "https://sheetdb.io/api/v1/sa6miu6hdqxos";
+	
 	public static int getEncrypt_power() {
 		return encrypt_power;
 	}
@@ -49,5 +51,9 @@ public class Webapp_key_params {
 	
 	public static String getMongoDB_Api_Key() {
 		return Decrypter.Decrypt(MongoDB_Api_Key);
+	}
+	
+	public static String getGoogle_visitor_information_api() {
+		return Google_visitor_information_api;
 	}
 }

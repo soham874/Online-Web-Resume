@@ -3,11 +3,12 @@ let isclicked = false
 var data = {}
 
 deviceInfo = () => {
+
     let browser_data = {
-        "timeStamp": Date().toString(),
-        "browser": "Not Available",
-        "height": window.screen.height,
-        "width": window.screen.width
+        timeStamp: Date().toString(),
+        browser: "Not Available",
+        height: window.screen.height,
+        width: window.screen.width
     }
 
     if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
@@ -24,7 +25,20 @@ deviceInfo = () => {
         browser_data.browser = 'IE'
     }
 
-    alert(JSON.stringify(browser_data))
+    //console.log(JSON.stringify(browser_data))
+    $.ajax({
+        type: 'POST',
+        url: formAjaxUrl("updateBrowserData"),
+        data: JSON.stringify(browser_data),
+        contentType: "application/json",
+        dataType: 'json',
+        success: (success) => {
+            console.log("AJAX RESPONSE >> Browser data sent successfully")
+        },
+        error: (err) => {
+            console.log("AJAX RESPONSE >> Failed to send browser data")
+        }
+    })
 }
 
 // functions to be performed when webpage loads
@@ -64,6 +78,10 @@ $(document).ready(function() {
             }, 1000)
         }
 
+        setTimeout(() => {
+            deviceInfo();
+        }, 5000)
+
         $("#suggestion_box").submit(function(e) {
             e.preventDefault();
         });
@@ -79,7 +97,7 @@ $(document).ready(function() {
         setTheme('theme-light');
     }
 
-    deviceInfo()
+
     console.log("Main file connected successfully");
 
     window.addEventListener('resize', () => {

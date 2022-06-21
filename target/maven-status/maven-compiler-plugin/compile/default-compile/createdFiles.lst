@@ -1,11 +1,14 @@
 com\controller\LeetCodeController.class
 com\model\StateResponse.class
 com\middleware\Encrypter.class
+com\services\GoogleServices.class
+com\model\VisitorInformation.class
 com\services\GithubService.class
 com\controller\GithubController.class
 com\controller\MongodDBController.class
 com\services\LeetcodeService.class
 com\middleware\Decrypter.class
+com\controller\GoogleController.class
 com\middleware\Webapp_key_params.class
 com\services\MongoServices.class
 com\services\TestService.class
