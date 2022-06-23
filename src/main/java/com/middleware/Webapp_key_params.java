@@ -16,6 +16,7 @@ public class Webapp_key_params {
 	private static final String MongoDB_database = "Web_Portal_Database";
 	
 	private static final String Google_visitor_information_api = "https://sheetdb.io/api/v1/sa6miu6hdqxos";
+	private static final String Google_visitor_response_api = "https://sheetdb.io/api/v1/nqw0raiawsq28";
 	private static String Session_UID = "";
 	
 	public static int getEncrypt_power() {
@@ -64,5 +65,9 @@ public class Webapp_key_params {
 	
 	public static void setSessionUid(String UID) {
 		Session_UID = UID;
+	}
+
+	public static String getGoogleVisitorResponseApi() {
+		return Google_visitor_response_api;
 	}
 }

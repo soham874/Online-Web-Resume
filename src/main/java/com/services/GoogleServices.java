@@ -20,13 +20,13 @@ public class GoogleServices {
 
 private static final MediaType JSON = MediaType.parse("application/json");
 	
-	public static StateResponse Post(String visitor_body) throws IOException {
+	public static StateResponse Post(String URL, String visitor_body) throws IOException {
 		
 		OkHttpClient client = new OkHttpClient().newBuilder().build();
 
 		RequestBody body = RequestBody.create(visitor_body,JSON);
         Request request = new Request.Builder()
-            .url(Webapp_key_params.getGoogle_visitor_information_api())
+            .url(URL)
             .header("content-type", "application/json")
             .post(body)
             .build();

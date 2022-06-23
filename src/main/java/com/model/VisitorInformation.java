@@ -12,7 +12,7 @@ public class VisitorInformation {
 	private String browser;
 	private int height;
 	private int width;
-	private String date;
+	private String timestamp;
 	private String time;
 	private double actualaspectratio;
 	private String devicetype;
@@ -32,11 +32,11 @@ public class VisitorInformation {
 		this.height = height;
 		this.width = width;
 		
-		DateTimeFormatter date_format = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		DateTimeFormatter date_format = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		DateTimeFormatter time_format = DateTimeFormatter.ofPattern("HH");
 		LocalDateTime now = LocalDateTime.now();
 
-		this.date = date_format.format(now);
+		this.timestamp = date_format.format(now);
 		this.time = time_format.format(now);
 		this.devicetype = DeviceType(width);
 		this.actualaspectratio = (double)width/(double)height;
@@ -57,8 +57,8 @@ public class VisitorInformation {
 		return width;
 	}
 	
-	public String getDate() {
-		return date;
+	public String getTimestamp() {
+		return timestamp;
 	}
 	
 	public String getTime() {
@@ -76,8 +76,9 @@ public class VisitorInformation {
 	@Override
 	public String toString() {
 		return "{\r\n"
-				+ "    \"Date\": \""+this.date+"\",\r\n"
-				+ "    \"Time\": \""+this.time+"\",\r\n"
+				+ "    \"Session_UID\": \""+Webapp_key_params.getSessionUid()+"\",\r\n"
+				+ "    \"Timestamp\": \""+this.timestamp+"\",\r\n"
+				+ "    \"Hour of day (UTC)\": \""+this.time+"\",\r\n"
 				+ "    \"Browser\": \""+this.browser+"\",\r\n"
 				+ "    \"Height\": \""+this.height+"\",\r\n"
 				+ "    \"Actual Aspect Ratio\": \""+this.actualaspectratio+"\",\r\n"
