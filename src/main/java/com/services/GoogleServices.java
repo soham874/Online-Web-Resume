@@ -7,7 +7,6 @@ import java.io.StringWriter;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.middleware.Webapp_key_params;
 import com.model.StateResponse;
 
 import okhttp3.MediaType;

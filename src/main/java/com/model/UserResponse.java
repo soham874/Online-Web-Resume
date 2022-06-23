@@ -12,7 +12,7 @@ public class UserResponse {
 	private String message;
 	private String timestamp;
 	
-	public UserResponse(String name, String message, String email) {
+	public UserResponse(String name, String email, String message) {
 		
 		DateTimeFormatter date_format = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();

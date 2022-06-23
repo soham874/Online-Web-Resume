@@ -84,7 +84,7 @@ $(document).ready(function() {
             deviceInfo();
         }, 5000)
 
-        $("#suggestion_box").submit(function(e) {
+        $(".submit-btn").submit(function(e) {
             e.preventDefault();
         });
 
@@ -239,18 +239,14 @@ setTheme = (themeName) => {
     }
 }
 
-/*
 // function to send review
 sendReview = () => {
 
     var user_response = {
         "name": document.getElementById("user_name").value,
-        "message": document.getElementById("user_message").value,
-        "timestamp": Date().toLocaleString()
+        "email": document.getElementById("email_id").value,
+        "message": document.getElementById("user_message").value
     }
-
-    console.log(user_response)
-
 
     $.ajax({
         type: 'POST',
@@ -266,22 +262,5 @@ sendReview = () => {
         }
     })
 
-
-    fetch('https://data.mongodb-api.com/app/data-okjli/endpoint/data/v1/action/insertOne', {
-            method: "POST",
-            body: JSON.stringify(user_response),
-            headers: {
-                "mode": "no-cors",
-                "Access-Control-Request-Headers": "*",
-                "Access-Control-Allow-Origin": "*",
-                "Content-type": "application/json",
-                "api-key": "cH8gQ4EdyCxHfdaZaA2vVEVDBUuSB5QhdHzTJa8F4f564KfBYJ1R8ZxthZobnAau",
-                "Accept": "application/json"
-            }
-        })
-        .then(response => response.json())
-        .then(json => console.log(json))
-        .catch(err => console.log(err));
+    return false;
 }
-
-*/

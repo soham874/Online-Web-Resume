@@ -230,17 +230,18 @@ setTheme = (themeName) => {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "sunny.png"
         document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_light.png"
         document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_light.png"
-        document.getElementById("layout").src = current_state.source_path + '/' + "Project_Layout_Light.png"
     } else {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "full-moon.png"
         document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_dark.png"
         document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_dark.png"
-        document.getElementById("layout").src = current_state.source_path + '/' + "Project_Layout_Dark.png"
     }
 }
 
 // function to send review
 sendReview = () => {
+
+    if (document.getElementById("user_message").value === "")
+        return;
 
     var user_response = {
         "name": document.getElementById("user_name").value,
@@ -255,10 +256,15 @@ sendReview = () => {
         contentType: "application/json",
         dataType: 'json',
         success: (success) => {
-            console.log(success)
+            document.getElementById("message_success").style.opacity = 1
+            setTimeout(() => {
+                document.getElementById("message_success").style.opacity = 0
+            }, 3000)
         },
         error: (err) => {
-            console.log(err)
+            setTimeout(() => {
+                sendReview()
+            }, 30000)
         }
     })
 

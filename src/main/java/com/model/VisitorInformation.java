@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
-import com.middleware.BrowserInformation;
 import com.middleware.Webapp_key_params;
 
 public class VisitorInformation {
