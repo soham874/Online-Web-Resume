@@ -97,16 +97,16 @@ $(document).ready(function() {
                 loadLeetCodeView(data_leetcode.body)
             } else {
                 console.log("AJAX RESPONSE >> Error Leetcode")
-                    //document.getElementById("coding_container").style.display = 'none'
+                document.getElementById("coding_container").style.display = 'none'
                 document.getElementById("leetcode_error").style.display = 'flex'
-                loadLeetCodeView(leetcodeData)
+                    //loadLeetCodeView(leetcodeData)
             }
         },
         error: (err) => {
             console.log("AJAX RESPONSE >> Error Leetcode")
-                //document.getElementById("coding_container").style.display = 'none'
+            document.getElementById("coding_container").style.display = 'none'
             document.getElementById("leetcode_error").style.display = 'flex'
-            loadLeetCodeView(leetcodeData)
+                //loadLeetCodeView(leetcodeData)
         }
     })
 

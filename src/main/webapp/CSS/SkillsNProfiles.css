@@ -58,6 +58,11 @@
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Leetcode data ~~~~~~~~~~~~~~~~~~~~~~~*/
 
+.coding_block {
+    position: relative;
+    padding: 100px;
+}
+
 #progress_bar_container {
     padding: 50px;
     display: flex;
