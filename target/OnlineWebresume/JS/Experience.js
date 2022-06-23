@@ -1,5 +1,7 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
+var isExpanded = false
+
 var experience_fallback = [{
     "_id": "62ac965af4d9e59abac0f331",
     "Role": "Software Engineer",
@@ -71,15 +73,15 @@ loadExperience = (exp_data) => {
     var isLeft = "left"
 
     exp_data.forEach(element => {
-        exp = `
+        exp += `
             <div class="containerTimeline ${isLeft}">
                 <div class="content">
                     <h1>${element.Duration}</h1>
-                    <img alt="" src="${googleEmbedImage(element.Logo_Url)}" class="work_exp_logo " />
-                    <div class="work_exp_info ">
+                    <img alt="" src="${googleEmbedImage(element.Logo_Url)}" class="work_exp_logo" />
+                    <div class="readmore" onclick="showhideexp(event)" >
                         <div><u><b>Organization</b></u>: ${element.Organization}</div>
-                        <div><u><b>Location</b></u>: ${element.Location}</div>
                         <div><u><b>Role</b></u>: ${element.Role}</div>
+                        <div><u><b>Location</b></u>: ${element.Location}</div>
                         <div><u><b>Department</b></u>: ${element.Department}</div>
                         <div><u><b>Project</b></u>: ${element.Project}</div>
                         <div><u><b>Client</b></u>: ${element.Client}</div>
@@ -88,18 +90,44 @@ loadExperience = (exp_data) => {
                             <ul>`
 
         element.Responsibilities.forEach(resp => {
-            exp += `<li>${resp}</li>`
+            exp += `            <li>${resp}</li>`
         })
 
-        exp += `</ul></div><div><u><b>IDE/Compilers/Tools</b></u>:<ul>`
+        exp += `            </ul>
+                        </div>
+                        <div><u><b>IDE/Compilers/Tools</b></u>:
+                            <ul>`
 
         element["IDE/Compilers/Tools"].forEach(resp => {
-            exp += `<li>${resp}</li>`
+            exp += `            <li>${resp}</li>`
         })
 
-        exp += `</ul></div></div></div></div>`
+        exp += `            </ul>
+                        </div>
+                        <div class="readmore-link" style="color: var(--link-color)"></div>
+                    </div>
+                </div>
+            </div>`
+
         isLeft = "right"
     })
 
     document.getElementById('work-exp').innerHTML = exp
+}
+
+showhideexp = (e) => {
+    // record if our text is expanded
+    //console.log(isExpanded)
+
+    //close all open paragraphs
+    $(".readmore.expand").removeClass("expand");
+    $(".readmore-link.expand").removeClass("expand");
+
+    // if target wasn't expand, then expand it
+    if (!isExpanded) {
+        $(e.target).parent(".readmore").addClass("expand");
+        $(e.target).addClass("expand");
+    }
+
+    isExpanded = !isExpanded
 }

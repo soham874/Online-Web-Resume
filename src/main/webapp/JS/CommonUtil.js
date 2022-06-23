@@ -84,7 +84,7 @@ $(document).ready(function() {
             deviceInfo();
         }, 5000)
 
-        $("#suggestion_box").submit(function(e) {
+        $(".submit-btn").submit(function(e) {
             e.preventDefault();
         });
 

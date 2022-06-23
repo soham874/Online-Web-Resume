@@ -2,8 +2,10 @@ package com.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 import com.middleware.BrowserInformation;
+import com.middleware.Webapp_key_params;
 
 public class VisitorInformation {
 
@@ -15,21 +17,34 @@ public class VisitorInformation {
 	private double actualaspectratio;
 	private String devicetype;
 	
+	private static String DeviceType( int width ) {	
+		if( width < 500 )
+			return "Mobile";
+		if( width < 900 )
+			return "Tablet";
+		return "Desktop/Laptop";
+		
+	}
+	
 	public VisitorInformation(String browser, int height, int width) {
+		
+		this.browser = browser;
+		this.height = height;
+		this.width = width;
 		
 		DateTimeFormatter date_format = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		DateTimeFormatter time_format = DateTimeFormatter.ofPattern("HH");
 		LocalDateTime now = LocalDateTime.now();
 
-		this.browser = browser;
-		this.height = height;
-		this.width = width;
 		this.date = date_format.format(now);
 		this.time = time_format.format(now);
-		this.devicetype = BrowserInformation.DeviceType(width);
+		this.devicetype = DeviceType(width);
 		this.actualaspectratio = (double)width/(double)height;
+		
+		UUID session_id = UUID.randomUUID();
+		Webapp_key_params.setSessionUid(session_id.toString());
 	}
-	
+		
 	public String getBroswer() {
 		return browser;
 	}
