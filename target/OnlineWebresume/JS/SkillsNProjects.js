@@ -7,6 +7,74 @@ let SubmissionInformation = []
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
+var leetcodeData = {
+    "data": {
+        "allQuestionsCount": [{
+                "difficulty": "All",
+                "count": 2314
+            },
+            {
+                "difficulty": "Easy",
+                "count": 579
+            },
+            {
+                "difficulty": "Medium",
+                "count": 1230
+            },
+            {
+                "difficulty": "Hard",
+                "count": 505
+            }
+        ],
+        "matchedUser": {
+            "submitStats": {
+                "acSubmissionNum": [{
+                        "difficulty": "All",
+                        "count": 537,
+                        "submissions": 704
+                    },
+                    {
+                        "difficulty": "Easy",
+                        "count": 211,
+                        "submissions": 287
+                    },
+                    {
+                        "difficulty": "Medium",
+                        "count": 289,
+                        "submissions": 375
+                    },
+                    {
+                        "difficulty": "Hard",
+                        "count": 37,
+                        "submissions": 42
+                    }
+                ],
+                "totalSubmissionNum": [{
+                        "difficulty": "All",
+                        "count": 553,
+                        "submissions": 1041
+                    },
+                    {
+                        "difficulty": "Easy",
+                        "count": 211,
+                        "submissions": 358
+                    },
+                    {
+                        "difficulty": "Medium",
+                        "count": 299,
+                        "submissions": 612
+                    },
+                    {
+                        "difficulty": "Hard",
+                        "count": 43,
+                        "submissions": 71
+                    }
+                ]
+            }
+        }
+    }
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 // functions to be performed when webpage loads
@@ -31,12 +99,14 @@ $(document).ready(function() {
                 console.log("AJAX RESPONSE >> Error Leetcode")
                 document.getElementById("coding_container").style.display = 'none'
                 document.getElementById("leetcode_error").style.display = 'flex'
+                    //loadLeetCodeView(leetcodeData)
             }
         },
         error: (err) => {
             console.log("AJAX RESPONSE >> Error Leetcode")
             document.getElementById("coding_container").style.display = 'none'
             document.getElementById("leetcode_error").style.display = 'flex'
+                //loadLeetCodeView(leetcodeData)
         }
     })
 

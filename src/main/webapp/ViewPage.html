@@ -88,7 +88,7 @@
                 Summary
             </div>
             <div class="summary" style="display: flex;">
-                <div style="padding: 30px;" id="summary_section">
+                <div style="padding: 30px;font-size: 20px;" id="summary_section">
                 </div>
                 <img id="display_pic" class="hex-background" onerror="this.style.display='none'">
             </div>
@@ -101,7 +101,7 @@
             </div>
             <!-- Skills... -->
             <div>
-                <div style="padding-left: 50px;font-size: 20px;">
+                <div style="padding: 50px;font-size: 20px; text-align: justify;">
                     Tap or hover over the technologies to know about the different tech-stacks I have worked with in a professional and personnal capacity.
                 </div>
                 <div class="snp" id="snp_section">
@@ -282,28 +282,32 @@
                                     <a href="mailto:soham.choudhury.bwn@gmail.com?subject=Feedback for your Web Portal" target="_blank "><img class="image" src="./assets/share/email.png" alt="email"></a>
                                 </div>
                             </div>
+                            <div class="contact-form-wrapper">
+                                <form>
+                                    <label>Name:</label>
+                                    <div class="form-item">
+                                        <input class="input_fields" type="text" name="sender" id="user_name" required>
+                                    </div>
+                                    <label>Error name</label><br></br>
+                                    <label>Email:</label>
+                                    <div class="form-item">
+                                        <input class="input_fields" type="email" name="email" id="email_id" required>
+                                    </div>
+                                    <label>Error mail</label><br></br>
+                                    <label>Your Message:</label>
+                                    <div class="form-item">
+                                        <textarea class="input_fields" name="message" id="user_message" required style="resize: none;height:200px;"></textarea>
+                                    </div>
+                                    <label>Error message</label>
+                                    <button class="submit-btn input_fields" onclick="sendReview();return false">Send</button>
+                                </form>
+                                <div style="text-align: center;" id="message_success">
+                                    Thank you for your submission. Your response has been recoreded succesfully
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-form-wrapper">
-                        <form>
-                            <div class="form-item">
-                                <input class="input_fields" type="text" name="sender" id="user_name" required>
-                                <label>Name:</label>
-                            </div>
-                            <div class="form-item">
-                                <input class="input_fields" type="email" name="email" id="email_id" required>
-                                <label>Email:</label>
-                            </div>
-                            <div class="form-item">
-                                <textarea class="input_fields" name="message" id="user_message" required style="resize: none;height:200px;"></textarea>
-                                <label>Message:</label>
-                            </div>
-                            <button class="submit-btn input_fields" onclick="sendReview();return false">Send</button>
-                        </form>
-                        <div style="text-align: center;" id="message_success">
-                            Thank you for your submission. Your response has been recoreded succesfully
-                        </div>
-                    </div>
+
                 </section>
 
             </div>

@@ -163,3 +163,9 @@ textarea:valid+label {
         font-size: 40px;
     }
 }
+
+#message_success {
+    text-align: center;
+    opacity: 0;
+    transition: 500ms;
+}

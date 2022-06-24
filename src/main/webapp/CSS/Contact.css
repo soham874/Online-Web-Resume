@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%;
     margin: auto;
     padding: 20px;
     border-radius: 20px;
@@ -17,7 +16,6 @@
 
 .contact-links,
 .contact-form-wrapper {
-    width: 100%;
     padding: 20px;
 }
 
@@ -73,11 +71,7 @@ h2 {
 }
 
 label {
-    position: absolute;
-    top: 10px;
-    left: 2%;
-    color: rgb(0, 0, 0);
-    font-size: clamp(14px, 1.5vw, 18px);
+    color: rgb(255, 255, 255);
     pointer-events: none;
     user-select: none;
 }
@@ -135,7 +129,6 @@ textarea:valid+label {
 @media only screen and (max-width:1250px) {
     .contact-links,
     .contact-form-wrapper {
-        width: 100%;
         border-radius: 10px 10px 0 0;
         font-size: 40px;
     }

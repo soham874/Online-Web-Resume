@@ -44,7 +44,7 @@
         <div class="help_div">
             <div id="top_help">
                 <img id="arr_up" src="assets/Uparray_light.png" />
-                <p style="margin:0px;">Quick scrool to different sections here</p>
+                <p style="margin:0px;">Quick scroll to different sections here</p>
             </div>
             <div id="bottom_help">
                 <p style="margin:0px;">Change the theme here</p>
@@ -109,36 +109,43 @@
             </div>
             <!-- Coding profile... -->
             <div id="coding_container">
+                <!-- heading ... -->
                 <div style="padding: 50px;font-size: 20px;text-align: justify;">Here's a quick look into my coding portfolio from
                     <a href="https://leetcode.com/Soham874/" target="_blank">Leetcode</a>. Hover or tap on each question category type to know my stats in that particular level. Tap anywhere outside to see my overall stats.
                 </div>
-                <div class="category_buttons">
-                    <div class="category_class" id="c1" style="color: var(--color-easy);">Easy</div>
-                    <div class="category_class" id="c2" style="color: var(--color-medium);">Medium</div>
-                    <div class="category_class" id="c3" style="color: var(--color-hard);">Hard</div>
-                </div>
-                <div style="position: relative;padding: 100px;">
-                    <div class="progress" style="left: 33.34%">
-                        <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="progress-circle-back"
-                                cx="80" cy="80" r="74"></circle>
-                        <circle class="progress-circle-prog"
-                                cx="80" cy="80" r="74"></circle>
-                    </svg>
-                        <div class="progress-text" data-progress="0">0%</div>
+                <div>
+                    <!-- buttons... -->
+                    <div class="category_buttons">
+                        <div class="category_class" id="c1" style="color: var(--color-easy);">Easy</div>
+                        <div class="category_class" id="c2" style="color: var(--color-medium);">Medium</div>
+                        <div class="category_class" id="c3" style="color: var(--color-hard);">Hard</div>
                     </div>
-                    <div class="progress" style="left: 66.68%">
-                        <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="progress-circle-back"
-                                cx="80" cy="80" r="74"></circle>
-                        <circle class="progress-circle-prog"
-                                cx="80" cy="80" r="74"></circle>
-                    </svg>
-                        <div class="progress-text" data-progress="0">0%</div>
+                    <!-- progress wheels ... -->
+                    <div class="coding_block">
+                        <div class="progress" style="left: 33.34%">
+                            <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="progress-circle-back"
+                                        cx="80" cy="80" r="74"></circle>
+                                <circle class="progress-circle-prog"
+                                        cx="80" cy="80" r="74"></circle>
+                            </svg>
+                            <div class="progress-text" data-progress="0">0%</div>
+                        </div>
+                        <div class="progress" style="left: 66.68%">
+                            <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="progress-circle-back"
+                                        cx="80" cy="80" r="74"></circle>
+                                <circle class="progress-circle-prog"
+                                        cx="80" cy="80" r="74"></circle>
+                            </svg>
+                            <div class="progress-text" data-progress="0">0%</div>
+                        </div>
+                    </div>
+                    <!-- stats section... -->
+                    <div id="progress_bar_container">
                     </div>
                 </div>
-                <div id="progress_bar_container">
-                </div>
+
             </div>
             <!-- Coding error... -->
             <div class="error_api" id="leetcode_error">
@@ -242,13 +249,10 @@
                     <li>Webpage hosting -
                         <a href="https://www.heroku.com/ " target="_blank ">Heroku</a></li>
                     <li>Database support -
-                        <a href="https://www.mongodb.com/atlas/database " target="_blank ">MongoDB Atlas</a>
+                        <a href="https://www.mongodb.com/atlas/database " target="_blank ">MongoDB Atlas</a>,
+                        <a href="https://www.google.com/intl/en_in/drive/" target="_blank ">Google Drive</a>
                     </li>
                 </ul>
-                <div>
-                    <div>A rough schematic of the project infrastructure is as follows</div>
-                    <img alt=" " id="layout" src="./assets/Project_Layout_Light.png" style="width: 90%;padding:0 5%" />
-                </div>
                 Interested in what is hapenning under the hood? Have a look at the source code <a href="https://github.com/soham874/Online-Web-Resume " target="_blank ">here</a>.
             </div>
         </div>
@@ -296,6 +300,9 @@
                             </div>
                             <button class="submit-btn input_fields" onclick="sendReview();return false">Send</button>
                         </form>
+                        <div style="text-align: center;" id="message_success">
+                            Thank you for your submission. Your response has been recoreded succesfully
+                        </div>
                     </div>
                 </section>
 
