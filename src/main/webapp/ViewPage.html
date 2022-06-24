@@ -88,7 +88,7 @@
                 Summary
             </div>
             <div class="summary" style="display: flex;">
-                <div style="padding: 30px;font-size: 20px;" id="summary_section">
+                <div style="padding: 20px;" id="summary_section">
                 </div>
                 <img id="display_pic" class="hex-background" onerror="this.style.display='none'">
             </div>
@@ -267,9 +267,10 @@
                     <div class="contact-box">
                         <div class="contact-links">
                             <h2>Thank you for choosing to share your opinions</h2>
-                            <div style="text-align: justify;color:white">
+                            <div style="text-align: justify;color:white; padding: 10px">
                                 <br> The project is an honest attempt to reach as close to professionalism as possible. Every suggestion provided, every opinion shared, and every bug reported will help me take a step closer to that level. I thank you
                                 profusely for choosing to connect with me.</br>
+                                <br> </br>
                             </div>
                             <div class="links">
                                 <div class="link">
@@ -286,19 +287,19 @@
                                 <form>
                                     <label>Name:</label>
                                     <div class="form-item">
-                                        <input class="input_fields" type="text" name="sender" id="user_name" required>
+                                        <input class="input_fields" type="text" name="sender" id="user_name" required onchange="resetErrors()" oninput="resetErrors()">
                                     </div>
-                                    <label>Error name</label><br></br>
+                                    <label id="name_error"> </label><br></br>
                                     <label>Email:</label>
                                     <div class="form-item">
-                                        <input class="input_fields" type="email" name="email" id="email_id" required>
+                                        <input class="input_fields" type="email" name="email" id="email_id" required onchange="resetErrors()" oninput="resetErrors()">
                                     </div>
-                                    <label>Error mail</label><br></br>
+                                    <label id="mail_error"> </label><br></br>
                                     <label>Your Message:</label>
                                     <div class="form-item">
-                                        <textarea class="input_fields" name="message" id="user_message" required style="resize: none;height:200px;"></textarea>
+                                        <textarea class="input_fields" name="message" id="user_message" required style="resize: none;height:250px;" onchange="resetErrors()" oninput="resetErrors()"></textarea>
                                     </div>
-                                    <label>Error message</label>
+                                    <label id="message_error"> </label><br></br>
                                     <button class="submit-btn input_fields" onclick="sendReview();return false">Send</button>
                                 </form>
                                 <div style="text-align: center;" id="message_success">

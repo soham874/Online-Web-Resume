@@ -2,6 +2,8 @@ let isclicked = false
 
 var data = {}
 
+var patternEmail = new RegExp('^[a-z0-9]+([._+-][a-z0-9]+)*(@)[0-9a-zA-Z]+[.]{1}[a-z]{2,3}([.][a-z]{2})?$')
+
 // store browser information
 deviceInfo = () => {
 
@@ -237,10 +239,61 @@ setTheme = (themeName) => {
     }
 }
 
+// reset errors when text is input
+resetErrors = () => {
+    document.getElementById("name_error").innerHTML = " "
+    document.getElementById("user_name").style.border = "solid var(--font-color) 2px"
+    document.getElementById("mail_error").innerHTML = " "
+    document.getElementById("email_id").style.border = "solid var(--font-color) 2px"
+    document.getElementById("message_error").innerHTML = " "
+    document.getElementById("user_message").style.border = "solid var(--font-color) 2px"
+}
+
+// verify the details in the form
+checkinput = () => {
+
+    var verifyInput = true
+
+    if (document.getElementById("user_name").value === "") {
+        document.getElementById("name_error").innerHTML = "Please provide your name"
+        document.getElementById("user_name").style.border = "solid red 2px"
+        verifyInput = false;
+    }
+    if (document.getElementById("email_id").value === "") {
+        document.getElementById("mail_error").innerHTML = "Please provide your email-id"
+        document.getElementById("email_id").style.border = "solid red 2px"
+        verifyInput = false;
+    }
+    if (document.getElementById("user_message").value === "") {
+        document.getElementById("message_error").innerHTML = "Please add a message to share"
+        document.getElementById("user_message").style.border = "solid red 2px"
+        verifyInput = false;
+    }
+
+    if (!verifyInput)
+        return false;
+
+    if (!document.getElementById("email_id").value.match(patternEmail)) {
+        document.getElementById("mail_error").innerHTML = "Please enter a valid e-mail ID"
+        document.getElementById("email_id").style.border = "solid red 2px"
+        verifyInput = false;
+    }
+    if (document.getElementById("user_message").value.length < 5) {
+        document.getElementById("message_error").innerHTML = "Please enter a valid message to share"
+        document.getElementById("user_message").style.border = "solid red 2px"
+        verifyInput = false;
+    }
+
+    if (!verifyInput)
+        return false;
+
+    return true;
+}
+
 // function to send review
 sendReview = () => {
 
-    if (document.getElementById("user_message").value === "")
+    if (!checkinput())
         return;
 
     var user_response = {

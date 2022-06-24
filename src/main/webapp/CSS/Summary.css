@@ -9,7 +9,6 @@
     padding-bottom: 250px;
     padding-left: 50px;
     padding-right: 50px;
-    font-size: 20px;
     z-index: 1;
     text-align: justify;
 }
@@ -23,5 +22,6 @@
 @media only screen and (max-width:1250px) {
     .summary {
         flex-direction: column;
+        font-size: 30px;
     }
 }
