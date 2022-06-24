@@ -77,7 +77,7 @@ loadExperience = (exp_data) => {
             <div class="containerTimeline ${isLeft}">
                 <div class="content">
                     <h1 style="font-size:2.5em">${element.Duration}</h1>
-                    <img alt="" src="${googleEmbedImage(element.Logo_Url)}" class="work_exp_logo" />
+                    <img alt="" src="${googleEmbedImage(element.Logo_Url)} onerror="this.style.display='none'"" class="work_exp_logo" />
                     <div class="readmore" onclick="showhideexp(event)" >
                         <div><u><b>Organization</b></u>: ${element.Organization}</div>
                         <div><u><b>Role</b></u>: ${element.Role}</div>
