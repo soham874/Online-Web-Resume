@@ -401,7 +401,8 @@ span:before {
         left: 2%;
     }
     #bottom_help {
-        bottom: 5%;
+        top: 15%;
+        left: 7%;
     }
     .theme_bulb {
         top: 0;
