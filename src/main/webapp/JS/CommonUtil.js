@@ -1,4 +1,9 @@
 let isclicked = false
+var sideMenu = false;
+var cur_percent;
+var style;
+var down_pos;
+var up_pos;
 
 var data = {}
 
@@ -49,6 +54,12 @@ deviceInfo = () => {
 $(document).ready(function() {
     thoughtboxdisplayed = false
 
+    cur_percent = document.querySelector('.theme_chain')
+    style = getComputedStyle(cur_percent);
+
+    down_pos = (parseInt(style.top.replace(/px/, "")) + 10) + "px"
+    up_pos = (parseInt(style.top.replace(/px/, "")) - 10) + "px"
+
     document.onreadystatechange = function() {
         if (document.readyState !== "complete") {
             document.querySelector("#mainbody").style.visibility = "hidden";
@@ -93,7 +104,6 @@ $(document).ready(function() {
         document.getElementById("display_pic").src = googleEmbedImage("https://drive.google.com/file/d/1Nm42BeZ5qOjldIeAiN96RMjAWhLZ5b5E/view?usp=sharing")
     };
 
-
     //set the theme from local storage if present
     if (localStorage.getItem('theme') === 'theme-dark') {
         setTheme('theme-dark');
@@ -109,6 +119,10 @@ $(document).ready(function() {
             var elems = document.getElementsByClassName("header-links")
             for (var i = 0; i < elems.length; i += 1)
                 elems[i].style.display = 'block';
+        } else {
+            var elems = document.getElementsByClassName("header-links")
+            for (var i = 0; i < elems.length; i += 1)
+                elems[i].style.display = 'none';
         }
 
     })
@@ -232,10 +246,14 @@ setTheme = (themeName) => {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "sunny.png"
         document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_light.png"
         document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_light.png"
+        document.getElementById("bulb").src = current_state.source_path + '/' + "bulb_lit.png"
+        document.getElementById("chain").style.top = down_pos
     } else {
         document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "full-moon.png"
         document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_dark.png"
         document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_dark.png"
+        document.getElementById("bulb").src = current_state.source_path + '/' + "bulb_unlit.png"
+        document.getElementById("chain").style.top = up_pos
     }
 }
 
