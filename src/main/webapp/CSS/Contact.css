@@ -41,7 +41,6 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-top: 50px;
 }
 
 .link {
@@ -144,9 +143,6 @@ textarea:valid+label {
     }
     h2 {
         font-size: clamp(30px, 12vw, 60px);
-    }
-    .links {
-        padding-top: 30px;
     }
     .image {
         width: 38px;

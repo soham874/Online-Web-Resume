@@ -205,7 +205,7 @@ hidedivs = () => {
 // function which returns the current theme (light/dark) along with full asset path
 gettheme = () => {
 
-    var path = document.getElementById("imgClickAndChange").src
+    var path = document.getElementById("bulb").src
     let respath = ""
 
     let pointer = path.length - 1
@@ -228,7 +228,7 @@ gettheme = () => {
 changeImage = () => {
 
     var current_state = gettheme()
-    if (current_state.image === "sunny.png")
+    if (current_state.image === "bulb_lit.png")
         setTheme('theme-dark');
     else
         setTheme('theme-light');
@@ -243,13 +243,11 @@ setTheme = (themeName) => {
     //console.log(document.getElementById("layout").src)
     var current_state = gettheme()
     if (themeName === "theme-light") {
-        document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "sunny.png"
         document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_light.png"
         document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_light.png"
         document.getElementById("bulb").src = current_state.source_path + '/' + "bulb_lit.png"
         document.getElementById("chain").style.top = down_pos
     } else {
-        document.getElementById("imgClickAndChange").src = current_state.source_path + '/' + "full-moon.png"
         document.getElementById("arr_up").src = current_state.source_path + '/' + "Uparray_dark.png"
         document.getElementById("arr_down").src = current_state.source_path + '/' + "Downarray_dark.png"
         document.getElementById("bulb").src = current_state.source_path + '/' + "bulb_unlit.png"
