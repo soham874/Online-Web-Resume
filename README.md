@@ -24,8 +24,12 @@ While opening the webpage, the following information is automatically collected 
 - Device screen height
 
 Visitor browser information, and visitor communications are stored directly in Google Sheets in my drive via API calls through [SheetsDB](https://sheetdb.io/apis).
+
 Post storgae, Google Apps Scripts and Google Sheets process the information and displays it in a meaningful way. The stored information helps me get important insights like webpage traffic, frequency distribution of footfall vs time of day, and device and browser types commonly used to access my webpage. A glance into the generated outputs is as follows
+
 ![Sample output](src/main/webapp/assets/example.png)
+
+All stored/processed information is available for viewing [here](https://docs.google.com/spreadsheets/d/1ZsfrKS97d97JoJ7m96PUkEFEkCCwCx7zLvbSURfBAiw/edit#gid=369051520)
 
 # Credits
 
