@@ -95,7 +95,7 @@ $(document).ready(function() {
 
         setTimeout(() => {
             deviceInfo();
-        }, 5000)
+        }, 30000)
 
         $(".submit-btn").submit(function(e) {
             e.preventDefault();

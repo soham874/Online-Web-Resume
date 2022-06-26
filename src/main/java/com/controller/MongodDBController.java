@@ -3,6 +3,9 @@ package com.controller;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -109,6 +112,14 @@ public class MongodDBController {
 					ServicelerLayerResponse.getBody(), 
 					ServicelerLayerResponse.getMessage()
         	);
+    		
+    		JSONParser jsonParser = new JSONParser();
+    		JSONObject jsonResponse = (JSONObject) jsonParser.parse(ServicelerLayerResponse.getBody());
+    		JSONArray jsonDocument = (JSONArray) jsonResponse.get("documents");
+    	    
+    	    Webapp_key_params.setGoogle_visitor_information_api(((JSONObject)jsonDocument.get(0)).get("Google_visitor_information_api").toString());
+    	    Webapp_key_params.setGoogle_visitor_response_api(((JSONObject)jsonDocument.get(0)).get("Google_user_response_api").toString());
+    		
     		
     	}catch( Exception e ) { // Service layer refuses to respond 
     		

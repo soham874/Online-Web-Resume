@@ -22,7 +22,9 @@ private static final MediaType JSON = MediaType.parse("application/json");
 	public static StateResponse Post(String URL, String visitor_body) throws IOException {
 		
 		OkHttpClient client = new OkHttpClient().newBuilder().build();
-
+		
+		System.out.println(URL);
+		
 		RequestBody body = RequestBody.create(visitor_body,JSON);
         Request request = new Request.Builder()
             .url(URL)

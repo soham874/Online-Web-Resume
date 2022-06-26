@@ -36,7 +36,7 @@ public class GoogleController {
 				Integer.parseInt(jsonRequestBody.get("height").toString()), 
 				Integer.parseInt(jsonRequestBody.get("width").toString()));
 		
-		System.out.println(visitorInformation.toString());
+		//System.out.println(visitorInformation.toString());
 		
     	StateResponse ControllerLayerResponse;
     	
