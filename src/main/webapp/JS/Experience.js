@@ -1,6 +1,6 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-var isExpanded = false
+var isExpanded = []
 
 var experience_fallback = [{
     "_id": "62ac965af4d9e59abac0f331",
@@ -71,14 +71,16 @@ loadExperience = (exp_data) => {
 
     let exp = ''
     var isLeft = "left"
+    var counter = 0
 
     exp_data.forEach(element => {
+        isExpanded.push(false)
         exp += `
             <div class="containerTimeline ${isLeft}">
                 <div class="content">
                     <h1 style="font-size:2.5em">${element.Duration}</h1>
                     <img alt="" src="${googleEmbedImage(element.Logo_Url)}" onerror="this.style.display='none'" class="work_exp_logo" />
-                    <div class="readmore" onclick="showhideexp(event)" >
+                    <div class="readmore" onclick="showhideexp(event,${counter})" >
                         <div><u><b>Organization</b></u>: ${element.Organization}</div>
                         <div><u><b>Role</b></u>: ${element.Role}</div>
                         <div><u><b>Location</b></u>: ${element.Location}</div>
@@ -110,24 +112,36 @@ loadExperience = (exp_data) => {
             </div>`
 
         isLeft = "right"
+        counter++
     })
 
     document.getElementById('work-exp').innerHTML = exp
 }
 
-showhideexp = (e) => {
+showhideexp = (e, s_no) => {
+
+    var isOpen = isExpanded[s_no]
+
     // record if our text is expanded
+    //console.log(s_no)
     //console.log(isExpanded)
 
     //close all open paragraphs
     $(".readmore.expand").removeClass("expand");
     $(".readmore-link.expand").removeClass("expand");
+    isExpanded = new Array(isExpanded.length).fill(false)
+        //console.log(isExpanded)
+
+    if (isOpen)
+        return;
 
     // if target wasn't expand, then expand it
-    if (!isExpanded) {
+    if (!isExpanded[s_no]) {
         $(e.target).parent(".readmore").addClass("expand");
         $(e.target).addClass("expand");
     }
 
-    isExpanded = !isExpanded
+    isExpanded[s_no] = !isExpanded[s_no]
+
+    //console.log(isExpanded)
 }
