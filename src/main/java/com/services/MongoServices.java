@@ -7,6 +7,7 @@ import java.io.StringWriter;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.middleware.CommonUtils;
 import com.middleware.Webapp_key_params;
 import com.model.StateResponse;
 
@@ -32,7 +33,7 @@ public class MongoServices {
             .build();
         
         StateResponse MongoDBAPIResponse;
-        System.out.println("Attempting to reach MongoDB servers...");
+        CommonUtils.AddLog("Attempting to reach MongoDB servers...",3);
         
         // attempts to reach MongoDB servers
         

@@ -2,23 +2,17 @@ package com.services;
 
 import java.io.IOException;
 
-import com.middleware.Webapp_key_params;
-import com.model.VisitorInformation;
-
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-
 public class TestService {
 	
 	public static void main(String[] args) throws IOException {
 		
-		VisitorInformation visitorInformation = new VisitorInformation(
-				"Browser", 
-				915, //height
-				412); //width
-		
-		System.out.println(visitorInformation.toString());
+		System.out.println("\033[0m BLACK");
+        System.out.println("\033[31m RED");
+        System.out.println("\033[32m GREEN");
+        System.out.println("\033[33m YELLOW");
+        System.out.println("\033[34m BLUE");
+        System.out.println("\033[35m MAGENTA");
+        System.out.println("\033[36m CYAN");
+        System.out.println("\033[37m WHITE");
 	}
 }

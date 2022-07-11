@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.middleware.CommonUtils;
 import com.middleware.Webapp_key_params;
 import com.model.StateResponse;
 import com.model.UserResponse;
@@ -65,9 +66,14 @@ public class GoogleController {
     	}
     	
     	// return the response
-        System.out.println("Response from Google Controller layer for submitting browser details");
-        System.out.println(ControllerLayerResponse.toString());
-    	
+        int status = ControllerLayerResponse.getStatus();
+        if( status >= 200 && status < 400 ) {
+        	CommonUtils.AddLog("Browser details submitted successfully", 2);
+        }else {
+        	CommonUtils.AddLog("Response from Google Controller layer for submitting browser details ->\n"+ControllerLayerResponse.toString(),1);
+        	CommonUtils.AddLog("Submitted request body ->\n"+visitorInformation.toString(),4);
+        }
+        
     	return ControllerLayerResponse.toString();
 	}
 	
@@ -109,10 +115,15 @@ public class GoogleController {
         	);
     	}
     	
-    	// return the response
-        System.out.println("Response from Google Controller layer for submitting user response");
-        System.out.println(ControllerLayerResponse.toString());
-    	
+        // return the response
+        int status = ControllerLayerResponse.getStatus();
+        if( status >= 200 && status < 400 ) {
+        	CommonUtils.AddLog("User response submitted successfully", 2);
+        }else {
+        	CommonUtils.AddLog("Response from Google Controller layer for submitting user response ->\n"+ControllerLayerResponse.toString(),1);
+        	CommonUtils.AddLog("Submitted request body ->\n"+userResponse.toString(),4);
+        }
+        
     	return ControllerLayerResponse.toString();
 	}
 

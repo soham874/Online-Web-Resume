@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.middleware.CommonUtils;
 import com.model.StateResponse;
 import com.services.*;
 
@@ -48,9 +49,13 @@ public class GithubController {
     	}
     	
     	// return the response
-        System.out.println("Response from Github Controller layer");
-        System.out.println(ControllerLayerResponse.toString());
-    	
+        int status = ControllerLayerResponse.getStatus();
+        if( status >= 200 && status < 400 ) {
+        	CommonUtils.AddLog("Github information fetched successfully",2);
+        }else {
+        	CommonUtils.AddLog("Response from Github Controller layer ->\n"+ControllerLayerResponse.toString(),1);
+        }
+     
     	return ControllerLayerResponse.toString();
     	
     }

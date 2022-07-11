@@ -7,6 +7,7 @@ import java.io.StringWriter;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.middleware.CommonUtils;
 import com.model.StateResponse;
 
 import okhttp3.MediaType;
@@ -23,7 +24,7 @@ private static final MediaType JSON = MediaType.parse("application/json");
 		
 		OkHttpClient client = new OkHttpClient().newBuilder().build();
 		
-		System.out.println(URL);
+		//System.out.println(URL);
 		
 		RequestBody body = RequestBody.create(visitor_body,JSON);
         Request request = new Request.Builder()
@@ -33,7 +34,7 @@ private static final MediaType JSON = MediaType.parse("application/json");
             .build();
         
         StateResponse GoogleAPIResponse;
-        System.out.println("Attempting to reach Google servers...");
+        CommonUtils.AddLog("Attempting to reach Google servers...",3);
         
         // attempts to reach Google servers
         

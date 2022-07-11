@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.middleware.CommonUtils;
 import com.model.StateResponse;
 import com.services.*;
 
@@ -46,10 +47,14 @@ public class LeetCodeController {
         			"Backend error, unable to reach Service Layer"
         	);
     	}
-    	
-    	// return the response
-        System.out.println("Response from LeetCode Controller layer");
-        System.out.println(ControllerLayerResponse.toString());
+    	        
+        // return the response
+        int status = ControllerLayerResponse.getStatus();
+        if( status >= 200 && status < 400 ) {
+        	CommonUtils.AddLog("Leetcode data fetched successfully",2);
+        }else {
+        	CommonUtils.AddLog("Response from LeetCode Controller layer ->\n"+ControllerLayerResponse.toString(),1);
+        }
     	
     	return ControllerLayerResponse.toString();
     	

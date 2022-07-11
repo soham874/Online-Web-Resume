@@ -13,6 +13,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import com.middleware.CommonUtils;
 import com.middleware.Webapp_key_params;
 import com.model.*;
 
@@ -39,7 +40,7 @@ public class LeetcodeService {
         
         StateResponse LeetCodeFetchProfileResponse;
         
-        System.out.println("Attempting to reach LeetCode servers...");
+        CommonUtils.AddLog("Attempting to reach LeetCode servers...",3);
         
         // attempts to reach LeetCode servers
         
