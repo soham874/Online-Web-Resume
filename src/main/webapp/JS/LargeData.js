@@ -111,12 +111,15 @@ $.ajax({
                 //console.log(general_data.body)
             loadSkills(general_data.body.documents[0].skill_icons)
             loadSummary(general_data.body.documents[0].Summary)
+            document.getElementById("display_pic").src = googleEmbedImage(general_data.body.documents[0].Profile_pic_link)
+
         } else {
             console.log("AJAX RESPONSE >> Error General Information, loading fallback data")
                 //document.getElementById("work-exp").style.display = 'none'
                 //document.getElementById("work_error").style.display = 'flex'
             loadSkills()
             loadSummary()
+            document.getElementById("display_pic").src = googleEmbedImage("https://drive.google.com/file/d/1Nm42BeZ5qOjldIeAiN96RMjAWhLZ5b5E/view?usp=sharing")
         }
     },
     error: (err) => {
@@ -125,6 +128,7 @@ $.ajax({
             //document.getElementById("work_error").style.display = 'flex'
         loadSkills()
         loadSummary()
+        document.getElementById("display_pic").src = googleEmbedImage("https://drive.google.com/file/d/1Nm42BeZ5qOjldIeAiN96RMjAWhLZ5b5E/view?usp=sharing")
     }
 })
 
