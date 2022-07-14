@@ -73,6 +73,13 @@ loadExperience = (exp_data) => {
     var isLeft = "left"
     var counter = 0
 
+    Object.keys(exp_data).forEach(key => {
+        if (exp_data[key] === '') {
+            console.log(`Delete ${key}`)
+            delete exp_data[key];
+        }
+    });
+
     exp_data.forEach(element => {
         isExpanded.push(false)
         exp += `
@@ -80,15 +87,24 @@ loadExperience = (exp_data) => {
                 <div class="content">
                     <h1 style="font-size:2.5em">${element.Duration}</h1>
                     <img alt="" src="${googleEmbedImage(element.Logo_Url)}" onerror="this.style.display='none'" class="work_exp_logo" />
-                    <div class="readmore" onclick="showhideexp(event,${counter})" >
-                        <div><u><b>Organization</b></u>: ${element.Organization}</div>
-                        <div><u><b>Role</b></u>: ${element.Role}</div>
-                        <div><u><b>Location</b></u>: ${element.Location}</div>
-                        <div><u><b>Department</b></u>: ${element.Department}</div>
-                        <div><u><b>Project</b></u>: ${element.Project}</div>
-                        <div><u><b>Client</b></u>: ${element.Client}</div>
-                        <div><u><b>Description</b></u>: ${element.Description}</div>
-                        <div><u><b>Responsibilities</b></u>:
+                    <div class="readmore" onclick="showhideexp(event,${counter})" >`
+
+                    if( "Organization" in element )
+                        exp += `<div><u><b>Organization</b></u>: ${element.Organization}</div>`
+                    if( "Role" in element )
+                        exp += `<div><u><b>Role</b></u>: ${element.Role}</div>`
+                    if( "Location" in element )
+                        exp += `<div><u><b>Location</b></u>: ${element.Location}</div>`
+                    if( "Department" in element )                       
+                        exp += `<div><u><b>Department</b></u>: ${element.Department}</div>`
+                    if( "Project" in element )
+                        exp += `<div><u><b>Project</b></u>: ${element.Project}</div>`
+                    if( "Client" in element )
+                        exp += `<div><u><b>Client</b></u>: ${element.Client}</div>`
+                    if( "Description" in element )
+                        exp += `<div><u><b>Description</b></u>: ${element.Description}</div>`
+                    if( "Responsibilities" in element ){
+                        exp += `<div><u><b>Responsibilities</b></u>:
                             <ul>`
 
         element.Responsibilities.forEach(resp => {
@@ -96,8 +112,10 @@ loadExperience = (exp_data) => {
         })
 
         exp += `            </ul>
-                        </div>
-                        <div><u><b>IDE/Compilers/Tools</b></u>:
+                        </div>`
+                    }
+                    if( "IDE/Compilers/Tools" in element ){
+                        exp += `<div><u><b>IDE/Compilers/Tools</b></u>:
                             <ul>`
 
         element["IDE/Compilers/Tools"].forEach(resp => {
@@ -105,8 +123,9 @@ loadExperience = (exp_data) => {
         })
 
         exp += `            </ul>
-                        </div>
-                        <div class="readmore-link" style="color: var(--link-color)"></div>
+                        </div>`
+                    }
+                        exp += `<div class="readmore-link" style="color: var(--link-color)"></div>
                     </div>
                 </div>
             </div>`
