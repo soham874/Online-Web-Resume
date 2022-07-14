@@ -2,7 +2,6 @@
 
 var isExpanded = []
 
-/*
 var experience_fallback = [{
     "_id": "62ac965af4d9e59abac0f331",
     "Role": "Software Engineer",
@@ -30,10 +29,7 @@ var experience_fallback = [{
     ],
     "Duration": "8th Feb 2021 - Present",
     "Serial_Number": 1
-}]
-*/
-
-var experience_fallback = [{
+},{
     "Role": "Software Development Engineer 2",
     "Name": "walmart",
     "Logo_Url": "https://drive.google.com/file/d/110r2lMZL8DuzYA8_LpOGqLXLQaTHLCXq/view?usp=sharing",
@@ -49,7 +45,8 @@ var experience_fallback = [{
     "IDE/Compilers/Tools": [
         
     ],
-    "Duration": "11th July 2022 - Present"
+    "Duration": "11th July 2022 - Present",
+    "Serial_Number": 2
 }]
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -94,6 +91,18 @@ loadExperience = (exp_data) => {
     var isLeft = "left"
     var counter = 0
 
+    exp_data.sort((a,b) => {
+
+        if ( a.Serial_Number < b.Serial_Number )
+            return 1;
+        
+        if ( a.Serial_Number > b.Serial_Number )
+            return -1;
+        
+        return 0;
+
+    })
+    
     exp_data.forEach(element => {
 
         //console.log(Object.keys(element))
