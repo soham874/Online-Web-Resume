@@ -41,6 +41,7 @@ public class VisitorInformation {
 		this.actualaspectratio = (double)width/(double)height;
 		
 		UUID session_id = UUID.randomUUID();
+		System.out.println("Session ID -> "+session_id.toString());
 		Webapp_key_params.setSessionUid(session_id.toString());
 	}
 		
