@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.middleware.CommonUtils;
 import com.model.StateResponse;
@@ -17,6 +18,7 @@ import com.services.*;
 @Controller
 @ComponentScan
 @Component
+@RestController
 public class GithubController {
 	
     @RequestMapping(value = "/receiveGithubData", method = RequestMethod.GET, produces = "application/json")

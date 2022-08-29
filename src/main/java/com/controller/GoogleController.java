@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.middleware.CommonUtils;
 import com.middleware.Webapp_key_params;
@@ -24,6 +25,7 @@ import com.services.GoogleServices;
 @Controller
 @ComponentScan
 @Component
+@RestController
 public class GoogleController {
 
 	@RequestMapping(value = "/updateBrowserData", method = RequestMethod.POST, produces = "application/json")
