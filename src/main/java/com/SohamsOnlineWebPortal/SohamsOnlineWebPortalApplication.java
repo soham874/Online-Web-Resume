@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @SpringBootApplication
 public class SohamsOnlineWebPortalApplication {
@@ -18,7 +19,9 @@ public class SohamsOnlineWebPortalApplication {
 class HomeContoller {
 	
     @RequestMapping("/")
-    public String index() {
-        return "ViewPage";
+    public ModelAndView index() {
+    	ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("ViewPage.html");
+        return modelAndView;
     }
 }
