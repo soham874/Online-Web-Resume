@@ -1,12 +1,18 @@
 package com.SohamsOnlineWebPortal;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @SpringBootApplication
+@EnableScheduling
 public class SohamsOnlineWebPortalApplication {
 
 	public static void main(String[] args) {
@@ -24,4 +30,11 @@ class HomeContoller {
         modelAndView.setViewName("ViewPage.html");
         return modelAndView;
     }
+	
+	@Scheduled(fixedDelay = 5000)
+	public void scheduleFixedDelayTask() {
+	    System.out.println(
+	      "Cron job to keep application awake -> " + DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").format(LocalDateTime.now()) );
+	}
+
 }
