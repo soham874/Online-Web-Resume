@@ -48,6 +48,17 @@ deviceInfo = () => {
             console.log("AJAX RESPONSE >> Failed to store browser data")
         }
     })
+
+    $.ajax({
+        type: 'GET',
+        url: formAjaxUrl("dummyUrlFromFrontend"),
+        success: (success) => {
+            console.log("Request to keep service alive sent successfuly")
+        },
+        error: (err) => {
+            console.log(err)
+        }
+    })
 }
 
 // functions to be performed when webpage loads

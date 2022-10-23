@@ -2,17 +2,30 @@ package com.SohamsOnlineWebPortal.services;
 
 import java.io.IOException;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class TestService {
 	
-	public static void main(String[] args) throws IOException {
+	public static void dummyCallToSelf() throws IOException, InterruptedException {
 		
-		System.out.println("\033[0m BLACK");
-        System.out.println("\033[31m RED");
-        System.out.println("\033[32m GREEN");
-        System.out.println("\033[33m YELLOW");
-        System.out.println("\033[34m BLUE");
-        System.out.println("\033[35m MAGENTA");
-        System.out.println("\033[36m CYAN");
-        System.out.println("\033[37m WHITE");
+		OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+
+        RequestBody body = RequestBody.create("", null);
+        Request request = new Request.Builder()
+                //.url("https://sohams-web-portal.onrender.com/dummyUrl")
+        		.url("http://localhost:8080/dummyUrl")
+                .build();
+        
+        while(true) {
+        	
+        	Response response = client.newCall(request).execute();
+            response.close();
+            
+            Thread.sleep(30000);
+        }
 	}
 }
