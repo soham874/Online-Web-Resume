@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @SpringBootApplication
-@EnableScheduling
 //@PropertySource("file://https://drive.google.com/file/d/10OsvSq7gXwbJGD6L81qTMZqFvTsiPI17/view?usp=sharing")
 public class SohamsOnlineWebPortalApplication {
 
@@ -28,7 +27,7 @@ public class SohamsOnlineWebPortalApplication {
 class HomeContoller {
 	
 	//@Value("${spring.property.testvalue}")
-	//private String check;
+	private String check;
 	
     @RequestMapping("/")
     public ModelAndView index() {
@@ -37,11 +36,10 @@ class HomeContoller {
         modelAndView.setViewName("ViewPage.html");
         return modelAndView;
     }
-	
-	@Scheduled(fixedDelay = 600000)
-	public void scheduleFixedDelayTask() {
-	    System.out.println(
-	      "Cron job to keep application awake -> " + DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").format(LocalDateTime.now()) );
-	}
 
+    @RequestMapping("/dummyUrl")
+    public String dummyUrl() {
+    	System.out.println("Dummy Request to keep application alive received successfully at -> "+DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").format(LocalDateTime.now()));
+        return "Success";
+    }
 }
