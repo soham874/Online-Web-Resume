@@ -6,23 +6,32 @@ import java.util.UUID;
 
 import com.SohamsOnlineWebPortal.middleware.Webapp_key_params;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@FieldDefaults(level=AccessLevel.PRIVATE)
 public class VisitorInformation {
 
-	private String browser;
-	private int height;
-	private int width;
-	private String timestamp;
-	private String time;
-	private double actualaspectratio;
-	private String devicetype;
+	String browser;
+	int height;
+	int width;
+	String timestamp;
+	String time;
+	double actualaspectratio;
+	String devicetype;
 	
-	private static String DeviceType( int width ) {	
+	String DeviceType( int width ) {	
 		if( width < 500 )
 			return "Mobile";
 		if( width < 900 )
 			return "Tablet";
-		return "Desktop/Laptop";
-		
+		return "Desktop/Laptop";	
 	}
 	
 	public VisitorInformation(String browser, int height, int width) {
@@ -43,34 +52,6 @@ public class VisitorInformation {
 		UUID session_id = UUID.randomUUID();
 		System.out.println("Session ID -> "+session_id.toString());
 		Webapp_key_params.setSessionUid(session_id.toString());
-	}
-		
-	public String getBroswer() {
-		return browser;
-	}
-	
-	public int getHeight() {
-		return height;
-	}
-	
-	public int getWidth() {
-		return width;
-	}
-	
-	public String getTimestamp() {
-		return timestamp;
-	}
-	
-	public String getTime() {
-		return time;
-	}
-	
-	public double getActualaspectratio() {
-		return actualaspectratio;
-	}
-	
-	public String getDeviceType() {
-		return devicetype;
 	}
 	
 	@Override

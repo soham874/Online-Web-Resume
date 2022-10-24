@@ -5,12 +5,22 @@ import java.time.format.DateTimeFormatter;
 
 import com.SohamsOnlineWebPortal.middleware.Webapp_key_params;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@FieldDefaults(level=AccessLevel.PRIVATE)
 public class UserResponse {
 
-	private String name;
-	private String email;
-	private String message;
-	private String timestamp;
+	String name;
+	String email;
+	String message;
+	String timestamp;
 	
 	public UserResponse(String name, String email, String message) {
 		
@@ -21,22 +31,6 @@ public class UserResponse {
 		this.message = message;
 		this.email = email;
 		this.timestamp = date_format.format(now);
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public String getMessage() {
-		return message;
-	}
-	
-	public String getTimeStamp() {
-		return timestamp;
-	}
-	
-	public String getEmail() {
-		return email;
 	}
 	
 	@Override

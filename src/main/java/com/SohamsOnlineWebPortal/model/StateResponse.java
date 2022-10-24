@@ -1,38 +1,28 @@
 package com.SohamsOnlineWebPortal.model;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@FieldDefaults(level=AccessLevel.PRIVATE)
 public class StateResponse {
 
-	private int status;
-	private String body;
-	private String message;
-	
-	public StateResponse(int status, String body, String message) {
-		this.status = status;
-		this.body = body;
-		this.message = message;
-	}
-	
-	public int getStatus() {
-		return this.status;
-	}
-	
-	public String getBody() {
-		return this.body;
-	}
-	
-	public String getMessage() {
-		return this.message;
-	}
+	int status;
+	String body;
+	String message;
 	
 	public boolean isSuccess() {
-		
 		if(  status >= 200 && status < 400 )
 			return true;
-		
 		return false;
-		
 	}	
 	
+	@Override
 	public String toString() {
 		return "{"
 				+ "\n\"status\" : \""+this.status+"\","
