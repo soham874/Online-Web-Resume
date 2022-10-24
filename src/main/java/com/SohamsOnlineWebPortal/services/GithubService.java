@@ -6,6 +6,7 @@ import java.io.StringWriter;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.stereotype.Service;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -13,10 +14,12 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-import com.SohamsOnlineWebPortal.middleware.CommonUtils;
+import com.SohamsOnlineWebPortal.config.CommonUtils;
 import com.SohamsOnlineWebPortal.middleware.Webapp_key_params;
 import com.SohamsOnlineWebPortal.model.*;
 
+
+@Service
 public class GithubService {
 	
 	private static final MediaType JSON = MediaType.parse("application/json");
@@ -53,30 +56,33 @@ public class GithubService {
     		JSONParser jsonParser = new JSONParser();
     		JSONObject jsonResponseBody = (JSONObject) jsonParser.parse(responseBody);
     		        	
-        	if( response.isSuccessful() ) {	//when Github resturns Status 200
+        	if( response.isSuccessful() ) {	//when Github returns Status 200
         		
         		if( jsonResponseBody.containsKey("errors") ) { //If profile not found
         			
-        			GithubFetchProfileResponse = new StateResponse(
-        					500, 
-        					jsonResponseBody.toJSONString(), 
-        					"Profile '"+username+"' not found"
-        					);
+        			GithubFetchProfileResponse = StateResponse.builder()
+        					.body(jsonResponseBody.toJSONString())
+        					.message("Profile '"+username+"' not found")
+        					.status(500)
+        					.build();
         			
         		} else { //profile data fetched successfully
         			
-        			GithubFetchProfileResponse = new StateResponse(
-        					response.code(), 
-        					jsonResponseBody.toJSONString(), 
-        					"Profile details fetched successfully");
+        			GithubFetchProfileResponse = StateResponse.builder()
+        					.body(jsonResponseBody.toJSONString())
+        					.message("Profile details fetched successfully")
+        					.status(response.code())
+        					.build();
         		}
         		
         	} else { //Badly formed request
         		        		
-        		GithubFetchProfileResponse = new StateResponse(
-        				response.code(), 
-        				jsonResponseBody.toJSONString(), 
-        				"Query not formed well, please verify");
+        		GithubFetchProfileResponse = StateResponse.builder()
+    					.body(jsonResponseBody.toJSONString())
+    					.message("Query not formed well, please verify")
+    					.status(response.code())
+    					.build();
+        		
         	}
         	
         	response.close();
@@ -88,10 +94,12 @@ public class GithubService {
         	
         	e.printStackTrace(pw);
         	
-        	GithubFetchProfileResponse = new StateResponse(
-        			500, 
-        			sw.toString(), 
-        			"Backend error, unable to reach Github");
+        	GithubFetchProfileResponse = StateResponse.builder()
+					.body(sw.toString())
+					.message("Backend error, unable to reach Github")
+					.status(500)
+					.build();
+
         }
         
         // return the response

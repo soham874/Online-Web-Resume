@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.SohamsOnlineWebPortal.middleware.CommonUtils;
+import com.SohamsOnlineWebPortal.config.CommonUtils;
 import com.SohamsOnlineWebPortal.middleware.MongoJSONFormer;
 import com.SohamsOnlineWebPortal.middleware.Webapp_key_params;
 import com.SohamsOnlineWebPortal.model.StateResponse;

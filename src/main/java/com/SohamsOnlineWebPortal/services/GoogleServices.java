@@ -7,7 +7,7 @@ import java.io.StringWriter;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.SohamsOnlineWebPortal.middleware.CommonUtils;
+import com.SohamsOnlineWebPortal.config.CommonUtils;
 import com.SohamsOnlineWebPortal.model.StateResponse;
 
 import okhttp3.MediaType;

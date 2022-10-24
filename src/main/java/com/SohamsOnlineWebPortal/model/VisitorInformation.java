@@ -1,18 +1,19 @@
 package com.SohamsOnlineWebPortal.model;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
+import java.util.Date;
 
-import com.SohamsOnlineWebPortal.middleware.Webapp_key_params;
+import com.SohamsOnlineWebPortal.config.BaseConstants;
+import com.SohamsOnlineWebPortal.config.CommonUtils;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level=AccessLevel.PRIVATE)
@@ -34,30 +35,25 @@ public class VisitorInformation {
 		return "Desktop/Laptop";	
 	}
 	
+	@SuppressWarnings("deprecation")
 	public VisitorInformation(String browser, int height, int width) {
 		
 		this.browser = browser;
 		this.height = height;
 		this.width = width;
 		
-		DateTimeFormatter date_format = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-		DateTimeFormatter time_format = DateTimeFormatter.ofPattern("HH");
-		LocalDateTime now = LocalDateTime.now();
-
-		this.timestamp = date_format.format(now);
-		this.time = time_format.format(now);
+		Date currentUTCTime = CommonUtils.getUTCTimeStamp();
+		
+		this.timestamp = currentUTCTime.toString();
+		this.time = String.valueOf(currentUTCTime.getHours());
 		this.devicetype = DeviceType(width);
 		this.actualaspectratio = (double)width/(double)height;
-		
-		UUID session_id = UUID.randomUUID();
-		System.out.println("Session ID -> "+session_id.toString());
-		Webapp_key_params.setSessionUid(session_id.toString());
 	}
 	
 	@Override
 	public String toString() {
 		return "{\r\n"
-				+ "    \"Session_UID\": \""+Webapp_key_params.getSessionUid()+"\",\r\n"
+				+ "    \"Session_UID\": \""+BaseConstants.SESSION_UID+"\",\r\n"
 				+ "    \"Timestamp\": \""+this.timestamp+"\",\r\n"
 				+ "    \"Hour of day (UTC)\": \""+this.time+"\",\r\n"
 				+ "    \"Browser\": \""+this.browser+"\",\r\n"

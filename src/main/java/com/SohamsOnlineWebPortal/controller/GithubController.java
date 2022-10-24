@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.SohamsOnlineWebPortal.middleware.CommonUtils;
+import com.SohamsOnlineWebPortal.config.CommonUtils;
 import com.SohamsOnlineWebPortal.model.StateResponse;
 import com.SohamsOnlineWebPortal.services.*;
 
