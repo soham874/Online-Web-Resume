@@ -11,7 +11,7 @@
 	<groupId>com</groupId>
 	<artifactId>Sohams-Online-Web-Portal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>Sohams-Online-Web-Portal</name>
 	<description>Web portal based on spring boot</description>
 	<properties>
