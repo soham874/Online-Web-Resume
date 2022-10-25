@@ -7,9 +7,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.SohamsOnlineWebPortal.config.CommonUtils;
+import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
+import com.SohamsOnlineWebPortal.config.constants.GithubConstants;
 import com.SohamsOnlineWebPortal.model.StateResponse;
 import com.SohamsOnlineWebPortal.services.*;
 
@@ -19,45 +22,33 @@ import com.SohamsOnlineWebPortal.services.*;
 @RestController
 public class GithubController {
 	
-    //@RequestMapping(value = "/receiveGithubData", method = RequestMethod.GET, produces = "application/json")
     @GetMapping(value = "/receiveGithubData",produces = "application/json")
-    public String GetGithubData(){
+    public @ResponseBody String GetLeetCodeData(){
     	
+    	CommonUtils.AddLog("Starting to fetch Github data", 3);
     	StateResponse ControllerLayerResponse;
     	
     	try {	// try to get response from service layer 
-    		
-    		StateResponse ServicelerLayerResponse = GithubService.getProfileData("soham874");
-    		
-    		ControllerLayerResponse = new StateResponse(
-					ServicelerLayerResponse.getStatus(), 
-					ServicelerLayerResponse.getBody(), 
-					ServicelerLayerResponse.getMessage()
-        	);
-    		
-    	}catch( Exception e ) { // Service layer refuses to respond 
+    		    		
+    		ControllerLayerResponse = GithubService.getProfileData("soham874");
+    		    		
+    	}catch( Exception ex ) { // Service layer refuses to respond 
     		
     		StringWriter sw = new StringWriter();
         	PrintWriter pw = new PrintWriter(sw);
         	
-        	e.printStackTrace(pw);
+        	ex.printStackTrace(pw);
+        	CommonUtils.AddLog("Error while fetching Github data --> "+ex.getMessage(), 1);
         	
-        	ControllerLayerResponse = new StateResponse(
-        			500, 
-        			sw.toString(), 
-        			"Backend error, unable to reach Service Layer"
-        	);
+			ControllerLayerResponse = StateResponse.builder()
+					.status(BaseConstants.SERVER_ERROR_CODE)
+					.body(sw.toString())
+					.message(GithubConstants.MICROSERVICE_ERROR_MESSAGE)
+					.build();
     	}
-    	
-    	// return the response
-        int status = ControllerLayerResponse.getStatus();
-        if( status >= 200 && status < 400 ) {
-        	CommonUtils.AddLog("Github information fetched successfully",2);
-        }else {
-        	CommonUtils.AddLog("Response from Github Controller layer ->\n"+ControllerLayerResponse.toString(),1);
-        }
-     
+        // return the response
     	return ControllerLayerResponse.toString();
     	
     }
+
 }

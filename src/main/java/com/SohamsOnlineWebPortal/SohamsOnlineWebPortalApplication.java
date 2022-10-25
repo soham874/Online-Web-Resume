@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.SohamsOnlineWebPortal.config.BaseConstants;
+import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
 
 @SpringBootApplication
 public class SohamsOnlineWebPortalApplication {

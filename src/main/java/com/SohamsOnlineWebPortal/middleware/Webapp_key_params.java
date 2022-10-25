@@ -22,9 +22,7 @@ public class Webapp_key_params {
 		return encrypt_power;
 	}
 	
-	public static String getGithubKey() {
-		return Decrypter.Decrypt(github_key);
-	}
+	
 	
 	public static String getGithub_API_URL() {
 		return Github_API_URL;

@@ -1,6 +1,6 @@
-package com.SohamsOnlineWebPortal.config;
+package com.SohamsOnlineWebPortal.config.constants;
 
-public class LeetCodeConstants {
+public class LeetCodeConstants extends BaseConstants {
 	
 	public static final String REQUEST_URL = "https://leetcode.com/graphql/";
 	public static final String REFERRER_URL = "https://leetcode.com/%s/";

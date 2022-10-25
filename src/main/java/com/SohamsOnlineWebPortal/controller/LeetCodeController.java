@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.SohamsOnlineWebPortal.config.BaseConstants;
 import com.SohamsOnlineWebPortal.config.CommonUtils;
-import com.SohamsOnlineWebPortal.config.LeetCodeConstants;
+import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
+import com.SohamsOnlineWebPortal.config.constants.LeetCodeConstants;
 import com.SohamsOnlineWebPortal.model.StateResponse;
 import com.SohamsOnlineWebPortal.services.*;
 

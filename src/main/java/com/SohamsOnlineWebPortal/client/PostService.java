@@ -13,7 +13,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-import com.SohamsOnlineWebPortal.config.BaseConstants;
+import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
 import com.SohamsOnlineWebPortal.model.*;
 
 public class PostService {
@@ -25,15 +25,7 @@ public class PostService {
 
         RequestBody body = RequestBody.create(httpRequestCustomParameters.getRequestBody(),MediaType.parse("application/json"));
         Headers headerbuild = Headers.of(httpRequestCustomParameters.getHeaderParameters());
-        /*
-        Request request = new Request.Builder()
-                .url(Webapp_key_params.getLeetCode_GraphQL_URL())
-                .method("POST", body)
-                .addHeader("referer", String.format(Webapp_key_params.getLeetCode_RefererURL(), username))
-                .addHeader("Content-Type", "application/json")
-                .build();
-        */
-        
+                
         Request request = new Request.Builder()
                 .url(httpRequestCustomParameters.getURL())
                 .method("POST", body)
@@ -49,7 +41,7 @@ public class PostService {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonResponseBody = (JSONObject) jsonParser.parse(responseBody);
 		        	
-    	if( response.isSuccessful() ) {	//when LeetCode returns Status 200
+    	if( response.isSuccessful() ) {	//when Status 200
     		
     		if( jsonResponseBody.containsKey("errors") ) { //If profile not found
     			

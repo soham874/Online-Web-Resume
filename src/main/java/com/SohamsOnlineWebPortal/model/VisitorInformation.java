@@ -2,8 +2,8 @@ package com.SohamsOnlineWebPortal.model;
 
 import java.util.Date;
 
-import com.SohamsOnlineWebPortal.config.BaseConstants;
 import com.SohamsOnlineWebPortal.config.CommonUtils;
+import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

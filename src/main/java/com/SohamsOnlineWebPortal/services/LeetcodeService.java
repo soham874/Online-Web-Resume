@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.SohamsOnlineWebPortal.client.PostService;
 import com.SohamsOnlineWebPortal.config.CommonUtils;
-import com.SohamsOnlineWebPortal.config.LeetCodeConstants;
+import com.SohamsOnlineWebPortal.config.constants.LeetCodeConstants;
 import com.SohamsOnlineWebPortal.model.*;
 
 @Service
