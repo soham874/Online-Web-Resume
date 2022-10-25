@@ -6,3 +6,10 @@ management:
     web:
       exposure:
         include: "*"
+        
+baseurl:
+  leetcode: 
+    request-url: "https://leetcode.com/graphql/"
+    referrer-url: "https://leetcode.com/%s/"
+  github:  
+    request-url: "https://api.github.com/graphql"

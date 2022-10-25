@@ -3,6 +3,7 @@ package com.SohamsOnlineWebPortal.controller;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ import com.SohamsOnlineWebPortal.services.*;
 @RestController
 public class GithubController {
 	
+	@Autowired
+	GithubService githubService;
+	
     @GetMapping(value = "/receiveGithubData",produces = "application/json")
     public @ResponseBody String GetLeetCodeData(){
     	
@@ -30,7 +34,7 @@ public class GithubController {
     	
     	try {	// try to get response from service layer 
     		    		
-    		ControllerLayerResponse = GithubService.getProfileData("soham874");
+    		ControllerLayerResponse = githubService.getProfileData("soham874");
     		    		
     	}catch( Exception ex ) { // Service layer refuses to respond 
     		

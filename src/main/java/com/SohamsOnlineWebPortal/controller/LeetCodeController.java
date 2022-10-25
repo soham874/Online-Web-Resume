@@ -3,6 +3,7 @@ package com.SohamsOnlineWebPortal.controller;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.SohamsOnlineWebPortal.config.CommonUtils;
-import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
 import com.SohamsOnlineWebPortal.config.constants.LeetCodeConstants;
 import com.SohamsOnlineWebPortal.model.StateResponse;
 import com.SohamsOnlineWebPortal.services.*;
@@ -21,7 +21,10 @@ import com.SohamsOnlineWebPortal.services.*;
 @Component
 @RestController
 public class LeetCodeController {
-
+	
+	@Autowired
+	LeetcodeService leetcodeService;
+	
     @GetMapping(value = "/receiveLeetCodeData", produces = "application/json")
     public @ResponseBody String GetLeetCodeData(){
     	
@@ -30,7 +33,7 @@ public class LeetCodeController {
     	
     	try {	// try to get response from service layer 
     		    		
-    		ControllerLayerResponse = LeetcodeService.getProfileData("soham874");
+    		ControllerLayerResponse = leetcodeService.getProfileData("soham874");
     		
     		    		
     	}catch( Exception ex ) { // Service layer refuses to respond 
@@ -42,13 +45,13 @@ public class LeetCodeController {
         	CommonUtils.AddLog("Error while fetching LeetCode data --> "+ex.getMessage(), 1);
         	
 			ControllerLayerResponse = StateResponse.builder()
-					.status(BaseConstants.SERVER_ERROR_CODE)
+					.status(LeetCodeConstants.SERVER_ERROR_CODE)
 					.body(sw.toString())
 					.message(LeetCodeConstants.MICROSERVICE_ERROR_MESSAGE)
 					.build();
     	}
     	        
-        // return the response
+    	CommonUtils.AddLog("Finished process fetch LeetCode data reqeust", 3);
     	return ControllerLayerResponse.toString();
     	
     }
