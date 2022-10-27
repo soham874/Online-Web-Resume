@@ -1,8 +1,7 @@
 package com.SohamsOnlineWebPortal.model;
 
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 
-import com.SohamsOnlineWebPortal.config.CommonUtils;
 import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
 
 import lombok.AccessLevel;
@@ -19,37 +18,20 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level=AccessLevel.PRIVATE)
 public class VisitorInformation {
 
+	@NotNull(message = "Browser name cannot be null")
 	String browser;
+	
+	@NotNull(message = "Height cannot be null")
 	int height;
+	
+	@NotNull(message = "width cannot be null")
 	int width;
+	
 	String timestamp;
 	String time;
 	double actualaspectratio;
 	String devicetype;
-	
-	String DeviceType( int width ) {	
-		if( width < 500 )
-			return "Mobile";
-		if( width < 900 )
-			return "Tablet";
-		return "Desktop/Laptop";	
-	}
-	
-	@SuppressWarnings("deprecation")
-	public VisitorInformation(String browser, int height, int width) {
 		
-		this.browser = browser;
-		this.height = height;
-		this.width = width;
-		
-		Date currentUTCTime = CommonUtils.getUTCTimeStamp();
-		
-		this.timestamp = currentUTCTime.toString();
-		this.time = String.valueOf(currentUTCTime.getHours());
-		this.devicetype = DeviceType(width);
-		this.actualaspectratio = (double)width/(double)height;
-	}
-	
 	@Override
 	public String toString() {
 		return "{\r\n"

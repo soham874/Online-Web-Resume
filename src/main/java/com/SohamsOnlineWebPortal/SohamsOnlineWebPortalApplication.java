@@ -11,14 +11,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
 import com.SohamsOnlineWebPortal.config.constants.GithubConstants;
+import com.SohamsOnlineWebPortal.config.constants.GoogleConstants;
 import com.SohamsOnlineWebPortal.config.constants.LeetCodeConstants;
 import com.SohamsOnlineWebPortal.config.constants.MongoDBConstants;
+import com.SohamsOnlineWebPortal.middleware.MongoJSONFormer;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.SohamsOnlineWebPortal")
 @EnableConfigurationProperties({
 	LeetCodeConstants.class,
 	GithubConstants.class,
-	MongoDBConstants.class
+	MongoDBConstants.class,
+	GoogleConstants.class
 })
 public class SohamsOnlineWebPortalApplication {
 

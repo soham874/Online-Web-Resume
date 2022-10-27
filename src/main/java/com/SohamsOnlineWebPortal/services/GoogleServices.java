@@ -1,98 +1,69 @@
 package com.SohamsOnlineWebPortal.services;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import javax.validation.Valid;
 
+import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Service;
+
+import com.SohamsOnlineWebPortal.client.PostService;
 import com.SohamsOnlineWebPortal.config.CommonUtils;
+import com.SohamsOnlineWebPortal.config.constants.GoogleConstants;
+import com.SohamsOnlineWebPortal.model.HttpRequestCustomParameters;
 import com.SohamsOnlineWebPortal.model.StateResponse;
+import com.SohamsOnlineWebPortal.model.UserResponse;
+import com.SohamsOnlineWebPortal.model.VisitorInformation;
 
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-
+@Service
 public class GoogleServices {
-
-private static final MediaType JSON = MediaType.parse("application/json");
 	
-	public static StateResponse Post(String URL, String visitor_body) throws IOException {
+	@SuppressWarnings("deprecation")
+	public StateResponse saveBrowserInformation(@Valid VisitorInformation visitorInformation) throws IOException, ParseException {
 		
-		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		visitorInformation.setActualaspectratio((double)visitorInformation.getWidth()/(double)visitorInformation.getHeight());
+		visitorInformation.setTimestamp(CommonUtils.getUTCTimeStamp().toString());
+		visitorInformation.setTime(String.valueOf(CommonUtils.getUTCTimeStamp().getHours()));
+		visitorInformation.setDevicetype(CommonUtils.DeviceType(visitorInformation.getWidth()));
 		
-		//System.out.println(URL);
+		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
+				.URL(GoogleConstants.GOOGLE_BROWSER_INFORMATION_API)
+				.requestBody(visitorInformation.toString())
+				.headerParameters(getHeaders())
+				.successMessage(GoogleConstants.SUCCESS_MESSAGE)
+				.clientErrorMessage(GoogleConstants.CLIENT_ERROR_MESSAGE)
+				.serverErrorMessage(GoogleConstants.SERVER_ERROR_MESSAGE)
+				.build();
 		
-		RequestBody body = RequestBody.create(visitor_body,JSON);
-        Request request = new Request.Builder()
-            .url(URL)
-            .header("content-type", "application/json")
-            .post(body)
-            .build();
-        
-        StateResponse GoogleAPIResponse;
-        CommonUtils.AddLog("Attempting to reach Google servers...",3);
-        
-        // attempts to reach Google servers
-        
-        try{	//when reached successfully
-        	
-        	Response response = client.newCall(request).execute();
-        	
-        	String responseBody = response.body().string();
-        	
-    		JSONParser jsonParser = new JSONParser();
-    		JSONObject jsonResponseBody = (JSONObject) jsonParser.parse(responseBody);
-    		        	
-        	if( response.isSuccessful() ) {	//when Google returns Status 200
-        		
-        		if( jsonResponseBody.containsKey("error") ) { //If profile not found
-        			
-        			GoogleAPIResponse = new StateResponse(
-        					500, 
-        					jsonResponseBody.toJSONString(), 
-        					"API body/header error problem"
-        					);
-        			
-        		} else { //data posted successfully
-        			
-        			GoogleAPIResponse = new StateResponse(
-        					response.code(), 
-        					jsonResponseBody.toJSONString(), 
-        					"Details submitted successfully");
-        		}
-        		
-        	} else { //Badly formed request
-        		        		
-        		GoogleAPIResponse = new StateResponse(
-        				response.code(), 
-        				jsonResponseBody.toJSONString(), 
-        				"Query not formed well, please verify");
-        	}
-        	response.close();
-        	
-        }catch(Exception e){ //Unable to reach Google servers
-        	
-        	StringWriter sw = new StringWriter();
-        	PrintWriter pw = new PrintWriter(sw);
-        	
-        	e.printStackTrace(pw);
-        	
-        	GoogleAPIResponse = new StateResponse(
-        			500, 
-        			sw.toString(), 
-        			"Backend error, unable to reach Google");
-        }
-        
-        // return the response
-        // System.out.println("Response from MongoDB Service layer");
-        // System.out.println(MongoDBAPIResponse.toString());
-        
-		return GoogleAPIResponse;
+		CommonUtils.AddLog("Sending request to Google servers", 3);
+		StateResponse response = PostService.post(httpRequestCustomParameters);
+		CommonUtils.AddLog("Response status for Google query --> "+response.getStatus(), 2);
+		return response;
 	}
-
+	
+	public StateResponse saveUserResponse(@Valid UserResponse userResponse) throws IOException, ParseException {
+		
+		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
+				.URL(GoogleConstants.GOOGLE_VISITOR_RESPONSE_API)
+				.requestBody(userResponse.toString())
+				.headerParameters(getHeaders())
+				.successMessage(GoogleConstants.SUCCESS_MESSAGE)
+				.clientErrorMessage(GoogleConstants.CLIENT_ERROR_MESSAGE)
+				.serverErrorMessage(GoogleConstants.SERVER_ERROR_MESSAGE)
+				.build();
+		
+		CommonUtils.AddLog("Sending request to Google servers", 3);
+		StateResponse response = PostService.post(httpRequestCustomParameters);
+		CommonUtils.AddLog("Response status for Google query --> "+response.getStatus(), 2);
+		return response;
+	}
+	
+	private Map<String, String> getHeaders(){
+		Map<String, String> headers = new HashMap<>();
+		headers.put("Content-Type", "application/json");
+		return headers;
+	}
 	
 }

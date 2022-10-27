@@ -3,6 +3,8 @@ package com.SohamsOnlineWebPortal.middleware;
 import java.io.*;
 import java.util.Arrays;
 
+import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
+
 public class Encrypter {
 
 	public static void main(String[] args) throws IOException {
@@ -15,7 +17,7 @@ public class Encrypter {
 		String str = br.readLine();
 		
 		int[] encrypted = new int[str.length()];
-		int encrypt_power = Webapp_key_params.getEncrypt_power();
+		int encrypt_power = BaseConstants.ENCRYPT_POWER;
 		
 		for( int i = 0 ; i < str.length() ; i++ ) {
 			encrypted[i] = (str.charAt(i)-encrypt_power);

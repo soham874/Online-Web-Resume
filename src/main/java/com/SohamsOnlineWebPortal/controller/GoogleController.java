@@ -3,21 +3,21 @@ package com.SohamsOnlineWebPortal.controller;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import javax.validation.Valid;
+
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.SohamsOnlineWebPortal.config.CommonUtils;
-import com.SohamsOnlineWebPortal.middleware.Webapp_key_params;
+import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
+import com.SohamsOnlineWebPortal.config.constants.GoogleConstants;
 import com.SohamsOnlineWebPortal.model.StateResponse;
 import com.SohamsOnlineWebPortal.model.UserResponse;
 import com.SohamsOnlineWebPortal.model.VisitorInformation;
@@ -29,104 +29,64 @@ import com.SohamsOnlineWebPortal.services.GoogleServices;
 @RestController
 public class GoogleController {
 
+	@Autowired
+	GoogleServices googleServices;
+	
 	@PostMapping(value = "/updateBrowserData",produces = "application/json")
-    public @ResponseBody String sendBrowserData( @RequestBody String UserData ) throws ParseException{
+    public @ResponseBody String sendBrowserData( @RequestBody @Valid VisitorInformation visitorInformation ) throws ParseException{
 		
-		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonRequestBody = (JSONObject) jsonParser.parse(UserData);
-		
-		VisitorInformation visitorInformation = new VisitorInformation(
-				jsonRequestBody.get("browser").toString(), 
-				Integer.parseInt(jsonRequestBody.get("height").toString()), 
-				Integer.parseInt(jsonRequestBody.get("width").toString()));
-		
-		//System.out.println(visitorInformation.toString());
-		
+		CommonUtils.AddLog("Starting to store browser data", 3);
     	StateResponse ControllerLayerResponse;
     	
     	try {	// try to get response from service layer 
     		    		
-    		StateResponse ServicelerLayerResponse = GoogleServices.Post(Webapp_key_params.getGoogle_visitor_information_api(),visitorInformation.toString());
+    		ControllerLayerResponse = googleServices.saveBrowserInformation(visitorInformation);
     		
-    		ControllerLayerResponse = new StateResponse(
-					ServicelerLayerResponse.getStatus(), 
-					ServicelerLayerResponse.getBody(), 
-					ServicelerLayerResponse.getMessage()
-        	);
-    		
-    	}catch( Exception e ) { // Service layer refuses to respond 
+    	}catch( Exception ex ) { // Service layer refuses to respond 
     		
     		StringWriter sw = new StringWriter();
         	PrintWriter pw = new PrintWriter(sw);
         	
-        	e.printStackTrace(pw);
+        	ex.printStackTrace(pw);
+        	CommonUtils.AddLog("Error while storing browser data --> "+ex.getMessage(), 1);
+        	CommonUtils.AddLog("Reqeust body --> "+visitorInformation.toString(), 1);
         	
-        	ControllerLayerResponse = new StateResponse(
-        			500, 
-        			sw.toString(), 
-        			"Backend error, unable to reach Service Layer"
-        	);
+			ControllerLayerResponse = StateResponse.builder()
+					.status(BaseConstants.SERVER_ERROR_CODE)
+					.body(sw.toString())
+					.message(GoogleConstants.MICROSERVICE_ERROR_MESSAGE)
+					.build();
     	}
     	
-    	// return the response
-        int status = ControllerLayerResponse.getStatus();
-        if( status >= 200 && status < 400 ) {
-        	CommonUtils.AddLog("Browser details submitted successfully", 2);
-        }else {
-        	CommonUtils.AddLog("Response from Google Controller layer for submitting browser details ->\n"+ControllerLayerResponse.toString(),1);
-        	CommonUtils.AddLog("Submitted request body ->\n"+visitorInformation.toString(),4);
-        }
-        
     	return ControllerLayerResponse.toString();
 	}
 	
 	@PostMapping(value = "/sendUserResponse",produces = "application/json")
-	public @ResponseBody String sendUserResponse( @RequestBody String UserData ) throws ParseException{
+	public @ResponseBody String sendUserResponse( @RequestBody @Valid UserResponse userResponse ) throws ParseException{
 		
-		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonRequestBody = (JSONObject) jsonParser.parse(UserData);
-		
-		UserResponse userResponse = new UserResponse(
-				jsonRequestBody.get("name").toString(),
-				jsonRequestBody.get("email").toString(),
-				jsonRequestBody.get("message").toString()
-				);
-		
+		CommonUtils.AddLog("Starting to store User Response", 3);
     	StateResponse ControllerLayerResponse;
     	
     	try {	// try to get response from service layer 
     		    		
-    		StateResponse ServicelerLayerResponse = GoogleServices.Post(Webapp_key_params.getGoogleVisitorResponseApi(),userResponse.toString());
+    		ControllerLayerResponse = googleServices.saveUserResponse(userResponse);
     		
-    		ControllerLayerResponse = new StateResponse(
-					ServicelerLayerResponse.getStatus(), 
-					ServicelerLayerResponse.getBody(), 
-					ServicelerLayerResponse.getMessage()
-        	);
-    		
-    	}catch( Exception e ) { // Service layer refuses to respond 
+    	}catch( Exception ex ) { // Service layer refuses to respond 
     		
     		StringWriter sw = new StringWriter();
         	PrintWriter pw = new PrintWriter(sw);
         	
-        	e.printStackTrace(pw);
+        	ex.printStackTrace(pw);
+        	CommonUtils.AddLog("Error while storing user response --> "+ex.getMessage(), 1);
+        	CommonUtils.AddLog("Reqeust body --> "+userResponse.toString(), 1);
         	
-        	ControllerLayerResponse = new StateResponse(
-        			500, 
-        			sw.toString(), 
-        			"Backend error, unable to reach Service Layer"
-        	);
+        	ControllerLayerResponse = StateResponse.builder()
+					.status(BaseConstants.SERVER_ERROR_CODE)
+					.body(sw.toString())
+					.message(GoogleConstants.MICROSERVICE_ERROR_MESSAGE)
+					.build();
     	}
     	
-        // return the response
-        int status = ControllerLayerResponse.getStatus();
-        if( status >= 200 && status < 400 ) {
-        	CommonUtils.AddLog("User response submitted successfully", 2);
-        }else {
-        	CommonUtils.AddLog("Response from Google Controller layer for submitting user response ->\n"+ControllerLayerResponse.toString(),1);
-        	CommonUtils.AddLog("Submitted request body ->\n"+userResponse.toString(),4);
-        }
-        
     	return ControllerLayerResponse.toString();
 	}
 

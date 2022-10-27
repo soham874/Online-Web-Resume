@@ -1,38 +1,46 @@
 package com.SohamsOnlineWebPortal.middleware;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.SohamsOnlineWebPortal.config.constants.MongoDBConstants;
 import com.SohamsOnlineWebPortal.model.UserResponse;
 
+@Service
 public class MongoJSONFormer {
 
-	public static String formExperienceJSON() {
+	@Autowired
+	MongoDBConstants mongoDBConstants;
+	
+	public String formExperienceJSON() {
 		return "{\n"
-				+ "\"dataSource\" : \""+Webapp_key_params.getMongoDB_dataSource()+"\",\n"
-				+ "\"database\" : \""+Webapp_key_params.getMongoDB_database()+"\",\n"
+				+ "\"dataSource\" : \""+mongoDBConstants.DATASOURCE+"\",\n"
+				+ "\"database\" : \""+mongoDBConstants.DATABASE+"\",\n"
 				+ "\"collection\" : \"Work_Experience\""
 			+ "\n}";
 	}
 	
-	public static String formAcademicsJSON() {
+	public String formAcademicsJSON() {
 		return "{\n"
-				+ "\"dataSource\" : \""+Webapp_key_params.getMongoDB_dataSource()+"\",\n"
-				+ "\"database\" : \""+Webapp_key_params.getMongoDB_database()+"\",\n"
+				+ "\"dataSource\" : \""+mongoDBConstants.DATASOURCE+"\",\n"
+				+ "\"database\" : \""+mongoDBConstants.DATABASE+"\",\n"
 				+ "\"collection\" : \"Academics\""
 			+ "\n}";
 	}
 	
-	public static String formUserResponseJSON(UserResponse response) {
+	public String formUserResponseJSON(UserResponse response) {
 		return "{\r\n"
-				+ "\"dataSource\" : \""+Webapp_key_params.getMongoDB_dataSource()+"\",\r\n"
-				+ "\"database\" : \""+Webapp_key_params.getMongoDB_database()+"\",\r\n"
+				+ "\"dataSource\" : \""+mongoDBConstants.DATASOURCE+"\",\r\n"
+				+ "\"database\" : \""+mongoDBConstants.DATABASE+"\",\r\n"
 				+ "\"collection\" : \"User_Responses\",\r\n"
 				+ "\"document\" : "+response.toString()
 			+ "\r\n}";
 	}
 	
-	public static String formGeneralInformationJSON() {
+	public String formGeneralInformationJSON() {
 		return "{\r\n"
-				+ "\"dataSource\" : \""+Webapp_key_params.getMongoDB_dataSource()+"\",\r\n"
-				+ "\"database\" : \""+Webapp_key_params.getMongoDB_database()+"\",\r\n"
+				+ "\"dataSource\" : \""+mongoDBConstants.DATASOURCE+"\",\n"
+				+ "\"database\" : \""+mongoDBConstants.DATABASE+"\",\n"
 				+ "\"collection\" : \"General_Information\"\r\n"
 			+ "\r\n}";
 	}

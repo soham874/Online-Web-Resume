@@ -3,7 +3,7 @@ package com.SohamsOnlineWebPortal.model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import com.SohamsOnlineWebPortal.middleware.Webapp_key_params;
+import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -38,7 +38,7 @@ public class UserResponse {
 	@Override
 	public String toString() {
 		return "{"
-				+ "\n\"Session_UID\": \""+Webapp_key_params.getSessionUid()+"\","
+				+ "\n\"Session_UID\": \""+BaseConstants.SESSION_UID+"\","
 				+ "\n\"TimeStamp\": \""+this.timestamp+"\","
 				+ "\n\"Name\"     : \""+this.name+"\","
 				+ "\n\"Email\"     : \""+this.email+"\","

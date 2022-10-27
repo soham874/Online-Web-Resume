@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 
 import com.SohamsOnlineWebPortal.client.PostService;
 import com.SohamsOnlineWebPortal.config.CommonUtils;
+import com.SohamsOnlineWebPortal.config.constants.GoogleConstants;
 import com.SohamsOnlineWebPortal.config.constants.MongoDBConstants;
 import com.SohamsOnlineWebPortal.middleware.MongoJSONFormer;
-import com.SohamsOnlineWebPortal.middleware.Webapp_key_params;
 import com.SohamsOnlineWebPortal.model.HttpRequestCustomParameters;
 import com.SohamsOnlineWebPortal.model.StateResponse;
 
@@ -24,12 +24,15 @@ public class MongoServices {
     
 	@Autowired
 	MongoDBConstants mongoDBConstants;
+	
+	@Autowired
+	MongoJSONFormer mongoJSONFormer;
 
 	public StateResponse getAcademicData() throws IOException, ParseException {
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(mongoDBConstants.REQUEST_URL+mongoDBConstants.FIND_REQUEST)
-				.requestBody(MongoJSONFormer.formAcademicsJSON())
+				.requestBody(mongoJSONFormer.formAcademicsJSON())
 				.headerParameters(getHeaders())
 				.successMessage(MongoDBConstants.SUCCESS_MESSAGE)
 				.clientErrorMessage(MongoDBConstants.CLIENT_ERROR_MESSAGE)
@@ -47,7 +50,7 @@ public class MongoServices {
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(mongoDBConstants.REQUEST_URL+mongoDBConstants.FIND_REQUEST)
-				.requestBody(MongoJSONFormer.formExperienceJSON())
+				.requestBody(mongoJSONFormer.formExperienceJSON())
 				.headerParameters(getHeaders())
 				.successMessage(MongoDBConstants.SUCCESS_MESSAGE)
 				.clientErrorMessage(MongoDBConstants.CLIENT_ERROR_MESSAGE)
@@ -64,7 +67,7 @@ public class MongoServices {
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(mongoDBConstants.REQUEST_URL+mongoDBConstants.FIND_REQUEST)
-				.requestBody(MongoJSONFormer.formGeneralInformationJSON())
+				.requestBody(mongoJSONFormer.formGeneralInformationJSON())
 				.headerParameters(getHeaders())
 				.successMessage(MongoDBConstants.SUCCESS_MESSAGE)
 				.clientErrorMessage(MongoDBConstants.CLIENT_ERROR_MESSAGE)
@@ -79,9 +82,8 @@ public class MongoServices {
 		JSONObject jsonResponse = (JSONObject) jsonParser.parse(response.getBody());
 		JSONArray jsonDocument = (JSONArray) jsonResponse.get("documents");
 	    
-	    Webapp_key_params.setGoogle_visitor_information_api(((JSONObject)jsonDocument.get(0)).get("Google_visitor_information_api").toString());
-	    Webapp_key_params.setGoogle_visitor_response_api(((JSONObject)jsonDocument.get(0)).get("Google_user_response_api").toString());
-		
+	    GoogleConstants.setGOOGLE_BROWSER_INFORMATION_API(((JSONObject)jsonDocument.get(0)).get("Google_visitor_information_api").toString());
+	    GoogleConstants.setGOOGLE_VISITOR_RESPONSE_API(((JSONObject)jsonDocument.get(0)).get("Google_user_response_api").toString());
 		
 		CommonUtils.AddLog("Response status for MongoDB general data fetch request --> "+response.getStatus(), 2);
 		return response;
