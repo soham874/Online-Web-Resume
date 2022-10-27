@@ -1,96 +1,98 @@
 package com.SohamsOnlineWebPortal.services;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.SohamsOnlineWebPortal.client.PostService;
 import com.SohamsOnlineWebPortal.config.CommonUtils;
+import com.SohamsOnlineWebPortal.config.constants.MongoDBConstants;
+import com.SohamsOnlineWebPortal.middleware.MongoJSONFormer;
 import com.SohamsOnlineWebPortal.middleware.Webapp_key_params;
+import com.SohamsOnlineWebPortal.model.HttpRequestCustomParameters;
 import com.SohamsOnlineWebPortal.model.StateResponse;
 
-import okhttp3.*;
-
+@Service
 public class MongoServices {
     
-	private static final MediaType JSON = MediaType.parse("application/json");
-	
-	public static StateResponse Post(String Complete_URL, String JSON_Query) throws IOException {
-		
-		OkHttpClient client = new OkHttpClient().newBuilder().build();
-		//System.out.println(JSON_Query);
-		
-		RequestBody body = RequestBody.create(JSON_Query,JSON);
-        Request request = new Request.Builder()
-            .url(Complete_URL)
-            .header("content-type", "application/ejson")
-            .addHeader("Accept", "application/json")
-            .addHeader("api-key", Webapp_key_params.getMongoDB_Api_Key() )
-            .addHeader("Access-Control-Request-Headers", "*")
-            .post(body)
-            .build();
-        
-        StateResponse MongoDBAPIResponse;
-        CommonUtils.AddLog("Attempting to reach MongoDB servers...",3);
-        
-        // attempts to reach MongoDB servers
-        
-        try{	//when reached successfully
-        	
-        	Response response = client.newCall(request).execute();
-        	
-        	String responseBody = response.body().string();
-        	
-    		JSONParser jsonParser = new JSONParser();
-    		JSONObject jsonResponseBody = (JSONObject) jsonParser.parse(responseBody);
-    		        	
-        	if( response.isSuccessful() ) {	//when MongoDB returns Status 200
-        		
-        		if( jsonResponseBody.containsKey("errors") ) { //If profile not found
-        			
-        			MongoDBAPIResponse = new StateResponse(
-        					500, 
-        					jsonResponseBody.toJSONString(), 
-        					"Database/Cluster/Collection name problem"
-        					);
-        			
-        		} else { //profile data fetched successfully
-        			
-        			MongoDBAPIResponse = new StateResponse(
-        					response.code(), 
-        					jsonResponseBody.toJSONString(), 
-        					"Requested details fetched successfully");
-        		}
-        		
-        	} else { //Badly formed request
-        		        		
-        		MongoDBAPIResponse = new StateResponse(
-        				response.code(), 
-        				jsonResponseBody.toJSONString(), 
-        				"Query not formed well, please verify");
-        	}
-        	response.close();
-        	
-        }catch(Exception e){ //Unable to reach LeetCode servers
-        	
-        	StringWriter sw = new StringWriter();
-        	PrintWriter pw = new PrintWriter(sw);
-        	
-        	e.printStackTrace(pw);
-        	
-        	MongoDBAPIResponse = new StateResponse(
-        			500, 
-        			sw.toString(), 
-        			"Backend error, unable to reach MongoDB");
-        }
-        
-        // return the response
-        // System.out.println("Response from MongoDB Service layer");
-        // System.out.println(MongoDBAPIResponse.toString());
-        
-		return MongoDBAPIResponse;
-	}
+	@Autowired
+	MongoDBConstants mongoDBConstants;
 
+	public StateResponse getAcademicData() throws IOException, ParseException {
+		
+		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
+				.URL(mongoDBConstants.REQUEST_URL+mongoDBConstants.FIND_REQUEST)
+				.requestBody(MongoJSONFormer.formAcademicsJSON())
+				.headerParameters(getHeaders())
+				.successMessage(MongoDBConstants.SUCCESS_MESSAGE)
+				.clientErrorMessage(MongoDBConstants.CLIENT_ERROR_MESSAGE)
+				.serverErrorMessage(MongoDBConstants.SERVER_ERROR_MESSAGE)
+				.build();
+		
+		CommonUtils.AddLog("Sending fetch academics details request to MongoDB servers", 3);
+		StateResponse response = PostService.post(httpRequestCustomParameters);
+		CommonUtils.AddLog("Response status for MongoDB academics data fetch request --> "+response.getStatus(), 2);
+		return response;
+	}
+	
+
+	public StateResponse getExperenceData() throws IOException, ParseException {
+		
+		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
+				.URL(mongoDBConstants.REQUEST_URL+mongoDBConstants.FIND_REQUEST)
+				.requestBody(MongoJSONFormer.formExperienceJSON())
+				.headerParameters(getHeaders())
+				.successMessage(MongoDBConstants.SUCCESS_MESSAGE)
+				.clientErrorMessage(MongoDBConstants.CLIENT_ERROR_MESSAGE)
+				.serverErrorMessage(MongoDBConstants.SERVER_ERROR_MESSAGE)
+				.build();
+		
+		CommonUtils.AddLog("Sending fetch experience details request to MongoDB servers", 3);
+		StateResponse response = PostService.post(httpRequestCustomParameters);
+		CommonUtils.AddLog("Response status for MongoDB experience data fetch request --> "+response.getStatus(), 2);
+		return response;
+	}
+	
+	public StateResponse getGeneralData() throws IOException, ParseException {
+		
+		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
+				.URL(mongoDBConstants.REQUEST_URL+mongoDBConstants.FIND_REQUEST)
+				.requestBody(MongoJSONFormer.formGeneralInformationJSON())
+				.headerParameters(getHeaders())
+				.successMessage(MongoDBConstants.SUCCESS_MESSAGE)
+				.clientErrorMessage(MongoDBConstants.CLIENT_ERROR_MESSAGE)
+				.serverErrorMessage(MongoDBConstants.SERVER_ERROR_MESSAGE)
+				.build();
+		
+		CommonUtils.AddLog("Sending fetch general details request to MongoDB servers", 3);
+		StateResponse response = PostService.post(httpRequestCustomParameters);
+		CommonUtils.AddLog("General details request to MongoDB servers completed, setting user interraction URLs", 3);
+
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonResponse = (JSONObject) jsonParser.parse(response.getBody());
+		JSONArray jsonDocument = (JSONArray) jsonResponse.get("documents");
+	    
+	    Webapp_key_params.setGoogle_visitor_information_api(((JSONObject)jsonDocument.get(0)).get("Google_visitor_information_api").toString());
+	    Webapp_key_params.setGoogle_visitor_response_api(((JSONObject)jsonDocument.get(0)).get("Google_user_response_api").toString());
+		
+		
+		CommonUtils.AddLog("Response status for MongoDB general data fetch request --> "+response.getStatus(), 2);
+		return response;
+	}
+	
+	private Map<String, String> getHeaders(){
+		Map<String, String> headers = new HashMap<>();
+		headers.put("api-key", MongoDBConstants.getMongoDBKey());
+		headers.put("Content-Type", "application/ejson");
+		headers.put("Accept", "application/json");
+		headers.put("Access-Control-Request-Headers", "*");
+		return headers;
+	}
 }

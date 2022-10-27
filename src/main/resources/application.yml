@@ -13,3 +13,8 @@ baseurl:
     referrer-url: "https://leetcode.com/%s/"
   github:  
     request-url: "https://api.github.com/graphql"
+  mongodb:
+    request-url: "https://data.mongodb-api.com/app/data-okjli/endpoint/data/v1/action"
+    find-request: "/find"
+    datasource: "SohamsWebPortal"
+    database: "Web_Portal_Database"

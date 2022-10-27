@@ -14,7 +14,7 @@ public class CommonUtils {
 	 * 3 - info (black)
 	 * */
 	public static void AddLog(String log, int type) {
-		String logMessage = getUTCTimeStamp()+"\t"+BaseConstants.SESSION_UID+" \t";
+		String logMessage = "\n"+getUTCTimeStamp()+"\t"+BaseConstants.SESSION_UID+" \t";
 		if( type == 1 ) {
 			logMessage += "error \t\t\t";
 		}
