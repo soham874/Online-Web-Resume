@@ -15,15 +15,9 @@ import lombok.experimental.FieldDefaults;
 public class StateResponse {
 
 	int status;
-	String body;
+	Object body;
 	String message;
-	
-	public boolean isSuccess() {
-		if(  status >= 200 && status < 400 )
-			return true;
-		return false;
-	}	
-	
+
 	@Override
 	public String toString() {
 		return "{"

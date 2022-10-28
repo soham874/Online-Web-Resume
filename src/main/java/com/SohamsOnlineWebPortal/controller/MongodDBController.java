@@ -26,7 +26,7 @@ public class MongodDBController {
 	MongoServices mongoServices;
 	
 	@GetMapping(value = "/receiveAcademicData",produces = "application/json")
-	public @ResponseBody String GetAcademicData(){
+	public @ResponseBody StateResponse GetAcademicData(){
     	
         CommonUtils.AddLog("Starting to fetch academic data from MongoDB", 3);
     	StateResponse ControllerLayerResponse;
@@ -52,11 +52,11 @@ public class MongodDBController {
     	}
     	        
     	CommonUtils.AddLog("Finished process fetch academic data from MongoDB reqeust", 3);
-    	return ControllerLayerResponse.toString();
+    	return ControllerLayerResponse;
 	}
 	
 	@GetMapping(value = "/receiveExpereienceData",produces = "application/json")
-	public @ResponseBody String GetExpereienceData(){
+	public @ResponseBody StateResponse GetExpereienceData(){
     	        
         CommonUtils.AddLog("Starting to fetch expereience data from MongoDB", 3);
     	StateResponse ControllerLayerResponse;
@@ -82,11 +82,11 @@ public class MongodDBController {
     	}
     	        
     	CommonUtils.AddLog("Finished process fetch expereience data from MongoDB reqeust", 3);
-    	return ControllerLayerResponse.toString();
+    	return ControllerLayerResponse;
 	}
 	
 	@GetMapping(value = "/receiveGeneralData",produces = "application/json")
-	public @ResponseBody String GetGeneralData(){
+	public @ResponseBody StateResponse GetGeneralData(){
     	
         CommonUtils.AddLog("Starting to fetch general data from MongoDB", 3);
     	StateResponse ControllerLayerResponse;
@@ -111,7 +111,7 @@ public class MongodDBController {
     	}
     	        
     	CommonUtils.AddLog("Finished process fetch general data from MongoDB reqeust", 3);
-    	return ControllerLayerResponse.toString();
+    	return ControllerLayerResponse;
 	}
 
 }

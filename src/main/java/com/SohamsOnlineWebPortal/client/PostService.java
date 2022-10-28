@@ -47,7 +47,7 @@ public class PostService {
     			
     			stateResponse = StateResponse.builder()
     					.status(BaseConstants.SERVER_ERROR_CODE)
-    					.body(jsonResponseBody.toJSONString())
+    					.body(jsonResponseBody)
     					.message(httpRequestCustomParameters.getServerErrorMessage())
     					.build();
     			
@@ -55,7 +55,7 @@ public class PostService {
     			
     			stateResponse = StateResponse.builder()
     					.status(response.code())
-    					.body(jsonResponseBody.toJSONString())
+    					.body(jsonResponseBody)
     					.message(httpRequestCustomParameters.getSuccessMessage())
     					.build();
     			
@@ -65,7 +65,7 @@ public class PostService {
     		
     		stateResponse = StateResponse.builder()
 					.status(response.code())
-					.body(jsonResponseBody.toJSONString())
+					.body(jsonResponseBody)
 					.message(httpRequestCustomParameters.getClientErrorMessage())
 					.build();
     	}

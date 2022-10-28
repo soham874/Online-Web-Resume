@@ -16,15 +16,15 @@ public class CommonUtils {
 	public static void AddLog(String log, int type) {
 		String logMessage = "\n"+getUTCTimeStamp()+"\t"+BaseConstants.SESSION_UID+" \t";
 		if( type == 1 ) {
-			logMessage += "error \t\t\t";
+			logMessage += "error    ";
 		}
 		
 		if( type == 2 ) {
-			logMessage += "success \t\t";
+			logMessage += "success  ";
 		}
 		
 		if( type == 3 ) {
-			logMessage += "information \t\t";
+			logMessage += "info      ";
 		}
 		
 		logMessage += log;

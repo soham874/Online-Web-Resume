@@ -2,6 +2,7 @@ package com.SohamsOnlineWebPortal.model;
 
 import javax.validation.constraints.NotNull;
 
+import com.SohamsOnlineWebPortal.config.CommonUtils;
 import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
 
 import lombok.AccessLevel;
@@ -24,14 +25,24 @@ public class VisitorInformation {
 	@NotNull(message = "Height cannot be null")
 	int height;
 	
-	@NotNull(message = "width cannot be null")
+	@NotNull(message = "Width cannot be null")
 	int width;
 	
-	String timestamp;
-	String time;
+	@Builder.Default
+	String timestamp = CommonUtils.getUTCTimeStamp().toString();
+	
+	@Builder.Default
+	String time = String.valueOf(CommonUtils.getUTCTimeStamp().getHours());
+	
 	double actualaspectratio;
+	
 	String devicetype;
-		
+	
+	public void update(){
+		this.actualaspectratio = (double)height/(double)width;
+		this.devicetype = CommonUtils.DeviceType(width);	
+	}
+	
 	@Override
 	public String toString() {
 		return "{\r\n"

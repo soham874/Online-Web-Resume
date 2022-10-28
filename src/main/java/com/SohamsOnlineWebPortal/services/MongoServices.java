@@ -79,7 +79,7 @@ public class MongoServices {
 		CommonUtils.AddLog("General details request to MongoDB servers completed, setting user interraction URLs", 3);
 
 		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonResponse = (JSONObject) jsonParser.parse(response.getBody());
+		JSONObject jsonResponse = (JSONObject) jsonParser.parse(response.getBody().toString());
 		JSONArray jsonDocument = (JSONArray) jsonResponse.get("documents");
 	    
 	    GoogleConstants.setGOOGLE_BROWSER_INFORMATION_API(((JSONObject)jsonDocument.get(0)).get("Google_visitor_information_api").toString());

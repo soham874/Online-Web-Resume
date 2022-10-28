@@ -14,7 +14,6 @@ import com.SohamsOnlineWebPortal.config.constants.GithubConstants;
 import com.SohamsOnlineWebPortal.config.constants.GoogleConstants;
 import com.SohamsOnlineWebPortal.config.constants.LeetCodeConstants;
 import com.SohamsOnlineWebPortal.config.constants.MongoDBConstants;
-import com.SohamsOnlineWebPortal.middleware.MongoJSONFormer;
 
 @SpringBootApplication(scanBasePackages = "com.SohamsOnlineWebPortal")
 @EnableConfigurationProperties({

@@ -33,7 +33,7 @@ public class GoogleController {
 	GoogleServices googleServices;
 	
 	@PostMapping(value = "/updateBrowserData",produces = "application/json")
-    public @ResponseBody String sendBrowserData( @RequestBody @Valid VisitorInformation visitorInformation ) throws ParseException{
+    public @ResponseBody StateResponse sendBrowserData( @RequestBody @Valid VisitorInformation visitorInformation ) throws ParseException{
 		
 		CommonUtils.AddLog("Starting to store browser data", 3);
     	StateResponse ControllerLayerResponse;
@@ -58,11 +58,11 @@ public class GoogleController {
 					.build();
     	}
     	
-    	return ControllerLayerResponse.toString();
+    	return ControllerLayerResponse;
 	}
 	
 	@PostMapping(value = "/sendUserResponse",produces = "application/json")
-	public @ResponseBody String sendUserResponse( @RequestBody @Valid UserResponse userResponse ) throws ParseException{
+	public @ResponseBody StateResponse sendUserResponse( @RequestBody @Valid UserResponse userResponse ) throws ParseException{
 		
 		CommonUtils.AddLog("Starting to store User Response", 3);
     	StateResponse ControllerLayerResponse;
@@ -87,7 +87,7 @@ public class GoogleController {
 					.build();
     	}
     	
-    	return ControllerLayerResponse.toString();
+    	return ControllerLayerResponse;
 	}
 
 }

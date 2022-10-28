@@ -27,7 +27,7 @@ public class GithubController {
 	GithubService githubService;
 	
     @GetMapping(value = "/receiveGithubData",produces = "application/json")
-    public @ResponseBody String GetLeetCodeData(){
+    public @ResponseBody StateResponse GetLeetCodeData(){
     	
     	CommonUtils.AddLog("Starting to fetch Github data", 3);
     	StateResponse ControllerLayerResponse;
@@ -51,7 +51,7 @@ public class GithubController {
 					.build();
     	}
         // return the response
-    	return ControllerLayerResponse.toString();
+    	return ControllerLayerResponse;
     	
     }
 

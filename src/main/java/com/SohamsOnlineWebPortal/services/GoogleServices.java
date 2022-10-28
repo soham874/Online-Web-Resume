@@ -20,13 +20,9 @@ import com.SohamsOnlineWebPortal.model.VisitorInformation;
 @Service
 public class GoogleServices {
 	
-	@SuppressWarnings("deprecation")
 	public StateResponse saveBrowserInformation(@Valid VisitorInformation visitorInformation) throws IOException, ParseException {
-		
-		visitorInformation.setActualaspectratio((double)visitorInformation.getWidth()/(double)visitorInformation.getHeight());
-		visitorInformation.setTimestamp(CommonUtils.getUTCTimeStamp().toString());
-		visitorInformation.setTime(String.valueOf(CommonUtils.getUTCTimeStamp().getHours()));
-		visitorInformation.setDevicetype(CommonUtils.DeviceType(visitorInformation.getWidth()));
+
+		visitorInformation.update();
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(GoogleConstants.GOOGLE_BROWSER_INFORMATION_API)

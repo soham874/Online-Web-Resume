@@ -26,7 +26,7 @@ public class LeetCodeController {
 	LeetcodeService leetcodeService;
 	
     @GetMapping(value = "/receiveLeetCodeData", produces = "application/json")
-    public @ResponseBody String GetLeetCodeData(){
+    public @ResponseBody StateResponse GetLeetCodeData(){
     	
     	CommonUtils.AddLog("Starting to fetch LeetCode data", 3);
     	StateResponse ControllerLayerResponse;
@@ -52,7 +52,7 @@ public class LeetCodeController {
     	}
     	        
     	CommonUtils.AddLog("Finished process fetch LeetCode data reqeust", 3);
-    	return ControllerLayerResponse.toString();
+    	return ControllerLayerResponse;
     	
     }
 }
