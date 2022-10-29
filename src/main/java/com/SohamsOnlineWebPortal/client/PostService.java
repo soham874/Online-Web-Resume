@@ -13,6 +13,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import com.SohamsOnlineWebPortal.config.CommonUtils;
 import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
 import com.SohamsOnlineWebPortal.model.*;
 
@@ -34,9 +35,9 @@ public class PostService {
         
         StateResponse stateResponse;
         	
-        	Response response = client.newCall(request).execute();
-        	
-        	String responseBody = response.body().string();
+    	Response response = client.newCall(request).execute();
+    	
+    	String responseBody = response.body().string();
     		
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonResponseBody = (JSONObject) jsonParser.parse(responseBody);
@@ -71,7 +72,9 @@ public class PostService {
     	}
     	
     	response.close();
-
+    	
+    	CommonUtils.AddLog("Response for post call --> " + stateResponse.toString(), 3);
+    	
 		return stateResponse;
 	}
 }

@@ -16,9 +16,12 @@ import com.SohamsOnlineWebPortal.model.HttpRequestCustomParameters;
 import com.SohamsOnlineWebPortal.model.StateResponse;
 import com.SohamsOnlineWebPortal.model.UserResponse;
 import com.SohamsOnlineWebPortal.model.VisitorInformation;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class GoogleServices {
+	
+	private ObjectMapper Obj = new ObjectMapper();  
 	
 	public StateResponse saveBrowserInformation(@Valid VisitorInformation visitorInformation) throws IOException, ParseException {
 
@@ -26,7 +29,7 @@ public class GoogleServices {
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(GoogleConstants.GOOGLE_BROWSER_INFORMATION_API)
-				.requestBody(visitorInformation.toString())
+				.requestBody(Obj.writeValueAsString(visitorInformation))
 				.headerParameters(getHeaders())
 				.successMessage(GoogleConstants.SUCCESS_MESSAGE)
 				.clientErrorMessage(GoogleConstants.CLIENT_ERROR_MESSAGE)
@@ -43,7 +46,7 @@ public class GoogleServices {
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(GoogleConstants.GOOGLE_VISITOR_RESPONSE_API)
-				.requestBody(userResponse.toString())
+				.requestBody(Obj.writeValueAsString(userResponse))
 				.headerParameters(getHeaders())
 				.successMessage(GoogleConstants.SUCCESS_MESSAGE)
 				.clientErrorMessage(GoogleConstants.CLIENT_ERROR_MESSAGE)

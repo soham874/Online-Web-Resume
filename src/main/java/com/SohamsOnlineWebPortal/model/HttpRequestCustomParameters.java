@@ -2,6 +2,8 @@ package com.SohamsOnlineWebPortal.model;
 
 import java.util.Map;
 
+import javax.validation.constraints.NotNull;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,10 +18,16 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level=AccessLevel.PRIVATE)
 public class HttpRequestCustomParameters {
 
+	@NotNull(message = "Rquest URL cannot be null")
 	String URL;
+	
 	String requestBody;
+	
 	Map<String, String> headerParameters;
+	
 	String successMessage;
+	
 	String serverErrorMessage;
+	
 	String clientErrorMessage;
 }

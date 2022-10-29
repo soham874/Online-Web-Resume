@@ -1,8 +1,8 @@
 package com.SohamsOnlineWebPortal.model;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import javax.validation.constraints.NotNull;
 
+import com.SohamsOnlineWebPortal.config.CommonUtils;
 import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
 
 import lombok.AccessLevel;
@@ -19,30 +19,19 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level=AccessLevel.PRIVATE)
 public class UserResponse {
 
+	@NotNull(message = "Name cannot be null")
 	String name;
+	
+	@NotNull(message = "Email cannot be null")
 	String email;
+	
+	@NotNull(message = "Message body cannot be null")
 	String message;
-	String timestamp;
 	
-	public UserResponse(String name, String email, String message) {
-		
-		DateTimeFormatter date_format = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-		LocalDateTime now = LocalDateTime.now();
-		
-		this.name = name;
-		this.message = message;
-		this.email = email;
-		this.timestamp = date_format.format(now);
-	}
+	@Builder.Default
+	String timestamp = CommonUtils.getUTCTimeStamp().toString();
 	
-	@Override
-	public String toString() {
-		return "{"
-				+ "\n\"Session_UID\": \""+BaseConstants.SESSION_UID+"\","
-				+ "\n\"TimeStamp\": \""+this.timestamp+"\","
-				+ "\n\"Name\"     : \""+this.name+"\","
-				+ "\n\"Email\"     : \""+this.email+"\","
-				+ "\n\"Message\"  : \""+this.message+"\""
-				+"\n}";
-	}
+	@Builder.Default
+	String sessionUid = BaseConstants.SESSION_UID;
+	
 }

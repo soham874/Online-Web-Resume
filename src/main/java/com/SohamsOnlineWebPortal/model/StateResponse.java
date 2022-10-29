@@ -1,5 +1,7 @@
 package com.SohamsOnlineWebPortal.model;
 
+import javax.validation.constraints.NotNull;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,17 +16,13 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level=AccessLevel.PRIVATE)
 public class StateResponse {
 
+	@NotNull(message = "Status code cannot be null")
 	int status;
+	
+	@NotNull(message = "Body cannot be null")
 	Object body;
+	
+	@NotNull(message = "Message cannot be null")
 	String message;
-
-	@Override
-	public String toString() {
-		return "{"
-				+ "\n\"status\" : \""+this.status+"\","
-				+ "\n\"message\": \""+this.message+"\","
-				+ "\n\"body\"   : "+this.body
-				+"\n}\n";
-	}
-
+	
 }
