@@ -19,7 +19,7 @@ import com.SohamsOnlineWebPortal.model.*;
 
 public class PostService {
 	
-	public static StateResponse post(HttpRequestCustomParameters httpRequestCustomParameters) throws IOException, ParseException {
+	public static StateResponse post(HttpRequestCustomParameters httpRequestCustomParameters, String sessionId) throws IOException, ParseException {
 				
 		OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
@@ -73,7 +73,7 @@ public class PostService {
     	
     	response.close();
     	
-    	CommonUtils.AddLog("Response for post call --> " + stateResponse.toString(), 3);
+    	CommonUtils.AddLog(sessionId,"Response for post call --> " + stateResponse.toString(), 3);
     	
 		return stateResponse;
 	}

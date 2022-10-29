@@ -28,7 +28,7 @@ public class MongoServices {
 	@Autowired
 	MongoJSONFormer mongoJSONFormer;
 
-	public StateResponse getAcademicData() throws IOException, ParseException {
+	public StateResponse getAcademicData(String sessionID) throws IOException, ParseException {
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(mongoDBConstants.REQUEST_URL+mongoDBConstants.FIND_REQUEST)
@@ -39,14 +39,14 @@ public class MongoServices {
 				.serverErrorMessage(MongoDBConstants.SERVER_ERROR_MESSAGE)
 				.build();
 		
-		CommonUtils.AddLog("Sending fetch academics details request to MongoDB servers", 3);
-		StateResponse response = PostService.post(httpRequestCustomParameters);
-		CommonUtils.AddLog("Response status for MongoDB academics data fetch request --> "+response.getStatus(), 2);
+		CommonUtils.AddLog(sessionID,"Sending fetch academics details request to MongoDB servers", 3);
+		StateResponse response = PostService.post(httpRequestCustomParameters,sessionID);
+		CommonUtils.AddLog(sessionID,"Response status for MongoDB academics data fetch request --> "+response.getStatus(), 2);
 		return response;
 	}
 	
 
-	public StateResponse getExperenceData() throws IOException, ParseException {
+	public StateResponse getExperenceData(String sessionID) throws IOException, ParseException {
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(mongoDBConstants.REQUEST_URL+mongoDBConstants.FIND_REQUEST)
@@ -57,13 +57,13 @@ public class MongoServices {
 				.serverErrorMessage(MongoDBConstants.SERVER_ERROR_MESSAGE)
 				.build();
 		
-		CommonUtils.AddLog("Sending fetch experience details request to MongoDB servers", 3);
-		StateResponse response = PostService.post(httpRequestCustomParameters);
-		CommonUtils.AddLog("Response status for MongoDB experience data fetch request --> "+response.getStatus(), 2);
+		CommonUtils.AddLog(sessionID,"Sending fetch experience details request to MongoDB servers", 3);
+		StateResponse response = PostService.post(httpRequestCustomParameters,sessionID);
+		CommonUtils.AddLog(sessionID,"Response status for MongoDB experience data fetch request --> "+response.getStatus(), 2);
 		return response;
 	}
 	
-	public StateResponse getGeneralData() throws IOException, ParseException {
+	public StateResponse getGeneralData(String sessionID) throws IOException, ParseException {
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(mongoDBConstants.REQUEST_URL+mongoDBConstants.FIND_REQUEST)
@@ -74,9 +74,9 @@ public class MongoServices {
 				.serverErrorMessage(MongoDBConstants.SERVER_ERROR_MESSAGE)
 				.build();
 		
-		CommonUtils.AddLog("Sending fetch general details request to MongoDB servers", 3);
-		StateResponse response = PostService.post(httpRequestCustomParameters);
-		CommonUtils.AddLog("General details request to MongoDB servers completed, setting user interraction URLs", 3);
+		CommonUtils.AddLog(sessionID,"Sending fetch general details request to MongoDB servers", 3);
+		StateResponse response = PostService.post(httpRequestCustomParameters,sessionID);
+		CommonUtils.AddLog(sessionID,"General details request to MongoDB servers completed, setting user interraction URLs", 3);
 
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonResponse = (JSONObject) jsonParser.parse(response.getBody().toString());
@@ -85,7 +85,7 @@ public class MongoServices {
 	    GoogleConstants.setGOOGLE_BROWSER_INFORMATION_API(((JSONObject)jsonDocument.get(0)).get("Google_visitor_information_api").toString());
 	    GoogleConstants.setGOOGLE_VISITOR_RESPONSE_API(((JSONObject)jsonDocument.get(0)).get("Google_user_response_api").toString());
 		
-		CommonUtils.AddLog("Response status for MongoDB general data fetch request --> "+response.getStatus(), 2);
+		CommonUtils.AddLog(sessionID,"Response status for MongoDB general data fetch request --> "+response.getStatus(), 2);
 		return response;
 	}
 	

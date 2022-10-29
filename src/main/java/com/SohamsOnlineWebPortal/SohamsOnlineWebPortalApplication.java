@@ -29,19 +29,3 @@ public class SohamsOnlineWebPortalApplication {
 	}
 
 }
-
-@RestController 
-class HomeContoller {
-		
-    @RequestMapping("/")
-    public ModelAndView index() {
-    	ModelAndView modelAndView = new ModelAndView();
-    	
-    	UUID session_id = UUID.randomUUID();
-    	BaseConstants.setSESSION_UID(session_id.toString());
-    	
-    	System.out.println("Session started with ID --> " + BaseConstants.SESSION_UID);
-        modelAndView.setViewName("ViewPage.html");
-        return modelAndView;
-    }
-}

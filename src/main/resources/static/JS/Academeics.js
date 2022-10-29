@@ -38,32 +38,37 @@ var academic_fallback = [{
 $(document).ready(function() {
 
     //loadAcedemicInfo(academicData.documents)
-    $.ajax({
-        type: 'GET',
-        url: formAjaxUrl("receiveAcademicData"),
-        contentType: "application/json",
-        dataType: 'json',
-        success: (data_academic_mongo) => {
-            if (data_academic_mongo.status >= 200 && data_academic_mongo.status < 400) {
-                console.log("AJAX RESPONSE >> Success Academic, loading live data")
-                document.getElementById("academic_error").style.display = 'none'
-                document.getElementById("ac_info").style.display = 'block'
-                    //console.log(data_academic_mongo.body)
-                loadAcedemicInfo(data_academic_mongo.body.documents)
-            } else {
+    setTimeout( () => {
+        $.ajax({
+            type: 'GET',
+            url: formAjaxUrl("receiveAcademicData"),
+            contentType: "application/json",
+            headers: {
+                'session-uid':makeid()
+            },
+            dataType: 'json',
+            success: (data_academic_mongo) => {
+                if (data_academic_mongo.status >= 200 && data_academic_mongo.status < 400) {
+                    console.log("AJAX RESPONSE >> Success Academic, loading live data")
+                    document.getElementById("academic_error").style.display = 'none'
+                    document.getElementById("ac_info").style.display = 'block'
+                        //console.log(data_academic_mongo.body)
+                    loadAcedemicInfo(data_academic_mongo.body.documents)
+                } else {
+                    console.log("AJAX RESPONSE >> Error Academic, loading fallback data")
+                        //document.getElementById("ac_info").style.display = 'none'
+                        //document.getElementById("academic_error").style.display = 'flex'
+                    loadAcedemicInfo(academic_fallback)
+                }
+            },
+            error: (err) => {
                 console.log("AJAX RESPONSE >> Error Academic, loading fallback data")
                     //document.getElementById("ac_info").style.display = 'none'
                     //document.getElementById("academic_error").style.display = 'flex'
                 loadAcedemicInfo(academic_fallback)
             }
-        },
-        error: (err) => {
-            console.log("AJAX RESPONSE >> Error Academic, loading fallback data")
-                //document.getElementById("ac_info").style.display = 'none'
-                //document.getElementById("academic_error").style.display = 'flex'
-            loadAcedemicInfo(academic_fallback)
-        }
-    })
+        })
+    }, 1000)
 
     console.log("Academic JS connected successfully");
 

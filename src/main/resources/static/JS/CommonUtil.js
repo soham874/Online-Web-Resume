@@ -40,6 +40,9 @@ deviceInfo = () => {
         url: formAjaxUrl("updateBrowserData"),
         data: JSON.stringify(browser_data),
         contentType: "application/json",
+        headers: {
+            'session-uid':makeid()
+        },
         dataType: 'json',
         success: (success) => {
             console.log("AJAX RESPONSE >> Browser data stored successfully")
@@ -50,8 +53,32 @@ deviceInfo = () => {
     })
 }
 
+// generate random UID
+makeid = () => {
+
+    const oldSessionId = localStorage.getItem('sessionId');
+    if( oldSessionId ){
+        console.log("Previous UID retrieved")
+        return oldSessionId;
+    }
+
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < 16; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    localStorage.setItem('sessionId', result);
+    console.log("Session UID set")
+    return result;
+}
+
 // functions to be performed when webpage loads
 $(document).ready(function() {
+
+    makeid()
+    
     thoughtboxdisplayed = false
 
     cur_percent = document.querySelector('.theme_chain')
@@ -125,28 +152,10 @@ $(document).ready(function() {
 
     })
 
-    /*
-    var folder = "../assets/Skill_items/s3"
-    $.ajax({
-        url: folder,
-        success: function(data) {
-            $(data).find("a").attr("href", function(i, val) {
-                if (val.match(/\.(jpe?g|png|gif)$/)) {
-                    console.log(val)
-                }
-            });
-        }
-    })
-*/
 });
 
 // function to automatically form the url when requesting via localhost/heroku
 formAjaxUrl = (url) => {
-    //console.log(window.location.host)
-/*
-    if (window.location.host === "localhost:8080")
-        return "/OnlineWebresume/" + url
-*/
     return "/" + url
 }
 
@@ -321,6 +330,9 @@ sendReview = () => {
         url: formAjaxUrl("sendUserResponse"),
         data: JSON.stringify(user_response),
         contentType: "application/json",
+        headers: {
+            'session-uid':makeid()
+        },
         dataType: 'json',
         success: (success) => {
             document.getElementById("message_success").style.opacity = 1

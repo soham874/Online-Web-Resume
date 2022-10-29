@@ -19,7 +19,7 @@ public class LeetcodeService {
 	@Autowired
 	LeetCodeConstants leetCodeConstants;
 	
-	public StateResponse getProfileData(String username) throws IOException, ParseException {
+	public StateResponse getProfileData(String username, String sessionId) throws IOException, ParseException {
 
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(leetCodeConstants.REQUEST_URL)
@@ -30,9 +30,9 @@ public class LeetcodeService {
 				.serverErrorMessage(LeetCodeConstants.SERVER_ERROR_MESSAGE)
 				.build();
 		
-		CommonUtils.AddLog("Sending request to Leetcode servers", 3);
-		StateResponse response = PostService.post(httpRequestCustomParameters);
-		CommonUtils.AddLog("Response status for Leetcode query --> "+response.getStatus(), 2);
+		CommonUtils.AddLog(sessionId,"Sending request to Leetcode servers", 3);
+		StateResponse response = PostService.post(httpRequestCustomParameters,sessionId);
+		CommonUtils.AddLog(sessionId,"Response status for Leetcode query --> "+response.getStatus(), 2);
 		return response;
 
 	}

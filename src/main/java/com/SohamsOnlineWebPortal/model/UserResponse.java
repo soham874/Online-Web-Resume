@@ -3,7 +3,6 @@ package com.SohamsOnlineWebPortal.model;
 import javax.validation.constraints.NotNull;
 
 import com.SohamsOnlineWebPortal.config.CommonUtils;
-import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -30,8 +29,7 @@ public class UserResponse {
 	
 	@Builder.Default
 	String timestamp = CommonUtils.getUTCTimeStamp().toString();
-	
-	@Builder.Default
-	String sessionUid = BaseConstants.SESSION_UID;
+
+	String sessionUid;
 	
 }

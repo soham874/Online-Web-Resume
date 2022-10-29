@@ -13,8 +13,8 @@ public class CommonUtils {
 	 * 2 - success (green)
 	 * 3 - info (black)
 	 * */
-	public static void AddLog(String log, int type) {
-		String logMessage = "\n"+getUTCTimeStamp()+"\t"+BaseConstants.SESSION_UID+" \t";
+	public static void AddLog(String sessionId, String log, int type) {
+		String logMessage = getUTCTimeStamp()+"   "+sessionId+"   ";
 		if( type == 1 ) {
 			logMessage += "error    ";
 		}
@@ -24,7 +24,7 @@ public class CommonUtils {
 		}
 		
 		if( type == 3 ) {
-			logMessage += "info      ";
+			logMessage += "info     ";
 		}
 		
 		logMessage += log;

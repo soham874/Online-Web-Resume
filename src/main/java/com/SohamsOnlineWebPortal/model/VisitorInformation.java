@@ -3,7 +3,6 @@ package com.SohamsOnlineWebPortal.model;
 import javax.validation.constraints.NotNull;
 
 import com.SohamsOnlineWebPortal.config.CommonUtils;
-import com.SohamsOnlineWebPortal.config.constants.BaseConstants;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -22,7 +21,7 @@ public class VisitorInformation {
 	@NotNull(message = "Browser name cannot be null")
 	String browser;
 	
-	@NotNull(message = "Height cannot be null")
+	@NotNull(message = "Height cannot be null") 
 	int height;
 	
 	@NotNull(message = "Width cannot be null")
@@ -34,16 +33,16 @@ public class VisitorInformation {
 	@Builder.Default
 	String time = String.valueOf(CommonUtils.getUTCTimeStamp().getHours());
 	
-	@Builder.Default
-	String sessionUid = BaseConstants.SESSION_UID;
+	String sessionUid;
 	
 	double actualaspectratio;
 	
 	String devicetype;
 	
-	public void update(){
+	public void update(String sessionUId){
 		this.actualaspectratio = (double)height/(double)width;
 		this.devicetype = CommonUtils.DeviceType(width);	
+		this.sessionUid = sessionUId;
 	}
 
 }

@@ -30,7 +30,7 @@ public class GithubService {
 		return headers;
 	}
 	
-	public StateResponse getProfileData(String username) throws IOException, ParseException {
+	public StateResponse getProfileData(String username, String sessionId) throws IOException, ParseException {
         
         HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(githubConstants.REQUEST_URL)
@@ -41,9 +41,9 @@ public class GithubService {
 				.serverErrorMessage(GithubConstants.SERVER_ERROR_MESSAGE)
 				.build();
 		
-		CommonUtils.AddLog("Sending request to Github servers", 3);
-		StateResponse response = PostService.post(httpRequestCustomParameters);
-		CommonUtils.AddLog("Response status for Github query --> "+response.getStatus(), 2);
+		CommonUtils.AddLog(sessionId,"Sending request to Github servers", 3);
+		StateResponse response = PostService.post(httpRequestCustomParameters,sessionId);
+		CommonUtils.AddLog(sessionId,"Response status for Github query --> "+response.getStatus(), 2);
 		return response;
 	}
 }

@@ -54,32 +54,38 @@ var experience_fallback = [{
 // functions to be performed when webpage loads
 $(document).ready(function() {
 
-    $.ajax({
-        type: 'GET',
-        url: formAjaxUrl("receiveExpereienceData"),
-        contentType: "application/json",
-        dataType: 'json',
-        success: (data_expereince_mongo) => {
-            if (data_expereince_mongo.status >= 200 && data_expereince_mongo.status < 400) {
-                console.log("AJAX RESPONSE >> Success Expereicne, loading live data")
-                document.getElementById("work_error").style.display = 'none'
-                document.getElementById("work-exp").style.display = 'block'
-                    //console.log(data_expereince_mongo.body)
-                loadExperience(data_expereince_mongo.body.documents)
-            } else {
+    setTimeout( () => {
+        $.ajax({
+            type: 'GET',
+            url: formAjaxUrl("receiveExpereienceData"),
+            headers: {
+                'session-uid':makeid()
+            },
+            contentType: "application/json",
+            dataType: 'json',
+            success: (data_expereince_mongo) => {
+                if (data_expereince_mongo.status >= 200 && data_expereince_mongo.status < 400) {
+                    console.log("AJAX RESPONSE >> Success Expereicne, loading live data")
+                    document.getElementById("work_error").style.display = 'none'
+                    document.getElementById("work-exp").style.display = 'block'
+                        //console.log(data_expereince_mongo.body)
+                    loadExperience(data_expereince_mongo.body.documents)
+                } else {
+                    console.log("AJAX RESPONSE >> Error Expereicne, loading fallback data")
+                        //document.getElementById("work-exp").style.display = 'none'
+                        //document.getElementById("work_error").style.display = 'flex'
+                    loadExperience(experience_fallback)
+                }
+            },
+            error: (err) => {
                 console.log("AJAX RESPONSE >> Error Expereicne, loading fallback data")
                     //document.getElementById("work-exp").style.display = 'none'
                     //document.getElementById("work_error").style.display = 'flex'
                 loadExperience(experience_fallback)
             }
-        },
-        error: (err) => {
-            console.log("AJAX RESPONSE >> Error Expereicne, loading fallback data")
-                //document.getElementById("work-exp").style.display = 'none'
-                //document.getElementById("work_error").style.display = 'flex'
-            loadExperience(experience_fallback)
-        }
-    })
+        })
+
+    },1000)
 
     console.log("Experience JS file connected successfully");
 });

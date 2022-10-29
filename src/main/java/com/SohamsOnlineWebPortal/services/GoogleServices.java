@@ -23,9 +23,9 @@ public class GoogleServices {
 	
 	private ObjectMapper Obj = new ObjectMapper();  
 	
-	public StateResponse saveBrowserInformation(@Valid VisitorInformation visitorInformation) throws IOException, ParseException {
+	public StateResponse saveBrowserInformation(@Valid VisitorInformation visitorInformation, String sessionId) throws IOException, ParseException {
 
-		visitorInformation.update();
+		visitorInformation.update(sessionId);
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(GoogleConstants.GOOGLE_BROWSER_INFORMATION_API)
@@ -36,13 +36,15 @@ public class GoogleServices {
 				.serverErrorMessage(GoogleConstants.SERVER_ERROR_MESSAGE)
 				.build();
 		
-		CommonUtils.AddLog("Sending request to Google servers", 3);
-		StateResponse response = PostService.post(httpRequestCustomParameters);
-		CommonUtils.AddLog("Response status for Google query --> "+response.getStatus(), 2);
+		CommonUtils.AddLog(sessionId,"Sending request to Google servers to store browser information", 3);
+		StateResponse response = PostService.post(httpRequestCustomParameters,sessionId);
+		CommonUtils.AddLog(sessionId,"Response status for Google query to store browser information --> "+response.getStatus(), 2);
 		return response;
 	}
 	
-	public StateResponse saveUserResponse(@Valid UserResponse userResponse) throws IOException, ParseException {
+	public StateResponse saveUserResponse(@Valid UserResponse userResponse, String sessionId) throws IOException, ParseException {
+		
+		userResponse.setSessionUid(sessionId);
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(GoogleConstants.GOOGLE_VISITOR_RESPONSE_API)
@@ -53,9 +55,9 @@ public class GoogleServices {
 				.serverErrorMessage(GoogleConstants.SERVER_ERROR_MESSAGE)
 				.build();
 		
-		CommonUtils.AddLog("Sending request to Google servers", 3);
-		StateResponse response = PostService.post(httpRequestCustomParameters);
-		CommonUtils.AddLog("Response status for Google query --> "+response.getStatus(), 2);
+		CommonUtils.AddLog(sessionId,"Sending request to Google servers to store user response", 3);
+		StateResponse response = PostService.post(httpRequestCustomParameters,sessionId);
+		CommonUtils.AddLog(sessionId,"Response status for Google query to store user response --> "+response.getStatus(), 2);
 		return response;
 	}
 	

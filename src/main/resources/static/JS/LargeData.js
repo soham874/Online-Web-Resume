@@ -98,22 +98,35 @@ var general_information_fallback = {
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-$.ajax({
-    type: 'GET',
-    url: formAjaxUrl("receiveGeneralData"),
-    contentType: "application/json",
-    dataType: 'json',
-    success: (general_data) => {
-        if (general_data.status >= 200 && general_data.status < 400) {
-            console.log("AJAX RESPONSE >> Success General Information, loading live data")
-                //document.getElementById("work_error").style.display = 'none'
-                //document.getElementById("work-exp").style.display = 'block'
-                //console.log(general_data.body)
-            loadSkills(general_data.body.documents[0].skill_icons)
-            loadSummary(general_data.body.documents[0].Summary)
-            document.getElementById("display_pic").src = googleEmbedImage(general_data.body.documents[0].Profile_pic_link)
-
-        } else {
+setTimeout( () => {
+    $.ajax({
+        type: 'GET',
+        url: formAjaxUrl("receiveGeneralData"),
+        contentType: "application/json",
+        headers: {
+            'session-uid':makeid()
+        },
+        dataType: 'json',
+        success: (general_data) => {
+            if (general_data.status >= 200 && general_data.status < 400) {
+                console.log("AJAX RESPONSE >> Success General Information, loading live data")
+                    //document.getElementById("work_error").style.display = 'none'
+                    //document.getElementById("work-exp").style.display = 'block'
+                    //console.log(general_data.body)
+                loadSkills(general_data.body.documents[0].skill_icons)
+                loadSummary(general_data.body.documents[0].Summary)
+                document.getElementById("display_pic").src = googleEmbedImage(general_data.body.documents[0].Profile_pic_link)
+    
+            } else {
+                console.log("AJAX RESPONSE >> Error General Information, loading fallback data")
+                    //document.getElementById("work-exp").style.display = 'none'
+                    //document.getElementById("work_error").style.display = 'flex'
+                loadSkills()
+                loadSummary()
+                document.getElementById("display_pic").src = googleEmbedImage("https://drive.google.com/file/d/1Nm42BeZ5qOjldIeAiN96RMjAWhLZ5b5E/view?usp=sharing")
+            }
+        },
+        error: (err) => {
             console.log("AJAX RESPONSE >> Error General Information, loading fallback data")
                 //document.getElementById("work-exp").style.display = 'none'
                 //document.getElementById("work_error").style.display = 'flex'
@@ -121,46 +134,15 @@ $.ajax({
             loadSummary()
             document.getElementById("display_pic").src = googleEmbedImage("https://drive.google.com/file/d/1Nm42BeZ5qOjldIeAiN96RMjAWhLZ5b5E/view?usp=sharing")
         }
-    },
-    error: (err) => {
-        console.log("AJAX RESPONSE >> Error General Information, loading fallback data")
-            //document.getElementById("work-exp").style.display = 'none'
-            //document.getElementById("work_error").style.display = 'flex'
-        loadSkills()
-        loadSummary()
-        document.getElementById("display_pic").src = googleEmbedImage("https://drive.google.com/file/d/1Nm42BeZ5qOjldIeAiN96RMjAWhLZ5b5E/view?usp=sharing")
-    }
-})
+    })
+    
+} ,1000);
 
 // functions to be performed when webpage loads
 $(document).ready(function() {
 
     console.log("General Data JS file connected successfully");
-    //console.log(general_information_fallback)
-
-    /*
-        $.ajax({
-                type: 'POST',
-                url: "https://data.mongodb-api.com/app/data-okjli/endpoint/data/v1/action/find",
-                contentType: "application/json",
-                dataType: 'json',
-                body: {
-                    "dataSource": "SohamsWebPortal",
-                    "database": "Web_Portal_Database",
-                    "collection": "Academics"
-                },
-                headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Request-Headers": "*",
-                    "api-key": "cH8gQ4EdyCxHfdaZaA2vVEVDBUuSB5QhdHzTJa8F4f564KfBYJ1R8ZxthZobnAau"
-                },
-                success: (general_data) => {
-                    console.log(general_data)
-                },
-                error: (err) => {
-                    console.log(err)
-                }
-            }) */
+    
 });
 
 // load summary section
