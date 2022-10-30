@@ -1,3 +1,5 @@
+var techStackCount = 0
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 var general_information_fallback = {
@@ -157,6 +159,8 @@ loadSkills = (data = general_information_fallback.skill_icons) => {
     let output = "";
     let i = 0;
 
+    techStackCount = data.length
+
     data.forEach(tech => {
 
         var techName = tech.tech_name
@@ -195,7 +199,7 @@ displayeffects = (skill_item_number) => {
 
 // hide the tech icons
 hideeffects = () => {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < techStackCount; i++) {
         document.getElementsByClassName("skill_item")[i].style.transform = "scale(1)";
         document.getElementsByClassName("skill_icon_group")[i].style.display = "none";
         var target_id = "s" + i
