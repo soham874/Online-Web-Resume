@@ -1,0 +1,44 @@
+function getAllLinks(id){
+
+  var fldr = DriveApp.getFolderById(id);
+  var folders = fldr.getFolders();
+  
+  var folder;
+  var res = '';
+  
+  while ( folders.hasNext() ) {
+    folder = folders.next();
+    res += '{"tech_name":"' + folder.getName() + '",';
+    res += '"techs":[' + getAllLinks(folder.getId()) + ']},';
+  }
+  
+  res = res.slice(0,res.length-1);
+  
+  var files = fldr.getFiles();
+  var f,sharable_url,tech_name,docu_link;
+    
+  while (files.hasNext()) {
+    f = files.next();
+    sharable_url = f.getUrl();
+    tech_name = f.getName().split(" ")[0];
+    docu_link = f.getName().split(" ")[1];
+    res += ('{"Name":"'+tech_name+'",');
+    res += ('"URL":"'+sharable_url+'",');
+    res += ('"DocuLink":"'+docu_link+'"},');
+  }
+  
+  res = res.slice(0,res.length-1);  
+  return res;
+}
+
+function PublishSharableLinks() {
+
+  var doc = DocumentApp.getActiveDocument();
+  var body = doc.getBody();
+  body.clear();
+  
+  body.appendParagraph("Updated on : "+Date()+"\n");
+  var res = '['+getAllLinks("13eDUJdkh_HnMaal8XBYkAeISR-9GbI6e")+'}]';
+  //console.log(res)
+  body.appendParagraph(res);
+ }
