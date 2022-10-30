@@ -1,19 +1,14 @@
 HELP.md
-target/classes
-target/classes
-target/generated-sources
-target/generated-test-sources
-target/m2e-wtp
-target/maven-archiver
-target/maven-status
-target/Sohams-Online-Web-Portal-0.0.1-SNAPSHOT
-target/surefire-reports
-target/test-classes
-target/Sohams-Online-Web-Portal-0.0.1-SNAPSHOT.war.original
+
+.settings
+.project
+.classpath
 
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+
+mvnw*
 
 ### STS ###
 .apt_generated
