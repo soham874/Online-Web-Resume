@@ -15,9 +15,10 @@ import com.SohamsOnlineWebPortal.client.PostService;
 import com.SohamsOnlineWebPortal.config.CommonUtils;
 import com.SohamsOnlineWebPortal.config.constants.GoogleConstants;
 import com.SohamsOnlineWebPortal.config.constants.MongoDBConstants;
-import com.SohamsOnlineWebPortal.middleware.MongoJSONFormer;
 import com.SohamsOnlineWebPortal.model.HttpRequestCustomParameters;
 import com.SohamsOnlineWebPortal.model.StateResponse;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class MongoServices {
@@ -25,14 +26,13 @@ public class MongoServices {
 	@Autowired
 	MongoDBConstants mongoDBConstants;
 	
-	@Autowired
-	MongoJSONFormer mongoJSONFormer;
+	private ObjectMapper Obj = new ObjectMapper();  
 
 	public StateResponse getAcademicData(String sessionID) throws IOException, ParseException {
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(mongoDBConstants.REQUEST_URL+mongoDBConstants.FIND_REQUEST)
-				.requestBody(mongoJSONFormer.formAcademicsJSON())
+				.requestBody(getRequestBody(mongoDBConstants.COLLECTION_NAME_ACADEMICS))
 				.headerParameters(getHeaders())
 				.successMessage(MongoDBConstants.SUCCESS_MESSAGE)
 				.clientErrorMessage(MongoDBConstants.CLIENT_ERROR_MESSAGE)
@@ -50,7 +50,7 @@ public class MongoServices {
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(mongoDBConstants.REQUEST_URL+mongoDBConstants.FIND_REQUEST)
-				.requestBody(mongoJSONFormer.formExperienceJSON())
+				.requestBody(getRequestBody(mongoDBConstants.COLLECTION_NAME_EXPERIENCE))
 				.headerParameters(getHeaders())
 				.successMessage(MongoDBConstants.SUCCESS_MESSAGE)
 				.clientErrorMessage(MongoDBConstants.CLIENT_ERROR_MESSAGE)
@@ -67,7 +67,7 @@ public class MongoServices {
 		
 		HttpRequestCustomParameters httpRequestCustomParameters = HttpRequestCustomParameters.builder()
 				.URL(mongoDBConstants.REQUEST_URL+mongoDBConstants.FIND_REQUEST)
-				.requestBody(mongoJSONFormer.formGeneralInformationJSON())
+				.requestBody(getRequestBody(mongoDBConstants.COLLECTION_NAME_GENERAL_INFORMATION))
 				.headerParameters(getHeaders())
 				.successMessage(MongoDBConstants.SUCCESS_MESSAGE)
 				.clientErrorMessage(MongoDBConstants.CLIENT_ERROR_MESSAGE)
@@ -96,5 +96,14 @@ public class MongoServices {
 		headers.put("Accept", "application/json");
 		headers.put("Access-Control-Request-Headers", "*");
 		return headers;
+	}
+	
+	private String getRequestBody(String collectionName) throws JsonProcessingException{
+		Map<String, String> requestBody = new HashMap<>();
+		requestBody.put("dataSource", mongoDBConstants.DATASOURCE);
+		requestBody.put("database", mongoDBConstants.DATABASE);
+		requestBody.put("collection", collectionName);
+		
+		return Obj.writeValueAsString(requestBody);
 	}
 }

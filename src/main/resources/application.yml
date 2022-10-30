@@ -18,3 +18,7 @@ baseurl:
     find-request: "/find"
     datasource: "SohamsWebPortal"
     database: "Web_Portal_Database"
+    collection:
+      experience: "Work_Experience"
+      academics: "Academics"
+      general-information: "General_Information"

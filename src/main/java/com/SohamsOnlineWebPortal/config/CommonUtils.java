@@ -48,9 +48,9 @@ public class CommonUtils {
 	}
 
 	public static String DeviceType( int width ) {	
-		if( width < 500 )
+		if( width < BaseConstants.MOBILE_SCREEN_WIDTH_LIMIT )
 			return "Mobile";
-		if( width < 900 )
+		if( width < BaseConstants.TABLET_SCREEN_WIDTH_LIMIT )
 			return "Tablet";
 		return "Desktop/Laptop";	
 	}
