@@ -117,7 +117,7 @@ setTimeout( () => {
                     //console.log(general_data.body)
                 loadSkills(general_data.body.documents[0].skill_icons)
                 loadSummary(general_data.body.documents[0].Summary)
-                document.getElementById("display_pic").src = googleEmbedImage(general_data.body.documents[0].Profile_pic_link)
+                document.getElementById("display_pic").src = general_data.body.documents[0].Profile_pic_link
     
             } else {
                 console.log("AJAX RESPONSE >> Error General Information, loading fallback data")
@@ -177,7 +177,7 @@ loadSkills = (data = general_information_fallback.skill_icons) => {
                         <div class="skill_icon_group disabled" id="s${i}" onmouseleave="hideeffects()" style="left:${div_start_pos}px">`
 
         tech.techs.forEach(tech_icon => {
-            output += `<img alt="${tech_icon.Name}" class="skill_icons" src="${googleEmbedImage(tech_icon.URL)}" referrerpolicy="no-referrer" onclick="window.open('${tech_icon.DocuLink}','mywindow')"></img>`
+            output += `<img alt="${tech_icon.Name}" class="skill_icons" src="${tech_icon.URL}" referrerpolicy="no-referrer" onclick="window.open('${tech_icon.DocuLink}','mywindow')"></img>`
         });
         output += `</div></div>`
         i++;
