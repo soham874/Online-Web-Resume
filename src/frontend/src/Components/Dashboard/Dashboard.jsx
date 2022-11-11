@@ -6,33 +6,23 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
 
-import HighlightIcon from '@material-ui/icons/Highlight';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import CreateIcon from '@material-ui/icons/Create';
-import DeleteIcon from '@material-ui/icons/Delete';
-import ArchiveIcon from '@material-ui/icons/Archive';
-import DashLogo from '../../Assets/LogoDashboard.png';
-
-import ReplayIcon from '@material-ui/icons/Replay'
-import ViewStreamOutlinedIcon from '@material-ui/icons/ViewStreamOutlined';
-import SettingsIcon from '@material-ui/icons/Settings';
-import DialpadIcon from '@material-ui/icons/Dialpad';
+import DashLogo from '../../Assets/logo_light.png';
 
 import Badge from '@material-ui/core/Badge';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import SummarizeIcon from '@mui/icons-material/Summarize';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import InfoIcon from '@mui/icons-material/Info';
 
 const drawerWidth = 250;
-
-const userId = localStorage.getItem('userId')
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -195,32 +185,7 @@ export default function Dashboard() {
             setOpen(!open)
 
     }
-
-    const handleCallback = (inputform) => {
-        // noteservices.createNote(inputform, userId).then((response) => {
-        //     console.log(response)
-        //     getNotes()
-        // }).catch((error) => {
-        //     console.log(error)
-        // })
-    }
-
-    const getNotes = () => {
-        console.log(userId)
-        // noteservices.getNotes(userId).then((response) => {
-        //     console.log(response)
-        //     let serverData = response.data.data.data
-        //     setState({info:serverData})
-        // }).catch((error) => {
-        //     console.log(error)
-        // })
-    }
-
-   useEffect(()=>{
-       if(state.info !== infoCollected)
-        getNotes()
-    })
-
+    
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -240,51 +205,12 @@ export default function Dashboard() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <img src={DashLogo} alt="Fundoo notes" />
-                    <Typography variant="h6" noWrap className={classes.heading}>
-                        Fundoo Notes
-                    </Typography>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase className={classes.input}
-                            placeholder="Search"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }} />
-                    </div>
-
+                    <img src={DashLogo} alt="Soham's Web Portal" />
                     <div className={classes.sectionDesktop}>
                         <IconButton>
                             <Badge >
-                                <ReplayIcon />
+                                <SummarizeIcon />
                             </Badge>
-                        </IconButton>
-                        <IconButton>
-                            <Badge >
-                                <ViewStreamOutlinedIcon />
-                            </Badge>
-                        </IconButton>
-                        <IconButton>
-                            <Badge >
-                                <SettingsIcon />
-                            </Badge>
-                        </IconButton>
-                        <IconButton>
-                            <Badge >
-                                <DialpadIcon />
-                            </Badge>
-                        </IconButton>
-                        <IconButton
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-haspopup="true"
-                            color="inherit"
-                        >
-                            <AccountCircle />
                         </IconButton>
                     </div>
 
@@ -305,29 +231,33 @@ export default function Dashboard() {
                 }}
             >
                 <List
-                    style={{ marginTop: '70px' }}
+                    style={{ marginTop: '90px' }}
                     onMouseEnter={hoverHandle}
                     onMouseLeave={hoverHandle}
                 >
-                    <ListItem button key='Notes' className={classes.buttonCustomization}>
-                        <ListItemIcon><HighlightIcon /></ListItemIcon>
-                        <ListItemText primary='Notes' />
+                    <ListItem button key='Summary' className={classes.buttonCustomization}>
+                        <ListItemIcon><SummarizeIcon /></ListItemIcon>
+                        <ListItemText primary='Summary' />
                     </ListItem>
-                    <ListItem button key='Reminders' className={classes.buttonCustomization}>
-                        <ListItemIcon><NotificationsIcon /></ListItemIcon>
-                        <ListItemText primary='Reminders' />
+                    <ListItem button key='Skills and Projects' className={classes.buttonCustomization}>
+                        <ListItemIcon><AccountTreeIcon /></ListItemIcon>
+                        <ListItemText primary='Skills and Projects' />
                     </ListItem>
-                    <ListItem button key='Edit Labels' className={classes.buttonCustomization}>
-                        <ListItemIcon><CreateIcon /></ListItemIcon>
-                        <ListItemText primary='Edit Labels' />
+                    <ListItem button key='Work Experience' className={classes.buttonCustomization}>
+                        <ListItemIcon><HomeRepairServiceIcon /></ListItemIcon>
+                        <ListItemText primary='Work Experience' />
                     </ListItem>
-                    <ListItem button key='Archive' className={classes.buttonCustomization}>
-                        <ListItemIcon><ArchiveIcon /></ListItemIcon>
-                        <ListItemText primary='Archive' />
+                    <ListItem button key='Academics' className={classes.buttonCustomization}>
+                        <ListItemIcon><LocalLibraryIcon /></ListItemIcon>
+                        <ListItemText primary='Academics' />
                     </ListItem>
-                    <ListItem button key='Bin' className={classes.buttonCustomization}>
-                        <ListItemIcon><DeleteIcon /></ListItemIcon>
-                        <ListItemText primary='Bin' />
+                    <ListItem button key='Lets get casual?' className={classes.buttonCustomization}>
+                        <ListItemIcon><SportsEsportsIcon /></ListItemIcon>
+                        <ListItemText primary='Lets get casual?' />
+                    </ListItem>
+                    <ListItem button key='About the page' className={classes.buttonCustomization}>
+                        <ListItemIcon><InfoIcon /></ListItemIcon>
+                        <ListItemText primary='About the page' />
                     </ListItem>
                 </List>
             </Drawer>
