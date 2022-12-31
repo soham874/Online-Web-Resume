@@ -45,48 +45,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: 'none',
         borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
     },
-    search: {
-        display: 'flex',
-        alignItems: 'center',
-        position: 'relative',
-        marginLeft: '20px',
-        paddingLeft: '10px',
-        paddingTop: '5px',
-        paddingBottom: '5px',
-        borderRadius: '10px',
-        backgroundColor: '#f1f3f4',
-        marginRight: theme.spacing(2),
-        width: '50%',
-        "&:click": {
-            backgroundColor: 'white',
-        },
-        [theme.breakpoints.down('sm')]: {
-            display: 'none',
-        },
-    },
-    searchIcon: {
-        padding: '5px',
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    inputRoot: {
-        color: 'inherit',
-    },
-    inputInput: {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
-        },
-    },
+    
     sectionDesktop: {
         display: 'flex',
         position: 'absolute',
@@ -157,14 +116,20 @@ const useStyles = makeStyles((theme) => ({
     // main body
 
     content: {
-        flexGrow: 1,
-        backgroundColor: 'white',
-        // padding: theme.spacing(3),
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: '60px',
-        },
+        display: 'flex',
+        textAlign: 'center'
     },
 
+    dashboardWindow: {
+        display: 'flex',
+        position: 'relative',
+        margin: '0 1%',
+        width: '100%',
+        textAlign: 'center',
+        top: '50vh',
+        transform: 'translateY(-50%)',
+        backgroundColor: 'lightgreen'
+    }
 }));
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -234,80 +199,84 @@ export default function Dashboard() {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar
-                position="fixed"
-                className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open,
-                })}
-            >
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawer}
-                        edge="start"
-                        className={clsx(classes.menuButton)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <img src={DashLogo} alt="Soham's Web Portal" />
-                    <div className={classes.sectionDesktop}>
-                    <FormControlLabel
-                        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-                        label="Change the theme?"
-                    />
-                    </div>
+            
+            <main className={classes.content}>
+                <AppBar
+                    position="fixed"
+                    className={clsx(classes.appBar, {
+                        [classes.appBarShift]: open,
+                    })}
+                >
+                    <Toolbar>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={handleDrawer}
+                            edge="start"
+                            className={clsx(classes.menuButton)}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <img src={DashLogo} alt="Soham's Web Portal" />
+                        <div className={classes.sectionDesktop}>
+                        <FormControlLabel
+                            control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+                            label="Change the theme?"
+                        />
+                        </div>
 
 
-                </Toolbar>
-            </AppBar>
-            <Drawer
-                variant="permanent"
-                className={clsx(classes.drawer, {
-                    [classes.drawerOpen]: open,
-                    [classes.drawerClose]: !open,
-                })}
-                classes={{
-                    paper: clsx({
+                    </Toolbar>
+                </AppBar>
+                <Drawer
+                    variant="permanent"
+                    className={clsx(classes.drawer, {
                         [classes.drawerOpen]: open,
                         [classes.drawerClose]: !open,
-                    }),
-                }}
-            >
-                <List
-                    style={{ marginTop: '90px' }}
-                    onMouseEnter={hoverHandle}
-                    onMouseLeave={hoverHandle}
+                    })}
+                    classes={{
+                        paper: clsx({
+                            [classes.drawerOpen]: open,
+                            [classes.drawerClose]: !open,
+                        }),
+                    }}
                 >
-                    <ListItem button key='Summary' className={classes.buttonCustomization}>
-                        <ListItemIcon><SummarizeIcon /></ListItemIcon>
-                        <ListItemText primary='Summary' />
-                    </ListItem>
-                    <ListItem button key='Skills and Projects' className={classes.buttonCustomization}>
-                        <ListItemIcon><AccountTreeIcon /></ListItemIcon>
-                        <ListItemText primary='Skills and Projects' />
-                    </ListItem>
-                    <ListItem button key='Work Experience' className={classes.buttonCustomization}>
-                        <ListItemIcon><HomeRepairServiceIcon /></ListItemIcon>
-                        <ListItemText primary='Work Experience' />
-                    </ListItem>
-                    <ListItem button key='Academics' className={classes.buttonCustomization}>
-                        <ListItemIcon><LocalLibraryIcon /></ListItemIcon>
-                        <ListItemText primary='Academics' />
-                    </ListItem>
-                    <ListItem button key='Lets get casual?' className={classes.buttonCustomization}>
-                        <ListItemIcon><SportsEsportsIcon /></ListItemIcon>
-                        <ListItemText primary='Lets get casual?' />
-                    </ListItem>
-                    <ListItem button key='About the page' className={classes.buttonCustomization}>
-                        <ListItemIcon><InfoIcon /></ListItemIcon>
-                        <ListItemText primary='About the page' />
-                    </ListItem>
-                </List>
-            </Drawer>
-            <main className={classes.content}>
-                
-                
+                    <List
+                        style={{ marginTop: '90px' }}
+                        onMouseEnter={hoverHandle}
+                        onMouseLeave={hoverHandle}
+                    >
+                        <ListItem button key='Summary' className={classes.buttonCustomization}>
+                            <ListItemIcon><SummarizeIcon /></ListItemIcon>
+                            <ListItemText primary='Summary' />
+                        </ListItem>
+                        <ListItem button key='Skills and Projects' className={classes.buttonCustomization}>
+                            <ListItemIcon><AccountTreeIcon /></ListItemIcon>
+                            <ListItemText primary='Skills and Projects' />
+                        </ListItem>
+                        <ListItem button key='Work Experience' className={classes.buttonCustomization}>
+                            <ListItemIcon><HomeRepairServiceIcon /></ListItemIcon>
+                            <ListItemText primary='Work Experience' />
+                        </ListItem>
+                        <ListItem button key='Academics' className={classes.buttonCustomization}>
+                            <ListItemIcon><LocalLibraryIcon /></ListItemIcon>
+                            <ListItemText primary='Academics' />
+                        </ListItem>
+                        <ListItem button key='Lets get casual?' className={classes.buttonCustomization}>
+                            <ListItemIcon><SportsEsportsIcon /></ListItemIcon>
+                            <ListItemText primary='Lets get casual?' />
+                        </ListItem>
+                        <ListItem button key='About the page' className={classes.buttonCustomization}>
+                            <ListItemIcon><InfoIcon /></ListItemIcon>
+                            <ListItemText primary='About the page' />
+                        </ListItem>
+                    </List>
+                </Drawer>
+                <div className={classes.dashboardWindow}>
+                <div>This property specifies how much of the remaining space in the flex container should be assigned to the item (the flex grow factor).
+
+The main size is either width or height of the item which is dependent on the flex-direction value.</div>
+                </div>
             </main>
         </div>
     );
