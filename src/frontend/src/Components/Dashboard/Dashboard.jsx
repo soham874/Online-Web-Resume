@@ -14,6 +14,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 import DashLogo from '../../Assets/logo_light.png';
+import ComponentSwitcher from '../Utility/ComponentSwitcher'
 
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
@@ -117,16 +118,16 @@ const useStyles = makeStyles((theme) => ({
 
     content: {
         display: 'flex',
-        textAlign: 'center'
+        textAlign: 'center',
+        position: 'relative',
+        top: '50vh',
     },
 
     dashboardWindow: {
         display: 'flex',
         position: 'relative',
-        margin: '0 1%',
+        padding: '0 1%',
         width: '100%',
-        textAlign: 'center',
-        top: '50vh',
         transform: 'translateY(-50%)',
         backgroundColor: 'lightgreen'
     }
@@ -181,9 +182,11 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 let flag = true
 
-export default function Dashboard() {
+export default function Dashboard(props) {
+
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
+    const [currentComponent, setCurrentComponent] = React.useState();
     
     const handleDrawer = () => {
         setOpen(!open)
@@ -195,7 +198,12 @@ export default function Dashboard() {
             setOpen(!open)
 
     }
-    
+
+    const renderWebComponent = (number) => {
+        var componentNames = ["Summary","SkillProject","WorkExperience","Academics","Casual","About"]
+        setCurrentComponent(componentNames[number]);
+    }
+      
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -246,7 +254,7 @@ export default function Dashboard() {
                         onMouseEnter={hoverHandle}
                         onMouseLeave={hoverHandle}
                     >
-                        <ListItem button key='Summary' className={classes.buttonCustomization}>
+                        <ListItem button key='Summary' onClick={() => renderWebComponent(0)} className={classes.buttonCustomization}>
                             <ListItemIcon><SummarizeIcon /></ListItemIcon>
                             <ListItemText primary='Summary' />
                         </ListItem>
@@ -262,7 +270,7 @@ export default function Dashboard() {
                             <ListItemIcon><LocalLibraryIcon /></ListItemIcon>
                             <ListItemText primary='Academics' />
                         </ListItem>
-                        <ListItem button key='Lets get casual?' className={classes.buttonCustomization}>
+                        <ListItem button key='Lets get casual?' onClick={() => renderWebComponent(4)} className={classes.buttonCustomization}>
                             <ListItemIcon><SportsEsportsIcon /></ListItemIcon>
                             <ListItemText primary='Lets get casual?' />
                         </ListItem>
@@ -273,9 +281,7 @@ export default function Dashboard() {
                     </List>
                 </Drawer>
                 <div className={classes.dashboardWindow}>
-                <div>This property specifies how much of the remaining space in the flex container should be assigned to the item (the flex grow factor).
-
-The main size is either width or height of the item which is dependent on the flex-direction value.</div>
+                    <ComponentSwitcher renderedComponent={currentComponent} />
                 </div>
             </main>
         </div>
