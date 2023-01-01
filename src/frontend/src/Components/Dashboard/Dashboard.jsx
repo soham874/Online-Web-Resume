@@ -29,7 +29,7 @@ const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex'
+        fontSize:'15px'
     },
 
     // for toolbar
@@ -112,15 +112,11 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         textAlign: 'center',
         position: 'relative',
-        top: '50vh',
+        top: '100px',
     },
 
     dashboardWindow: {
-        display: 'flex',
-        position: 'relative',
-        padding: '0 1%',
-        transform: 'translateY(-50%)',
-        //backgroundColor: 'lightgreen'
+        padding: '1%'
     }
 }));
 
@@ -186,7 +182,7 @@ export default function Dashboard() {
     };
 
     const hoverHandle = () => {
-        if (flag === false)
+        if ( !flag )
             setOpen(!open)
 
     }
@@ -202,9 +198,7 @@ export default function Dashboard() {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            
-            <main className={classes.content}>
-                <AppBar
+            <AppBar
                     position="fixed"
                     className={clsx(classes.appBar, {
                         [classes.appBarShift]: open,
@@ -223,14 +217,16 @@ export default function Dashboard() {
                         <img src={DashLogo} alt="Soham's Web Portal" />
                         <div className={classes.sectionDesktop}>
                         <FormControlLabel
-                            control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+                            control={<MaterialUISwitch sx={{ m: 1 }} />}
                             label="Change the theme?"
                         />
                         </div>
 
 
                     </Toolbar>
-                </AppBar>
+            </AppBar>
+            
+            <main className={classes.content}>
                 <Drawer
                     variant="permanent"
                     className={clsx(classes.drawer, {

@@ -5,7 +5,6 @@ import Meme from './Assets/Meme.png'
 
 export default function casual() {
 
-    console.log(Meme)
     return (
             <div className="body-common">
                 <div>
@@ -23,7 +22,7 @@ export default function casual() {
                 <img alt="Meme" src={Meme} className="meme_div" />
                 <div>
                     Last but not the least, I ocassionally pick up my pencil and drawing book. While I would not say drawing is my passion, I let the artist in me take control once in a while and draw a line here and a curve there. You can have a romp around my tiny art
-                    gallery <a href="https://photos.app.goo.gl/xUt6P46QvXgjAyBa6" target="_blank">here</a>.
+                    gallery <a href="https://photos.app.goo.gl/xUt6P46QvXgjAyBa6" target="_blank" rel="noreferrer">here</a>.
                 </div>
         </div>
     );
