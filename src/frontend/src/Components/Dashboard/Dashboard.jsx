@@ -107,10 +107,6 @@ const useStyles = makeStyles((theme) => ({
 
     buttonCustomization: {
         borderRadius: '50px',
-        // borderBottomRightRadius: '50px',
-        '&:focus': {
-            backgroundColor: '#feefc3'
-        }
     },
 
 
@@ -182,11 +178,12 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 let flag = true
 
-export default function Dashboard(props) {
+export default function Dashboard() {
 
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const [currentComponent, setCurrentComponent] = React.useState();
+    const [buttonColour, setButtonColour] = React.useState([false,false,false,false,false,false]);
     
     const handleDrawer = () => {
         setOpen(!open)
@@ -201,6 +198,9 @@ export default function Dashboard(props) {
 
     const renderWebComponent = (number) => {
         var componentNames = ["Summary","SkillProject","WorkExperience","Academics","Casual","About"]
+        buttonColour.fill(false)
+        buttonColour[number] = true
+        setButtonColour(buttonColour);
         setCurrentComponent(componentNames[number]);
     }
       
@@ -254,27 +254,27 @@ export default function Dashboard(props) {
                         onMouseEnter={hoverHandle}
                         onMouseLeave={hoverHandle}
                     >
-                        <ListItem button key='Summary' onClick={() => renderWebComponent(0)} className={classes.buttonCustomization}>
+                        <ListItem button style={{backgroundColor:buttonColour[0]?'#feefc3':''}} key='Summary' onClick={() => renderWebComponent(0)} className={classes.buttonCustomization}>
                             <ListItemIcon><SummarizeIcon /></ListItemIcon>
                             <ListItemText primary='Summary' />
                         </ListItem>
-                        <ListItem button key='Skills and Projects' className={classes.buttonCustomization}>
+                        <ListItem button style={{backgroundColor:buttonColour[1]?'#feefc3':''}} key='Skills and Projects' className={classes.buttonCustomization}>
                             <ListItemIcon><AccountTreeIcon /></ListItemIcon>
                             <ListItemText primary='Skills and Projects' />
                         </ListItem>
-                        <ListItem button key='Work Experience' className={classes.buttonCustomization}>
+                        <ListItem button style={{backgroundColor:buttonColour[2]?'#feefc3':''}} key='Work Experience' className={classes.buttonCustomization}>
                             <ListItemIcon><HomeRepairServiceIcon /></ListItemIcon>
                             <ListItemText primary='Work Experience' />
                         </ListItem>
-                        <ListItem button key='Academics' className={classes.buttonCustomization}>
+                        <ListItem button style={{backgroundColor:buttonColour[3]?'#feefc3':''}} key='Academics' className={classes.buttonCustomization}>
                             <ListItemIcon><LocalLibraryIcon /></ListItemIcon>
                             <ListItemText primary='Academics' />
                         </ListItem>
-                        <ListItem button key='Lets get casual?' onClick={() => renderWebComponent(4)} className={classes.buttonCustomization}>
+                        <ListItem button style={{backgroundColor:buttonColour[4]?'#feefc3':''}} key='Lets get casual?' onClick={() => renderWebComponent(4)} className={classes.buttonCustomization}>
                             <ListItemIcon><SportsEsportsIcon /></ListItemIcon>
                             <ListItemText primary='Lets get casual?' />
                         </ListItem>
-                        <ListItem button key='About the page' className={classes.buttonCustomization}>
+                        <ListItem button style={{backgroundColor:buttonColour[5]?'#feefc3':''}} key='About the page' className={classes.buttonCustomization}>
                             <ListItemIcon><InfoIcon /></ListItemIcon>
                             <ListItemText primary='About the page' />
                         </ListItem>
