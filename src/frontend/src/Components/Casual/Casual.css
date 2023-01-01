@@ -1,0 +1,70 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~ Casual section ~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.body-common {
+    width: 100%;
+    text-align: justify;
+}
+
+.game_group {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.game_img {
+    height: 200px;
+    width: 400px;
+    margin: 30px;
+    transition: 500ms;
+    border-radius: 30px;
+    border: 3px solid var(black)
+}
+
+.game_img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#cs {
+    background: url('./Assets/csgo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#ksp {
+    background: url('./Assets/ksp.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#rl {
+    background: url('./Assets/rl.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#subnautica {
+    background: url('./Assets/subnautica.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.meme_div {
+    height: auto;
+    width: 100%;
+    padding: 10px 25%;
+}

@@ -29,8 +29,7 @@ const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex',
-        backgroundColor: 'white'
+        display: 'flex'
     },
 
     // for toolbar
@@ -109,9 +108,6 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '50px',
     },
 
-
-    // main body
-
     content: {
         display: 'flex',
         textAlign: 'center',
@@ -123,9 +119,8 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         position: 'relative',
         padding: '0 1%',
-        width: '100%',
         transform: 'translateY(-50%)',
-        backgroundColor: 'lightgreen'
+        //backgroundColor: 'lightgreen'
     }
 }));
 

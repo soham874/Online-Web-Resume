@@ -11,6 +11,8 @@ export default function ComponentSwitcher (props) {
         return <Summary/>
     case "Casual":
         return <Casual/>
+    default:
+        return <Casual/>
     }
 
     return <DefaultComponent/>
