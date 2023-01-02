@@ -173,9 +173,9 @@ export default function Dashboard() {
 
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
-    const [currentComponent, setCurrentComponent] = React.useState();
+    const [currentComponent, setCurrentComponent] = React.useState("DefaultComponent");
     const [buttonColour, setButtonColour] = React.useState([false,false,false,false,false,false]);
-    
+
     const handleDrawer = () => {
         setOpen(!open)
         flag = !flag
@@ -218,7 +218,7 @@ export default function Dashboard() {
                         <div className={classes.sectionDesktop}>
                         <FormControlLabel
                             control={<MaterialUISwitch sx={{ m: 1 }} />}
-                            label="Change the theme?"
+                            label = "Change the lighitng?"
                         />
                         </div>
 
@@ -265,7 +265,7 @@ export default function Dashboard() {
                             <ListItemIcon><SportsEsportsIcon /></ListItemIcon>
                             <ListItemText primary='Lets get casual?' />
                         </ListItem>
-                        <ListItem button style={{backgroundColor:buttonColour[5]?'#feefc3':''}} key='About the page' className={classes.buttonCustomization}>
+                        <ListItem button style={{backgroundColor:buttonColour[5]?'#feefc3':''}} key='About the page' onClick={() => renderWebComponent(5)} className={classes.buttonCustomization}>
                             <ListItemIcon><InfoIcon /></ListItemIcon>
                             <ListItemText primary='About the page' />
                         </ListItem>
