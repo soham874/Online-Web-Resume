@@ -249,7 +249,7 @@ export default function Dashboard() {
                             <ListItemIcon><SummarizeIcon /></ListItemIcon>
                             <ListItemText primary='Summary' />
                         </ListItem>
-                        <ListItem button style={{backgroundColor:buttonColour[1]?'#feefc3':''}} key='Skills and Projects' className={classes.buttonCustomization}>
+                        <ListItem button style={{backgroundColor:buttonColour[1]?'#feefc3':''}} key='Skills and Projects' onClick={() => renderWebComponent(1)} className={classes.buttonCustomization}>
                             <ListItemIcon><AccountTreeIcon /></ListItemIcon>
                             <ListItemText primary='Skills and Projects' />
                         </ListItem>
