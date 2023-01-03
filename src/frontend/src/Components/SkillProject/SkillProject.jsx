@@ -70,13 +70,61 @@ var leetcodeData = {
     }
 }
 
+var githubData = {
+    "data": {
+        "user": {
+            "pinnedItems": {
+                "nodes": [
+                    {
+                        "name": "Sohams-Web-Portal",
+                        "description": "My up-to-date online Web Portal, created as a full stack project",
+                        "url": "https://github.com/soham874/Sohams-Web-Portal"
+                    },
+                    {
+                        "name": "TItanic-Predictions",
+                        "description": "An algorithm used to determine if a titanic passanger survived or died based on information about ticket, gender, etc",
+                        "url": "https://github.com/soham874/TItanic-Predictions"
+                    },
+                    {
+                        "name": "Fundoo",
+                        "description": "A frontend project developed using node.js and react which implements user login, registration, and password reset logic",
+                        "url": "https://github.com/soham874/Fundoo"
+                    },
+                    {
+                        "name": "Converter",
+                        "description": "A UI implementing a simple converter for converting temperature, length and volume units",
+                        "url": "https://github.com/soham874/Converter"
+                    },
+                    {
+                        "name": "Digit-Classification-MNIST",
+                        "description": "An algorithm trained on the MNIST Dataset used to detect handwritten digits",
+                        "url": "https://github.com/soham874/Digit-Classification-MNIST"
+                    }
+                ]
+            }
+        }
+    }
+}
+
 var loadedData = []
 
 export default function SkillProject() {
 
     const [difficultyLevel, setDifficultyLevel] = React.useState(0)
 
-    const loadLeetCodeView = (leetcodedata) => {
+    const loadLeetCodeData = () => {
+
+        var leetcodedata;
+
+        var previouslyStoredLeetCodeData = sessionStorage.getItem("leetcodeData"); 
+        if( previouslyStoredLeetCodeData ){
+            console.log("Previously cached Leetcode data loaded")
+            leetcodedata = JSON.parse(previouslyStoredLeetCodeData)
+        }else{
+            console.log("Previously cached data not found, fetching new data and caching")
+            leetcodedata = leetcodeData // to be fetched from backend
+            sessionStorage.setItem("leetcodeData",JSON.stringify(leetcodedata))
+        }
 
         // 0 - All, 1 - Easy, 2 - Medium, 3 - Hard
         for (var i = 0; i < 4; i++)
@@ -94,7 +142,7 @@ export default function SkillProject() {
         }
     }
 
-    loadLeetCodeView(leetcodeData)
+    loadLeetCodeData(leetcodeData)
 
     let difficultyLevelData = (level) => {
         
@@ -131,6 +179,38 @@ export default function SkillProject() {
         setDifficultyLevel(level)
     }
 
+    const loadGithubData = () => {
+
+        var githubdata;
+
+        var previouslyStoredGithubData = sessionStorage.getItem("githubData"); 
+        if( previouslyStoredGithubData ){
+            console.log("Previously cached Github data loaded")
+            githubdata = JSON.parse(previouslyStoredGithubData)
+        }else{
+            console.log("Previously cached data not found, fetching new data and caching")
+            githubdata = githubData // to be fetched from backend
+            sessionStorage.setItem("githubData",JSON.stringify(githubdata))
+        }
+
+        let tabledata = `<table id="customers">
+                <tr>
+                  <th>Project Name</th>
+                  <th>Short Description</th>
+                </tr>`
+
+        githubdata.data.user.pinnedItems.nodes.forEach(project => {
+            tabledata += `<tr>
+                            <td><a href="${project.url}" target="_blank">${project.name}</a></td>
+                            <td>${project.description}</td>
+                            </tr>`
+        })
+        tabledata += `</table>`
+
+        return <div dangerouslySetInnerHTML={{ __html: tabledata }} />
+
+    }
+
     return (
         <div className='body-common'>
             <div id="coding_container">
@@ -156,6 +236,7 @@ export default function SkillProject() {
                 <div style={{padding: "50px",textAlign: "justify"}}>Here's some projects from my <a href="https://github.com/soham874" target="_blank" rel="noreferrer">Github</a> profile.
                 </div>
                 <div id="github_projects">
+                    {loadGithubData()}
                 </div>
             </div>
             <div className="error_api" id="github_error">

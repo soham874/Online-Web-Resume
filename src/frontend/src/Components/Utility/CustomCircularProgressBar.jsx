@@ -1,6 +1,6 @@
 import { CircularProgressbar , buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 // 0 - all, 1-easy, 2-medium, 3-hard
 const colourMapping = [{
