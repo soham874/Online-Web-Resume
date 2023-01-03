@@ -41,6 +41,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
              <version>1.2</version>
+            <version>1.2</version>
             </dependency>
         <!-- javax servlet api -->
         <dependency>

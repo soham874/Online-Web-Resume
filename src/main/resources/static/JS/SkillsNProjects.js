@@ -84,36 +84,6 @@ $(document).ready(function() {
 
     // function to receieve LeetCode object datatype from controller
 
-    setTimeout( () => {
-        $.ajax({
-            type: 'GET',
-            url: formAjaxUrl("receiveLeetCodeData"),
-            contentType: "application/json",
-            headers: {
-                'session-uid':makeid()
-            },
-            dataType: 'json',
-            success: (data_leetcode) => {
-                if (data_leetcode.status >= 200 && data_leetcode.status < 400) {
-                    console.log("AJAX RESPONSE >> Success Leetcode")
-                    document.getElementById("leetcode_error").style.display = 'none'
-                    document.getElementById("github_container").style.display = 'block'
-                    loadLeetCodeView(data_leetcode.body)
-                } else {
-                    console.log("AJAX RESPONSE >> Error Leetcode")
-                    document.getElementById("coding_container").style.display = 'none'
-                    document.getElementById("leetcode_error").style.display = 'flex'
-                        //loadLeetCodeView(leetcodeData)
-                }
-            },
-            error: (err) => {
-                console.log("AJAX RESPONSE >> Error Leetcode")
-                document.getElementById("coding_container").style.display = 'none'
-                document.getElementById("leetcode_error").style.display = 'flex'
-                    //loadLeetCodeView(leetcodeData)
-            }
-        })
-    },1000);
 
     //loadLeetCodeView(leetcodeData)
     // Logic for handling leetcode question category stats
@@ -143,38 +113,71 @@ $(document).ready(function() {
     )
 
     // function to receieve Github object datatype from controller
-    setTimeout( () => {
-        $.ajax({
-            type: 'GET',
-            url: formAjaxUrl("receiveGithubData"),
-            contentType: "application/json",
-            headers: {
-                'session-uid':makeid()
-            },
-            dataType: 'json',
-            success: (data_github) => {
-                if (data_github.status >= 200 && data_github.status < 400) {
-                    console.log("AJAX RESPONSE >> Github Success")
-                    document.getElementById("github_error").style.display = 'none'
-                    document.getElementById("github_container").style.display = 'block'
-                    loadGithubView(data_github.body)
-                } else {
-                    console.log("AJAX RESPONSE >> Github Error")
-                    document.getElementById("github_container").style.display = 'none'
-                    document.getElementById("github_error").style.display = 'flex'
-                }
-            },
-            error: (err) => {
+    
+    console.log("Skills and Projects JS file connected successfully");
+    window.addEventListener('resize', () => { loadSkills() })
+});
+
+ajaxLeetcode = () => {
+
+    return $.ajax({
+        type: 'GET',
+        url: formAjaxUrl("receiveLeetCodeData"),
+        contentType: "application/json",
+        headers: {
+            'session-uid':makeid()
+        },
+        dataType: 'json',
+        success: (data_leetcode) => {
+            if (data_leetcode.status >= 200 && data_leetcode.status < 400) {
+                console.log("AJAX RESPONSE >> Success Leetcode")
+                document.getElementById("leetcode_error").style.display = 'none'
+                document.getElementById("github_container").style.display = 'block'
+                loadLeetCodeView(data_leetcode.body)
+            } else {
+                console.log("AJAX RESPONSE >> Error Leetcode")
+                document.getElementById("coding_container").style.display = 'none'
+                document.getElementById("leetcode_error").style.display = 'flex'
+                    //loadLeetCodeView(leetcodeData)
+            }
+        },
+        error: (err) => {
+            console.log("AJAX RESPONSE >> Error Leetcode")
+            document.getElementById("coding_container").style.display = 'none'
+            document.getElementById("leetcode_error").style.display = 'flex'
+                //loadLeetCodeView(leetcodeData)
+        }
+    })
+}
+
+ajaxGithub = () => {
+    return $.ajax({
+        type: 'GET',
+        url: formAjaxUrl("receiveGithubData"),
+        contentType: "application/json",
+        headers: {
+            'session-uid':makeid()
+        },
+        dataType: 'json',
+        success: (data_github) => {
+            if (data_github.status >= 200 && data_github.status < 400) {
+                console.log("AJAX RESPONSE >> Github Success")
+                document.getElementById("github_error").style.display = 'none'
+                document.getElementById("github_container").style.display = 'block'
+                loadGithubView(data_github.body)
+            } else {
                 console.log("AJAX RESPONSE >> Github Error")
                 document.getElementById("github_container").style.display = 'none'
                 document.getElementById("github_error").style.display = 'flex'
             }
-        })
-    },1000);
-
-    console.log("Skills and Projects JS file connected successfully");
-    window.addEventListener('resize', () => { loadSkills() })
-});
+        },
+        error: (err) => {
+            console.log("AJAX RESPONSE >> Github Error")
+            document.getElementById("github_container").style.display = 'none'
+            document.getElementById("github_error").style.display = 'flex'
+        }
+    })
+}
 
 // Load the Leetcode statistics section
 loadLeetCodeView = (leetcodedata) => {

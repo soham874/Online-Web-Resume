@@ -100,8 +100,15 @@ var general_information_fallback = {
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ To be fetched from Database ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-setTimeout( () => {
-    $.ajax({
+// functions to be performed when webpage loads
+$(document).ready(function() {
+
+    console.log("General Data JS file connected successfully");
+    
+});
+
+ajaxLargeData = () => {
+    return $.ajax({
         type: 'GET',
         url: formAjaxUrl("receiveGeneralData"),
         contentType: "application/json",
@@ -137,15 +144,7 @@ setTimeout( () => {
             document.getElementById("display_pic").src = googleEmbedImage("https://drive.google.com/file/d/1Nm42BeZ5qOjldIeAiN96RMjAWhLZ5b5E/view?usp=sharing")
         }
     })
-    
-} ,1000);
-
-// functions to be performed when webpage loads
-$(document).ready(function() {
-
-    console.log("General Data JS file connected successfully");
-    
-});
+}
 
 // load summary section
 loadSummary = (data = general_information_fallback.summary) => {

@@ -87,39 +87,43 @@ $(document).ready(function() {
     down_pos = (parseInt(style.top.replace(/px/, "")) + 10) + "px"
     up_pos = (parseInt(style.top.replace(/px/, "")) - 10) + "px"
 
-    document.onreadystatechange = function() {
-        if (document.readyState !== "complete") {
-            document.querySelector("#mainbody").style.visibility = "hidden";
-            document.querySelector("#loader").style.visibility = "visible";
-        } else {
-            document.querySelector("#loader").style.opacity = 0;
-            document.querySelector("#mainbody").style.visibility = "visible";
+    document.querySelector("#mainbody").style.visibility = "hidden";
+    document.querySelector("#loader").style.visibility = "visible";
 
-            //show the help section for first time visitors
-            if (localStorage.getItem('isfirsttime') !== 'no' || localStorage.getItem('isfirsttime') === null) {
-                var elems = document.getElementsByClassName("generic_div")
-                for (var i = 0; i < elems.length; i += 1)
-                    elems[i].style.display = 'none';
-                document.getElementsByClassName("help_div")[0].style.display = 'block'
+    $.when(ajaxAcademic(),ajaxLargeData(),ajaxExperience(),ajaxLeetcode(),ajaxGithub()).done(() => {
+        
+        console.log("All backend calls completed, proceeding with loading resource...")
+        
+        document.querySelector("#loader").style.opacity = 0;
+        document.querySelector("#mainbody").style.visibility = "visible";
 
-                setTimeout(() => {
-                    document.getElementsByClassName("help_div")[0].style.opacity = 0
-                    var elems = document.getElementsByClassName("generic_div")
-                    for (var i = 0; i < elems.length; i += 1)
-                        elems[i].style.display = 'block';
-                    setTimeout(() => {
-                        document.getElementsByClassName("help_div")[0].style.display = 'none'
-                    }, 2500)
-                }, 4000)
-
-                localStorage.setItem('isfirsttime', 'no');
-            }
+        //show the help section for first time visitors
+        if (localStorage.getItem('isfirsttime') !== 'no' || localStorage.getItem('isfirsttime') === null) {
+            var elems = document.getElementsByClassName("generic_div")
+            for (var i = 0; i < elems.length; i += 1)
+                elems[i].style.display = 'none';
+            document.getElementsByClassName("help_div")[0].style.display = 'block'
 
             setTimeout(() => {
-                document.querySelector("#loader").style.display = "none";
-            }, 1000)
+                document.getElementsByClassName("help_div")[0].style.opacity = 0
+                var elems = document.getElementsByClassName("generic_div")
+                for (var i = 0; i < elems.length; i += 1)
+                    elems[i].style.display = 'block';
+                setTimeout(() => {
+                    document.getElementsByClassName("help_div")[0].style.display = 'none'
+                }, 2500)
+            }, 4000)
+
+            localStorage.setItem('isfirsttime', 'no');
         }
 
+        setTimeout(() => {
+            document.querySelector("#loader").style.display = "none";
+        }, 1000)
+    })
+
+    document.onreadystatechange = function() {
+        
         setTimeout(() => {
             deviceInfo();
         }, 30000)
@@ -135,7 +139,6 @@ $(document).ready(function() {
     } else {
         setTheme('theme-light');
     }
-
 
     console.log("Main file connected successfully");
 
