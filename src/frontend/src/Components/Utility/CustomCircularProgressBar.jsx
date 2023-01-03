@@ -2,7 +2,11 @@ import { CircularProgressbar , buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import React, { useEffect, useState } from 'react';
 
+// 0 - all, 1-easy, 2-medium, 3-hard
 const colourMapping = [{
+    mainColour : '#413a96',
+    backgroundColour : '#a6a3cc'
+},{
     mainColour : '#17d214',
     backgroundColour : '#ceffcd'
 },{
@@ -11,35 +15,22 @@ const colourMapping = [{
 },{
     mainColour : '#ff4040',
     backgroundColour : '#f1b2b2'
-},{
-    mainColour : '#413a96',
-    backgroundColour : '#a6a3cc'
 }]
 
 export default function CustomCircularProgressBar(props) {
     
-    const [percentage, setPercentage] = useState(0);
-
-    useEffect(() => {
-        setTimeout(() => {
-          if (percentage < props.targetPercent*100) {
-            setPercentage(percentage + 1);
-          }
-        }, 0.1);
-      }, [percentage]);
-
     return (
         <div style={{ width: 200, height: 200 }}>
             <CircularProgressbar 
-                value={percentage} 
+                value={props.targetPercent*100} 
                 maxValue="10000"
-                text={`${percentage/100}%`} 
+                text={`${props.leadingText} ${props.targetPercent}%`} 
                 strokeWidth = "4"
                 styles={buildStyles({
                     pathColor: colourMapping[props.difficulty].mainColour,
                     trailColor: colourMapping[props.difficulty].backgroundColour,
                     textColor: colourMapping[props.difficulty].mainColour,
-                    textSize:'15px'
+                    textSize:'8px'
                 })}
             />
         </div>);
