@@ -1,3 +1,44 @@
+.slideshow {
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 75vw;
+  }
+  
+  .slideshowSlider {
+    white-space: nowrap;
+    transition: ease 1000ms;
+  }
+  
+  .slide {
+    display: inline-block;
+  
+    height: 400px;
+    width: 100%;
+  }
+  
+  /* Buttons */
+  
+  .slideshowDots {
+    text-align: center;
+  }
+  
+  .slideshowDot {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+  
+    cursor: pointer;
+    margin: 15px 7px 0px;
+  
+    background-color: #c4c4c4;
+  }
+  
+  .slideshowDot.active {
+    background-color: #6a0dad;
+  }
+  
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Skills CSS ~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 .body-common {
@@ -9,11 +50,10 @@
 .snp {
     padding: 50px;
     z-index: 1;
-    text-align: justify;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 
 .skill_icons {
@@ -28,7 +68,7 @@
 }
 
 .skill_item_group {
-    height: 75px;
+    height: 150px;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -48,12 +88,9 @@
 }
 
 .skill_icon_group {
-    display: none;
-    z-index: 50 !important;
-    backdrop-filter: saturate(180%) blur(2px);
+    display: flex;
     align-items: center;
     justify-items: center;
-    position: absolute;
 }
 
 .disabled {
@@ -71,7 +108,7 @@
 #progress_bar_container {
     padding: 50px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }

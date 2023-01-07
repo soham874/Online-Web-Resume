@@ -1,6 +1,9 @@
 import React from 'react';
 import CustomCircularProgressBar from '../Utility/CustomCircularProgressBar';
 import './SkillsNProfiles.css'
+import SkillGroup from './SkillGroup';
+
+import { Planet } from 'react-planet';
 
 var leetcodeData = {
     "data": {
@@ -106,7 +109,169 @@ var githubData = {
     }
 }
 
+var generalLargeData = {
+    "_id": "62b0389996da68f660e35282",
+    "skill_icons": [
+        {
+            "tech_name": "CI-CD and monitoring",
+            "techs": [
+                {
+                    "Name": "Docker",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/CI-CD_and_monitoring..Docker..www.docker.com_",
+                    "DocuLink": "https://www.docker.com/"
+                },
+                {
+                    "Name": "Jenkins",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/CI-CD_and_monitoring..Jenkins..www.jenkins.io_",
+                    "DocuLink": "https://www.jenkins.io/"
+                },
+                {
+                    "Name": "Kubernetes",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/CI-CD_and_monitoring..Kubernetes..kubernetes.io_",
+                    "DocuLink": "https://kubernetes.io/"
+                },
+                {
+                    "Name": "Splunk",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/CI-CD_and_monitoring..Splunk..www.splunk.com_",
+                    "DocuLink": "https://www.splunk.com/"
+                },
+                {
+                    "Name": "xMatters",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/CI-CD_and_monitoring..xMatters..www.xmatters.com_",
+                    "DocuLink": "https://www.xmatters.com/"
+                }
+            ]
+        },
+        {
+            "tech_name": "Databases",
+            "techs": [
+                {
+                    "Name": "Firebase",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Databases..Firebase..firebase.google.com_",
+                    "DocuLink": "https://firebase.google.com/"
+                },
+                {
+                    "Name": "MongoDB",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Databases..MongoDB..www.mongodb.com_",
+                    "DocuLink": "https://www.mongodb.com/"
+                },
+                {
+                    "Name": "MySQL",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Databases..MySQL..www.mysql.com_",
+                    "DocuLink": "https://www.mysql.com/"
+                }
+            ]
+        },
+        {
+            "tech_name": "Full Stack Technologies",
+            "techs": [
+                {
+                    "Name": "CSS",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Full_Stack_Technologies..CSS..developer.mozilla.org_en-US_docs_Web_CSS",
+                    "DocuLink": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+                },
+                {
+                    "Name": "HTML",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Full_Stack_Technologies..HTML..developer.mozilla.org_en-US_docs_Web_HTML",
+                    "DocuLink": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+                },
+                {
+                    "Name": "JavaScript",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Full_Stack_Technologies..JavaScript..developer.mozilla.org_en-US_docs_Web_JavaScript",
+                    "DocuLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+                },
+                {
+                    "Name": "NodeJS",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Full_Stack_Technologies..NodeJS..nodejs.org_",
+                    "DocuLink": "https://nodejs.org/"
+                },
+                {
+                    "Name": "ReactJS",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Full_Stack_Technologies..ReactJS..reactjs.org_",
+                    "DocuLink": "https://reactjs.org/"
+                },
+                {
+                    "Name": "Spring",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Full_Stack_Technologies..Spring..spring.io_",
+                    "DocuLink": "https://spring.io/"
+                }
+            ]
+        },
+        {
+            "tech_name": "IDEs",
+            "techs": [
+                {
+                    "Name": "Eclipse",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/IDEs..Eclipse..www.eclipse.org_ide_",
+                    "DocuLink": "https://www.eclipse.org/ide/"
+                },
+                {
+                    "Name": "IntelliJ",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/IDEs..IntelliJ..www.jetbrains.com_idea_",
+                    "DocuLink": "https://www.jetbrains.com/idea/"
+                },
+                {
+                    "Name": "Postman",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/IDEs..Postman..www.postman.com_",
+                    "DocuLink": "https://www.postman.com/"
+                },
+                {
+                    "Name": "VSCode",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/IDEs..VSCode..code.visualstudio.com_",
+                    "DocuLink": "https://code.visualstudio.com/"
+                }
+            ]
+        },
+        {
+            "tech_name": "Programming Languages",
+            "techs": [
+                {
+                    "Name": "Cpp",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Programming_Languages..Cpp..cplusplus.com_doc_tutorial_",
+                    "DocuLink": "https://cplusplus.com/doc/tutorial/"
+                },
+                {
+                    "Name": "Java",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Programming_Languages..Java..www.java.com_",
+                    "DocuLink": "https://www.java.com/"
+                },
+                {
+                    "Name": "Python",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Programming_Languages..Python..www.python.org_",
+                    "DocuLink": "https://www.python.org/"
+                }
+            ]
+        },
+        {
+            "tech_name": "Scripting Languages",
+            "techs": [
+                {
+                    "Name": "BASH",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Scripting_Languages..BASH..www.gnu.org_software_bash_",
+                    "DocuLink": "https://www.gnu.org/software/bash/"
+                },
+                {
+                    "Name": "Powershell",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Scripting_Languages..Powershell..docs.microsoft.com_en-us_powershell_scripting_overview",
+                    "DocuLink": "https://docs.microsoft.com/en-us/powershell/scripting/overview"
+                },
+                {
+                    "Name": "VBA",
+                    "URL": "https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Scripting_Languages..VBA..docs.microsoft.com_en-us_office_vba_library-reference_concepts_getting-started-with-vba-in-office",
+                    "DocuLink": "https://docs.microsoft.com/en-us/office/vba/library-reference/concepts/getting-started-with-vba-in-office"
+                }
+            ]
+        }
+    ],
+    "Name": "General",
+    "Summary": "I am a tech enthusiast with an inquisitive mind, always on the lookout to learn new technologies and have at least a fundamental level of understanding about how things work. This webpage has been designed to give a quick insight into my academic and professional journey so far.",
+    "Google_user_response_api": "https://sheetdb.io/api/v1/nqw0raiawsq28",
+    "Google_visitor_information_api": "https://sheetdb.io/api/v1/sa6miu6hdqxos",
+    "Profile_pic_link": "https://ik.imagekit.io/1jc4wmgh9b/profile.jpg"
+}
+
 var loadedData = []
+var diffName = ["easy","medium","hard"]
 
 export default function SkillProject() {
 
@@ -166,9 +331,9 @@ export default function SkillProject() {
                 </div>
             </div>
             <div id="progress_bar_container">
-                <div style={{padding:"0 10px 0 10px"}}> Total questions: {loadedData[level].Questions} </div> 
+                <div style={{padding:"0 10px 0 10px"}}> Total {diffName[level-1]} questions: {loadedData[level].Questions} </div> 
                 <div style={{padding:"0 10px 0 10px"}}> Solved questions: {loadedData[level].Solved} </div> 
-                <div style={{padding:"0 10px 0 10px"}}> Accepted Solutions: {loadedData[level].Accepted} </div>
+                <div style={{padding:"0 10px 0 10px"}}> Accepted solutions: {loadedData[level].Accepted} </div>
             </div>
         </div>
         
@@ -193,28 +358,49 @@ export default function SkillProject() {
             sessionStorage.setItem("githubData",JSON.stringify(githubdata))
         }
 
-        let tabledata = `<table id="customers">
-                <tr>
-                  <th>Project Name</th>
-                  <th>Short Description</th>
-                </tr>`
-
-        githubdata.data.user.pinnedItems.nodes.forEach(project => {
-            tabledata += `<tr>
-                            <td><a href="${project.url}" target="_blank">${project.name}</a></td>
-                            <td>${project.description}</td>
-                            </tr>`
-        })
-        tabledata += `</table>`
-
-        return <div dangerouslySetInnerHTML={{ __html: tabledata }} />
+        return (
+            <table id="customers">
+                <tbody>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Short Description</th>
+                    </tr>
+                    {githubdata.data.user.pinnedItems.nodes.map( (project) => (
+                    <tr>
+                        <td><a href={project.url} target="_blank">{project.name}</a></td>
+                        <td>{project.description}</td>
+                    </tr>)
+                    )} 
+                </tbody>
+            </table>
+        );
 
     }
 
+    const loadSkillIcons = () => {
+
+        var skillIcondata;
+
+        var previouslyStoredSkillIconData = sessionStorage.getItem("skillIconData"); 
+        if( previouslyStoredSkillIconData ){
+            console.log("Previously cached Skill Icon data loaded")
+            skillIcondata = JSON.parse(previouslyStoredSkillIconData)
+        }else{
+            console.log("Previously cached data not found, fetching new data and caching")
+            skillIcondata = generalLargeData.skill_icons // to be fetched from backend
+            sessionStorage.setItem("skillIconData",JSON.stringify(skillIcondata))
+        }
+
+        return <SkillGroup skillIconDataSet={skillIcondata}/>;
+    }
+
     return (
-        <div className='body-common'>
+        <div className='body-common' style={{textAlign: "justify"}}>
+            <div>
+                {loadSkillIcons()}
+            </div>
             <div id="coding_container">
-                <div style={{padding: "50px",textAlign: "justify"}}>
+                <div>
                     Here's a quick look into my coding portfolio from <a href="https://leetcode.com/Soham874/" target="_blank" rel="noreferrer">Leetcode</a>. Hover or tap on each question category type to know my stats in that particular level. Tap anywhere outside to see my overall stats.
                 </div>
                 <div>
@@ -233,7 +419,7 @@ export default function SkillProject() {
                 </div>
             </div>
             <div id="github_container">
-                <div style={{padding: "50px",textAlign: "justify"}}>Here's some projects from my <a href="https://github.com/soham874" target="_blank" rel="noreferrer">Github</a> profile.
+                <div style={{padding: "30px 0",textAlign: "justify"}}>Here's some projects from my <a href="https://github.com/soham874" target="_blank" rel="noreferrer">Github</a> profile.
                 </div>
                 <div id="github_projects">
                     {loadGithubData()}
