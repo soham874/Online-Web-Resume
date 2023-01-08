@@ -1,8 +1,7 @@
 import React from 'react';
 import './SkillsNProfiles.css'
 
-const colors = ["#0088FE", "#00C49F", "#FFBB28"];
-const delay = 5000;
+const delay = 10000;
 
 export default function SkillGroup(props) {
 
@@ -13,6 +12,38 @@ export default function SkillGroup(props) {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
+  }
+
+  const loadIndividualSkillGroup = (tech) => {
+    return (
+    <div className="imageProperties"
+      style={{
+        background:`linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), ${tech.background}`,
+        backgroundSize:'cover',
+        backgroundRepeat:'no-repeat',
+        backgroundPosition:'center'
+      }}
+    >
+      <div className = 'headerAndInfo'>
+        <div className = 'Header'>
+          {tech.tech_name}
+        </div>          
+        <div className = 'Info'>
+          {tech.description}
+        </div>
+      </div>
+      <div className='skill_icon_group'>
+        {tech.techs.map((tech_icon)=>(
+          <img 
+            alt={tech_icon.Name}
+            className="skill_icons" 
+            src={tech_icon.URL}     
+            referrerpolicy="no-referrer" 
+            onClick={()=>(window.open(tech_icon.DocuLink,'mywindow'))}
+          /> 
+        ))}
+      </div>
+    </div>)
   }
 
   React.useEffect(() => {
@@ -41,7 +72,7 @@ export default function SkillGroup(props) {
             className="slide"
             key={index}
           >
-            {JSON.stringify(tech)}
+            {loadIndividualSkillGroup(tech)}
           </div>
         ))}
       </div>

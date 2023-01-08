@@ -3,8 +3,6 @@ import CustomCircularProgressBar from '../Utility/CustomCircularProgressBar';
 import './SkillsNProfiles.css'
 import SkillGroup from './SkillGroup';
 
-import { Planet } from 'react-planet';
-
 var leetcodeData = {
     "data": {
         "allQuestionsCount": [{
@@ -114,6 +112,8 @@ var generalLargeData = {
     "skill_icons": [
         {
             "tech_name": "CI-CD and monitoring",
+            "description": "Deploying microservices in k8s containers and monitoring performance through meaningful logging, dashboard setups, and setting up alerting mechanisms to respond to fast developing situations",
+            "background": `url(https://ik.imagekit.io/1jc4wmgh9b/Skill_items/CI-CD_and_monitoring.png)`,
             "techs": [
                 {
                     "Name": "Docker",
@@ -144,6 +144,8 @@ var generalLargeData = {
         },
         {
             "tech_name": "Databases",
+            "description": "Using both SQL and NoSQL databases to store and retrive data efficiently",
+            "background": `url(https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Databases.png)`,
             "techs": [
                 {
                     "Name": "Firebase",
@@ -164,6 +166,8 @@ var generalLargeData = {
         },
         {
             "tech_name": "Full Stack Technologies",
+            "description": "Developing optimised and scalable backend microservices with responsive multi-browser supported frontend for an immersive and memorable user experience",
+            "background": `url(https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Full_Stack_Technologies.png)`,
             "techs": [
                 {
                     "Name": "CSS",
@@ -199,6 +203,8 @@ var generalLargeData = {
         },
         {
             "tech_name": "IDEs",
+            "description": "Using the most popular Development Environments in the industry to swiftly develop meaningful products from scratch, while following industry coding ettiquetes and standards",
+            "background": `url(https://ik.imagekit.io/1jc4wmgh9b/Skill_items/IDEs.png)`,
             "techs": [
                 {
                     "Name": "Eclipse",
@@ -224,6 +230,8 @@ var generalLargeData = {
         },
         {
             "tech_name": "Programming Languages",
+            "description": "Mastering the key element of computer science, to become the ultimate code-bender in the industry",
+            "background": `url(https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Programming_Languages.png)`,
             "techs": [
                 {
                     "Name": "Cpp",
@@ -244,6 +252,8 @@ var generalLargeData = {
         },
         {
             "tech_name": "Scripting Languages",
+            "description": "Writing useful scripts to make developing meaningful products just 'that' much easier",
+            "background": `url(https://ik.imagekit.io/1jc4wmgh9b/Skill_items/Scripting_Languages.png)`,
             "techs": [
                 {
                     "Name": "BASH",
@@ -367,7 +377,7 @@ export default function SkillProject() {
                     </tr>
                     {githubdata.data.user.pinnedItems.nodes.map( (project) => (
                     <tr>
-                        <td><a href={project.url} target="_blank">{project.name}</a></td>
+                        <td><a href={project.url} target="_blank" rel="noreferrer">{project.name}</a></td>
                         <td>{project.description}</td>
                     </tr>)
                     )} 
@@ -391,6 +401,7 @@ export default function SkillProject() {
             sessionStorage.setItem("skillIconData",JSON.stringify(skillIcondata))
         }
 
+        skillIcondata = generalLargeData.skill_icons
         return <SkillGroup skillIconDataSet={skillIcondata}/>;
     }
 
