@@ -18,6 +18,6 @@ export default function ComponentSwitcher (props) {
     case "SkillProject":
         return <SkillProject/>
     default:
-        return <SkillProject/>
+        return <DefaultComponent/>
     }
 }

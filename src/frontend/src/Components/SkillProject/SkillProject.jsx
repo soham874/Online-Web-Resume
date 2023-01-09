@@ -3,6 +3,8 @@ import CustomCircularProgressBar from '../Utility/CustomCircularProgressBar';
 import './SkillsNProfiles.css'
 import SkillGroup from './SkillGroup';
 
+import Tilt from 'react-parallax-tilt';
+
 var leetcodeData = {
     "data": {
         "allQuestionsCount": [{
@@ -79,33 +81,39 @@ var githubData = {
                     {
                         "name": "Sohams-Web-Portal",
                         "description": "My up-to-date online Web Portal, created as a full stack project",
-                        "url": "https://github.com/soham874/Sohams-Web-Portal"
+                        "url": "https://github.com/soham874/Sohams-Web-Portal",
+                        "openGraphImageUrl": "https://opengraph.githubassets.com/962c7322781cbb847735fc86a7282cb60a780cdabd2c2b024e46301ae37878ea/soham874/Sohams-Web-Portal"
                     },
                     {
                         "name": "TItanic-Predictions",
                         "description": "An algorithm used to determine if a titanic passanger survived or died based on information about ticket, gender, etc",
-                        "url": "https://github.com/soham874/TItanic-Predictions"
+                        "url": "https://github.com/soham874/TItanic-Predictions",
+                        "openGraphImageUrl": "https://opengraph.githubassets.com/ad343c32e4da4ac916059dc03e87df4840264ccb767dde79a2a856fbdfac00f4/soham874/TItanic-Predictions"
                     },
                     {
                         "name": "Fundoo",
                         "description": "A frontend project developed using node.js and react which implements user login, registration, and password reset logic",
-                        "url": "https://github.com/soham874/Fundoo"
+                        "url": "https://github.com/soham874/Fundoo",
+                        "openGraphImageUrl": "https://opengraph.githubassets.com/cf5221a3394d6b877d4769be8cd90f20a63c5e5b2412bb7c822f4fe70d72465e/soham874/Fundoo"
                     },
                     {
                         "name": "Converter",
                         "description": "A UI implementing a simple converter for converting temperature, length and volume units",
-                        "url": "https://github.com/soham874/Converter"
+                        "url": "https://github.com/soham874/Converter",
+                        "openGraphImageUrl": "https://opengraph.githubassets.com/13901efe3252af183a8887f353cd0612f0a9176defcb4615321df3e7a4b33f9d/soham874/Converter"
                     },
                     {
                         "name": "Digit-Classification-MNIST",
                         "description": "An algorithm trained on the MNIST Dataset used to detect handwritten digits",
-                        "url": "https://github.com/soham874/Digit-Classification-MNIST"
+                        "url": "https://github.com/soham874/Digit-Classification-MNIST",
+                        "openGraphImageUrl": "https://opengraph.githubassets.com/46d737438ce4ac4c98da42d4da3a51bc55889fef28103728d1706dffffe8607f/soham874/Digit-Classification-MNIST"
                     }
                 ]
             }
         }
     }
 }
+
 
 var generalLargeData = {
     "_id": "62b0389996da68f660e35282",
@@ -367,24 +375,26 @@ export default function SkillProject() {
             githubdata = githubData // to be fetched from backend
             sessionStorage.setItem("githubData",JSON.stringify(githubdata))
         }
+        
+        githubdata = githubData
 
         return (
-            <table id="customers">
-                <tbody>
-                    <tr>
-                        <th>Project Name</th>
-                        <th>Short Description</th>
-                    </tr>
-                    {githubdata.data.user.pinnedItems.nodes.map( (project) => (
-                    <tr>
-                        <td><a href={project.url} target="_blank" rel="noreferrer">{project.name}</a></td>
-                        <td>{project.description}</td>
-                    </tr>)
-                    )} 
-                </tbody>
-            </table>
-        );
-
+        <div className="githubCardParent">
+            {githubdata.data.user.pinnedItems.nodes.map( (project) => (
+                <Tilt>
+                    <div className='githubCard'
+                        style={{
+                            background:`url(${project.openGraphImageUrl})`,
+                            backgroundSize:'contain',
+                            backgroundPosition:'center'
+                        }}
+                        onClick={() => {window.open(project.url,'mywindow');}}
+                    />
+                </Tilt>
+            )
+            )} 
+        </div>  
+        )
     }
 
     const loadSkillIcons = () => {
@@ -411,8 +421,8 @@ export default function SkillProject() {
                 {loadSkillIcons()}
             </div>
             <div id="coding_container">
-                <div>
-                    Here's a quick look into my coding portfolio from <a href="https://leetcode.com/Soham874/" target="_blank" rel="noreferrer">Leetcode</a>. Hover or tap on each question category type to know my stats in that particular level. Tap anywhere outside to see my overall stats.
+                <div style={{padding: "50px",textAlign: "justify",fontSize:'50px',fontWeight:'bold'}}>
+                    Problem solving skills using Data Structures and Algorithms (metrics sourced from <a href="https://leetcode.com/Soham874/" target="_blank" rel="noreferrer">Leetcode</a>)
                 </div>
                 <div>
                     <div className="category_buttons" onMouseLeave={()=>{changeStats(0)}}>
@@ -430,7 +440,7 @@ export default function SkillProject() {
                 </div>
             </div>
             <div id="github_container">
-                <div style={{padding: "30px 0",textAlign: "justify"}}>Here's some projects from my <a href="https://github.com/soham874" target="_blank" rel="noreferrer">Github</a> profile.
+                <div style={{padding: "50px",textAlign: "justify",fontSize:'50px',fontWeight:'bold'}}>Previous projects (sourced from <a href="https://github.com/soham874" target="_blank" rel="noreferrer">Github</a>)
                 </div>
                 <div id="github_projects">
                     {loadGithubData()}
