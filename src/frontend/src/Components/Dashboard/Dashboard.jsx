@@ -253,7 +253,7 @@ export default function Dashboard() {
                             <ListItemIcon><AccountTreeIcon /></ListItemIcon>
                             <ListItemText primary='Skills and Projects' />
                         </ListItem>
-                        <ListItem button style={{backgroundColor:buttonColour[2]?'#feefc3':''}} key='Work Experience' className={classes.buttonCustomization}>
+                        <ListItem button style={{backgroundColor:buttonColour[2]?'#feefc3':''}} key='Work Experience' onClick={() => renderWebComponent(2)} className={classes.buttonCustomization}>
                             <ListItemIcon><HomeRepairServiceIcon /></ListItemIcon>
                             <ListItemText primary='Work Experience' />
                         </ListItem>
