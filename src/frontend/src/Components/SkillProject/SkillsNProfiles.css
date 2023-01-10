@@ -1,0 +1,252 @@
+.githubCardParent{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.githubCard{
+    height: 200px;
+    transition: 500ms;
+    width: 400px;
+    display: block;
+    border: solid 2px black;
+    border-radius: 30px;
+    margin: 30px;
+}
+
+.githubCard:hover {
+    cursor: pointer;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~ Carusol card ~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.imageProperties{
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .Header{
+    padding: 30px;
+    font-size: 70px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .Info{
+    padding: 30px;
+    font-size: 25px;
+    color: white;
+    word-wrap: normal;
+    white-space:normal;
+  }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~ Carusol omni ~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.slideshow {
+    overflow: hidden;
+    max-width: 80vw;
+  }
+  
+  .slideshowSlider {
+    white-space: nowrap;
+    transition: ease 1000ms;
+  }
+  
+  .slide {
+    display: inline-block;
+    height: 90vh;
+    width: 100%;
+  }
+  
+  /* Buttons */
+  
+  .slideshowDots {
+    text-align: center;
+  }
+  
+  .slideshowDot {
+    display: inline-block;
+    height: 10px;
+    width: 40px;
+    border-radius: 30%;  
+    cursor: pointer;
+    margin: 15px 7px 10px;
+    background-color: #c4c4c4;
+  }
+  
+  .slideshowDot.active {
+    background-color: #6a0dad;
+  }
+  
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~ Skills CSS ~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.body-common {
+    height: 100%;
+    text-align: justify;
+    font-family: 'Lato', sans-serif;
+}
+
+.snp {
+    padding: 50px;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skill_icons {
+    height: 150px;
+    width: 150px;
+    transition: 500ms;
+    padding: 30px;
+}
+
+.skill_icons:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.skill_item_group {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+
+    justify-content: space-evenly;
+}
+
+.skill_item {
+    padding: 20px;
+    transition: 500ms;
+    cursor: pointer;
+    display: flex;
+    width: auto;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+    z-index: 50 !important;
+}
+
+.skill_icon_group {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~ Leetcode data ~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.coding_block {
+    position: relative;
+    padding: 100px;
+}
+
+#progress_bar_container {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.progress {
+    position: absolute;
+    height: 160px;
+    width: 160px;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    margin: -80px 0 0 -80px;
+}
+
+.category_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.category_class {
+    font-size: 20px;
+    padding: 20px;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+.category_class:hover {
+    transform: scale(1.2);
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~ Github Data ~~~~~~~~~~~~~~~~~~~~~~~*/
+
+#github_projects {
+    display: flex;
+    justify-content: center;
+    padding: 0 50px 0 50px;
+}
+
+#customers {
+    border-collapse: collapse;
+}
+
+#customers td,
+#customers th {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: center;
+    color: #000000;
+}
+
+#customers tr:nth-child(even) {
+    background-color: #c29f9f;
+}
+
+#customers tr:hover {
+    background-color: rgb(187, 197, 122);
+}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #007bb9;
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~ Error Divs ~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.error_api {
+    text-align: center;
+    font-size: 20px;
+    height: 360px;
+    margin: 50px;
+}
+
+#leetcode_error {
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('./Assets/leetcode.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+#github_error {
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('./Assets/Github.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
